@@ -4,3 +4,4 @@
 [build.environment]
   RUBY_VERSION = "3.3.6"
   NODE_VERSION = "18"
+  NPM_FLAGS = "--include=optional"
