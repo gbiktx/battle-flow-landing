@@ -9,17 +9,17 @@ description: A companion app for the Go Battle League
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://gab07.github.io/battle-flow-landing/" # the base hostname & protocol for your site, e.g. http://example.com
 theme_color: '#efeeff'
-twitter_username: sandochee
-github_username:  sandoche
+twitter_username: gabiektx
+github_username: gab07
 author: Gabriel Aguirre
 logo: assets/images/large-logo.png
 twitter:
-  username: sandochee
+  username: gabiektx
 social:
   name: Gabriel Aguirre
   links:
     - https://twitter.com/gabiektx
-    - https://www.linkedin.com/in/sandoche
+    - https://www.linkedin.com/in/gabriel-aguirre-a88284104
     - https://github.com/gab07
 
 languages: ["en"]
