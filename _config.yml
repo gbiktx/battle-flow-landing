@@ -7,10 +7,10 @@ title: Battle Flow App
 email: gbiktx@pm.me
 description: A companion app for the Go Battle League
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://gab07.github.io/battle-flow-landing/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://gbiktx.github.io/battle-flow-landing/" # the base hostname & protocol for your site, e.g. http://example.com
 theme_color: '#efeeff'
 twitter_username: gabiektx
-github_username: gab07
+github_username: gbiktx
 author: Gabriel Aguirre
 logo: assets/images/large-logo.png
 twitter:
@@ -20,13 +20,12 @@ social:
   links:
     - https://twitter.com/gabiektx
     - https://www.linkedin.com/in/gabriel-aguirre-a88284104
-    - https://github.com/gab07
+    - https://github.com/gbiktx
 
 languages: ["en"]
 ampdir: amp
 
 github: false
-doorbell: false
 
 ### Google webmaster tools, Google Analytics, Doorbell and Cookie consent uncomment and put the API key
 #webmaster_verifications:
