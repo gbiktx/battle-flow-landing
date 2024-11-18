@@ -1,13 +1,11 @@
 name: BattleFlow App
 description: 'A companion app for the Go Battle League. <br><br> Available soon in:'
-full_description: "With BattleFlow you can prepare for your PVP adventures!<br>
-<br>- See the lastest ranking from PvPoke!
-<br>- Simulate battles and discover new win conditions!
-<br>- Build the right pokemon for pvp with our IVs Calculator.
-<br>
+full_description: "With BattleFlow you can prepare for your next PVP adventures!<br>
+<li> See the latest ranking from PvPoke! </li>
+<li> Simulate battles and discover new win conditions! </li>
+<li> Build the right Pokemon for PVP with our IVs Calculator. </li>
 <br>
 <b>Disclaimer</b>
-<br>
 <br>
 BattleFlow is an unofficial, free, fan-made app and is not affiliated, endorsed, or supported by Nintendo, GAME FREAK, Niantic, or The Pokémon Company in any way. Some images used in this app are copyrighted and are supported under fair use. Pokémon and Pokémon character names are trademarks of Nintendo. No copyright infringement intended. Pokémon © 2002-2024 Pokémon. © 1995-2024 Nintendo/Creatures Inc./GAME FREAK Inc./Niantic Inc."
 android: ""
