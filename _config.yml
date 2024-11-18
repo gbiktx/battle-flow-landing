@@ -4,7 +4,7 @@
 # You may also want to update /config/webpack.pwa.js in case you want to generate a Progressive Web App
 
 title: Battle Flow App
-email: gabo.apps@protonmail.com
+email: gbiktx@pm.me
 description: A companion app for the Go Battle League
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://gab07.github.io/battle-flow-landing/" # the base hostname & protocol for your site, e.g. http://example.com
