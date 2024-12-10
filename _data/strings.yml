@@ -3,7 +3,7 @@ app:
   description: Description
 
 footer:
-  copyright: Made with ❤️ in Latin America by <a href="https:/www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel!</a>
+  copyright: Made with ❤️ in Latin America by <a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel!</a>
   links:
     - title: Privacy
       url: /privacy
