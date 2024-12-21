@@ -6,14 +6,22 @@ full_description: |
 
   <br>
   <br>
-  <h2>Key Features:</h2>
+  <h3>Key Features:</h3>
+  <br>
   <b>Rankings & Recommendations</b>: Discover the best Pokémon for each league with up-to-date rankings and in-depth analyses.
+  <br>
   <b>Battle Simulations</b>: Plan your battles with detailed simulations, predicting outcomes based on your chosen Pokémon and movesets.
+  <br>
   <b>IV Checks</b>: Evaluate your Pokémon's individual values (IVs) to optimize your team and ensure peak performance.
+  <br>
   <b>Move Counts & Strategies</b>: Master the move counts for all Pokémon and uncover the best strategies to gain the upper hand in battles.
+  <br>
   <b>Offline Functionality</b>: All features are accessible offline, ensuring you can train and plan anytime, anywhere.
+  <br>
   <b>An account is not required</b>: use the app immediately after downloading. No account setup is needed.
 
+  <br>
+  <br>
   Whether you're a casual player or a competitive trainer, <b>BattleFlow</b> is your ultimate sidekick for becoming the very best, like no one ever was!
 android: "https://play.google.com/store/apps/details?id=com.baru.software.oak"
 iOS: "https://apps.apple.com/us/app/battleflow/id6738843812"
