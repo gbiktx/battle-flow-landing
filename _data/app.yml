@@ -1,13 +1,14 @@
 name: BattleFlow App
-description: "Simulate Pokémon Go PVP Battles"
+description: "A companion app for Pokémon Go PVP and the Go Battle League"
 full_description: |
   Take your Pokémon GO experience to the next level with <b>BattleFlow</b>!
   Designed for dedicated trainers, this offline-ready app offers powerful tools to help you master battles and strategize like a pro.
   <br>
   <h3>Key Features</h3>
-  <li><b>Rankings & Recommendations</b>: Discover the best Pokémon for each league with up-to-date rankings and in-depth analyses.</li>
+  <li><b>Rankings & Recommendations</b>: Discover the best Pokémon for each league with up-to-date rankings.</li>
+  <li><b>Team Building</b>: Get team suggestions, rate your teams and get recommendations.</li>
   <li><b>Battle Simulations</b>: Plan your battles with detailed simulations, predicting outcomes based on your chosen Pokémon and movesets.</li>
-  <li><b>IV Checks</b>: Evaluate your Pokémon's individual values (IVs) to optimize your team and ensure peak performance.</li>
+  <li><b>IV Checks</b>: Evaluate your Pokémon's IVs to optimize your team and ensure peak performance.</li>
   <li><b>Move Counts & Strategies</b>: Master the move counts for all Pokémon and uncover the best strategies to gain the upper hand in battles.</li>
   <li><b>Offline Functionality</b>: All features are accessible offline, ensuring you can train and plan anytime, anywhere.</li>
   <li><b>An account is not required</b>: use the app immediately after downloading. No account setup is needed.</li>
