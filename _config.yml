@@ -7,7 +7,7 @@ title: BattleFlow App
 email: gbiktx@pm.me
 description: A companion app for the Go Battle League
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://battleflow.app/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://battleflow.app" # the base hostname & protocol for your site, e.g. http://example.com
 theme_color: '#efeeff'
 twitter_username: gabiektx
 github_username: gbiktx
