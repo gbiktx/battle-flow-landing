@@ -1,21 +1,22 @@
 name: BattleFlow App
-description: "A companion app for Pokémon Go PVP and the Go Battle League"
+description: "Dominate the Pokémon GO Go Battle League with BattleFlow - Your Ultimate Offline PVP & Meta Analysis Companion!"
 full_description: |
-  Take your Pokémon GO experience to the next level with <b>BattleFlow</b>!
-  Designed for dedicated trainers, this offline-ready app offers powerful tools to help you master battles and strategize like a pro.
-  <br>
+  Ready to climb the ranks in the Pokémon GO Go Battle League? <b>BattleFlow</b> is the powerful, offline-ready app designed for trainers who want to master PVP and gain a competitive edge in Trainer Battles. Whether you're battling in the Great League, Ultra League, or Master League, <b>BattleFlow</b> provides the insights and meta analysis tools you need to succeed. Understand the current meta, optimize your teams, and strategize like a pro, all without needing an internet connection!
+
   <h3>Key Features</h3>
-  <li><b>Rankings & Recommendations</b>: Discover the best Pokémon for each league with up-to-date rankings.</li>
-  <li><b>Team Building</b>: Get team suggestions, rate your teams and get recommendations.</li>
-  <li><b>Battle Simulations</b>: Plan your battles with detailed simulations, predicting outcomes based on your chosen Pokémon and movesets.</li>
-  <li><b>IV Checks</b>: Evaluate your Pokémon's IVs to optimize your team and ensure peak performance.</li>
-  <li><b>Move Counts & Strategies</b>: Master the move counts for all Pokémon and uncover the best strategies to gain the upper hand in battles.</li>
-  <li><b>Offline Functionality</b>: All features are accessible offline, ensuring you can train and plan anytime, anywhere.</li>
-  <li><b>An account is not required</b>: use the app immediately after downloading. No account setup is needed.</li>
+
+  <li><b> Up-to-Date Rankings & Recommendations:</b> Stay informed on the best Pokémon for every Go Battle League season and format. Access expert rankings and discover optimal movesets to build winning teams.</li>
+  <li><b> NEW! Advanced Team Building & Generator:</b> Craft perfect PVP teams tailored to specific leagues and opponents. Get intelligent team suggestions, analyze matchups, and rate your team's effectiveness. The Team Generator is now LIVE! Quickly build optimized teams (initial version limited to 10 Pokémon).</li>
+  <li><b> Detailed Battle Simulations:</b> Practice and refine your strategy with realistic battle simulations. Test different teams, movesets, and switch strategies to predict outcomes and understand key interactions like energy management and shield baiting.</li>
+  <li><b> Precise IV Checks & Stat Product Analysis:</b> Go beyond basic IVs. BattleFlow helps you evaluate your Pokémon's stat product for optimal performance in CP-capped leagues, ensuring your Pokémon are built for maximum bulk and damage output.</li>
+  <li><b> Master Move Counts & Strategy:</b> Learn the essential fast move and charged move counts for key Pokémon. Uncover advanced PVP strategies, including when to farm energy, secure switch advantage, and identify ideal lead, safe swap, and closer Pokémon.</li>
+  <li><b> NEW! Battle Notes & Meta Analysis:</b> Keep a detailed log of your Trainer Battles. Beyond recording opponent teams and strategies, BattleFlow now performs in-app meta analysis using your registered battle data! Discover the most common Pokémon per role you're facing and identify prevailing team compositions to gain an unparalleled edge.</li>
+  <li><b> Complete Offline Functionality:</b> Access all features – rankings, simulations, IV checks, move counts, and Battle Notes with Meta Analysis – anytime, anywhere, even without a data connection. Perfect for planning on the go!</li>
+  <li><b> Instant Access, No Account Needed:</b> Download BattleFlow and start optimizing your PVP game immediately. No time wasted on account creation.</li>
 
   <br>
   <br>
-  Whether you're a casual player or a competitive trainer, <b>BattleFlow</b> is your ultimate sidekick for becoming the very best, like no one ever was!
+  Join thousands of dedicated trainers who use BattleFlow to dominate the Go Battle League. Download now and become the very best PVP player you can be!
 android: "https://play.google.com/store/apps/details?id=com.baru.software.oak"
 iOS: "https://apps.apple.com/us/app/battleflow/id6738843812"
 web: false
@@ -25,3 +26,4 @@ screenshots:
   - 3.png
   - 4.png
   - 5.png
+  - 6.png
