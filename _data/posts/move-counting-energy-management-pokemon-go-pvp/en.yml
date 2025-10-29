@@ -1,0 +1,430 @@
+title: "Mastering Move Counting & Charge Move Timing in Pokémon GO PvP"
+description: "Master move counting and charge move timing in Pokémon GO PvP. Learn optimal throw timing based on turn speeds, energy tracking, and advanced battle tactics."
+content: |
+  The difference between good and elite players in Pokémon GO PvP isn't luck—it's **precise charge move timing**. Understanding when to throw your charge moves based on move counts can mean the difference between winning and losing a match.
+
+  In this guide, we'll cover everything you need to know about move counting, turn-based timing optimization, and energy management to dominate Go Battle League.
+
+  ## Understanding Turn-Based Combat
+
+  Pokémon GO PvP operates on a **turn-based system** where each turn lasts **0.5 seconds**. Every fast move takes a certain number of turns to complete:
+
+  **Common Fast Move Turn Durations:**
+
+  - **1 turn (0.5s):** Lock-On, Dragon Breath, Water Gun, Lick
+  - **2 turns (1.0s):** Counter, Psycho Cut, Powder Snow, Mud Shot, Fury Cutter
+  - **3 turns (1.5s):** Charm, Snarl, Gust
+  - **4 turns (2.0s):** Confusion, Volt Switch, Yawn
+  - **5 turns (2.5s):** Incinerate
+
+  **Why This Matters:**
+  When both players have a charge move ready, the player using the **faster fast move** gets to act first during the turn they both reach their charge move threshold.
+
+  ## Charge Move Timing: The Core Concept
+
+  The key question in every battle is: **"Should I throw my charge move NOW, or wait for one more fast move?"**
+
+  Your decision depends on three factors:
+
+  1. **Your fast move turn duration**
+  2. **Opponent's fast move turn duration**
+  3. **Both players' energy levels**
+
+  ### Example: Turn Speed Advantage
+
+  **Scenario:**
+
+  - **You:** Using Counter (2 turns, 3 EPT)
+  - **Opponent:** Using Confusion (4 turns, 3.5 EPT)
+
+  You both need around 12-14 fast moves to reach your first charge move (40 energy).
+
+  **The Math:**
+
+  - **Your timing:** 14 Counters = 28 turns to reach Ice Punch (40 energy)
+  - **Opponent timing:** 12 Confusions = 48 turns to reach Shadow Ball (45 energy)
+
+  You reach your charge move **20 turns (10 seconds) earlier** than your opponent.
+
+  **Optimal Strategy:**
+
+  Since Counter takes 2 turns and Confusion takes 4 turns, Counter will align with Confusion completions at certain intervals.
+
+  **How to count in practice:**
+  1. Count your Counters: "1, 2, 3, 4, 5, 6, **7**" ← 7th Confusion completes here
+  2. Continue: "8, 9, 10, 11, 12, 13, **14**" ← Your Ice Punch is ready, their 7th Confusion just finished
+  3. **Throw immediately after their 7th Confusion completes**
+
+  **Why this works:** Your 14 Counters align with their 7 Confusions, so throwing here gives them zero free turns.
+
+  **Practical tip:** Count THEIR Confusions as visual reference - throw right after you see their 7th Confusion animation complete.
+
+  ### Example: Turn Speed Disadvantage
+
+  **Scenario:**
+
+  - **You:** Using Confusion (4 turns, 3.5 EPT)
+  - **Opponent:** Using Counter (2 turns, 3 EPT)
+
+  You need 13 Confusions (52 turns) to reach Shadow Ball (45 energy).
+  They need 14 Counters (28 turns) to reach Ice Punch (40 energy).
+
+  **The Problem:**
+  They'll have their charge move ready much earlier than you.
+
+  **Optimal Strategy:**
+
+  - Accept you'll be forced to shield first
+  - Count their Counters to predict when Ice Punch is ready
+  - After shielding, you're only 6 more Confusions from Shadow Ball
+  - Confusion's high damage (7 per turn) compensates for slower energy gain
+
+  ## Move Counting Fundamentals
+
+  Move counting is tracking your opponent's fast moves to predict when their charge move is ready.
+
+  **BattleFlow helps you understand:**
+
+  - **Move statistics** - Power, energy cost/gain, cooldown for all moves
+  - **Battle simulations** - Automatic 1v1 simulations showing energy bars, HP, and damage per turn
+  - **Turn-by-turn timeline** - See exactly how battles play out across 9 shield scenarios
+  - **Pokemon stats** - Attack, Defense, HP, and optimal IVs for your league
+
+  ### Basic Counting Formula
+
+  ```
+  Moves Needed = Charge Move Cost ÷ Fast Move EPT (rounded up)
+  ```
+
+  **Example: Medicham with Counter (3 EPT)**
+
+  - Ice Punch (40 energy): 40 ÷ 3 = 13.3 → **14 Counters**
+
+  After counting **14 Counters**, Ice Punch is ready.
+
+  ### Practical Counting in Battle
+
+  Most Pokémon run **two charge moves**—a cheap bait move and an expensive nuke.
+
+  **Example: Swampert (Mud Shot - 4.5 EPT)**
+
+  - **Hydro Cannon** (40 energy): 40 ÷ 4.5 = 8.9 → **9 Mud Shots**
+  - **Earthquake** (55 energy): 55 ÷ 4.5 = 12.2 → **13 Mud Shots**
+
+  **What to count:**
+
+  1. Count to **9 Mud Shots** first (Hydro Cannon range)
+  2. If they don't throw, keep counting
+  3. At **13 Mud Shots**, Earthquake is ready
+  4. After 13 Mud Shots, they might have BOTH moves stored
+
+  ## Optimal Charge Move Timing
+
+  **The Golden Rule:** Always throw on the **final turn of your opponent's fast move** to avoid giving them free turns.
+
+  This applies to ALL strategies below - the timing principle stays the same, but your decision about WHEN to reach your charge move threshold changes based on the situation.
+
+  ### Strategy 1: Throw on Threshold
+
+  Reach your charge move energy threshold and throw on the **next completion of opponent's fast move**.
+
+  **When to use:**
+
+  - Your fast move is slower than opponent's
+  - You're behind on energy
+  - You need to force shields immediately
+  - Opponent has no charge move ready yet
+
+  **Example:**
+  You're using Confusion. Opponent is using Counter.
+  You reach Shadow Ball (45 energy) after 12 Confusions.
+
+  Your 12th Confusion will complete at the same moment as their 24th Counter.
+
+  **How to execute:** Count your Confusions. After your 12th Confusion animation completes, throw immediately—their Counter will have just completed too.
+
+  ### Strategy 2: Overcharging for Energy
+
+  Throw your charge move **later** to build extra energy for future matchups.
+
+  **When to use:**
+
+  - You're ahead in the matchup (opponent will faint soon)
+  - You want energy stored for next Pokémon
+  - Opponent is one fast move from fainting
+  - You don't need the charge move to win
+
+  **Example:**
+  Your Medicham has opponent's Registeel down to 20 HP.
+  You have Ice Punch ready (14 Counters, 42 energy).
+  Registeel will faint from 4 more Counters anyway.
+
+  **Option A:** Throw Ice Punch now
+  → Registeel faints, you enter next matchup with **0 energy**
+
+  **Option B:** Farm 4 more Counters
+  → Registeel faints from fast move damage
+  → You enter next matchup with **12 energy** (closer to another Ice Punch)
+
+  **Correct play:** Option B. The extra energy is huge for the next matchup.
+
+  ### Strategy 3: Optimal Throw Timing
+
+  The most advanced timing strategy: throw your charge move **right after your opponent's fast move completes**.
+
+  **Why this matters:**
+  When you interrupt an opponent mid-fast-move, you give them **free turns**. They can sneak in extra damage while your charge move animation plays.
+
+  **The Golden Rule:** Throw **immediately after** their fast move animation completes to prevent free turns.
+
+  **Example: You vs Opponent Using Confusion**
+
+  Confusion is a 4-turn move. You can SEE the Confusion animation.
+
+  **Bad timing:** You throw while their Confusion animation is still playing
+
+  - You interrupt their Confusion mid-animation
+  - They get free turns during your charge move
+  - They land extra fast move damage
+
+  **Optimal timing:** You throw RIGHT AFTER you see their Confusion animation complete
+
+  - Confusion just finished and damage registered
+  - Your charge move starts immediately
+  - Zero free turns given to opponent
+
+  **How to track this:**
+  Watch for their Confusion animation to finish, then throw immediately. Count their VISIBLE MOVE ANIMATIONS.
+
+  **Advanced Example with Different Fast Move Speeds:**
+
+  - You: Medicham with Counter
+  - Opponent: Confusion user
+
+  Every 2 Counters = 1 Confusion.
+
+  **Best throw moments:** Right after you see their 2nd, 4th, 6th, or 8th Confusion animation complete.
+
+  **Practical counting:**
+  - Count THEIR Confusions: "1... 2... 3... 4..."
+  - When you have your charge move ready AND their current Confusion completes → throw immediately
+
+  **If your move doesn't align:** If you reach your charge move threshold mid-Confusion (e.g., after 7 Counters), wait for their current Confusion to finish before throwing.
+
+  **Note:** This is nearly impossible in mirror matches where both players use the same fast move—you'll always interrupt each other.
+
+  ## Energy Management in Practice
+
+  ### Tracking Energy During Battle
+
+  Always know:
+
+  1. **Your energy level** (count your fast moves)
+  2. **Opponent's energy level** (count their fast moves)
+  3. **Who has energy advantage**
+
+  **Energy advantage** = Having more stored energy than your opponent.
+
+  **How to gain energy advantage:**
+
+  - Use faster fast moves (higher EPT)
+  - Farm down low-HP opponents
+  - Force opponent to throw charge moves first
+  - Win shield battles (make them waste energy)
+
+  ### The Charge Move Priority (CMP) System
+
+  When both players throw a charge move on the **same turn**, CMP decides who goes first.
+
+  **CMP is decided by:**
+
+  1. **Attack stat** (higher attack = priority)
+  2. **If tied**: 50/50 random
+
+  **Strategy if you WIN CMP:**
+
+  - Throw when you reach threshold (on opponent's fast move completion)
+  - You'll win the CMP tie and attack first
+  - Control the pace of battle
+
+  **Strategy if you LOSE CMP:**
+
+  - **Option 1 (Throw Early):** Throw one fast move **before** the turn where you'd both have charge moves (still on their fast move completion) - avoids the CMP tie entirely
+  - **Option 2 (Overcharge):** Throw one fast move **after** to gain energy advantage (still on their fast move completion)
+  - **Option 3 (Undercharge Damage):** Intentionally miss attack bubbles during your charge move (don't hit "Excellent") to reduce damage and keep opponent alive longer for energy farming
+
+  **Important:** "Undercharge" specifically means reducing your charge move's damage output by missing the attack minigame bubbles. This is NOT the same as throwing with less energy (Option 1).
+
+  **Key:** Even when adjusting for CMP, always throw on opponent's fast move completion turn - just choose a DIFFERENT completion turn than where the CMP tie would occur.
+
+  ### Managing Multiple Charge Moves
+
+  Most competitive Pokémon run **two charge moves**:
+
+  - **Cheap move** (35-40 energy) for baiting shields
+  - **Expensive move** (50-65 energy) for raw damage
+
+  **Effective shield baiting requires charging BOTH moves:**
+
+  1. Build past your cheap move to reach your expensive move (e.g., 13 Mud Shots for Earthquake)
+  2. Now you have **both Hydro Cannon AND Earthquake** ready
+  3. **YOU must guess:** Will they shield or not?
+  4. **If you think they WON'T shield:** Throw the expensive nuke (Earthquake) for massive damage
+  5. **If you think they WILL shield:** Throw the cheap bait (Hydro Cannon) to waste their shield and save your nuke
+
+  **Why this works:** Having both moves charged creates a **double guessing game**:
+
+  - **Opponent thinks:** "Do they have both moves? Which will they throw?"
+  - **You think:** "Will they shield? Should I bait or go for the nuke?"
+  - This psychological pressure often forces them to shield, even on bait moves
+
+  **BattleFlow helps you practice:**
+
+  - Simulate different charge move strategies
+  - See energy bars and turn counts during battles
+  - Understand optimal shield usage across 9 scenarios
+  - Analyze which charge moves to throw and when
+
+  ### Example: Swampert Shield Bait Strategy
+
+  **Your Swampert vs Opponent's Registeel**
+
+  Swampert has Mud Shot (4.5 EPT), Hydro Cannon (40 energy), Earthquake (55 energy)
+
+  **Phase 1: Build to both moves**
+
+  - **9 Mud Shots** = 40.5 energy (Hydro Cannon ready)
+  - **Continue to 13 Mud Shots** = 58.5 energy (both moves ready!)
+
+  **Phase 2: The double guessing game**
+
+  - You have **both Hydro Cannon AND Earthquake** charged
+  - **You must decide:** Will they shield?
+  - **If you think YES:** Throw Hydro Cannon (cheap bait) to waste their shield
+  - **If you think NO:** Throw Earthquake (expensive nuke) for massive damage
+  - In this scenario, an Earthquake will hit hard, so Registeel will probably shield → you throw Hydro Cannon bait
+
+  **Phase 3: Reload and finish**
+
+  - **9 more Mud Shots** = Hydro Cannon ready again
+  - Registeel has no shields left
+  - Throw unshielded Hydro Cannon for the knockout
+
+  **Key lesson:** By building past the cheap move to charge both moves, you forced your opponent into a guessing game they couldn't win.
+
+  ## Common Timing Mistakes
+
+  ### Mistake 1: Not Tracking Opponent Move Counts
+
+  **Bad Play:**
+  You focus only on your own energy and forget to count opponent's fast moves.
+  Opponent surprises you with a charge move when you thought they needed "a few more moves."
+
+  **Fix:** Count **both** your moves and opponent's moves simultaneously. Know when they'll reach their charge move thresholds.
+
+  ### Mistake 2: Throwing on Bad Turn Timing
+
+  **Bad Play:**
+  You throw your charge move while opponent is mid-fast-move animation.
+  You give them 1-2 free turns to sneak extra damage during your charge move.
+
+  **Fix:** Throw on the **last turn** of their fast move (when damage registers) to avoid giving free turns.
+
+  ### Mistake 3: Not Building to Both Moves
+
+  **Bad Play:**
+  You throw Hydro Cannon immediately at 9 Mud Shots.
+  Opponent knows it's the cheap move and doesn't shield.
+  You must rebuild from 0 energy.
+
+  **Fix:** Build to **13 Mud Shots** to have both moves ready. Force opponent to guess and respect the expensive move threat.
+
+  ## Using BattleFlow to Master Timing
+
+  BattleFlow helps you understand and practice these timing mechanics:
+
+  ### 1. Battle Simulator
+
+  - **Automatic 1v1 simulations** showing move-by-move battle progression
+  - **Energy bars and HP tracking** so you can see when charge moves become available
+  - **9 shield scenarios** (0v0, 0v1, 0v2, 1v0, 1v1, 1v2, 2v0, 2v1, 2v2) to understand all outcomes
+  - **Battle timeline** displaying every move executed with damage and energy changes
+
+  ### 2. Move Statistics
+
+  - **Power, energy cost/gain, and cooldown** for all fast and charged moves
+  - **DPS (Damage Per Second)** and **DPE (Damage Per Energy)** calculations
+  - **Type effectiveness** and STAB multipliers
+  - **Buff/debuff chances** for moves with stat changes
+
+  ### 3. Team Analysis
+
+  - **Simulate your team** against meta threats
+  - **Matchup ratings** showing which Pokemon counter yours
+  - **Alternative suggestions** for better team composition
+  - **Type coverage analysis** to identify weaknesses
+
+  ### 4. IV Calculator
+
+  - **Optimal IV rankings** for Great League, Ultra League, and Master League
+  - **Stat breakdowns** showing attack, defense, and HP at different IV combinations
+  - **Compare Pokemon** side-by-side to choose the best for your team
+
+  [Download BattleFlow](https://battleflow.app) to practice timing strategies and dominate Go Battle League.
+
+  ## Practice Drills
+
+  ### Drill 1: Count Out Loud
+
+  Pick a Pokémon (e.g., Medicham with Counter).
+  Count out loud during battles: "1, 2, 3... 14" (Ice Punch ready).
+  Note which move number reaches your threshold.
+
+  ### Drill 2: Track Opponent Moves
+
+  In your next GBL set, focus on ONE opponent Pokémon.
+  Count their fast moves.
+  Predict when their charge move is coming.
+  Check if you were right.
+
+  ### Drill 3: Timing Optimization
+
+  In practice battles, experiment with WHEN to reach your charge move (always throwing on opponent's fast move completion):
+
+  - **Threshold timing:** Reach charge move at optimal energy, throw on next opponent fast move completion
+  - **Early timing:** Reach charge move one fast move early, throw on next opponent fast move completion
+  - **Late timing (overcharge):** Build extra energy, throw on later opponent fast move completion
+
+  Remember: The strategy determines WHEN you reach your energy threshold, but you ALWAYS throw on opponent's fast move completion to avoid giving free turns.
+
+  Note which energy strategy feels best in different matchups.
+
+  ## Conclusion
+
+  Mastering charge move timing transforms you from a casual player into a competitive threat. By understanding:
+
+  - **Turn-based combat mechanics**
+  - **Fast move turn durations**
+  - **Optimal throw timing** (on-time or late)
+  - **Energy advantage principles**
+  - **CMP tie mechanics**
+
+  You'll gain a massive edge in every battle. Elite players aren't guessing—they're **counting moves and timing throws perfectly**.
+
+  **Download BattleFlow** today to practice with battle simulations, study move statistics, and analyze team matchups to master these advanced techniques.
+
+  **Ready to dominate Go Battle League?** [Download BattleFlow](https://battleflow.app) and start simulating your battles like a pro!
+
+  ---
+
+  ## References and Further Reading
+
+  This article incorporates data and concepts from the following authoritative sources:
+
+  1. **PvPoke Move Database** - Accurate move data including turn durations, energy generation, and power values
+     Source: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+
+  2. **PvPoke's Guide to Fast Move Registration** - In-depth analysis of turn mechanics and optimal charge move timing
+     Source: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)
+
+  Special thanks to the Pokémon GO PvP community for developing these advanced techniques and sharing their knowledge to help players improve.
