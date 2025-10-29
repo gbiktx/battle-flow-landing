@@ -387,3 +387,281 @@ h1, h2 {
   background-position-y: -10vh !important;
   background-repeat: no-repeat !important;
 }
+
+// Blog Styles
+.blog {
+  padding: 64px 0;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 64px;
+
+    h1 {
+      font-size: $font-xl;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: $font-lg;
+      color: $grey-color;
+    }
+  }
+
+  &__posts {
+    display: grid;
+    gap: 48px;
+  }
+
+  &__post-preview {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    padding: 32px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(17,16,62,0.08);
+    transition: all .3s ease;
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(17,16,62,0.12);
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 24px;
+      gap: 16px;
+    }
+  }
+
+  &__post-image {
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+
+  &__post-title {
+    margin: 0 0 16px 0;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-size: $font-lg;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__post-meta {
+    color: $grey-color;
+    font-size: $font-xs;
+    margin-bottom: 12px;
+  }
+
+  &__reading-time {
+    margin-left: 16px;
+  }
+
+  &__post-categories {
+    margin-bottom: 16px;
+  }
+
+  &__category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: $light-grey-color;
+    color: $primary-color;
+    border-radius: 4px;
+    font-size: $font-xxs;
+    margin-right: 8px;
+  }
+
+  &__post-excerpt {
+    color: $grey-color;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  &__read-more {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+// Post Styles
+.post {
+  padding: 64px 0;
+  max-width: 800px;
+
+  &__header {
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    font-size: $font-xl;
+    margin-bottom: 24px;
+  }
+
+  &__meta {
+    color: $grey-color;
+    font-size: $font-xs;
+    margin-bottom: 16px;
+  }
+
+  &__author {
+    margin-left: 16px;
+  }
+
+  &__reading-time {
+    margin-left: 16px;
+  }
+
+  &__categories {
+    margin-bottom: 24px;
+  }
+
+  &__category {
+    display: inline-block;
+    padding: 6px 16px;
+    background: $light-grey-color;
+    color: $primary-color;
+    border-radius: 4px;
+    font-size: $font-xxs;
+    margin-right: 8px;
+  }
+
+  &__featured-image {
+    margin-bottom: 32px;
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+    }
+  }
+
+  &__content {
+    line-height: 1.8;
+    font-size: $font-md;
+
+    h2 {
+      margin-top: 48px;
+      margin-bottom: 24px;
+      font-size: $font-lg;
+    }
+
+    h3 {
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-size: $font-md;
+    }
+
+    p {
+      margin-bottom: 24px;
+    }
+
+    ul, ol {
+      margin-bottom: 24px;
+      padding-left: 32px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      font-weight: 700;
+      color: $text-color;
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: underline;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 32px 0;
+    }
+
+    code {
+      background: $light-grey-color;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background: $light-grey-color;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 24px 0;
+    }
+  }
+
+  &__footer {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid $light-grey-color;
+  }
+
+  &__tags {
+    font-size: $font-xs;
+  }
+
+  &__tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: $light-grey-color;
+    color: $grey-color;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+
+  &__navigation {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid $light-grey-color;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__nav {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      color: $secondary-color;
+    }
+
+    &--prev {
+      text-align: left;
+    }
+
+    &--next {
+      text-align: right;
+    }
+  }
+}

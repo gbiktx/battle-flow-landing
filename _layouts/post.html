@@ -1,28 +1,94 @@
 ---
 layout: default
 ---
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="post__container">
-    <header class="post__header">
-      <h1 class="post__title" itemprop="name headline">{{ page.title | escape }}</h1>
-      <p class="post__meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-          {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-          {{ page.date | date: date_format }}
-        </time>
-        {% if page.author %}
-          • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-        {% endif %}</p>
-    </header>
+{% assign lang = page.lang | default: site.default_lang | default: "en" %}
 
-    <div class="post__content" itemprop="articleBody">
-      {{ content }}
+<article class="post container" itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="post__header">
+    <h1 class="post__title" itemprop="headline">{{ page.title }}</h1>
+
+    <div class="post__meta">
+      <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+      {% if page.author %}
+      <span class="post__author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <span itemprop="name">{{ page.author }}</span>
+      </span>
+      {% endif %}
+      {% if page.reading_time %}
+      <span class="post__reading-time">{{ page.reading_time }} min read</span>
+      {% endif %}
     </div>
 
-    <div class="post__comments">
-    {% if site.disqus.shortname %}
-      {% include disqus_comments.html %}
+    {% if page.categories %}
+    <div class="post__categories">
+      {% for category in page.categories %}
+      <span class="post__category">{{ category }}</span>
+      {% endfor %}
+    </div>
     {% endif %}
+
+    {% if page.featured_image %}
+    <div class="post__featured-image">
+      <img src="{{ page.featured_image }}" alt="{{ page.title }}" itemprop="image">
     </div>
+    {% endif %}
+  </header>
+
+  <div class="post__content" itemprop="articleBody">
+    {{ content }}
   </div>
+
+  {% if page.tags %}
+  <footer class="post__footer">
+    <div class="post__tags">
+      <strong>Tags:</strong>
+      {% for tag in page.tags %}
+      <span class="post__tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </footer>
+  {% endif %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title | escape }}",
+    "image": "{{ page.featured_image | default: site.logo | absolute_url }}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ page.author | default: site.author | escape }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ site.title }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/{{ site.logo }}"
+      }
+    },
+    "description": "{{ page.excerpt | default: page.description | strip_html | normalize_whitespace | truncate: 160 | escape }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page.url | absolute_url }}"
+    }
+  }
+  </script>
 </article>
+
+<div class="post__navigation container">
+  {% if page.previous %}
+  <a href="{{ page.previous.url }}" class="post__nav post__nav--prev">
+    ← {{ page.previous.title }}
+  </a>
+  {% endif %}
+  {% if page.next %}
+  <a href="{{ page.next.url }}" class="post__nav post__nav--next">
+    {{ page.next.title }} →
+  </a>
+  {% endif %}
+</div>

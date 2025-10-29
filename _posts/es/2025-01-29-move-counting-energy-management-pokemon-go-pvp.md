@@ -1,0 +1,448 @@
+---
+layout: post
+title: "Dominando el Conteo de Movimientos y el Timing de Ataques Cargados en Pokémon GO PvP"
+date: 2025-01-29
+author: Gabriel Aguirre
+categories: [Advanced Strategy, Energy Management]
+tags:
+  [
+    pokemon go,
+    pvp,
+    energy management,
+    move counting,
+    charge move timing,
+    fast moves,
+    turn timing,
+  ]
+description: "Domina el conteo de movimientos y el timing de ataques cargados en Pokémon GO PvP. Aprende el momento óptimo para lanzar basándote en la velocidad de turnos, seguimiento de energía y tácticas de combate avanzadas."
+reading_time: 10
+featured_image: /assets/images/screenshots/2.png
+---
+
+La diferencia entre jugadores buenos y élite en Pokémon GO PvP no es la suerte—es el **timing preciso de los ataques cargados**. Entender cuándo lanzar tus ataques cargados basándote en el conteo de movimientos puede significar la diferencia entre ganar y perder un combate.
+
+En esta guía, cubriremos todo lo que necesitas saber sobre el conteo de movimientos, optimización del timing basado en turnos y gestión de energía para dominar la Liga de Combates GO.
+
+## Entendiendo el Combate por Turnos
+
+El PvP de Pokémon GO opera en un **sistema por turnos** donde cada turno dura **0.5 segundos**. Cada ataque rápido toma un cierto número de turnos para completarse:
+
+**Duraciones Comunes de Ataques Rápidos en Turnos:**
+
+- **1 turno (0.5s):** Fijar Blanco, Aliento Dragón, Pistola Agua, Lamer
+- **2 turnos (1.0s):** Contraataque, Psicocorte, Nieve Polvo, Disparo Lodo, Cortafuria
+- **3 turnos (1.5s):** Carantoña, Gruñido, Tornado
+- **4 turnos (2.0s):** Confusión, Cambio Voltio, Bostezo
+- **5 turnos (2.5s):** Calcinación
+
+**Por Qué Esto Importa:**
+Cuando ambos jugadores tienen un ataque cargado listo, el jugador usando el **ataque rápido más veloz** actúa primero durante el turno en que ambos alcanzan su umbral de ataque cargado.
+
+## Timing de Ataques Cargados: El Concepto Central
+
+La pregunta clave en cada batalla es: **"¿Debería lanzar mi ataque cargado AHORA, o esperar un ataque rápido más?"**
+
+Tu decisión depende de tres factores:
+
+1. **La duración en turnos de tu ataque rápido**
+2. **La duración en turnos del ataque rápido del oponente**
+3. **Los niveles de energía de ambos jugadores**
+
+### Ejemplo: Ventaja de Velocidad de Turnos
+
+**Escenario:**
+
+- **Tú:** Usando Contraataque (2 turnos, 3 EPT)
+- **Oponente:** Usando Confusión (4 turnos, 3.5 EPT)
+
+Ambos necesitan alrededor de 12-14 ataques rápidos para alcanzar su primer ataque cargado (40 de energía).
+
+**Las Matemáticas:**
+
+- **Tu timing:** 14 Contraataques = 28 turnos para alcanzar Puño Hielo (40 de energía)
+- **Timing del oponente:** 12 Confusiones = 48 turnos para alcanzar Bola Sombra (45 de energía)
+
+Alcanzas tu ataque cargado **20 turnos (10 segundos) antes** que tu oponente.
+
+**Estrategia Óptima:**
+
+Como Contraataque toma 2 turnos y Confusión toma 4 turnos, Contraataque se alineará con las finalizaciones de Confusión en ciertos intervalos.
+
+**Cómo contar en la práctica:**
+1. Cuenta tus Contraataques: "1, 2, 3, 4, 5, 6, **7**" ← La 7ma Confusión se completa aquí
+2. Continúa: "8, 9, 10, 11, 12, 13, **14**" ← Tu Puño Hielo está listo, su 7ma Confusión acaba de terminar
+3. **Lanza inmediatamente después de que su 7ma Confusión se complete**
+
+**Por qué funciona:** Tus 14 Contraataques se alinean con sus 7 Confusiones, así que lanzar aquí no les da turnos gratis.
+
+**Consejo práctico:** Cuenta SUS Confusiones como referencia visual - lanza justo después de ver completarse la animación de su 7ma Confusión.
+
+### Ejemplo: Desventaja de Velocidad de Turnos
+
+**Escenario:**
+
+- **Tú:** Usando Confusión (4 turnos, 3.5 EPT)
+- **Oponente:** Usando Contraataque (2 turnos, 3 EPT)
+
+Necesitas 13 Confusiones (52 turnos) para alcanzar Bola Sombra (45 de energía).
+Ellos necesitan 14 Contraataques (28 turnos) para alcanzar Puño Hielo (40 de energía).
+
+**El Problema:**
+Tendrán su ataque cargado listo mucho antes que tú.
+
+**Estrategia Óptima:**
+
+- Acepta que te verás forzado a protegerte primero
+- Cuenta sus Contraataques para predecir cuándo Puño Hielo estará listo
+- Después de protegerte, solo estás a 6 Confusiones más de Bola Sombra
+- El alto daño de Confusión (7 por turno) compensa la ganancia de energía más lenta
+
+## Fundamentos del Conteo de Movimientos
+
+El conteo de movimientos es rastrear los ataques rápidos de tu oponente para predecir cuándo su ataque cargado estará listo.
+
+**BattleFlow te ayuda a entender:**
+
+- **Estadísticas de movimientos** - Poder, costo/ganancia de energía, tiempo de recarga para todos los movimientos
+- **Simulaciones de batalla** - Simulaciones automáticas 1v1 mostrando barras de energía, PS y daño por turno
+- **Línea de tiempo turno por turno** - Ve exactamente cómo se desarrollan las batallas en 9 escenarios de escudos
+- **Estadísticas de Pokémon** - Ataque, Defensa, PS e IVs óptimos para tu liga
+
+### Fórmula Básica de Conteo
+
+```
+Movimientos Necesarios = Costo del Ataque Cargado ÷ EPT del Ataque Rápido (redondeado hacia arriba)
+```
+
+**Ejemplo: Medicham con Contraataque (3 EPT)**
+
+- Puño Hielo (40 de energía): 40 ÷ 3 = 13.3 → **14 Contraataques**
+
+Después de contar **14 Contraataques**, Puño Hielo está listo.
+
+### Conteo Práctico en Batalla
+
+La mayoría de Pokémon usan **dos ataques cargados**—un movimiento señuelo barato y una bomba costosa.
+
+**Ejemplo: Swampert (Disparo Lodo - 4.5 EPT)**
+
+- **Hidrocañón** (40 de energía): 40 ÷ 4.5 = 8.9 → **9 Disparos Lodo**
+- **Terremoto** (55 de energía): 55 ÷ 4.5 = 12.2 → **13 Disparos Lodo**
+
+**Qué contar:**
+
+1. Cuenta hasta **9 Disparos Lodo** primero (rango de Hidrocañón)
+2. Si no lanzan, sigue contando
+3. A los **13 Disparos Lodo**, Terremoto está listo
+4. Después de 13 Disparos Lodo, podrían tener AMBOS movimientos almacenados
+
+## Timing Óptimo de Ataques Cargados
+
+**La Regla de Oro:** Siempre lanza en el **turno final del ataque rápido de tu oponente** para evitar darles turnos gratis.
+
+Esto aplica a TODAS las estrategias a continuación - el principio de timing permanece igual, pero tu decisión sobre CUÁNDO alcanzar tu umbral de ataque cargado cambia basándose en la situación.
+
+### Estrategia 1: Lanzar en el Umbral
+
+Alcanza tu umbral de energía del ataque cargado y lanza en la **siguiente finalización del ataque rápido del oponente**.
+
+**Cuándo usar:**
+
+- Tu ataque rápido es más lento que el del oponente
+- Estás retrasado en energía
+- Necesitas forzar escudos inmediatamente
+- El oponente aún no tiene un ataque cargado listo
+
+**Ejemplo:**
+Estás usando Confusión. El oponente está usando Contraataque.
+Alcanzas Bola Sombra (45 de energía) después de 12 Confusiones.
+
+Tu 12va Confusión se completará en el mismo momento que su 24vo Contraataque.
+
+**Cómo ejecutar:** Cuenta tus Confusiones. Después de que tu 12va animación de Confusión se complete, lanza inmediatamente—su Contraataque también habrá terminado justo.
+
+### Estrategia 2: Sobrecargar para Energía
+
+Lanza tu ataque cargado **más tarde** para acumular energía extra para futuros enfrentamientos.
+
+**Cuándo usar:**
+
+- Vas adelante en el enfrentamiento (el oponente se debilitará pronto)
+- Quieres energía almacenada para el próximo Pokémon
+- El oponente está a un ataque rápido de debilitarse
+- No necesitas el ataque cargado para ganar
+
+**Ejemplo:**
+Tu Medicham tiene al Registeel del oponente con 20 PS restantes.
+Tienes Puño Hielo listo (14 Contraataques, 42 de energía).
+Registeel se debilitará con 4 Contraataques más de todas formas.
+
+**Opción A:** Lanzar Puño Hielo ahora
+→ Registeel se debilita, entras al siguiente enfrentamiento con **0 de energía**
+
+**Opción B:** Acumular 4 Contraataques más
+→ Registeel se debilita por daño de ataque rápido
+→ Entras al siguiente enfrentamiento con **12 de energía** (más cerca de otro Puño Hielo)
+
+**Jugada correcta:** Opción B. La energía extra es enorme para el siguiente enfrentamiento.
+
+### Estrategia 3: Timing Óptimo de Lanzamiento
+
+La estrategia de timing más avanzada: lanza tu ataque cargado **justo después de que el ataque rápido de tu oponente se complete**.
+
+**Por qué esto importa:**
+Cuando interrumpes a un oponente a mitad de ataque rápido, les das **turnos gratis**. Pueden colar daño extra mientras tu animación de ataque cargado se reproduce.
+
+**La Regla de Oro:** Lanza **inmediatamente después** de que su animación de ataque rápido se complete para prevenir turnos gratis.
+
+**Ejemplo: Tú vs Oponente Usando Confusión**
+
+Confusión es un movimiento de 4 turnos. Puedes VER la animación de Confusión.
+
+**Mal timing:** Lanzas mientras su animación de Confusión aún se reproduce
+
+- Interrumpes su Confusión a mitad de animación
+- Obtienen turnos gratis durante tu ataque cargado
+- Consiguen daño extra de ataque rápido
+
+**Timing óptimo:** Lanzas JUSTO DESPUÉS de ver su animación de Confusión completarse
+
+- Confusión acaba de terminar y el daño se registró
+- Tu ataque cargado comienza inmediatamente
+- Cero turnos gratis dados al oponente
+
+**Cómo rastrear esto:**
+Observa que su animación de Confusión termine, luego lanza inmediatamente. Cuenta sus ANIMACIONES DE MOVIMIENTOS VISIBLES.
+
+**Ejemplo Avanzado con Diferentes Velocidades de Ataques Rápidos:**
+
+- Tú: Medicham con Contraataque
+- Oponente: Usuario de Confusión
+
+Cada 2 Contraataques = 1 Confusión.
+
+**Mejores momentos de lanzamiento:** Justo después de ver completarse la animación de su 2da, 4ta, 6ta u 8va Confusión.
+
+**Conteo práctico:**
+- Cuenta SUS Confusiones: "1... 2... 3... 4..."
+- Cuando tengas tu ataque cargado listo Y su Confusión actual se complete → lanza inmediatamente
+
+**Si tu movimiento no se alinea:** Si alcanzas tu umbral de ataque cargado a mitad de Confusión (ej., después de 7 Contraataques), espera a que su Confusión actual termine antes de lanzar.
+
+**Nota:** Esto es casi imposible en enfrentamientos espejo donde ambos jugadores usan el mismo ataque rápido—siempre se interrumpirán mutuamente.
+
+## Gestión de Energía en la Práctica
+
+### Rastreando Energía Durante la Batalla
+
+Siempre conoce:
+
+1. **Tu nivel de energía** (cuenta tus ataques rápidos)
+2. **Nivel de energía del oponente** (cuenta sus ataques rápidos)
+3. **Quién tiene ventaja de energía**
+
+**Ventaja de energía** = Tener más energía almacenada que tu oponente.
+
+**Cómo ganar ventaja de energía:**
+
+- Usa ataques rápidos más veloces (mayor EPT)
+- Acumula energía de oponentes con PS bajo
+- Fuerza al oponente a lanzar ataques cargados primero
+- Gana batallas de escudos (hazles desperdiciar energía)
+
+### El Sistema de Prioridad de Ataque Cargado (CMP)
+
+Cuando ambos jugadores lanzan un ataque cargado en el **mismo turno**, CMP decide quién va primero.
+
+**CMP se decide por:**
+
+1. **Estadística de Ataque** (mayor ataque = prioridad)
+2. **Si hay empate**: 50/50 aleatorio
+
+**Estrategia si GANAS CMP:**
+
+- Lanza cuando alcances el umbral (en la finalización del ataque rápido del oponente)
+- Ganarás el empate CMP y atacarás primero
+- Controla el ritmo de la batalla
+
+**Estrategia si PIERDES CMP:**
+
+- **Opción 1 (Lanzar Temprano):** Lanza un ataque rápido **antes** del turno donde ambos tendrían ataques cargados (aún en la finalización del ataque rápido de ellos) - evita el empate CMP completamente
+- **Opción 2 (Sobrecargar):** Lanza un ataque rápido **después** para ganar ventaja de energía (aún en la finalización del ataque rápido de ellos)
+- **Opción 3 (Subcarga de Daño):** Intencionalmente falla las burbujas de ataque durante tu ataque cargado (no hagas "Excelente") para reducir el daño y mantener al oponente vivo más tiempo para acumular energía
+
+**Importante:** "Subcarga" específicamente significa reducir el daño de tu ataque cargado fallando las burbujas del minijuego de ataque. Esto NO es lo mismo que lanzar con menos energía (Opción 1).
+
+**Clave:** Incluso al ajustarte por CMP, siempre lanza en el turno de finalización del ataque rápido del oponente - solo elige un turno de finalización DIFERENTE al donde ocurriría el empate CMP.
+
+### Gestionando Múltiples Ataques Cargados
+
+La mayoría de Pokémon competitivos usan **dos ataques cargados**:
+
+- **Movimiento barato** (35-40 de energía) para engañar escudos
+- **Movimiento costoso** (50-65 de energía) para daño bruto
+
+**El engaño de escudos efectivo requiere cargar AMBOS movimientos:**
+
+1. Acumula más allá de tu movimiento barato para alcanzar tu movimiento costoso (ej., 13 Disparos Lodo para Terremoto)
+2. Ahora tienes **tanto Hidrocañón COMO Terremoto** listos
+3. **TÚ debes adivinar:** ¿Se protegerán o no?
+4. **Si piensas que NO se protegerán:** Lanza la bomba costosa (Terremoto) para daño masivo
+5. **Si piensas que SÍ se protegerán:** Lanza el señuelo barato (Hidrocañón) para desperdiciar su escudo y guardar tu bomba
+
+**Por qué funciona:** Tener ambos movimientos cargados crea un **juego de doble adivinanza**:
+
+- **El oponente piensa:** "¿Tienen ambos movimientos? ¿Cuál lanzarán?"
+- **Tú piensas:** "¿Se protegerán? ¿Debería engañar o ir por la bomba?"
+- Esta presión psicológica a menudo los fuerza a protegerse, incluso en movimientos señuelo
+
+**BattleFlow te ayuda a practicar:**
+
+- Simular diferentes estrategias de ataques cargados
+- Ver barras de energía y conteo de turnos durante las batallas
+- Entender el uso óptimo de escudos en 9 escenarios
+- Analizar qué ataques cargados lanzar y cuándo
+
+### Ejemplo: Estrategia de Señuelo de Escudo con Swampert
+
+**Tu Swampert vs Registeel del Oponente**
+
+Swampert tiene Disparo Lodo (4.5 EPT), Hidrocañón (40 de energía), Terremoto (55 de energía)
+
+**Fase 1: Acumular para ambos movimientos**
+
+- **9 Disparos Lodo** = 40.5 de energía (Hidrocañón listo)
+- **Continuar a 13 Disparos Lodo** = 58.5 de energía (¡ambos movimientos listos!)
+
+**Fase 2: El juego de doble adivinanza**
+
+- Tienes **tanto Hidrocañón COMO Terremoto** cargados
+- **Debes decidir:** ¿Se protegerán?
+- **Si piensas SÍ:** Lanza Hidrocañón (señuelo barato) para desperdiciar su escudo
+- **Si piensas NO:** Lanza Terremoto (bomba costosa) para daño masivo
+- En este escenario, un Terremoto golpeará fuerte, así que Registeel probablemente se protegerá → lanzas el señuelo Hidrocañón
+
+**Fase 3: Recargar y finalizar**
+
+- **9 Disparos Lodo más** = Hidrocañón listo de nuevo
+- Registeel no tiene escudos restantes
+- Lanza Hidrocañón sin escudo para el nocaut
+
+**Lección clave:** Al acumular más allá del movimiento barato para cargar ambos movimientos, forzaste a tu oponente a un juego de adivinanzas que no podían ganar.
+
+## Errores Comunes de Timing
+
+### Error 1: No Rastrear Conteos de Movimientos del Oponente
+
+**Mala Jugada:**
+Te enfocas solo en tu propia energía y olvidas contar los ataques rápidos del oponente.
+El oponente te sorprende con un ataque cargado cuando pensabas que necesitaban "algunos movimientos más."
+
+**Solución:** Cuenta **ambos**, tus movimientos y los movimientos del oponente simultáneamente. Conoce cuándo alcanzarán sus umbrales de ataque cargado.
+
+### Error 2: Lanzar en Mal Timing de Turno
+
+**Mala Jugada:**
+Lanzas tu ataque cargado mientras el oponente está a mitad de animación de ataque rápido.
+Les das 1-2 turnos gratis para colar daño extra durante tu ataque cargado.
+
+**Solución:** Lanza en el **último turno** de su ataque rápido (cuando el daño se registra) para evitar dar turnos gratis.
+
+### Error 3: No Acumular para Ambos Movimientos
+
+**Mala Jugada:**
+Lanzas Hidrocañón inmediatamente a los 9 Disparos Lodo.
+El oponente sabe que es el movimiento barato y no se protege.
+Debes reconstruir desde 0 de energía.
+
+**Solución:** Acumula hasta **13 Disparos Lodo** para tener ambos movimientos listos. Fuerza al oponente a adivinar y respetar la amenaza del movimiento costoso.
+
+## Usando BattleFlow para Dominar el Timing
+
+BattleFlow te ayuda a entender y practicar estas mecánicas de timing:
+
+### 1. Simulador de Batallas
+
+- **Simulaciones automáticas 1v1** mostrando progresión de batalla movimiento por movimiento
+- **Rastreo de barras de energía y PS** para que puedas ver cuándo los ataques cargados se vuelven disponibles
+- **9 escenarios de escudos** (0v0, 0v1, 0v2, 1v0, 1v1, 1v2, 2v0, 2v1, 2v2) para entender todos los resultados
+- **Línea de tiempo de batalla** mostrando cada movimiento ejecutado con cambios de daño y energía
+
+### 2. Estadísticas de Movimientos
+
+- **Poder, costo/ganancia de energía y tiempo de recarga** para todos los ataques rápidos y cargados
+- **DPS (Daño Por Segundo)** y **DPE (Daño Por Energía)** calculados
+- **Efectividad de tipo** y multiplicadores STAB
+- **Probabilidades de buff/debuff** para movimientos con cambios de estadísticas
+
+### 3. Análisis de Equipo
+
+- **Simula tu equipo** contra amenazas del meta
+- **Calificaciones de enfrentamientos** mostrando qué Pokémon contrarrestan al tuyo
+- **Sugerencias alternativas** para mejor composición de equipo
+- **Análisis de cobertura de tipos** para identificar debilidades
+
+### 4. Calculadora de IVs
+
+- **Rankings de IVs óptimos** para Gran Liga, Ultra Liga y Liga Maestra
+- **Desgloses de estadísticas** mostrando ataque, defensa y PS en diferentes combinaciones de IVs
+- **Comparar Pokémon** lado a lado para elegir el mejor para tu equipo
+
+[Descarga BattleFlow](https://battleflow.app) para practicar estrategias de timing y dominar la Liga de Combates GO.
+
+## Ejercicios de Práctica
+
+### Ejercicio 1: Contar en Voz Alta
+
+Elige un Pokémon (ej., Medicham con Contraataque).
+Cuenta en voz alta durante las batallas: "1, 2, 3... 14" (Puño Hielo listo).
+Nota qué número de movimiento alcanza tu umbral.
+
+### Ejercicio 2: Rastrear Movimientos del Oponente
+
+En tu próximo set de LCG, enfócate en UN Pokémon oponente.
+Cuenta sus ataques rápidos.
+Predice cuándo su ataque cargado viene.
+Verifica si estabas en lo correcto.
+
+### Ejercicio 3: Optimización de Timing
+
+En batallas de práctica, experimenta con CUÁNDO alcanzar tu ataque cargado (siempre lanzando en la finalización del ataque rápido del oponente):
+
+- **Timing de umbral:** Alcanza ataque cargado en energía óptima, lanza en siguiente finalización de ataque rápido del oponente
+- **Timing temprano:** Alcanza ataque cargado un ataque rápido antes, lanza en siguiente finalización de ataque rápido del oponente
+- **Timing tardío (sobrecarga):** Acumula energía extra, lanza en finalización posterior de ataque rápido del oponente
+
+Recuerda: La estrategia determina CUÁNDO alcanzas tu umbral de energía, pero SIEMPRE lanzas en la finalización del ataque rápido del oponente para evitar dar turnos gratis.
+
+Nota qué estrategia de energía se siente mejor en diferentes enfrentamientos.
+
+## Conclusión
+
+Dominar el timing de ataques cargados te transforma de un jugador casual en una amenaza competitiva. Al entender:
+
+- **Mecánicas de combate por turnos**
+- **Duraciones de turnos de ataques rápidos**
+- **Timing óptimo de lanzamiento** (a tiempo o tarde)
+- **Principios de ventaja de energía**
+- **Mecánicas de empate CMP**
+
+Ganarás una ventaja masiva en cada batalla. Los jugadores élite no están adivinando—están **contando movimientos y timing lanzamientos perfectamente**.
+
+**Descarga BattleFlow** hoy para practicar con simulaciones de batalla, estudiar estadísticas de movimientos y analizar enfrentamientos de equipo para dominar estas técnicas avanzadas.
+
+**¿Listo para dominar la Liga de Combates GO?** [Descarga BattleFlow](https://battleflow.app) y comienza a simular tus batallas como un profesional.
+
+---
+
+## Referencias y Lectura Adicional
+
+Este artículo incorpora datos y conceptos de las siguientes fuentes autorizadas:
+
+1. **Base de Datos de Movimientos de PvPoke** - Datos precisos de movimientos incluyendo duraciones de turnos, generación de energía y valores de poder
+   Fuente: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+
+2. **Guía de PvPoke sobre Registro de Ataques Rápidos** - Análisis profundo de mecánicas de turnos y timing óptimo de ataques cargados
+   Fuente: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)
+
+Agradecimientos especiales a la comunidad PvP de Pokémon GO por desarrollar estas técnicas avanzadas y compartir su conocimiento para ayudar a los jugadores a mejorar.

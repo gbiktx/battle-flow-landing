@@ -5,6 +5,8 @@ app:
 footer:
   copyright: Made with ❤️ in Latin America by <a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel!</a>
   links:
+    - title: Blog
+      url: /blog
     - title: Privacy
       url: /privacy
     - title: Terms & Conditions
