@@ -1,0 +1,16 @@
+# BattleFlow - Robots.txt
+# https://battleflow.app/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin/config areas (if any)
+Disallow: /assets/
+Disallow: /_layouts/
+Disallow: /_includes/
+
+# Sitemap location
+Sitemap: https://battleflow.app/sitemap.xml
+
+# Crawl delay for polite bots (optional)
+Crawl-delay: 1

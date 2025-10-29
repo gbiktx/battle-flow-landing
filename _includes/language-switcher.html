@@ -1,0 +1,115 @@
+{% assign lang = page.lang | default: site.default_lang | default: "en" %}
+
+<div class="language-switcher">
+  <select id="language-select" onchange="switchLanguage(this.value)" aria-label="Select Language">
+    <option value="en" {% if lang == "en" %}selected{% endif %}>English</option>
+    <option value="es" {% if lang == "es" %}selected{% endif %}>Español</option>
+    <option value="fr" {% if lang == "fr" %}selected{% endif %}>Français</option>
+    <option value="de" {% if lang == "de" %}selected{% endif %}>Deutsch</option>
+    <option value="it" {% if lang == "it" %}selected{% endif %}>Italiano</option>
+    <option value="pt" {% if lang == "pt" %}selected{% endif %}>Português</option>
+    <option value="zh-Hans" {% if lang == "zh-Hans" %}selected{% endif %}>简体中文</option>
+    <option value="zh-Hant" {% if lang == "zh-Hant" %}selected{% endif %}>繁體中文</option>
+    <option value="ja" {% if lang == "ja" %}selected{% endif %}>日本語</option>
+    <option value="ko" {% if lang == "ko" %}selected{% endif %}>한국어</option>
+  </select>
+</div>
+
+<script>
+function switchLanguage(lang) {
+  const langMap = {
+    'en': '/',
+    'es': '/es/',
+    'fr': '/fr/',
+    'de': '/de/',
+    'it': '/it/',
+    'pt': '/pt/',
+    'zh-Hans': '/zh-hans/',
+    'zh-Hant': '/zh-hant/',
+    'ja': '/ja/',
+    'ko': '/ko/'
+  };
+
+  if (langMap[lang]) {
+    // Save the user's language preference
+    localStorage.setItem('preferredLanguage', lang);
+    window.location.href = langMap[lang];
+  }
+}
+
+// Automatic browser language detection
+(function() {
+  // Check if user has manually selected a language before
+  const savedLang = localStorage.getItem('preferredLanguage');
+  if (savedLang) {
+    // User has a saved preference, don't auto-redirect
+    return;
+  }
+
+  // Only auto-detect on the homepage (English version)
+  const currentPath = window.location.pathname;
+  if (currentPath !== '/' && currentPath !== '/index.html') {
+    // User is already on a language-specific page
+    return;
+  }
+
+  // Get browser language
+  const browserLang = navigator.language || navigator.userLanguage;
+
+  // Map browser language codes to our supported languages
+  const languageMap = {
+    'es': 'es',
+    'es-ES': 'es',
+    'es-MX': 'es',
+    'es-AR': 'es',
+    'fr': 'fr',
+    'fr-FR': 'fr',
+    'fr-CA': 'fr',
+    'de': 'de',
+    'de-DE': 'de',
+    'de-AT': 'de',
+    'de-CH': 'de',
+    'it': 'it',
+    'it-IT': 'it',
+    'pt': 'pt',
+    'pt-BR': 'pt',
+    'pt-PT': 'pt',
+    'zh-CN': 'zh-Hans',
+    'zh-Hans': 'zh-Hans',
+    'zh-SG': 'zh-Hans',
+    'zh-TW': 'zh-Hant',
+    'zh-Hant': 'zh-Hant',
+    'zh-HK': 'zh-Hant',
+    'ja': 'ja',
+    'ja-JP': 'ja',
+    'ko': 'ko',
+    'ko-KR': 'ko'
+  };
+
+  // Try to match the full language code first, then just the language part
+  let detectedLang = languageMap[browserLang];
+  if (!detectedLang) {
+    const langCode = browserLang.split('-')[0];
+    detectedLang = languageMap[langCode];
+  }
+
+  // If we found a supported language and it's not English, redirect
+  if (detectedLang && detectedLang !== 'en') {
+    const langMap = {
+      'es': '/es/',
+      'fr': '/fr/',
+      'de': '/de/',
+      'it': '/it/',
+      'pt': '/pt/',
+      'zh-Hans': '/zh-hans/',
+      'zh-Hant': '/zh-hant/',
+      'ja': '/ja/',
+      'ko': '/ko/'
+    };
+
+    if (langMap[detectedLang]) {
+      window.location.href = langMap[detectedLang];
+    }
+  }
+})();
+</script>

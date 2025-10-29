@@ -1,0 +1,17 @@
+app:
+  screenshots: Screenshots
+  description: Description
+
+footer:
+  copyright: Made with ❤️ in Latin America by <a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel!</a>
+  links:
+    - title: Privacy
+      url: /privacy
+    - title: Terms & Conditions
+      url: /tac
+    - title: Template
+      url: https://github.com/sandoche/Mobile-app-landingpage-template
+      target: _blank
+    - title: Twitter
+      url: https://x.com/battleflowapp
+      target: _blank

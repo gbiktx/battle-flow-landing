@@ -1,0 +1,17 @@
+app:
+  screenshots: 螢幕截圖
+  description: 描述
+
+footer:
+  copyright: 由<a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel</a>在拉丁美洲用❤️製作！
+  links:
+    - title: 隱私權政策
+      url: /privacy
+    - title: 條款與條件
+      url: /tac
+    - title: 模板
+      url: https://github.com/sandoche/Mobile-app-landingpage-template
+      target: _blank
+    - title: Twitter
+      url: https://x.com/battleflowapp
+      target: _blank

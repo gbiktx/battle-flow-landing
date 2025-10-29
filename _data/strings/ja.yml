@@ -1,0 +1,17 @@
+app:
+  screenshots: スクリーンショット
+  description: 説明
+
+footer:
+  copyright: ラテンアメリカで<a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel</a>が❤️を込めて作成！
+  links:
+    - title: プライバシー
+      url: /privacy
+    - title: 利用規約
+      url: /tac
+    - title: テンプレート
+      url: https://github.com/sandoche/Mobile-app-landingpage-template
+      target: _blank
+    - title: Twitter
+      url: https://x.com/battleflowapp
+      target: _blank

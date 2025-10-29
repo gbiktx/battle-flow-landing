@@ -1,0 +1,17 @@
+app:
+  screenshots: 스크린샷
+  description: 설명
+
+footer:
+  copyright: 라틴 아메리카에서 <a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel</a>이 ❤️로 만들었습니다!
+  links:
+    - title: 개인정보 보호
+      url: /privacy
+    - title: 이용약관
+      url: /tac
+    - title: 템플릿
+      url: https://github.com/sandoche/Mobile-app-landingpage-template
+      target: _blank
+    - title: Twitter
+      url: https://x.com/battleflowapp
+      target: _blank

@@ -1,22 +1,82 @@
 name: BattleFlow App
-description: "Dominate the Pokémon GO Go Battle League with BattleFlow - Your Ultimate Offline PVP & Meta Analysis Companion!"
+description: "Master Pokémon GO PvP battles with BattleFlow's intelligent team generator. Build winning teams for Great League, Ultra League, and Master League with advanced meta analysis, battle simulations, and strategic team compositions optimized for GO Battle League (GBL)."
 full_description: |
-  Ready to climb the ranks in the Pokémon GO Go Battle League? <b>BattleFlow</b> is the powerful, offline-ready app designed for trainers who want to master PVP and gain a competitive edge in Trainer Battles. Whether you're battling in the Great League, Ultra League, or Master League, <b>BattleFlow</b> provides the insights and meta analysis tools you need to succeed. Understand the current meta, optimize your teams, and strategize like a pro, all without needing an internet connection!
+  <h2>The Ultimate Pokémon GO PvP Team Generator</h2>
 
-  <h3>Key Features</h3>
+  <p>
+    BattleFlow revolutionizes Pokémon GO competitive play with powerful team building
+    tools designed for trainers who want to dominate GO Battle League. Our advanced team
+    generator analyzes thousands of Pokémon combinations to create optimal lineups based
+    on the current meta, type coverage, and battle strategies,
+    balanced cores, and role-based compositions.
+  </p>
 
-  <li><b> Up-to-Date Rankings & Recommendations:</b> Stay informed on the best Pokémon for every Go Battle League season and format. Access expert rankings and discover optimal movesets to build winning teams.</li>
-  <li><b> NEW! Advanced Team Building & Generator:</b> Craft perfect PVP teams tailored to specific leagues and opponents. Get intelligent team suggestions, analyze matchups, and rate your team's effectiveness. The Team Generator is now LIVE! Quickly build optimized teams (initial version limited to 10 Pokémon).</li>
-  <li><b> Detailed Battle Simulations:</b> Practice and refine your strategy with realistic battle simulations. Test different teams, movesets, and switch strategies to predict outcomes and understand key interactions like energy management and shield baiting.</li>
-  <li><b> Precise IV Checks & Stat Product Analysis:</b> Go beyond basic IVs. BattleFlow helps you evaluate your Pokémon's stat product for optimal performance in CP-capped leagues, ensuring your Pokémon are built for maximum bulk and damage output.</li>
-  <li><b> Master Move Counts & Strategy:</b> Learn the essential fast move and charged move counts for key Pokémon. Uncover advanced PVP strategies, including when to farm energy, secure switch advantage, and identify ideal lead, safe swap, and closer Pokémon.</li>
-  <li><b> NEW! Battle Notes & Meta Analysis:</b> Keep a detailed log of your Trainer Battles. Beyond recording opponent teams and strategies, BattleFlow now performs in-app meta analysis using your registered battle data! Discover the most common Pokémon per role you're facing and identify prevailing team compositions to gain an unparalleled edge.</li>
-  <li><b> Complete Offline Functionality:</b> Access all features – rankings, simulations, IV checks, move counts, and Battle Notes with Meta Analysis – anytime, anywhere, even without a data connection. Perfect for planning on the go!</li>
-  <li><b> Instant Access, No Account Needed:</b> Download BattleFlow and start optimizing your PVP game immediately. No time wasted on account creation.</li>
+  <h3>Powerful Team Building Features</h3>
+  <ul>
+    <li><strong>Advanced Team Generator:</strong> Automatically generate competitive teams
+    for any cup or league with sophisticated scoring algorithms that evaluate coverage, synergy,
+    and meta matchups</li>
 
-  <br>
-  <br>
-  Join thousands of dedicated trainers who use BattleFlow to dominate the Go Battle League. Download now and become the very best PVP player you can be!
+    <li><strong>Real-Time Battle Simulator:</strong> Test your teams against the meta with
+    detailed battle timelines, shield management, and energy tracking</li>
+
+    <li><strong>Meta Analysis Tools:</strong> Stay ahead of the competition with live rankings,
+    threat assessments, and archetype breakdowns for Great League, Ultra League, and
+    specialty cups</li>
+
+    <li><strong>IV Calculator & Stat Optimizer:</strong> Find perfect PvP IVs and calculate
+    exact stat products for any Pokémon at any CP level</li>
+
+    <li><strong>Team Rating System:</strong> Evaluate your teams with comprehensive scoring
+    based on coverage quality, defensive synergy, and strategic depth</li>
+
+    <li><strong>Pokémon Box Management:</strong> Organize your roster and generate teams
+    from your actual Pokémon collection</li>
+  </ul>
+
+  <h3>Built for Competitive Trainers</h3>
+  <p>
+    Whether you're climbing ranked battles, preparing for tournament play, or experimenting
+    with spicy picks, BattleFlow provides professional-grade tools used by top PvP players.
+    Our team generator considers type effectiveness, move coverage, energy management, bulk
+    matchups, and current meta trends to create teams that win battles.
+  </p>
+
+  <h3>Key Benefits</h3>
+  <ul>
+    <li>Save hours of team building with instant meta-optimized suggestions</li>
+    <li>Discover hidden team synergies and counter strategies</li>
+    <li>Test unlimited team compositions with detailed battle simulations</li>
+    <li>Track your team performance and refine strategies</li>
+    <li>Access up-to-date rankings integrated with PvPoke data</li>
+    <li>Multi-language support for global trainers</li>
+  </ul>
+
+  <p class="seo-keywords">
+    <strong>Pokémon GO Team Builder</strong> | <strong>GBL Team Generator</strong> |
+    <strong>PvP Battle Simulator</strong> | <strong>Great League Teams</strong> |
+    <strong>Ultra League Meta</strong> | <strong>Master League Strategy</strong> |
+    <strong>GO Battle League Rankings</strong> | <strong>PvP IV Calculator</strong> |
+    <strong>Pokémon Type Coverage</strong> | <strong>Meta Analysis</strong> |
+    <strong>Team Rating</strong> | <strong>Battle Timeline</strong> |
+    <strong>Best Pokémon GO PvP Teams</strong> | <strong>Competitive Pokémon GO</strong> |
+    <strong>GBL Season Team Builder</strong> | <strong>Pokémon GO Ranked Battles</strong> |
+    <strong>Little Cup Teams</strong> | <strong>Silph Arena</strong> |
+    <strong>Pokémon GO Tournament</strong> | <strong>PvP Team Synergy</strong> |
+    <strong>Shadow Pokémon PvP</strong> | <strong>Best Fast Moves</strong> |
+    <strong>Charged Move Strategy</strong> | <strong>Shield Baiting</strong> |
+    <strong>Energy Management</strong> | <strong>Switch Advantage</strong> |
+    <strong>ABB Team Composition</strong> | <strong>Safe Switch Pokémon</strong> |
+    <strong>Lead Pokémon</strong> | <strong>Closer Pokémon</strong> |
+    <strong>Stat Product Calculator</strong> | <strong>CP Calculator</strong> |
+    <strong>Best Buddy PvP</strong> | <strong>XL Candy Teams</strong> |
+    <strong>Pokémon GO Meta Teams</strong> | <strong>Counter Teams</strong> |
+    <strong>Type Effectiveness</strong> | <strong>Bulk Calculator</strong> |
+    <strong>Fast Move Damage</strong> | <strong>Charge Move Coverage</strong> |
+    <strong>PvP Tier List</strong> | <strong>Best League Picks</strong> |
+    <strong>Community Day PvP</strong> | <strong>Legacy Move Pokémon</strong> |
+    <strong>Elite TM Worth</strong> | <strong>PvP Resource Guide</strong>
+  </p>
 android: "https://play.google.com/store/apps/details?id=com.baru.software.oak"
 iOS: "https://apps.apple.com/us/app/battleflow/id6738843812"
 web: false

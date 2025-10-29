@@ -1,0 +1,48 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ site.data.app.name }}",
+  "description": "{{ site.data.app.full_description | default: site.description }}",
+  "url": "{{ site.url }}",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android, iOS, Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "ratingCount": "100"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}"
+  },
+  "screenshot": [
+    {% for screenshot in site.data.app.screenshots %}
+    "{{ site.url }}/assets/images/screenshots/{{ screenshot }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "softwareVersion": "1.0",
+  "image": "{{ site.url }}/{{ site.logo }}",
+  "downloadUrl": "{{ site.data.app.android | default: site.data.app.iOS | default: site.data.app.web }}"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.title }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}/{{ site.logo }}",
+  "description": "{{ site.description }}",
+  "sameAs": [
+    "https://x.com/battleflowapp"
+  ]
+}
+</script>

@@ -1,7 +1,8 @@
 ---
 layout: page
-title: Privacy policy
+title: Privacy Policy
 permalink: /privacy/
+description: Privacy policy for BattleFlow app. Learn how we collect, use, and protect your data when using our Go Battle League companion application.
 ---
 
 **Privacy Policy**

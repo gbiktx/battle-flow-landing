@@ -4,22 +4,42 @@ const CommonConfig = require('./webpack.common.js');
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = Merge(CommonConfig, {
   output: {
-    filename: '[name]-[hash].bundle.js',
+    filename: '[name]-[contenthash].bundle.js',
     path: path.resolve('assets'),
     publicPath: '/assets/',
   },
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin({
-      terserOptions: {
-        keep_fnames: true
-      }
-    })]
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          keep_fnames: true
+        }
+      }),
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.sharpMinify,
+          options: {
+            encodeOptions: {
+              jpeg: {
+                quality: 80,
+              },
+              png: {
+                quality: 80,
+              },
+              webp: {
+                quality: 80,
+              },
+            },
+          },
+        },
+      }),
+    ]
   },
   plugins: [
     new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['assets'], verbose: true }),
@@ -27,6 +47,5 @@ module.exports = Merge(CommonConfig, {
       minimize: true,
       debug: false,
     }),
-    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
   ],
 });

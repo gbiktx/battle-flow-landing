@@ -2,55 +2,64 @@
 layout: default
 canonical_url: https://battleflow.app
 ---
+{% assign lang = page.lang | default: site.default_lang | default: "en" %}
+{% assign app_data = site.data.app[lang] | default: site.data.app.en %}
+{% assign strings_data = site.data.strings[lang] | default: site.data.strings.en %}
+{% assign app_config = site.data.appconfig %}
+
+{% include language-switcher.html %}
+
 <header class="app__header container">
   <div class="app__logo-wrapper">
-    <img class="app__logo" src="/assets/images/appicon.png" alt="{{ site.data.app.name }} Icon">
+    <img class="app__logo" src="/assets/images/appicon.png" alt="{{ app_data.name }} Icon">
   </div>
   <div class="app__infos">
-    <h1 class="app__name">{{ site.data.app.name }}</h1>
-    <p class="app__description">{{ site.data.app.description }}</p>
+    <h1 class="app__name">{{ app_data.name }}</h1>
+    <p class="app__description">{{ app_data.description }}</p>
     <div class="app__buttons app__buttons--desktop">
-      {% if site.data.app.android != false %}
-      <a href="{{ site.data.app.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play"></a>
+      {% if app_config.android %}
+      <a href="{{ app_config.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play"></a>
       {% endif %}
-      {% if site.data.app.iOS != false %}
-      <a href="{{ site.data.app.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore"></a>
-      {% endif %}
-      {% if site.data.app.web != false %}
-      <a href="{{ site.data.app.web }}" class="app__button-web" target="_blank"><img src="/assets/images/pwa-badge.png" alt="Go to website"></a>
+      {% if app_config.iOS %}
+      <a href="{{ app_config.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore"></a>
       {% endif %}
     </div>
   </div>
 </header>
 <div class="app__buttons app__buttons--mobile container">
-  {% if site.data.app.android != false %}
-  <a href="{{ site.data.app.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play"></a>
+  {% if app_config.android %}
+  <a href="{{ app_config.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play"></a>
   {% endif %}
-  {% if site.data.app.iOS != false %}
-  <a href="{{ site.data.app.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore"></a>
-  {% endif %}
-  {% if site.data.app.web != false %}
-  <a href="{{ site.data.app.web }}" class="app__button-web" target="_blank"><img src="/assets/images/pwa-badge.png" alt="Go to website"></a>
+  {% if app_config.iOS %}
+  <a href="{{ app_config.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore"></a>
   {% endif %}
 </div>
 <section class="app__screenshots app__section">
   <div class="container">
-    <h2 class="app__section-title">{{ site.data.strings.app.screenshots }}</h2>
+    <h2 class="app__section-title">{{ strings_data.app.screenshots }}</h2>
   </div>
   <div class="app__screenshots-wrapper container-desktop">
     <div class="app__screenshots-list">
-      {% for screenshot in site.data.app.screenshots %}
+      {% if app_config.video %}
+      <div class="app__screenshot-item">
+        <video class="app__screenshot" controls playsinline poster="/assets/images/screenshots/1.png">
+          <source src="/assets/images/{{ app_config.video }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      {% endif %}
+      {% for screenshot in app_config.screenshots %}
       <a href="/assets/images/screenshots/{{ screenshot }}" class="lightbox">
-       <img src="/assets/images/screenshots/{{ screenshot }}" class="app__screenshot">
+       <img src="/assets/images/screenshots/{{ screenshot }}" class="app__screenshot" alt="{{ app_data.name }} Screenshot {{ forloop.index }}">
       </a>
       {% endfor %}
     </div>
   </div>
 </section>
 <section class="app__fulldescription app__section container">
-  <h2 class="app__section-title">{{ site.data.strings.app.description }}</h2>
+  <h2 class="app__section-title">{{ strings_data.app.description }}</h2>
   <div class="app__fulldescription-content">
-    <p>{{ site.data.app.full_description }}</p>
+    {{ app_data.full_description }}
   </div>
 </section>
 <!-- <section class="app__featured app__section container">

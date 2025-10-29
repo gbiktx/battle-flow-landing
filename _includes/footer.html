@@ -1,9 +1,12 @@
+{% assign lang = page.lang | default: site.default_lang | default: "en" %}
+{% assign strings_data = site.data.strings[lang] | default: site.data.strings.en %}
+
 <footer class="footer">
   <div class="container">
     <div class="footer__container">
-      <p class="footer__love">{{ site.data.strings.footer.copyright }}</p>
+      <p class="footer__love">{{ strings_data.footer.copyright }}</p>
       <ul class="footer__links">
-        {% for link in site.data.strings.footer.links %}
+        {% for link in strings_data.footer.links %}
         <li class="footer__link"><a href="{{ link.url }}" target="{{ link.target }}">{{ link.title }}</a></li>
         {% endfor %}
       </ul>

@@ -22,7 +22,8 @@ social:
     - https://www.linkedin.com/in/gabriel-aguirre-a88284104
     - https://github.com/gbiktx
 
-languages: ["en"]
+languages: ["en", "es", "fr", "de", "it", "pt", "zh-Hans", "zh-Hant", "ja", "ko"]
+default_lang: "en"
 ampdir: amp
 
 github: false

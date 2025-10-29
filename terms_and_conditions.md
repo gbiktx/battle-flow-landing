@@ -2,6 +2,7 @@
 layout: page
 title: Terms & Conditions
 permalink: /tac/
+description: Terms and conditions for using BattleFlow app. Read our user agreement, license terms, and service conditions for the Go Battle League companion app.
 ---
 **Terms & Conditions**
 
