@@ -4,6 +4,19 @@
 
 <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
+<!-- Hreflang tags for multi-language SEO -->
+<link rel="alternate" hreflang="en" href="{{ site.url }}/" />
+<link rel="alternate" hreflang="es" href="{{ site.url }}/es/" />
+<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/" />
+<link rel="alternate" hreflang="de" href="{{ site.url }}/de/" />
+<link rel="alternate" hreflang="it" href="{{ site.url }}/it/" />
+<link rel="alternate" hreflang="pt" href="{{ site.url }}/pt/" />
+<link rel="alternate" hreflang="zh-Hans" href="{{ site.url }}/zh-hans/" />
+<link rel="alternate" hreflang="zh-Hant" href="{{ site.url }}/zh-hant/" />
+<link rel="alternate" hreflang="ja" href="{{ site.url }}/ja/" />
+<link rel="alternate" hreflang="ko" href="{{ site.url }}/ko/" />
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+
 <meta name="theme-color" content="{{ site.theme_color }}">
 <meta name="msapplication-navbutton-color" content="{{ site.theme_color }}">
 <meta name="apple-mobile-web-app-status-bar-style" content="{{ site.theme_color }}">
@@ -16,8 +29,13 @@
 <meta property="og:image" content="{{ site.url }}/{{ site.logo }}" />
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.title }} App Icon">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="{{ site.title | escape }}">
+{% if site.data.appconfig.video %}
+<meta property="og:video" content="{{ site.url }}/assets/images/{{ site.data.appconfig.video }}" />
+<meta property="og:video:type" content="video/mp4">
+{% endif %}
 
 <!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
@@ -27,6 +45,28 @@
 <meta name="twitter:title" content="{{ page.title | default: site.title | escape }}">
 <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 <meta name="twitter:image" content="{{ site.url }}/{{ site.logo }}">
+<meta name="twitter:image:alt" content="{{ site.title }} App Icon">
+
+<!-- App Store Meta Tags -->
+{% if site.data.appconfig.iOS %}
+<meta name="apple-itunes-app" content="app-id=6738843812">
+<meta property="al:ios:url" content="battleflow://">
+<meta property="al:ios:app_store_id" content="6738843812">
+<meta property="al:ios:app_name" content="{{ site.title }}">
+{% endif %}
+
+<!-- Google Play Meta Tags -->
+{% if site.data.appconfig.android %}
+<meta property="al:android:url" content="battleflow://">
+<meta property="al:android:package" content="com.baru.software.oak">
+<meta property="al:android:app_name" content="{{ site.title }}">
+{% endif %}
+
+<!-- Mobile Web App Meta Tags -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+<meta name="application-name" content="{{ site.title }}">
 
 <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
 <link href="https://fonts.googleapis.com/css?family=Heebo:900" rel="stylesheet">

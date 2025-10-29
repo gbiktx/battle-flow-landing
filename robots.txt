@@ -3,11 +3,19 @@
 
 User-agent: *
 Allow: /
+Allow: /assets/images/
 
-# Disallow admin/config areas (if any)
-Disallow: /assets/
+# Disallow Jekyll build files (these don't exist in production)
 Disallow: /_layouts/
 Disallow: /_includes/
+Disallow: /_data/
+Disallow: /_plugins/
+Disallow: /_scss/
+Disallow: /_src/
+
+# Allow CSS and JS for proper rendering
+Allow: /assets/app.css
+Allow: /assets/app.js
 
 # Sitemap location
 Sitemap: https://battleflow.app/sitemap.xml

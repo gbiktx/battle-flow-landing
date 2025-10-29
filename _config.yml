@@ -28,6 +28,27 @@ ampdir: amp
 
 github: false
 
+### Sitemap settings for better SEO
+defaults:
+  - scope:
+      path: ""
+    values:
+      sitemap:
+        changefreq: weekly
+        priority: 0.7
+  - scope:
+      path: "index.md"
+    values:
+      sitemap:
+        changefreq: daily
+        priority: 1.0
+  - scope:
+      path: "*/index.md"
+    values:
+      sitemap:
+        changefreq: daily
+        priority: 0.9
+
 ### Google webmaster tools, Google Analytics, Doorbell and Cookie consent uncomment and put the API key
 #webmaster_verifications:
 #  google: verification_code
