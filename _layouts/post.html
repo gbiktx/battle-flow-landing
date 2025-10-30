@@ -79,7 +79,7 @@ layout: default
 
     {% if page.featured_image %}
     <div class="post__featured-image">
-      <img src="{{ page.featured_image }}" alt="{{ page.title }}" itemprop="image">
+      <img src="{{ page.featured_image }}" alt="{{ page.title }}" itemprop="image" loading="lazy">
     </div>
     {% endif %}
   </header>
@@ -99,6 +99,35 @@ layout: default
   </footer>
   {% endif %}
 
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ site.url }}{% if lang != 'en' %}/{{ lang }}{% endif %}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "{{ site.url }}{% if lang != 'en' %}/{{ lang }}{% endif %}/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page.title | escape }}",
+        "item": "{{ page.url | absolute_url }}"
+      }
+    ]
+  }
+  </script>
+
+  <!-- BlogPosting Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

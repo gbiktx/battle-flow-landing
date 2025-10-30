@@ -2,6 +2,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+<!-- Canonical URL -->
+{% if page.lang and page.lang != 'en' %}
+<link rel="canonical" href="{{ site.url }}/{{ page.lang }}{{ page.url | remove: 'index.html' }}">
+{% else %}
+<link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">
+{% endif %}
+
+<!-- Resource Hints for Performance -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="/assets/app.css" as="style">
+<link rel="preload" href="/assets/images/appicon.png" as="image" type="image/png" fetchpriority="high">
+
 <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
 <!-- Hreflang tags for multi-language SEO -->
@@ -78,7 +94,7 @@
 <meta name="application-name" content="{{ site.title }}">
 
 <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
-<link href="https://fonts.googleapis.com/css?family=Heebo:900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Heebo:900&display=swap" rel="stylesheet">
 
 {% seo %}
 

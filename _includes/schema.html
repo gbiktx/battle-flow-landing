@@ -1,12 +1,12 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "{{ site.data.app.name }}",
+  "@type": "MobileApplication",
+  "name": "{{ site.data.app.name | default: site.title }}",
   "description": "{{ site.data.app.full_description | default: site.description }}",
   "url": "{{ site.url }}",
   "applicationCategory": "GameApplication",
-  "operatingSystem": "Android, iOS, Web",
+  "operatingSystem": "iOS 14.0+, Android 8.0+",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -17,16 +17,45 @@
     "name": "{{ site.title }}",
     "url": "{{ site.url }}"
   },
+  {% if site.data.appconfig.iOS %}
+  "downloadUrl": "{{ site.data.appconfig.iOS }}",
+  "installUrl": "{{ site.data.appconfig.iOS }}",
+  {% elsif site.data.appconfig.android %}
+  "downloadUrl": "{{ site.data.appconfig.android }}",
+  "installUrl": "{{ site.data.appconfig.android }}",
+  {% endif %}
   "screenshot": [
     {% for screenshot in site.data.app.screenshots %}
     "{{ site.url }}/assets/images/screenshots/{{ screenshot }}"{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ],
-  "softwareVersion": "1.0",
-  "image": "{{ site.url }}/{{ site.logo }}",
-  "downloadUrl": "{{ site.data.app.android | default: site.data.app.iOS | default: site.data.app.web }}"
+  "featureList": [
+    "Battle tracking for Go Battle League",
+    "Team composition management",
+    "Win/loss statistics",
+    "Performance analytics",
+    "Multi-league support (Great, Ultra, Master)"
+  ],
+  "softwareVersion": "1.0.0",
+  "image": "{{ site.url }}/{{ site.logo }}"
 }
 </script>
+
+{% if site.data.appconfig.video %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "BattleFlow App Demo - Pokémon GO PvP Battle Tracker",
+  "description": "See how BattleFlow helps you track Pokémon GO PvP battles, manage teams, and improve your Go Battle League performance.",
+  "thumbnailUrl": "{{ site.url }}/assets/images/screenshots/{{ site.data.app.screenshots.first }}",
+  "uploadDate": "2025-01-29T00:00:00Z",
+  "contentUrl": "{{ site.url }}/assets/images/{{ site.data.appconfig.video }}",
+  "embedUrl": "{{ site.url }}/assets/images/{{ site.data.appconfig.video }}",
+  "duration": "PT30S"
+}
+</script>
+{% endif %}
 
 <script type="application/ld+json">
 {

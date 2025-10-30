@@ -18,20 +18,20 @@ canonical_url: https://battleflow.app
     <p class="app__description">{{ app_data.description }}</p>
     <div class="app__buttons app__buttons--desktop">
       {% if app_config.android %}
-      <a href="{{ app_config.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play"></a>
+      <a href="{{ app_config.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play" loading="lazy"></a>
       {% endif %}
       {% if app_config.iOS %}
-      <a href="{{ app_config.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore"></a>
+      <a href="{{ app_config.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore" loading="lazy"></a>
       {% endif %}
     </div>
   </div>
 </header>
 <div class="app__buttons app__buttons--mobile container">
   {% if app_config.android %}
-  <a href="{{ app_config.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play"></a>
+  <a href="{{ app_config.android }}" class="app__button-play" target="_blank"><img src="/assets/images/google-play-badge.png" alt="Get on Google Play" loading="lazy"></a>
   {% endif %}
   {% if app_config.iOS %}
-  <a href="{{ app_config.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore"></a>
+  <a href="{{ app_config.iOS }}" class="app__button-ios" target="_blank"><img src="/assets/images/ios.svg" alt="Get on Appstore" loading="lazy"></a>
   {% endif %}
 </div>
 <section class="app__screenshots app__section">
@@ -50,7 +50,7 @@ canonical_url: https://battleflow.app
       {% endif %}
       {% for screenshot in app_config.screenshots %}
       <a href="/assets/images/screenshots/{{ screenshot }}" class="lightbox">
-       <img src="/assets/images/screenshots/{{ screenshot }}" class="app__screenshot" alt="{{ app_data.name }} Screenshot {{ forloop.index }}">
+       <img src="/assets/images/screenshots/{{ screenshot }}" class="app__screenshot" alt="{{ app_data.name }} Screenshot {{ forloop.index }}" loading="lazy">
       </a>
       {% endfor %}
     </div>
