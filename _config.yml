@@ -61,6 +61,7 @@ defaults:
 
 ### Build settings
 markdown: kramdown
+safe: false  # Required for custom plugins in _plugins/ (Netlify supports this)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
