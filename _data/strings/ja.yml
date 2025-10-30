@@ -19,3 +19,9 @@ footer:
     - title: Twitter
       url: https://x.com/battleflowapp
       target: _blank
+
+blog:
+  title: BattleFlowブログ
+  subtitle: Pokémon GO PvPの専門家ガイドと戦略
+  back_button: ブログに戻る
+  read_more: 続きを読む →

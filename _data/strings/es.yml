@@ -2,6 +2,12 @@ app:
   screenshots: Capturas de Pantalla
   description: Descripción
 
+blog:
+  title: Blog de BattleFlow
+  subtitle: Guías expertas y estrategias para PvP de Pokémon GO
+  back_button: Volver al Blog
+  read_more: Leer más →
+
 footer:
   copyright: Hecho con ❤️ en América Latina por <a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel!</a>
   links:

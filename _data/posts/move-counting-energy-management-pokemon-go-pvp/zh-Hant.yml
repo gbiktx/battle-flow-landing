@@ -422,7 +422,7 @@ content: |
   本文整合了以下權威來源的資料和概念:
   
   1. **PvPoke 招式資料庫** - 準確的招式資料,包括回合持續時間、能量產生和威力數值
-     來源: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     來源: [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **PvPoke 快速招式登記指南** - 關於回合機制和最佳集氣招式時機的深入分析
      來源: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

@@ -19,3 +19,9 @@ footer:
     - title: Twitter
       url: https://x.com/battleflowapp
       target: _blank
+
+blog:
+  title: Blog BattleFlow
+  subtitle: Guias especializados e estratégias para Pokémon GO PvP
+  back_button: Voltar ao Blog
+  read_more: Leia mais →

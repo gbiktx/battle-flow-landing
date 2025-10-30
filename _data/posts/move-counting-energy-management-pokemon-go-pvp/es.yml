@@ -422,7 +422,7 @@ content: |
   Este artículo incorpora datos y conceptos de las siguientes fuentes autorizadas:
   
   1. **Base de Datos de Movimientos de PvPoke** - Datos precisos de movimientos incluyendo duraciones de turnos, generación de energía y valores de poder
-     Fuente: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     Fuente: [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **Guía de PvPoke sobre Registro de Ataques Rápidos** - Análisis profundo de mecánicas de turnos y timing óptimo de ataques cargados
      Fuente: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

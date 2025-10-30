@@ -422,7 +422,7 @@ content: |
   Dieser Artikel enthält Daten und Konzepte aus folgenden autoritativen Quellen:
   
   1. **PvPoke Move Database** - Präzise Attackendaten einschließlich Rundendauer, Energiegenerierung und Stärkewerten
-     Quelle: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     Quelle: [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **PvPoke's Guide to Fast Move Registration** - Tiefgehende Analyse von Rundenmechaniken und optimalem Lade-Attacken-Timing
      Quelle: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

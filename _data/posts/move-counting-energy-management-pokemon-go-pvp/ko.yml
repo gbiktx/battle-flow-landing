@@ -422,7 +422,7 @@ content: |
   이 기사는 다음의 권위 있는 출처의 데이터와 개념을 통합했습니다:
   
   1. **PvPoke 기술 데이터베이스** - 턴 지속 시간, 에너지 생성 및 위력 값을 포함한 정확한 기술 데이터
-     출처: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     출처: [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **PvPoke의 일반 공격 등록 가이드** - 턴 메커니즘 및 최적 차징기 타이밍에 대한 심층 분석
      출처: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

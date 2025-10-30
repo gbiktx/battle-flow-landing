@@ -422,7 +422,7 @@ content: |
   この記事には、以下の権威ある情報源からのデータと概念が含まれています:
   
   1. **PvPokeわざデータベース** - ターン数、エネルギー生成、威力値を含む正確なわざデータ
-     出典: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     出典: [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **PvPokeの通常わざ登録ガイド** - ターンメカニクスと最適なゲージわざタイミングの詳細分析
      出典: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

@@ -1,0 +1,136 @@
+---
+layout: default
+---
+{% assign lang = page.lang | default: "en" %}
+{% assign strings = site.data.strings[lang] %}
+
+<div class="blog container">
+  <header class="blog__header">
+    <h1>{{ strings.blog.title }}</h1>
+
+    <div class="post__language-switcher">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <select id="blog-lang-select" onchange="if(this.value) window.location.href = this.value">
+        <option value="/blog/" {% if lang == "en" %}selected{% endif %}>EN</option>
+        <option value="/es/blog/" {% if lang == "es" %}selected{% endif %}>ES</option>
+        <option value="/fr/blog/" {% if lang == "fr" %}selected{% endif %}>FR</option>
+        <option value="/de/blog/" {% if lang == "de" %}selected{% endif %}>DE</option>
+        <option value="/it/blog/" {% if lang == "it" %}selected{% endif %}>IT</option>
+        <option value="/pt/blog/" {% if lang == "pt" %}selected{% endif %}>PT</option>
+        <option value="/zh-hans/blog/" {% if lang == "zh-Hans" %}selected{% endif %}>ZH</option>
+        <option value="/zh-hant/blog/" {% if lang == "zh-Hant" %}selected{% endif %}>TW</option>
+        <option value="/ja/blog/" {% if lang == "ja" %}selected{% endif %}>JA</option>
+        <option value="/ko/blog/" {% if lang == "ko" %}selected{% endif %}>KO</option>
+      </select>
+    </div>
+
+    <p>{{ strings.blog.subtitle }}</p>
+  </header>
+
+  <div class="blog__posts">
+    {% for post in site.posts %}
+      {% if lang == "en" %}
+        {%- comment -%} English: show all posts with English content {%- endcomment -%}
+        <a href="{{ post.url }}" class="blog__post-preview-link">
+          <article class="blog__post-preview">
+            {% if post.featured_image %}
+            <div class="blog__post-image">
+              <img src="{{ post.featured_image }}" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+
+            <div class="blog__post-content">
+              <h2 class="blog__post-title">{{ post.title }}</h2>
+
+              <div class="blog__post-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">
+                  {{ post.date | date: "%B %d, %Y" }}
+                </time>
+                {% if post.reading_time %}
+                <span class="blog__reading-time">{{ post.reading_time }} min read</span>
+                {% endif %}
+              </div>
+
+              {% if post.categories %}
+              <div class="blog__post-categories">
+                {% for category in post.categories %}
+                <span class="blog__category">{{ category }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              <p class="blog__post-excerpt">
+                {{ post.excerpt | strip_html | truncate: 200 }}
+              </p>
+
+              <span class="blog__read-more">{{ strings.blog.read_more }}</span>
+            </div>
+          </article>
+        </a>
+      {% else %}
+        {%- comment -%} Other languages: show only if translation exists {%- endcomment -%}
+        {% assign post_data = site.data.posts[post.post_id][lang] %}
+        {% if post_data %}
+        <a href="/{{ lang }}/blog/{{ post.post_id }}/" class="blog__post-preview-link">
+          <article class="blog__post-preview">
+            {% if post.featured_image %}
+            <div class="blog__post-image">
+              <img src="{{ post.featured_image }}" alt="{{ post_data.title }}">
+            </div>
+            {% endif %}
+
+            <div class="blog__post-content">
+              <h2 class="blog__post-title">{{ post_data.title }}</h2>
+
+              <div class="blog__post-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">
+                  {% if lang == "es" %}
+                    {{ post.date | date: "%d de %B de %Y" }}
+                  {% elsif lang == "fr" %}
+                    {{ post.date | date: "%d %B %Y" }}
+                  {% elsif lang == "de" %}
+                    {{ post.date | date: "%d. %B %Y" }}
+                  {% elsif lang == "it" %}
+                    {{ post.date | date: "%d %B %Y" }}
+                  {% elsif lang == "pt" %}
+                    {{ post.date | date: "%d de %B de %Y" }}
+                  {% elsif lang == "ja" %}
+                    {{ post.date | date: "%Y年%m月%d日" }}
+                  {% elsif lang == "ko" %}
+                    {{ post.date | date: "%Y년 %m월 %d일" }}
+                  {% elsif lang == "zh-Hans" or lang == "zh-Hant" %}
+                    {{ post.date | date: "%Y年%m月%d日" }}
+                  {% else %}
+                    {{ post.date | date: "%B %d, %Y" }}
+                  {% endif %}
+                </time>
+                {% if post.reading_time %}
+                <span class="blog__reading-time">{{ post.reading_time }} min read</span>
+                {% endif %}
+              </div>
+
+              {% if post.categories %}
+              <div class="blog__post-categories">
+                {% for category in post.categories %}
+                <span class="blog__category">{{ category }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              <p class="blog__post-excerpt">
+                {{ post_data.description | truncate: 200 }}
+              </p>
+
+              <span class="blog__read-more">{{ strings.blog.read_more }}</span>
+            </div>
+          </article>
+        </a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

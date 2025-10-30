@@ -422,7 +422,7 @@ content: |
   Questo articolo incorpora dati e concetti dalle seguenti fonti autorevoli:
   
   1. **Database Mosse PvPoke** - Dati accurati delle mosse inclusi durate in turni, generazione energia e valori di potenza
-     Fonte: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     Fonte: [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **Guida di PvPoke alla Registrazione delle Mosse Veloci** - Analisi approfondita delle meccaniche dei turni e timing ottimale delle mosse caricate
      Fonte: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

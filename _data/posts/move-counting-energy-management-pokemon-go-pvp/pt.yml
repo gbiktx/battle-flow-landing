@@ -422,7 +422,7 @@ content: |
   Este artigo incorpora dados e conceitos das seguintes fontes autorizadas:
   
   1. **Banco de Dados de Golpes do PvPoke** - Dados precisos de golpes incluindo durações de turnos, geração de energia e valores de poder
-     Fonte: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     Fonte: [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **Guia do PvPoke para Registro de Golpes Rápidos** - Análise aprofundada de mecânicas de turnos e timing ideal de ataques carregados
      Fonte: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

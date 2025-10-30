@@ -2,6 +2,12 @@ app:
   screenshots: Screenshots
   description: Description
 
+blog:
+  title: BattleFlow Blog
+  subtitle: Expert guides and strategies for Pokémon GO PvP
+  back_button: Back to Blog
+  read_more: Read more →
+
 footer:
   copyright: Made with ❤️ in Latin America by <a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel!</a>
   links:

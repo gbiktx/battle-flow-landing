@@ -19,3 +19,9 @@ footer:
     - title: Twitter
       url: https://x.com/battleflowapp
       target: _blank
+
+blog:
+  title: BattleFlow 블로그
+  subtitle: 포켓몬 GO PvP 전문가 가이드 및 전략
+  back_button: 블로그로 돌아가기
+  read_more: 더 읽기 →

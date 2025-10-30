@@ -422,7 +422,7 @@ content: |
   This article incorporates data and concepts from the following authoritative sources:
 
   1. **PvPoke Move Database** - Accurate move data including turn durations, energy generation, and power values
-     Source: [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     Source: [PvPoke Moves](https://pvpoke.com/moves/)
 
   2. **PvPoke's Guide to Fast Move Registration** - In-depth analysis of turn mechanics and optimal charge move timing
      Source: [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

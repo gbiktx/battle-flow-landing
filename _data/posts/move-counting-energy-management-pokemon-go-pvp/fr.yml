@@ -422,7 +422,7 @@ content: |
   Cet article intègre des données et des concepts provenant des sources faisant autorité suivantes :
   
   1. **Base de Données des Attaques PvPoke** - Données d'attaques précises incluant les durées de tour, la génération d'énergie et les valeurs de puissance
-     Source : [https://github.com/pvpoke/pvpoke/blob/master/src/data/gamemaster/moves.json](https://pvpoke.com/moves/)
+     Source : [PvPoke Moves](https://pvpoke.com/moves/)
   
   2. **Guide de PvPoke sur l'Enregistrement des Attaques Immédiates** - Analyse approfondie des mécaniques de tour et du timing optimal des capacités chargées
      Source : [https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/](https://pvpoke.com/articles/strategy/guide-to-fast-move-registration/)

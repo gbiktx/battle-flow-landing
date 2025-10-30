@@ -13,6 +13,16 @@ module Jekyll
         # Get all available languages
         languages = site.config['languages'] || ['en']
 
+        # Add alternate_languages to the original English post
+        post.data['alternate_languages'] = {}
+        languages.each do |other_lang|
+          if other_lang == 'en'
+            post.data['alternate_languages'][other_lang] = "/blog/#{post_id}/"
+          else
+            post.data['alternate_languages'][other_lang] = "/#{other_lang}/blog/#{post_id}/"
+          end
+        end
+
         # Generate a page for each language
         languages.each do |lang|
           # Skip English since the original post already serves it

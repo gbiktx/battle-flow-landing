@@ -19,3 +19,9 @@ footer:
     - title: Twitter
       url: https://x.com/battleflowapp
       target: _blank
+
+blog:
+  title: BattleFlow 部落格
+  subtitle: 寶可夢GO PvP 專家指南和策略
+  back_button: 返回部落格
+  read_more: 閱讀更多 →
