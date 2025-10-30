@@ -5,6 +5,10 @@ app:
 footer:
   copyright: 由<a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel</a>在拉丁美洲用❤️製作！
   links:
+    - title: 首頁
+      url: /zh-hant
+    - title: 部落格
+      url: /zh-hant/blog
     - title: 隱私權政策
       url: /privacy
     - title: 條款與條件

@@ -5,17 +5,26 @@
 <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
 <!-- Hreflang tags for multi-language SEO -->
-<link rel="alternate" hreflang="en" href="{{ site.url }}/" />
-<link rel="alternate" hreflang="es" href="{{ site.url }}/es/" />
-<link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/" />
-<link rel="alternate" hreflang="de" href="{{ site.url }}/de/" />
-<link rel="alternate" hreflang="it" href="{{ site.url }}/it/" />
-<link rel="alternate" hreflang="pt" href="{{ site.url }}/pt/" />
-<link rel="alternate" hreflang="zh-Hans" href="{{ site.url }}/zh-hans/" />
-<link rel="alternate" hreflang="zh-Hant" href="{{ site.url }}/zh-hant/" />
-<link rel="alternate" hreflang="ja" href="{{ site.url }}/ja/" />
-<link rel="alternate" hreflang="ko" href="{{ site.url }}/ko/" />
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+{% if page.alternate_languages %}
+  <!-- Blog post alternate languages -->
+  {% for lang_item in page.alternate_languages %}
+  <link rel="alternate" hreflang="{{ lang_item[0] }}" href="{{ site.url }}{{ lang_item[1] }}" />
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/blog/{{ page.post_id }}/" />
+{% else %}
+  <!-- Default landing page alternate languages -->
+  <link rel="alternate" hreflang="en" href="{{ site.url }}/" />
+  <link rel="alternate" hreflang="es" href="{{ site.url }}/es/" />
+  <link rel="alternate" hreflang="fr" href="{{ site.url }}/fr/" />
+  <link rel="alternate" hreflang="de" href="{{ site.url }}/de/" />
+  <link rel="alternate" hreflang="it" href="{{ site.url }}/it/" />
+  <link rel="alternate" hreflang="pt" href="{{ site.url }}/pt/" />
+  <link rel="alternate" hreflang="zh-Hans" href="{{ site.url }}/zh-hans/" />
+  <link rel="alternate" hreflang="zh-Hant" href="{{ site.url }}/zh-hant/" />
+  <link rel="alternate" hreflang="ja" href="{{ site.url }}/ja/" />
+  <link rel="alternate" hreflang="ko" href="{{ site.url }}/ko/" />
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+{% endif %}
 
 <meta name="theme-color" content="{{ site.theme_color }}">
 <meta name="msapplication-navbutton-color" content="{{ site.theme_color }}">

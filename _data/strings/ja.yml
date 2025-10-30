@@ -5,6 +5,10 @@ app:
 footer:
   copyright: ラテンアメリカで<a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel</a>が❤️を込めて作成！
   links:
+    - title: ホーム
+      url: /ja
+    - title: ブログ
+      url: /ja/blog
     - title: プライバシー
       url: /privacy
     - title: 利用規約
