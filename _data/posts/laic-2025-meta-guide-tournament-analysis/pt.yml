@@ -1,0 +1,656 @@
+title: "Guia Meta LAIC 2025: Análise Completa do Torneio"
+description: "Análise completa do meta do torneio LAIC 2025 cobrindo 214 Pokémon classificados, melhores composições de equipe e insights estratégicos para o formato Traga 6, Mostre 3 em CP 1500."
+content: |
+  **Torneio:** Campeonatos Internacionais da América Latina 2025
+  **Formato:** Traga 6, Mostre 3
+  **Limite CP:** 1500 (Great League)
+  **Data da Análise:** Novembro 2025
+
+  ---
+
+  ## Índice
+
+  1. [Visão Geral do Formato do Torneio](#visão-geral-do-formato-do-torneio)
+  2. [Visão Geral dos Níveis Competitivos](#visão-geral-dos-níveis-competitivos)
+  3. [Análise Meta: Top 10 Pokémon Principais](#análise-meta-top-10-pokémon-principais)
+  4. [Meta Estendido: Divisão Completa por Níveis](#meta-estendido-divisão-completa-por-níveis)
+  5. [Estratégias Anti-Meta](#estratégias-anti-meta)
+  6. [Composições de Equipe Recomendadas](#composições-de-equipe-recomendadas)
+  7. [Análise de Cobertura de Tipos](#análise-de-cobertura-de-tipos)
+  8. [Estratégias de Batalha](#estratégias-de-batalha)
+  9. [Contra-Escolhas Absolutas](#contra-escolhas-absolutas)
+
+  ---
+
+  ## Visão Geral do Formato do Torneio
+
+  ### Formato Traga 6, Mostre 3
+
+  O torneio LAIC 2025 usa o formato **Traga 6, Mostre 3**:
+
+  - **Seleção de Equipe:** Construa uma equipe de 6 Pokémon
+  - **Seleção de Batalha:** Antes de cada batalha, veja os 6 Pokémon do seu oponente
+  - **Fase de Mostrar:** Selecione 3 Pokémon dos seus 6 para usar na batalha
+  - **Estratégia:** Sua equipe de 6 deve ter cobertura ampla mantendo sinergia
+
+  Este formato recompensa:
+
+  - **Flexibilidade:** Equipes que podem se adaptar a diferentes formações do oponente
+  - **Cobertura:** Pokémon que ameaçam múltiplas escolhas do meta
+  - **Jogos Mentais:** Seleção estratégica baseada na composição da equipe do oponente
+
+  ---
+
+  ## Visão Geral dos Níveis Competitivos
+
+  Baseado na análise de **214 Pokémon classificados** no meta LAIC 2025, **94 Pokémon (43.9%)** alcançaram pontuações competitivas de 75 ou superior, tornando-os opções viáveis para torneios.
+
+  ### Distribuição de Viabilidade do Meta
+
+  De 214 Pokémon classificados:
+
+  - **Viáveis (≥75 pontos):** 94 Pokémon (43.9%)
+  - **Abaixo de Viável:** 120 Pokémon (56.1%)
+
+  ### Entendendo as Pontuações dos Componentes
+
+  Cada Pokémon é avaliado em **6 dimensões-chave** (escala 0-100):
+
+  - **Lead:** Força em confrontos iniciais
+  - **Switch:** Capacidade de pivô seguro
+  - **Closer:** Potencial de limpeza no final do jogo
+  - **Consistency:** Desempenho confiável em todos os confrontos
+  - **Coverage:** Cobertura de tipos e meta
+  - **Bulk:** Poder de resistência defensiva
+
+  ### Resumo dos Níveis Competitivos
+
+  | Nível  | Faixa de Pontos | Quantidade | Descrição                |
+  | ------ | --------------- | ---------- | ------------------------ |
+  | **S+** | 95-100          | 3          | Desempenho de elite      |
+  | **S**  | 90-94.9         | 12         | Meta principal           |
+  | **A+** | 85-89.9         | 22         | Alternativas fortes      |
+  | **A**  | 80-84.9         | 29         | Especialistas viáveis    |
+  | **B+** | 75-79.9         | 28         | Escolhas de nicho        |
+
+  **Sobre Pontuações e Ratings:**
+
+  - **Overall Score (0-100):** Métrica composta combinando todas as 6 dimensões de componentes (Lead, Switch, Closer, Consistency, Coverage, Bulk). Determina a colocação de nível (S+, S, A+, A, B+).
+  - **Battle Rating (0-1000):** Resultados de simulação de batalha estilo PvPoke onde 500 = confronto equilibrado, >500 = favorecido para vencer, <500 = desfavorecido. Mesma escala para força geral do Pokémon (ex., Oranguru: 692) e confrontos diretos específicos (ex., Fearow vs Dusknoir: 834).
+
+  **Fontes de Dados:**
+
+  - Dados de classificação: Análise meta LAIC 2025-1500 (214 Pokémon)
+  - Simulações de batalha: Motor de rating BattleFlow com shield baiting
+  - Análise de equipes: 19.600 composições de equipes simuladas
+
+  **Insight Chave:** Com 94 opções viáveis, a construção de equipes tem profundidade significativa. O formato Traga 6, Mostre 3 permite contra-estratégias criativas além do top 10.
+
+  ---
+
+  ## Mapa do Ecossistema Meta
+
+  ### Grupos Meta Principais e Relações de Counter
+
+  O meta LAIC 2025 pode ser entendido através de grupos interconectados de Pokémon com papéis distintos e dinâmicas de counter:
+
+  #### **Grupo 1: Núcleo Ghost/Psychic** (Presença Dominante)
+
+  **Membros Principais:** Oranguru, Dusknoir, Dusclops, Bronzong, Runerigus
+
+  - **Características:** Alta resistência, movimentos STAB Ghost, excelente consistência
+  - **Counterado Por (ratings 800+):**
+    - Fearow (834 vs Dusknoir)
+    - Trumbeak (847 vs Dusknoir)
+    - Rufflet (875 vs Dusknoir)
+  - **Counters Suaves:** Movimentos tipo Dark (Crunch, Brutal Swing), tipos Steel
+  - **Ameaça:** Entre si (Ghost vs Ghost), tipos Psychic, tipos Fighting
+
+  #### **Grupo 2: Núcleo Ice Wall** (Anti-Flying/Dragon)
+
+  **Membros Principais:** Glalie, Dewgong, Sealeo, Walrein, Arctibax
+
+  - **Características:** Debuffs de Icy Wind, cobertura anti-Dragon, resistência
+  - **Duramente Counterado Por (800+):**
+    - Bronzong (754 vs Glalie)
+    - Metang (903 vs Glalie)
+  - **Counters Suaves:** Tipos Fire (Turtonator, Skeledirge), tipos Steel
+  - **Ameaça:** Tipos Dragon, tipos Flying, tipos Ground
+
+  #### **Grupo 3: Pressão Fire/Dragon** (Ameaças Ofensivas)
+
+  **Membros Principais:** Turtonator, Charizard, Skeledirge, Gyarados
+
+  - **Características:** Alto ataque, STAB Fire ou Dragon, pressão ofensiva
+  - **Duramente Counterado Por (800+):**
+    - Drampa (804 vs Turtonator)
+    - Kommo-o (825 vs Turtonator)
+    - Rapidash-G (915 vs Charizard)
+    - Cetoddle (800 vs Charizard)
+  - **Counters Suaves:** Tipos Water, tipos Rock, tipos Dragon
+  - **Ameaça:** Tipos Steel (Turtonator 907 vs Bronzong), tipos Ice, tipos Grass
+
+  #### **Grupo 4: Muralhas Steel/Psychic** (Especialistas Defensivos)
+
+  **Membros Principais:** Bronzong, Metang, Claydol
+
+  - **Características:** Tipagem Steel, estatísticas defensivas, resistências únicas
+  - **Duramente Counterado Por:**
+    - Turtonator (907 vs Bronzong)
+    - Charizard (666+ vs Metang)
+  - **Counters Suaves:** Tipos Fire, tipos Ground, tipos Fighting
+  - **Ameaça:** Núcleo Ice (Bronzong 754 vs Glalie), tipos Fairy, tipos Rock
+
+  #### **Grupo 5: Especialistas Anti-Meta** (Escolhas Estratégicas)
+
+  **Membros Principais:** Drampa, Fearow, Dodrio, Emolga, Rapidash-G
+
+  - **Características:** Counters duros direcionados, fator surpresa, papéis de nicho
+  - **Relações de Counter:**
+    - Drampa: Countera Turtonator (804)
+    - Fearow: Countera Dusknoir (834), counterado por Emolga (852)
+    - Dodrio: Countera Froslass (900)
+    - Rapidash-G: Countera Charizard (915)
+    - Emolga: Countera Fearow (852)
+  - **Ameaça:** Escolhas meta específicas
+  - **Vulnerável A:** Oponentes conscientes da estratégia de counter
+
+  ### Insight Estratégico
+
+  O meta opera em dinâmicas de pedra-papel-tesoura em camadas:
+
+  1. **Núcleo Ghost/Psychic** - Vence confrontos neutros, perde contra Dark/Flying
+  2. **Núcleo Ice Wall** - Controla Dragon/Flying, perde contra Fire/Steel
+  3. **Pressão Fire/Dragon** - Quebra Steel/Ice, perde contra Water/Rock/counters especialistas
+  4. **Muralhas Steel/Psychic** - Bloqueia Ice/Fairy, perde contra Fire/Ground
+  5. **Especialistas Anti-Meta** - Countera duramente ameaças específicas, falta cobertura ampla
+
+  **Construção de Equipes:** Cubra pelo menos 3 grupos + 1-2 especialistas para escolhas meta específicas.
+
+  ---
+
+  ## Análise Meta: Top 10 Pokémon Principais
+
+  Baseado em simulações completas analisando 214 Pokémon classificados, aqui estão as ameaças com melhor desempenho no meta LAIC 2025:
+
+  ### Nível S+: Desempenho de Elite
+
+  #### 1. **Oranguru** (Ranking #1)
+
+  - **Moveset:** Confusion + Brutal Swing / Trailblaze
+  - **Papel:** Atacante Psychic/Normal resistente
+  - **Forças:**
+    - Confrontos favoráveis vs Ghosts: Dusknoir (739 rating), Runerigus (683 rating)
+    - Forte vs Gyarados (672 rating), Glalie (616 rating), Dewgong (612 rating)
+  - **Fraquezas:** Bronzong (279), Metang (282), Drampa (395)
+  - **Por Que É Top:** Excelente resistência com pressão de Confusion. Brutal Swing fornece cobertura Dark para tipos Ghost, enquanto Trailblaze oferece controle de velocidade contra ameaças comuns.
+
+  #### 2. **Turtonator** (Ranking #2)
+
+  - **Moveset:** Incinerate + Brutal Swing / Dragon Claw
+  - **Papel:** Ameaça ofensiva Fire/Dragon
+  - **Forças:**
+    - Atinge 907 de rating em confronto vs Bronzong
+    - Vence vs Oranguru (561 rating), Glalie (548 rating), Charizard (526 rating)
+  - **Fraquezas:** Drampa (195), Gyarados (231), Fearow (278)
+  - **Por Que É Top:** Tipagem Fire/Dragon única com acesso a Brutal Swing. Geração rápida de energia de Incinerate pressiona núcleos Steel e Ice efetivamente.
+
+  #### 3. **Runerigus** (Ranking #3)
+
+  - **Moveset:** Shadow Claw + Rock Tomb / Brutal Swing
+  - **Papel:** Muralha Ground/Ghost
+  - **Forças:**
+    - Atinge 674 de rating em confronto vs Metang (Metang pontua apenas 325)
+    - Vence vs Marowak Alolan (610 rating), Turtonator (582 rating)
+  - **Fraquezas:** Oranguru (316), Charizard (397), Dewgong (474)
+  - **Por Que É Top:** Tipagem Ground/Ghost oferece perfil defensivo excelente. Rock Tomb fornece cobertura necessária contra ameaças Flying e Fire.
+
+  ### Nível S: Meta Principal
+
+  #### 4. **Glalie** (Ranking #4)
+
+  - **Moveset:** Rollout + Avalanche / Shadow Ball
+  - **Papel:** Closer tipo Ice
+  - **Forças:**
+    - Atinge 760 de rating em confronto vs Charizard (Charizard pontua apenas 239)
+    - Vence vs Dewgong (667 rating), Gyarados (603 rating)
+  - **Fraquezas:** Bronzong (245), Oranguru (383), Dusknoir (422)
+  - **Por Que É Meta:** Geração rápida de energia de Rollout cria pressão de escudos. Shadow Ball fornece cobertura Ghost necessária.
+
+  #### 5. **Dewgong** (Ranking #5)
+
+  - **Moveset:** Ice Shard + Icy Wind / Drill Run
+  - **Papel:** Suporte Water/Ice
+  - **Forças:**
+    - Vence Fearow (668), Gyarados (630), Dusclops (621)
+  - **Fraquezas:** Glalie (332), Bronzong (375), Oranguru (387)
+  - **Por Que É Meta:** Debuffs de Icy Wind fornecem suporte à equipe enquanto Drill Run lida com tipos Steel e Fire.
+
+  #### 6. **Sealeo** (Ranking #6)
+
+  - **Moveset:** Powder Snow + Surf / Body Slam
+  - **Papel:** Muralha de gelo resistente
+  - **Forças:**
+    - Favorável contra 5 do top 10
+    - Vence Dusclops (601), Gyarados (580), Dewgong (577)
+  - **Fraquezas:** Dusknoir (238), Metang (298), Bronzong (304)
+  - **Por Que É Meta:** Forte perfil anti-meta. Baixo custo de energia de Body Slam permite saída de dano neutro consistente.
+
+  #### 7. **Dusclops** (Ranking #7)
+
+  - **Moveset:** Hex + Shadow Punch / Ice Punch
+  - **Papel:** Tanque Ghost
+  - **Forças:**
+    - Vence Metang (722/277), Togekiss (685/314)
+  - **Fraquezas:** Oranguru (327), Gyarados (380), Turtonator (420)
+  - **Por Que É Meta:** Estatística de Defesa extrema (199.75 em 1499 CP). Shadow Punch permite pressão consistente, Ice Punch lida com Dragons.
+
+  #### 8. **Bronzong** (Ranking #8)
+
+  - **Moveset:** Metal Sound + Psyshock / Payback
+  - **Papel:** Muralha Steel/Psychic
+  - **Forças:**
+    - Atinge 754 de rating em confronto vs Glalie, 720 vs Oranguru, 625 vs Dewgong
+  - **Fraquezas:** Turtonator (92!), Dusknoir (366), Charizard (384)
+  - **Por Que É Meta:** Tipagem Steel/Psychic única. Debuffs de Metal Sound se acumulam com Payback para cobertura Ghost.
+
+  #### 9. **Gyarados** (Ranking #9)
+
+  - **Moveset:** Dragon Breath + Aqua Tail / Crunch
+  - **Papel:** Atacante Water/Flying
+  - **Forças:**
+    - Atinge 768 de rating em confronto vs Turtonator, 760 vs Charizard, 677 vs Dusknoir
+  - **Fraquezas:** Oranguru (327), Dewgong (369), Glalie (396)
+  - **Por Que É Meta:** Dragon Breath aplica pressão consistente. Aqua Tail e Crunch fornecem ampla cobertura neutra.
+
+  #### 10. **Claydol** (Ranking #10)
+
+  - **Moveset:** Mud Slap + Rock Tomb / Ice Beam
+  - **Papel:** Especialista Ground/Psychic
+  - **Forças:**
+    - Vence Glalie (673), Turtonator (657), Oranguru (640)
+  - **Fraquezas:** Gyarados (152!), Runerigus (279), Dusknoir (338)
+  - **Por Que É Meta:** Combinação de cobertura Rock Tomb + Ice Beam. Movimento rápido Mud Slap de alto dano.
+
+  ---
+
+  ## Meta Estendido: Divisão Completa por Níveis
+
+  ### Nível S - 12 Escolhas Meta Principais
+
+  Desempenho consistente na maioria dos confrontos. Formam a espinha dorsal das equipes competitivas:
+
+  | Rank | Pokémon       | Rating | Forças Principais                       |
+  | ---- | ------------- | ------ | --------------------------------------- |
+  | 4    | **Glalie**    | 744    | Geração de energia Rollout, cobertura Shadow Ball |
+  | 5    | **Dewgong**   | 709    | Debuffs Icy Wind, cobertura Drill Run   |
+  | 6    | **Sealeo**    | 715    | Forte anti-meta (5/10 favorável)        |
+  | 7    | **Dusclops**  | 702    | Stat Defesa 199.75, tanque Ghost        |
+  | 8    | **Bronzong**  | 741    | Debuffs Metal Sound, Payback            |
+  | 9    | **Gyarados**  | 706    | Pressão Dragon Breath                   |
+  | 10   | **Claydol**   | 580    | Cobertura Rock Tomb + Ice Beam          |
+  | 11   | **Dusknoir**  | 702    | Cobertura Dynamic Punch                 |
+  | 12   | **Marowak-A** | 656    | Tipagem híbrida Fire/Ghost              |
+  | 13   | **Walrein**   | 694    | Icicle Spear + Earthquake               |
+  | 14   | **Arctibax**  | 667    | Pressão Dragon/Ice                      |
+  | 15   | **Goodra**    | 623    | Versatilidade tanque Dragon             |
+
+  ---
+
+  ### Nível A+ - 22 Alternativas Fortes
+
+  Opções secundárias sólidas e contra-escolhas direcionadas:
+
+  **Top Desempenho A+:**
+
+  - **#16 Fearow** (Rating: 689) - 834 vs Dusknoir, cobertura Drill Run
+  - **#17 Metang** (Rating: 675) - 903 vs Glalie, muralha Steel/Psychic
+  - **#18 Rufflet** (Rating: 638) - 875 vs Dusknoir, cobertura Rock Tomb
+  - **#19 Skeledirge** (Rating: 656) - Tipagem Fire/Ghost, Torch Song
+  - **#20 Grumpig** (Rating: 649) - Spam Dynamic Punch
+  - **#21 Talonflame** (Rating: 650) - Incinerate + Fly + Brave Bird
+  - **#22 Altaria** (Rating: 640) - Dragon Breath, Sky Attack, Flamethrower
+  - **#23 Froslass** (Rating: 653) - Atacante Ice/Ghost
+  - **#24 Dragonair** (Rating: 617) - Especialista Dragon
+  - **#25 Avalugg** (Rating: 610) - Tech Mirror Coat
+  - **#26 Drampa** (Rating: 591) - 804 vs Turtonator
+  - **#27 Cetoddle** (Rating: 626) - Resistência Ice, 800 vs Charizard
+  - **#28 Dodrio** (Rating: 606) - 900 vs Froslass
+  - **#29 Cofagrigus** (Rating: 604) - Muralha Ghost, 683 vs Metang
+  - **#30 Druddigon** (Rating: 582) - Rock Tomb + Night Slash
+
+  **Escolhas A+ Notáveis (31-37):**
+
+  - **#31 Vespiquen** (Rating: 592) - 757 vs Drampa, X-Scissor
+  - **#32 Castform-Snowy** (Rating: 577) - Weather Ball Ice, 780 vs Drampa
+  - **#33 Togekiss** (Rating: 548) - Aura Sphere + Ancient Power
+  - **#34 Trumbeak** (Rating: 568) - 847 vs Dusknoir, Rock Blast
+  - **#35 Cetitan** (Rating: 574) - 789 vs Charizard, spam Avalanche
+  - **#36 Dragalge** (Rating: 574) - 725 vs Turtonator, Outrage
+  - **#37 Piloswine** (Rating: 560) - Cobertura Stone Edge, pressão Ice
+
+  ---
+
+  ### Nível A - 29 Especialistas Viáveis
+
+  Jogadores de papel e counters direcionados:
+
+  **Especialistas Notáveis:**
+
+  - **#50 Charizard** (Rating: 515) - Closer Blast Burn
+  - **#43 Zoroark-H** (Rating: 551) - Ghost/Normal, 812 vs Froslass
+  - **#46 Kommo-o** (Rating: 538) - 825 vs Turtonator
+  - **#49 Haunter** (Rating: 518) - Ghost rápido, 727 vs Bronzong
+
+  **Opções Adicionais Nível A (38-66):** 38. Golurk, 39. Toucannon, 40. Fletchinder, 41. Togetic, 42. Hypno, 44. Gligar, 45. Girafarig, 47. Shelgon, 48. Baxcalibur, 51. Drifblim, 52. Vanillish, 53. Raichu-A, 54. Skarmory, 55. Hakamo-o, 56. Emolga (852 vs Fearow), 57. Dartrix, 58. Cryogonal, 59. Corvisquire, 60. Armarouge, 61. Salamence, 62. Slowking-G, 63. Medicham, 64. Starmie, 65. Frigibax, 66. Gliscor
+
+  ---
+
+  ### Nível B+ - 28 Escolhas de Nicho
+
+  Viáveis em torneio como respostas específicas ou com suporte de equipe:
+
+  **Opções B+ Notáveis:**
+
+  - **#68 Rapidash-G** (Rating: 479) - 915 vs Charizard, spam Body Slam
+  - **#71 Annihilape** (Rating: 477) - Rage Fist, pressão Counter
+  - **#75 Gengar** (Rating: 484) - Ghost rápido, 765 vs Bronzong
+  - **#77 Trevenant** (Rating: 472) - 805 vs Bronzong, Foul Play
+
+  **Roster B+ Completo (67-94):** 67. Jumpluff, 69. Frillish, 70. Mamoswine, 72. Ledian, 73. Chimecho, 74. Chatot, 76. Pidgeot, 78. Abomasnow, 79. Gholdengo, 80. Bruxish, 81. Noctowl, 82. Pelipper, 83. Scyther, 84. Cloyster, 85. Decidueye, 86. Fraxure, 87. Wyrdeer, 88. Delphox, 89. Farfetch'd, 90. Haxorus, 91. Slowpoke, 92. Palossand, 93. Drifloon, 94. Mantyke
+
+  ---
+
+  ## Estratégias Anti-Meta
+
+  ### Entendendo as Ameaças Meta
+
+  Os 10 principais Pokémon têm padrões claros de fraqueza de tipo:
+
+  **Divisão de Fraquezas de Tipo:**
+
+  - **5 Pokémon fracos a Dark** (Oranguru, Bronzong, Claydol, Dusclops, Runerigus)
+  - **5 Pokémon fracos a Ghost** (Os mesmos acima)
+  - **5 Pokémon fracos a Rock** (Glalie, Dewgong, Sealeo, Gyarados, Charizard)
+  - **4 Pokémon fracos a Grass** (Runerigus, Claydol, Gyarados, tipos Ground/Water)
+
+  ### Top Pokémon Anti-Meta
+
+  #### **Sealeo** (Ranking #6)
+
+  - Favorável contra 5/10 top meta
+  - Spam Body Slam + pressão Powder Snow
+  - Alvos: Dusclops, Gyarados, Dewgong, Runerigus, Glalie
+
+  #### **Dusknoir** (Ranking #11)
+
+  - Favorável contra 5/10 top meta
+  - Cobertura Dynamic Punch, spam Shadow Punch
+  - Alvos: Bronzong, Glalie, Dusclops, Runerigus, Dewgong
+
+  #### **Fearow** (Ranking #16)
+
+  - Favorável contra 4/10 top meta
+  - Cobertura Drill Run, alto Attack
+  - Alvos: Dusknoir, Turtonator, Dusclops, Gyarados
+
+  #### **Drampa** (Ranking #26)
+
+  - Favorável contra 4/10 top meta
+  - Cobertura Outrage + Fly
+  - Alvos: Turtonator (804), Dusknoir, Runerigus, Oranguru
+
+  ### Estratégias de Counter Baseadas em Tipos
+
+  #### **Contra Núcleo Ghost/Psychic** (Oranguru, Dusclops, Bronzong)
+
+  - Dark: Gyarados (Dragon Breath + Crunch)
+  - Ghost: Runerigus, Dusknoir, Froslass
+  - Steel: Bronzong, Metang
+
+  #### **Contra Núcleo Ice** (Glalie, Dewgong, Sealeo)
+
+  - Fire: Turtonator, Skeledirge, Talonflame
+  - Steel: Bronzong (754 vs Glalie), Metang
+  - Cobertura Fighting: Dynamic Punch (Dusknoir)
+
+  #### **Contra Fire/Dragon** (Turtonator, Gyarados)
+
+  - Water: Dewgong, Sealeo, Walrein
+  - Ground: Runerigus, Claydol
+  - Dragon: Arctibax, Drampa (804 vs Turtonator)
+
+  ---
+
+  ## Composições de Equipe Recomendadas
+
+  Baseado em 19.600 equipes simuladas usando análise algorítmica avançada, aqui estão as composições de equipe com melhor desempenho:
+
+  ### Visão Geral de Desempenho de Equipes
+
+  As 6 melhores equipes alcançaram:
+
+  - **Rating:** 92-93/100
+  - **Cobertura Meta:** 100%
+  - **Faixa de Taxa de Vitória:** 44-59%
+
+  **Melhor Desempenho:** Equipe #1 (Oranguru/Dusknoir/Altaria) - 93/100 rating, 59% taxa de vitória
+
+  ### Equipe #1: Núcleo Meta Balanceado ⭐ MELHOR GERAL
+
+  **Rating: 93/100 | Taxa de Vitória: 59.0% | Cobertura Meta: 100%**
+
+  - **Lead:** Oranguru (Confusion / Brutal Swing / Trailblaze)
+  - **Switch:** Dusknoir (Astonish / Dynamic Punch / Shadow Punch)
+  - **Closer:** Altaria (Dragon Breath / Sky Attack / Flamethrower)
+
+  **Estratégia:**
+
+  - Oranguru aplica pressão imediata com Confusion
+  - Dusknoir fornece cobertura Ghost/Fighting
+  - Altaria lida com Dragons e fornece cobertura Flying
+  - **Ameaças:** Cuidado com Kommo-o
+  - **Por Que Funciona:** Equilíbrio perfeito de resistência, cobertura e flexibilidade
+
+  ### Equipe #2: Trindade Ice/Fire/Ghost
+
+  **Rating: 93/100 | Taxa de Vitória: 44.4% | Cobertura Meta: 100%**
+
+  - **Lead:** Turtonator (Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Glalie (Rollout / Avalanche / Shadow Ball)
+  - **Closer:** Dusclops (Hex / Shadow Punch / Ice Punch)
+
+  **Estratégia:**
+
+  - Turtonator lida com Steel/Ice com Incinerate
+  - Glalie fornece pressão Ice e Shadow Ball para Ghosts
+  - Dusclops bloqueia atacantes Físicos
+  - **Ameaças Principais:** Turtonator adversário, Claydol
+  - **Por Que Funciona:** Fortes confrontos de núcleo, espinha dorsal defensiva em Dusclops
+
+  ### Equipe #3: Núcleo de Suporte Flying
+
+  **Rating: 93/100 | Taxa de Vitória: 50.1% | Cobertura Meta: 100%**
+
+  - **Lead:** Turtonator (Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dusclops (Hex / Shadow Punch / Ice Punch)
+  - **Closer:** Togekiss (Peck / Aura Sphere / Ancient Power)
+
+  **Estratégia:**
+
+  - Turtonator lida com ameaças iniciais
+  - Dusclops fornece pivô defensivo
+  - Togekiss oferece cobertura Fairy/Fighting com Aura Sphere
+  - **Ameaças Principais:** Froslass, Rufflet
+  - **Por Que Funciona:** Aura Sphere de Togekiss lida com tipos Dark que ameaçam o Ghost
+
+  ### Equipe #4: Ofensiva Flying
+
+  **Rating: 93/100 | Taxa de Vitória: 47.8% | Cobertura Meta: 100%**
+
+  - **Lead:** Turtonator (Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dusclops (Hex / Shadow Punch / Ice Punch)
+  - **Closer:** Trumbeak (Peck / Drill Peck / Rock Blast)
+
+  **Estratégia:**
+
+  - Turtonator abre forte
+  - Dusclops pivota
+  - Trumbeak fornece cobertura Rock com Rock Blast
+  - **Ameaças Principais:** Claydol, Sealeo, espelho Turtonator
+  - **Por Que Funciona:** Fator surpresa Rock Blast, forte pressão Flying
+
+  ### Equipe #5: Núcleo Water Resistente
+
+  **Rating: 92/100 | Taxa de Vitória: 48.0% | Cobertura Meta: 100%**
+
+  - **Lead:** Dusclops (Hex / Shadow Punch / Ice Punch)
+  - **Switch:** Bronzong (Metal Sound / Psyshock / Payback)
+  - **Closer:** Altaria (Dragon Breath / Sky Attack / Flamethrower)
+
+  **Estratégia:**
+
+  - Dusclops bloqueia atacantes físicos
+  - Bronzong debuffa com Metal Sound
+  - Altaria fornece limpeza Dragon/Flying
+  - **Ameaças Principais:** Espelho Dusclops, Sealeo, Glalie
+  - **Por Que Funciona:** Resistência extrema, acúmulo de debuffs, versatilidade Altaria
+
+  ### Equipe #6: Pressão Water/Fire
+
+  **Rating: 92/100 | Taxa de Vitória: 47.3% | Cobertura Meta: 100%**
+
+  - **Lead:** Turtonator (Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dewgong (Ice Shard / Icy Wind / Drill Run)
+  - **Closer:** Gyarados (Dragon Breath / Aqua Tail / Crunch)
+
+  **Estratégia:**
+
+  - Turtonator lida com Steel/Ice cedo
+  - Dewgong debuffa com Icy Wind
+  - Gyarados aplica pressão Dragon Breath
+  - **Ameaças Principais:** Glalie, Rufflet, Grumpig
+  - **Por Que Funciona:** Alta pressão ofensiva, suporte Icy Wind
+
+  ---
+
+  ## Análise de Cobertura de Tipos
+
+  ### Tipos de Cobertura Essenciais
+
+  **Sua equipe DEVE ter respostas para:**
+
+  1. **Cobertura Ghost** (5+ ameaças)
+
+     - Traga: Movimentos Dark (Crunch, Brutal Swing, Payback)
+     - Ou: Movimentos Ghost (Shadow Ball, Shadow Claw, Hex)
+
+  2. **Cobertura Steel** (Bronzong, Metang)
+
+     - Traga: Movimentos Fire (Incinerate, Flamethrower)
+     - Ou: Movimentos Fighting (Dynamic Punch, Aura Sphere)
+     - Ou: Movimentos Ground (Earthquake, Drill Run)
+
+  3. **Cobertura Ice** (Glalie, Dewgong, Sealeo)
+
+     - Traga: Movimentos Fire (Incinerate, Flamethrower)
+     - Ou: Tipos Steel (Bronzong resiste)
+     - Ou: Movimentos Fighting
+
+  4. **Cobertura Dragon** (Gyarados, Turtonator, Altaria)
+     - Traga: Movimentos Dragon (Dragon Breath, Dragon Claw)
+     - Ou: Movimentos Ice (Avalanche, Ice Punch, Icy Wind)
+     - Ou: Movimentos Fairy (Moonblast, Dazzling Gleam)
+
+  ---
+
+  ## Estratégias de Batalha
+
+  ### Estratégias de Abertura
+
+  #### **Leads Seguros:**
+
+  1. **Oranguru** - Quase nunca perde confronto lead gravemente
+  2. **Turtonator** - Força escudos, bons confrontos neutros
+  3. **Dusclops** - Bloqueia atacantes físicos, farma energia
+
+  #### **Leads Agressivos:**
+
+  1. **Gyarados** - Pressão Dragon Breath é imensa
+  2. **Glalie** - Rollout + Shadow Ball pega muitos desprevenidos
+  3. **Fearow** - Movimentos rápidos forçam escudos rapidamente
+
+  #### **Arriscados mas Recompensadores:**
+
+  1. **Bronzong** - Atinge 754+ rating vs Glalie/Ice mas apenas 92 rating vs Turtonator
+  2. **Claydol** - Forte vs Ice (673 vs Glalie) mas fraco a Water (152 vs Gyarados)
+
+  ---
+
+  ## Contra-Escolhas Absolutas
+
+  Estes Pokémon fornecem **confrontos devastadores** contra ameaças meta específicas. Use-os estrategicamente em sua equipe de 6 para cobrir fraquezas específicas.
+
+  ### Opções Nucleares (Rating ≥800)
+
+  **Confrontos Extremamente Favoráveis** - Estes confrontos atingem ratings de 800 ou superiores:
+
+  | Pokémon Counter | Rank | Oponente   | Rating | Por Que Funciona                |
+  | --------------- | ---- | ---------- | ------ | ------------------------------- |
+  | **Rapidash-G**  | #68  | Charizard  | 915    | Tipagem Fairy, pressão Body Slam |
+  | **Turtonator**  | #2   | Bronzong   | 907    | Tipagem Fire vs Steel           |
+  | **Dodrio**      | #28  | Froslass   | 900    | Spam Brave Bird, resistência Flying |
+  | **Rufflet**     | #18  | Dusknoir   | 875    | Cobertura Rock Tomb             |
+  | **Emolga**      | #56  | Fearow     | 852    | Electric vs Flying              |
+  | **Trumbeak**    | #34  | Dusknoir   | 847    | Rock Blast + movimentos Flying  |
+  | **Fearow**      | #16  | Dusknoir   | 834    | Flying + pressão Drill Run      |
+  | **Kommo-o**     | #46  | Turtonator | 825    | Resistência Fighting, movimentos Dragon |
+  | **Zoroark-H**   | #43  | Froslass   | 812    | Combo resistência Ghost/Normal  |
+  | **Drampa**      | #26  | Turtonator | 804    | Resistência única Dragon/Normal |
+  | **Cetoddle**    | #27  | Charizard  | 800    | Pressão Ice, resistência        |
+  | **Bronzong**    | #8   | Glalie     | 754    | Steel resiste todos movimentos Ice |
+  | **Charizard**   | #50  | Metang     | 666+   | Fire vs Steel/Psychic           |
+
+  ### Escolhas Estratégicas Counter-Meta
+
+  **Use-os para responder arquétipos de equipe específicos:**
+
+  #### **Contra Stacks Ghost/Psychic**
+
+  - **Vespiquen** → Oranguru (700), Drampa (757) | Vantagem tipo Bug
+  - **Cofagrigus** → Bronzong (660), Metang (683) | Spam Dark Pulse
+  - **Trevenant** → Bronzong (805), Marowak-A (729) | Cobertura Foul Play
+
+  #### **Contra Equipes Núcleo Ice**
+
+  - **Armarouge** → Glalie (756 rating), Fearow (739 rating) | Pressão Fire/Psychic
+  - **Skeledirge** → Glalie (794 rating), Bronzong (687 rating) | Fire/Ghost único
+  - **Turtonator** → Glalie (548 rating), Bronzong (907 rating) | Cobertura Fire/Dragon
+
+  #### **Contra Equipes Heavy Dragon**
+
+  - **Togetic** → Charizard (910 rating), Gyarados (743 rating) | Tipagem Fairy
+  - **Togekiss** → Gyarados (704 rating), Drampa (704 rating) | Fairy + Aura Sphere
+  - **Medicham** → Drampa (773 rating), Glalie (705 rating) | Fighting + Ice Punch
+
+  #### **Contra Equipes Heavy Flying**
+
+  - **Raichu-A** → Gyarados (833 rating), Dewgong (743 rating) | Vantagem Electric
+  - **Emolga** → Gyarados (768 rating), Charizard (768 rating) | Spam Electric rápido
+
+  ---
+
+  ## Conclusão
+
+  O meta LAIC 2025 se concentra em núcleos resistentes Ghost/Psychic/Ice, com **Oranguru, Turtonator e Runerigus** liderando os ratings.
+
+  ## Apêndice: Metodologia de Análise
+
+  **Fonte de Dados:** 214 Pokémon classificados do meta LAIC 2025-1500
+  **Simulações de Equipes:** 19.600 equipes analisadas usando motor de rating Battle Flow
+  **Top Desempenho:** 20 equipes com ratings mais altos identificadas de 50 Pokémon melhor classificados
+  **Sistema de Avaliação:** Pontuação de 6 componentes (Lead, Switch, Closer, Consistency, Coverage, Bulk)
+  **Dados de Confronto:** Simulações de batalha cabeça a cabeça com shield baiting
+  **Formato:** Estrutura de torneio Traga 6, Mostre 3
+
+  _Este guia representa análise completa de Pokémon viáveis em torneio e composições ótimas de equipes para os Campeonatos Internacionais da América Latina 2025._

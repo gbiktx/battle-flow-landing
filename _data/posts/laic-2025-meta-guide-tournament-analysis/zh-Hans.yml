@@ -1,0 +1,656 @@
+title: "LAIC 2025 元游戏指南:全面锦标赛分析"
+description: "LAIC 2025 锦标赛元游戏完整分析,涵盖 214 只排名宝可梦、最佳队伍组合以及 CP 1500 带6选3格式的战略见解。"
+content: |
+  **锦标赛:** 2025拉丁美洲国际锦标赛
+  **格式:** 带6选3
+  **CP限制:** 1500 (Great League)
+  **分析日期:** 2025年11月
+
+  ---
+
+  ## 目录
+
+  1. [锦标赛格式概述](#锦标赛格式概述)
+  2. [竞技层级概述](#竞技层级概述)
+  3. [元游戏分析:前10核心宝可梦](#元游戏分析前10核心宝可梦)
+  4. [扩展元游戏:完整层级分类](#扩展元游戏完整层级分类)
+  5. [反元策略](#反元策略)
+  6. [推荐队伍组合](#推荐队伍组合)
+  7. [属性覆盖分析](#属性覆盖分析)
+  8. [对战策略](#对战策略)
+  9. [硬克制选择](#硬克制选择)
+
+  ---
+
+  ## 锦标赛格式概述
+
+  ### 带6选3格式
+
+  LAIC 2025锦标赛使用**带6选3**格式:
+
+  - **队伍选择:** 构建一支6只宝可梦的队伍
+  - **对战选择:** 每场对战前,查看对手的6只宝可梦
+  - **展示阶段:** 从你的6只中选择3只用于对战
+  - **策略:** 你的6只队伍必须具有广泛覆盖的同时保持协同作用
+
+  此格式奖励:
+
+  - **灵活性:** 能够适应不同对手阵容的队伍
+  - **覆盖:** 威胁多个元游戏选择的宝可梦
+  - **心理战:** 基于对手队伍组成的战略选择
+
+  ---
+
+  ## 竞技层级概述
+
+  基于对LAIC 2025元游戏中**214只排名宝可梦**的分析,**94只宝可梦(43.9%)**达到了75分或更高的竞技分数,使它们成为锦标赛可用选项。
+
+  ### 元游戏可行性分布
+
+  在214只排名宝可梦中:
+
+  - **可行(≥75分):** 94只宝可梦(43.9%)
+  - **低于可行:** 120只宝可梦(56.1%)
+
+  ### 理解组件分数
+
+  每只宝可梦在**6个关键维度**上进行评估(0-100分):
+
+  - **Lead:** 开场对战强度
+  - **Switch:** 安全轮换能力
+  - **Closer:** 终局清场潜力
+  - **Consistency:** 跨对战可靠表现
+  - **Coverage:** 属性和元游戏覆盖
+  - **Bulk:** 防御持久力
+
+  ### 竞技层级总结
+
+  | 层级   | 分数范围 | 数量 | 描述         |
+  | ------ | -------- | ---- | ------------ |
+  | **S+** | 95-100   | 3    | 精英表现者   |
+  | **S**  | 90-94.9  | 12   | 核心元游戏   |
+  | **A+** | 85-89.9  | 22   | 强力替代品   |
+  | **A**  | 80-84.9  | 29   | 可行专家     |
+  | **B+** | 75-79.9  | 28   | 小众选择     |
+
+  **关于分数和Rating:**
+
+  - **Overall Score (0-100):** 综合指标,结合所有6个组件维度(Lead、Switch、Closer、Consistency、Coverage、Bulk)。决定层级位置(S+、S、A+、A、B+)。
+  - **Battle Rating (0-1000):** PvPoke风格的战斗模拟结果,其中500 = 平衡对战,>500 = 有利获胜,<500 = 不利。同样的量表用于整体宝可梦强度(例如Oranguru: 692)和特定对战(例如Fearow vs Dusknoir: 834)。
+
+  **数据来源:**
+
+  - 排名数据: LAIC 2025-1500元游戏分析(214只宝可梦)
+  - 对战模拟: BattleFlow rating引擎与shield baiting
+  - 队伍分析: 19,600个模拟队伍组合
+
+  **关键见解:** 有94个可行选项,队伍构建具有显著深度。带6选3格式允许超越前10的创造性反制策略。
+
+  ---
+
+  ## 元游戏生态地图
+
+  ### 核心元游戏组和克制关系
+
+  LAIC 2025元游戏可以通过具有不同角色和克制动态的相互关联的宝可梦组来理解:
+
+  #### **组1: Ghost/Psychic核心**(主导存在)
+
+  **关键成员:** Oranguru、Dusknoir、Dusclops、Bronzong、Runerigus
+
+  - **特征:** 高坦度、Ghost STAB招式、出色一致性
+  - **被克制(rating 800+):**
+    - Fearow(834 vs Dusknoir)
+    - Trumbeak(847 vs Dusknoir)
+    - Rufflet(875 vs Dusknoir)
+  - **软克制:** Dark系招式(Crunch、Brutal Swing)、Steel系
+  - **威胁:** 彼此(Ghost vs Ghost)、Psychic系、Fighting系
+
+  #### **组2: Ice Wall核心**(反Flying/Dragon)
+
+  **关键成员:** Glalie、Dewgong、Sealeo、Walrein、Arctibax
+
+  - **特征:** Icy Wind削弱、反Dragon覆盖、坦度
+  - **被硬克制(800+):**
+    - Bronzong(754 vs Glalie)
+    - Metang(903 vs Glalie)
+  - **软克制:** Fire系(Turtonator、Skeledirge)、Steel系
+  - **威胁:** Dragon系、Flying系、Ground系
+
+  #### **组3: Fire/Dragon压制**(进攻威胁)
+
+  **关键成员:** Turtonator、Charizard、Skeledirge、Gyarados
+
+  - **特征:** 高攻击、Fire或Dragon STAB、进攻压力
+  - **被硬克制(800+):**
+    - Drampa(804 vs Turtonator)
+    - Kommo-o(825 vs Turtonator)
+    - Rapidash-G(915 vs Charizard)
+    - Cetoddle(800 vs Charizard)
+  - **软克制:** Water系、Rock系、Dragon系
+  - **威胁:** Steel系(Turtonator 907 vs Bronzong)、Ice系、Grass系
+
+  #### **组4: Steel/Psychic墙**(防御专家)
+
+  **关键成员:** Bronzong、Metang、Claydol
+
+  - **特征:** Steel属性、防御数值、独特抗性
+  - **被硬克制:**
+    - Turtonator(907 vs Bronzong)
+    - Charizard(666+ vs Metang)
+  - **软克制:** Fire系、Ground系、Fighting系
+  - **威胁:** Ice核心(Bronzong 754 vs Glalie)、Fairy系、Rock系
+
+  #### **组5: 反元专家**(战略选择)
+
+  **关键成员:** Drampa、Fearow、Dodrio、Emolga、Rapidash-G
+
+  - **特征:** 针对性硬克制、惊喜因素、小众角色
+  - **克制关系:**
+    - Drampa: 克制Turtonator(804)
+    - Fearow: 克制Dusknoir(834),被Emolga克制(852)
+    - Dodrio: 克制Froslass(900)
+    - Rapidash-G: 克制Charizard(915)
+    - Emolga: 克制Fearow(852)
+  - **威胁:** 特定元游戏选择
+  - **弱点:** 了解克制策略的对手
+
+  ### 战略见解
+
+  元游戏在分层剪刀石头布动态上运作:
+
+  1. **Ghost/Psychic核心** - 赢得中性对战,输给Dark/Flying
+  2. **Ice Wall核心** - 制约Dragon/Flying,输给Fire/Steel
+  3. **Fire/Dragon压制** - 破解Steel/Ice,输给Water/Rock/专家克制
+  4. **Steel/Psychic墙** - 阻挡Ice/Fairy,输给Fire/Ground
+  5. **反元专家** - 硬克制特定威胁,缺乏广泛覆盖
+
+  **队伍构建:** 覆盖至少3个组 + 1-2个专家应对特定元游戏选择。
+
+  ---
+
+  ## 元游戏分析:前10核心宝可梦
+
+  基于分析214只排名宝可梦的全面模拟,以下是LAIC 2025元游戏中表现最佳的威胁:
+
+  ### S+层级:精英表现者
+
+  #### 1. **Oranguru**(排名#1)
+
+  - **招式配置:** Confusion + Brutal Swing / Trailblaze
+  - **角色:** 坦克型Psychic/Normal攻击手
+  - **优势:**
+    - 对Ghost有利对战: Dusknoir(739 rating)、Runerigus(683 rating)
+    - 强势对抗Gyarados(672 rating)、Glalie(616 rating)、Dewgong(612 rating)
+  - **弱点:** Bronzong(279)、Metang(282)、Drampa(395)
+  - **为何顶级:** 出色坦度配合Confusion压制。Brutal Swing为Ghost系提供Dark覆盖,而Trailblaze针对常见威胁提供速度控制。
+
+  #### 2. **Turtonator**(排名#2)
+
+  - **招式配置:** Incinerate + Brutal Swing / Dragon Claw
+  - **角色:** Fire/Dragon进攻威胁
+  - **优势:**
+    - 对Bronzong达到907对战rating
+    - 击败Oranguru(561 rating)、Glalie(548 rating)、Charizard(526 rating)
+  - **弱点:** Drampa(195)、Gyarados(231)、Fearow(278)
+  - **为何顶级:** 独特Fire/Dragon属性配合Brutal Swing。Incinerate快速能量生成有效压制Steel和Ice核心。
+
+  #### 3. **Runerigus**(排名#3)
+
+  - **招式配置:** Shadow Claw + Rock Tomb / Brutal Swing
+  - **角色:** Ground/Ghost墙
+  - **优势:**
+    - 对Metang达到674对战rating(Metang仅得325)
+    - 击败Marowak Alolan(610 rating)、Turtonator(582 rating)
+  - **弱点:** Oranguru(316)、Charizard(397)、Dewgong(474)
+  - **为何顶级:** Ground/Ghost属性提供出色防御配置。Rock Tomb提供对抗Flying和Fire威胁的必要覆盖。
+
+  ### S层级:核心元游戏
+
+  #### 4. **Glalie**(排名#4)
+
+  - **招式配置:** Rollout + Avalanche / Shadow Ball
+  - **角色:** Ice系终结者
+  - **优势:**
+    - 对Charizard达到760对战rating(Charizard仅得239)
+    - 击败Dewgong(667 rating)、Gyarados(603 rating)
+  - **弱点:** Bronzong(245)、Oranguru(383)、Dusknoir(422)
+  - **为何元游戏:** Rollout快速能量生成创造护盾压力。Shadow Ball提供必要Ghost覆盖。
+
+  #### 5. **Dewgong**(排名#5)
+
+  - **招式配置:** Ice Shard + Icy Wind / Drill Run
+  - **角色:** Water/Ice辅助
+  - **优势:**
+    - 击败Fearow(668)、Gyarados(630)、Dusclops(621)
+  - **弱点:** Glalie(332)、Bronzong(375)、Oranguru(387)
+  - **为何元游戏:** Icy Wind削弱提供团队支持,而Drill Run应对Steel和Fire系。
+
+  #### 6. **Sealeo**(排名#6)
+
+  - **招式配置:** Powder Snow + Surf / Body Slam
+  - **角色:** 坦克冰墙
+  - **优势:**
+    - 对前10中的5个有利
+    - 击败Dusclops(601)、Gyarados(580)、Dewgong(577)
+  - **弱点:** Dusknoir(238)、Metang(298)、Bronzong(304)
+  - **为何元游戏:** 强大反元配置。Body Slam低能量成本实现稳定中性伤害输出。
+
+  #### 7. **Dusclops**(排名#7)
+
+  - **招式配置:** Hex + Shadow Punch / Ice Punch
+  - **角色:** Ghost坦克
+  - **优势:**
+    - 击败Metang(722/277)、Togekiss(685/314)
+  - **弱点:** Oranguru(327)、Gyarados(380)、Turtonator(420)
+  - **为何元游戏:** 极限防御数值(1499 CP时199.75)。Shadow Punch实现稳定压力,Ice Punch应对Dragons。
+
+  #### 8. **Bronzong**(排名#8)
+
+  - **招式配置:** Metal Sound + Psyshock / Payback
+  - **角色:** Steel/Psychic墙
+  - **优势:**
+    - 对Glalie达到754对战rating,对Oranguru 720,对Dewgong 625
+  - **弱点:** Turtonator(92!)、Dusknoir(366)、Charizard(384)
+  - **为何元游戏:** 独特Steel/Psychic属性。Metal Sound削弱叠加Payback提供Ghost覆盖。
+
+  #### 9. **Gyarados**(排名#9)
+
+  - **招式配置:** Dragon Breath + Aqua Tail / Crunch
+  - **角色:** Water/Flying攻击手
+  - **优势:**
+    - 对Turtonator达到768对战rating,对Charizard 760,对Dusknoir 677
+  - **弱点:** Oranguru(327)、Dewgong(369)、Glalie(396)
+  - **为何元游戏:** Dragon Breath施加持续压力。Aqua Tail和Crunch提供广泛中性覆盖。
+
+  #### 10. **Claydol**(排名#10)
+
+  - **招式配置:** Mud Slap + Rock Tomb / Ice Beam
+  - **角色:** Ground/Psychic专家
+  - **优势:**
+    - 击败Glalie(673)、Turtonator(657)、Oranguru(640)
+  - **弱点:** Gyarados(152!)、Runerigus(279)、Dusknoir(338)
+  - **为何元游戏:** Rock Tomb + Ice Beam覆盖组合。高伤害Mud Slap快速招式。
+
+  ---
+
+  ## 扩展元游戏:完整层级分类
+
+  ### S层级 - 12个核心元游戏选择
+
+  大多数对战中表现一致。形成竞技队伍的骨干:
+
+  | 排名 | 宝可梦      | Rating | 关键优势                    |
+  | ---- | ----------- | ------ | --------------------------- |
+  | 4    | **Glalie**  | 744    | Rollout能量生成、Shadow Ball覆盖 |
+  | 5    | **Dewgong** | 709    | Icy Wind削弱、Drill Run覆盖 |
+  | 6    | **Sealeo**  | 715    | 强反元(5/10有利)            |
+  | 7    | **Dusclops** | 702   | 199.75防御数值、Ghost坦克   |
+  | 8    | **Bronzong** | 741   | Metal Sound削弱、Payback    |
+  | 9    | **Gyarados** | 706   | Dragon Breath压制           |
+  | 10   | **Claydol**  | 580   | Rock Tomb + Ice Beam覆盖    |
+  | 11   | **Dusknoir** | 702   | Dynamic Punch覆盖           |
+  | 12   | **Marowak-A** | 656  | Fire/Ghost混合属性          |
+  | 13   | **Walrein**  | 694   | Icicle Spear + Earthquake   |
+  | 14   | **Arctibax** | 667   | Dragon/Ice压制              |
+  | 15   | **Goodra**   | 623   | Dragon坦克多功能性          |
+
+  ---
+
+  ### A+层级 - 22个强力替代品
+
+  稳固次要选项和针对性克制选择:
+
+  **顶级A+表现者:**
+
+  - **#16 Fearow**(Rating: 689) - 834 vs Dusknoir,Drill Run覆盖
+  - **#17 Metang**(Rating: 675) - 903 vs Glalie,Steel/Psychic墙
+  - **#18 Rufflet**(Rating: 638) - 875 vs Dusknoir,Rock Tomb覆盖
+  - **#19 Skeledirge**(Rating: 656) - Fire/Ghost属性,Torch Song
+  - **#20 Grumpig**(Rating: 649) - Dynamic Punch速攻
+  - **#21 Talonflame**(Rating: 650) - Incinerate + Fly + Brave Bird
+  - **#22 Altaria**(Rating: 640) - Dragon Breath、Sky Attack、Flamethrower
+  - **#23 Froslass**(Rating: 653) - Ice/Ghost攻击手
+  - **#24 Dragonair**(Rating: 617) - Dragon专家
+  - **#25 Avalugg**(Rating: 610) - Mirror Coat技巧
+  - **#26 Drampa**(Rating: 591) - 804 vs Turtonator
+  - **#27 Cetoddle**(Rating: 626) - Ice坦度,800 vs Charizard
+  - **#28 Dodrio**(Rating: 606) - 900 vs Froslass
+  - **#29 Cofagrigus**(Rating: 604) - Ghost墙,683 vs Metang
+  - **#30 Druddigon**(Rating: 582) - Rock Tomb + Night Slash
+
+  **显著A+选择(31-37):**
+
+  - **#31 Vespiquen**(Rating: 592) - 757 vs Drampa,X-Scissor
+  - **#32 Castform-Snowy**(Rating: 577) - Weather Ball Ice,780 vs Drampa
+  - **#33 Togekiss**(Rating: 548) - Aura Sphere + Ancient Power
+  - **#34 Trumbeak**(Rating: 568) - 847 vs Dusknoir,Rock Blast
+  - **#35 Cetitan**(Rating: 574) - 789 vs Charizard,Avalanche速攻
+  - **#36 Dragalge**(Rating: 574) - 725 vs Turtonator,Outrage
+  - **#37 Piloswine**(Rating: 560) - Stone Edge覆盖,Ice压制
+
+  ---
+
+  ### A层级 - 29个可行专家
+
+  角色玩家和针对性克制:
+
+  **显著专家:**
+
+  - **#50 Charizard**(Rating: 515) - Blast Burn终结者
+  - **#43 Zoroark-H**(Rating: 551) - Ghost/Normal,812 vs Froslass
+  - **#46 Kommo-o**(Rating: 538) - 825 vs Turtonator
+  - **#49 Haunter**(Rating: 518) - 快速Ghost,727 vs Bronzong
+
+  **额外A层级选项(38-66):** 38. Golurk, 39. Toucannon, 40. Fletchinder, 41. Togetic, 42. Hypno, 44. Gligar, 45. Girafarig, 47. Shelgon, 48. Baxcalibur, 51. Drifblim, 52. Vanillish, 53. Raichu-A, 54. Skarmory, 55. Hakamo-o, 56. Emolga(852 vs Fearow), 57. Dartrix, 58. Cryogonal, 59. Corvisquire, 60. Armarouge, 61. Salamence, 62. Slowking-G, 63. Medicham, 64. Starmie, 65. Frigibax, 66. Gliscor
+
+  ---
+
+  ### B+层级 - 28个小众选择
+
+  作为特定应对或在团队支持下可参赛:
+
+  **显著B+选项:**
+
+  - **#68 Rapidash-G**(Rating: 479) - 915 vs Charizard,Body Slam速攻
+  - **#71 Annihilape**(Rating: 477) - Rage Fist,Counter压制
+  - **#75 Gengar**(Rating: 484) - 快速Ghost,765 vs Bronzong
+  - **#77 Trevenant**(Rating: 472) - 805 vs Bronzong,Foul Play
+
+  **完整B+阵容(67-94):** 67. Jumpluff, 69. Frillish, 70. Mamoswine, 72. Ledian, 73. Chimecho, 74. Chatot, 76. Pidgeot, 78. Abomasnow, 79. Gholdengo, 80. Bruxish, 81. Noctowl, 82. Pelipper, 83. Scyther, 84. Cloyster, 85. Decidueye, 86. Fraxure, 87. Wyrdeer, 88. Delphox, 89. Farfetch'd, 90. Haxorus, 91. Slowpoke, 92. Palossand, 93. Drifloon, 94. Mantyke
+
+  ---
+
+  ## 反元策略
+
+  ### 理解元游戏威胁
+
+  前10宝可梦有明确的属性弱点模式:
+
+  **属性弱点分类:**
+
+  - **5只宝可梦弱Dark**(Oranguru、Bronzong、Claydol、Dusclops、Runerigus)
+  - **5只宝可梦弱Ghost**(同上)
+  - **5只宝可梦弱Rock**(Glalie、Dewgong、Sealeo、Gyarados、Charizard)
+  - **4只宝可梦弱Grass**(Runerigus、Claydol、Gyarados、Ground/Water系)
+
+  ### 顶级反元宝可梦
+
+  #### **Sealeo**(排名#6)
+
+  - 对前10元游戏中的5个有利
+  - Body Slam速攻 + Powder Snow压制
+  - 目标: Dusclops、Gyarados、Dewgong、Runerigus、Glalie
+
+  #### **Dusknoir**(排名#11)
+
+  - 对前10元游戏中的5个有利
+  - Dynamic Punch覆盖、Shadow Punch速攻
+  - 目标: Bronzong、Glalie、Dusclops、Runerigus、Dewgong
+
+  #### **Fearow**(排名#16)
+
+  - 对前10元游戏中的4个有利
+  - Drill Run覆盖、高攻击
+  - 目标: Dusknoir、Turtonator、Dusclops、Gyarados
+
+  #### **Drampa**(排名#26)
+
+  - 对前10元游戏中的4个有利
+  - Outrage + Fly覆盖
+  - 目标: Turtonator(804)、Dusknoir、Runerigus、Oranguru
+
+  ### 基于属性的克制策略
+
+  #### **对抗Ghost/Psychic核心**(Oranguru、Dusclops、Bronzong)
+
+  - Dark: Gyarados(Dragon Breath + Crunch)
+  - Ghost: Runerigus、Dusknoir、Froslass
+  - Steel: Bronzong、Metang
+
+  #### **对抗Ice核心**(Glalie、Dewgong、Sealeo)
+
+  - Fire: Turtonator、Skeledirge、Talonflame
+  - Steel: Bronzong(754 vs Glalie)、Metang
+  - Fighting覆盖: Dynamic Punch(Dusknoir)
+
+  #### **对抗Fire/Dragon**(Turtonator、Gyarados)
+
+  - Water: Dewgong、Sealeo、Walrein
+  - Ground: Runerigus、Claydol
+  - Dragon: Arctibax、Drampa(804 vs Turtonator)
+
+  ---
+
+  ## 推荐队伍组合
+
+  基于使用高级算法分析模拟的19,600支队伍,以下是表现最佳的队伍组合:
+
+  ### 队伍表现概述
+
+  前6支队伍全部达到:
+
+  - **Rating:** 92-93/100
+  - **元游戏覆盖:** 100%
+  - **胜率范围:** 44-59%
+
+  **最佳表现:** 队伍#1(Oranguru/Dusknoir/Altaria) - 93/100 rating,59%胜率
+
+  ### 队伍#1:平衡元游戏核心 ⭐ 最佳整体
+
+  **Rating: 93/100 | 胜率: 59.0% | 元游戏覆盖: 100%**
+
+  - **Lead:** Oranguru(Confusion / Brutal Swing / Trailblaze)
+  - **Switch:** Dusknoir(Astonish / Dynamic Punch / Shadow Punch)
+  - **Closer:** Altaria(Dragon Breath / Sky Attack / Flamethrower)
+
+  **策略:**
+
+  - Oranguru用Confusion施加即时压力
+  - Dusknoir提供Ghost/Fighting覆盖
+  - Altaria应对Dragons并提供Flying覆盖
+  - **威胁:** 注意Kommo-o
+  - **为何有效:** 完美平衡坦度、覆盖和灵活性
+
+  ### 队伍#2:Ice/Fire/Ghost三位一体
+
+  **Rating: 93/100 | 胜率: 44.4% | 元游戏覆盖: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Glalie(Rollout / Avalanche / Shadow Ball)
+  - **Closer:** Dusclops(Hex / Shadow Punch / Ice Punch)
+
+  **策略:**
+
+  - Turtonator用Incinerate应对Steel/Ice
+  - Glalie提供Ice压制和针对Ghosts的Shadow Ball
+  - Dusclops阻挡物理攻击手
+  - **主要威胁:** 对手Turtonator、Claydol
+  - **为何有效:** 强大核心对战,Dusclops防御骨干
+
+  ### 队伍#3:Flying支援核心
+
+  **Rating: 93/100 | 胜率: 50.1% | 元游戏覆盖: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dusclops(Hex / Shadow Punch / Ice Punch)
+  - **Closer:** Togekiss(Peck / Aura Sphere / Ancient Power)
+
+  **策略:**
+
+  - Turtonator应对早期威胁
+  - Dusclops提供防御轮换
+  - Togekiss用Aura Sphere提供Fairy/Fighting覆盖
+  - **主要威胁:** Froslass、Rufflet
+  - **为何有效:** Togekiss的Aura Sphere应对威胁Ghost的Dark系
+
+  ### 队伍#4:Flying进攻
+
+  **Rating: 93/100 | 胜率: 47.8% | 元游戏覆盖: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dusclops(Hex / Shadow Punch / Ice Punch)
+  - **Closer:** Trumbeak(Peck / Drill Peck / Rock Blast)
+
+  **策略:**
+
+  - Turtonator开局强势
+  - Dusclops轮换
+  - Trumbeak用Rock Blast提供Rock覆盖
+  - **主要威胁:** Claydol、Sealeo、Turtonator镜像
+  - **为何有效:** Rock Blast惊喜因素,强Flying压制
+
+  ### 队伍#5:坦克Water核心
+
+  **Rating: 92/100 | 胜率: 48.0% | 元游戏覆盖: 100%**
+
+  - **Lead:** Dusclops(Hex / Shadow Punch / Ice Punch)
+  - **Switch:** Bronzong(Metal Sound / Psyshock / Payback)
+  - **Closer:** Altaria(Dragon Breath / Sky Attack / Flamethrower)
+
+  **策略:**
+
+  - Dusclops阻挡物理攻击手
+  - Bronzong用Metal Sound削弱
+  - Altaria提供Dragon/Flying清场
+  - **主要威胁:** Dusclops镜像、Sealeo、Glalie
+  - **为何有效:** 极限坦度、削弱叠加、Altaria多功能性
+
+  ### 队伍#6:Water/Fire压制
+
+  **Rating: 92/100 | 胜率: 47.3% | 元游戏覆盖: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dewgong(Ice Shard / Icy Wind / Drill Run)
+  - **Closer:** Gyarados(Dragon Breath / Aqua Tail / Crunch)
+
+  **策略:**
+
+  - Turtonator早期应对Steel/Ice
+  - Dewgong用Icy Wind削弱
+  - Gyarados施加Dragon Breath压制
+  - **主要威胁:** Glalie、Rufflet、Grumpig
+  - **为何有效:** 高进攻压力、Icy Wind支援
+
+  ---
+
+  ## 属性覆盖分析
+
+  ### 必需覆盖属性
+
+  **你的队伍必须有应对方案:**
+
+  1. **Ghost覆盖**(5+威胁)
+
+     - 带上: Dark系招式(Crunch、Brutal Swing、Payback)
+     - 或: Ghost系招式(Shadow Ball、Shadow Claw、Hex)
+
+  2. **Steel覆盖**(Bronzong、Metang)
+
+     - 带上: Fire系招式(Incinerate、Flamethrower)
+     - 或: Fighting系招式(Dynamic Punch、Aura Sphere)
+     - 或: Ground系招式(Earthquake、Drill Run)
+
+  3. **Ice覆盖**(Glalie、Dewgong、Sealeo)
+
+     - 带上: Fire系招式(Incinerate、Flamethrower)
+     - 或: Steel系(Bronzong抗性)
+     - 或: Fighting系招式
+
+  4. **Dragon覆盖**(Gyarados、Turtonator、Altaria)
+     - 带上: Dragon系招式(Dragon Breath、Dragon Claw)
+     - 或: Ice系招式(Avalanche、Ice Punch、Icy Wind)
+     - 或: Fairy系招式(Moonblast、Dazzling Gleam)
+
+  ---
+
+  ## 对战策略
+
+  ### 开局策略
+
+  #### **安全Lead:**
+
+  1. **Oranguru** - 几乎从不严重输掉lead对战
+  2. **Turtonator** - 强制护盾,良好中性对战
+  3. **Dusclops** - 阻挡物理攻击手,积攒能量
+
+  #### **进攻Lead:**
+
+  1. **Gyarados** - Dragon Breath压制巨大
+  2. **Glalie** - Rollout + Shadow Ball出其不意
+  3. **Fearow** - 快速招式迅速强制护盾
+
+  #### **高风险高回报:**
+
+  1. **Bronzong** - 对Glalie/Ice达到754+ rating但对Turtonator仅92 rating
+  2. **Claydol** - 对Ice强(673 vs Glalie)但弱Water(152 vs Gyarados)
+
+  ---
+
+  ## 硬克制选择
+
+  这些宝可梦对特定元游戏威胁提供**毁灭性对战**。在你的6只队伍中战略性使用它们以覆盖特定弱点。
+
+  ### 核弹选项(Rating ≥800)
+
+  **极度有利对战** - 这些对战达到800或更高rating:
+
+  | 克制宝可梦      | 排名 | 对手       | Rating | 为何有效                |
+  | --------------- | ---- | ---------- | ------ | ----------------------- |
+  | **Rapidash-G**  | #68  | Charizard  | 915    | Fairy属性、Body Slam压制 |
+  | **Turtonator**  | #2   | Bronzong   | 907    | Fire属性 vs Steel       |
+  | **Dodrio**      | #28  | Froslass   | 900    | Brave Bird速攻、Flying抗性 |
+  | **Rufflet**     | #18  | Dusknoir   | 875    | Rock Tomb覆盖           |
+  | **Emolga**      | #56  | Fearow     | 852    | Electric vs Flying      |
+  | **Trumbeak**    | #34  | Dusknoir   | 847    | Rock Blast + Flying招式 |
+  | **Fearow**      | #16  | Dusknoir   | 834    | Flying + Drill Run压制  |
+  | **Kommo-o**     | #46  | Turtonator | 825    | Fighting抗性、Dragon招式 |
+  | **Zoroark-H**   | #43  | Froslass   | 812    | Ghost/Normal抗性组合    |
+  | **Drampa**      | #26  | Turtonator | 804    | Dragon/Normal独特坦度   |
+  | **Cetoddle**    | #27  | Charizard  | 800    | Ice压制、坦度           |
+  | **Bronzong**    | #8   | Glalie     | 754    | Steel抵抗所有Ice招式    |
+  | **Charizard**   | #50  | Metang     | 666+   | Fire vs Steel/Psychic   |
+
+  ### 战略性反元选择
+
+  **用这些应对特定队伍原型:**
+
+  #### **对抗Ghost/Psychic堆叠**
+
+  - **Vespiquen** → Oranguru(700)、Drampa(757) | Bug系优势
+  - **Cofagrigus** → Bronzong(660)、Metang(683) | Dark Pulse速攻
+  - **Trevenant** → Bronzong(805)、Marowak-A(729) | Foul Play覆盖
+
+  #### **对抗Ice核心队伍**
+
+  - **Armarouge** → Glalie(756 rating)、Fearow(739 rating) | Fire/Psychic压制
+  - **Skeledirge** → Glalie(794 rating)、Bronzong(687 rating) | Fire/Ghost独特
+  - **Turtonator** → Glalie(548 rating)、Bronzong(907 rating) | Fire/Dragon覆盖
+
+  #### **对抗Dragon重型队伍**
+
+  - **Togetic** → Charizard(910 rating)、Gyarados(743 rating) | Fairy属性
+  - **Togekiss** → Gyarados(704 rating)、Drampa(704 rating) | Fairy + Aura Sphere
+  - **Medicham** → Drampa(773 rating)、Glalie(705 rating) | Fighting + Ice Punch
+
+  #### **对抗Flying重型队伍**
+
+  - **Raichu-A** → Gyarados(833 rating)、Dewgong(743 rating) | Electric优势
+  - **Emolga** → Gyarados(768 rating)、Charizard(768 rating) | 快速Electric速攻
+
+  ---
+
+  ## 结论
+
+  LAIC 2025元游戏集中在坦克Ghost/Psychic/Ice核心,**Oranguru、Turtonator和Runerigus**领先rating。
+
+  ## 附录:分析方法
+
+  **数据来源:** LAIC 2025-1500元游戏的214只排名宝可梦
+  **队伍模拟:** 使用Battle Flow rating引擎分析19,600支队伍
+  **顶级表现者:** 从50只顶级排名宝可梦中识别出20支最高rating队伍
+  **评估系统:** 6组件评分(Lead、Switch、Closer、Consistency、Coverage、Bulk)
+  **对战数据:** 带shield baiting的正面对战模拟
+  **格式:** 带6选3锦标赛结构
+
+  _本指南代表2025拉丁美洲国际锦标赛的锦标赛可行宝可梦和最优队伍组合的全面分析。_

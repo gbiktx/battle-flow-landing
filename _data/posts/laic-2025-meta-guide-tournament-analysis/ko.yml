@@ -1,0 +1,656 @@
+title: "LAIC 2025 메타 가이드: 종합 토너먼트 분석"
+description: "LAIC 2025 토너먼트 메타 완전 분석. 214마리 순위 포켓몬, 최적 팀 구성, CP 1500 가져오기 6, 보여주기 3 형식의 전략적 통찰력 포함."
+content: |
+  **토너먼트:** 2025 라틴 아메리카 인터내셔널 챔피언십
+  **형식:** 가져오기 6, 보여주기 3
+  **CP 제한:** 1500 (Great League)
+  **분석 날짜:** 2025년 11월
+
+  ---
+
+  ## 목차
+
+  1. [토너먼트 형식 개요](#토너먼트-형식-개요)
+  2. [경쟁 티어 개요](#경쟁-티어-개요)
+  3. [메타 분석: 상위 10 핵심 포켓몬](#메타-분석-상위-10-핵심-포켓몬)
+  4. [확장 메타: 완전한 티어 분류](#확장-메타-완전한-티어-분류)
+  5. [안티메타 전략](#안티메타-전략)
+  6. [추천 팀 구성](#추천-팀-구성)
+  7. [타입 커버리지 분석](#타입-커버리지-분석)
+  8. [배틀 전략](#배틀-전략)
+  9. [하드 카운터 픽](#하드-카운터-픽)
+
+  ---
+
+  ## 토너먼트 형식 개요
+
+  ### 가져오기 6, 보여주기 3 형식
+
+  LAIC 2025 토너먼트는 **가져오기 6, 보여주기 3** 형식을 사용합니다:
+
+  - **팀 선택:** 6마리 포켓몬으로 팀 구성
+  - **배틀 선택:** 각 배틀 전 상대의 6마리 포켓몬 확인
+  - **쇼 단계:** 6마리 중 3마리를 선택하여 배틀에 사용
+  - **전략:** 6마리 팀은 시너지를 유지하면서 광범위한 커버리지 필요
+
+  이 형식이 보상하는 것:
+
+  - **유연성:** 다양한 상대 라인업에 적응할 수 있는 팀
+  - **커버리지:** 여러 메타 픽을 위협하는 포켓몬
+  - **심리전:** 상대 팀 구성에 기반한 전략적 선택
+
+  ---
+
+  ## 경쟁 티어 개요
+
+  LAIC 2025 메타의 **214마리 순위 포켓몬** 분석을 기반으로, **94마리 포켓몬(43.9%)**이 75점 이상의 경쟁 점수를 달성하여 토너먼트 실행 가능한 옵션이 되었습니다.
+
+  ### 메타 실행 가능성 분포
+
+  214마리 순위 포켓몬 중:
+
+  - **실행 가능(≥75점):** 94마리 포켓몬(43.9%)
+  - **실행 가능 이하:** 120마리 포켓몬(56.1%)
+
+  ### 구성 점수 이해
+
+  각 포켓몬은 **6개의 핵심 차원**(0-100 척도)에서 평가됩니다:
+
+  - **Lead:** 선발 대결 강도
+  - **Switch:** 안전한 교체 능력
+  - **Closer:** 엔드게임 정리 잠재력
+  - **Consistency:** 매치업 전반의 신뢰할 수 있는 성능
+  - **Coverage:** 타입 및 메타 커버리지
+  - **Bulk:** 방어적 지속력
+
+  ### 경쟁 티어 요약
+
+  | 티어   | 점수 범위 | 개수 | 설명           |
+  | ------ | --------- | ---- | -------------- |
+  | **S+** | 95-100    | 3    | 엘리트 수행자  |
+  | **S**  | 90-94.9   | 12   | 핵심 메타      |
+  | **A+** | 85-89.9   | 22   | 강력한 대안    |
+  | **A**  | 80-84.9   | 29   | 실행 가능한 전문가 |
+  | **B+** | 75-79.9   | 28   | 틈새 픽        |
+
+  **점수 및 레이팅 정보:**
+
+  - **Overall Score (0-100):** 모든 6개 구성 차원(Lead, Switch, Closer, Consistency, Coverage, Bulk)을 결합한 종합 지표. 티어 배치(S+, S, A+, A, B+)를 결정합니다.
+  - **Battle Rating (0-1000):** PvPoke 스타일 배틀 시뮬레이션 결과. 500 = 균등한 매치업, >500 = 유리, <500 = 불리. 전체 포켓몬 강도(예: Oranguru: 692)와 특정 직접 대결(예: Fearow vs Dusknoir: 834) 모두 동일한 척도 사용.
+
+  **데이터 출처:**
+
+  - 순위 데이터: LAIC 2025-1500 메타 분석(214마리 포켓몬)
+  - 배틀 시뮬레이션: 실드 베이팅이 있는 BattleFlow 레이팅 엔진
+  - 팀 분석: 19,600개 시뮬레이션된 팀 구성
+
+  **핵심 통찰:** 94개의 실행 가능한 옵션으로 팀 빌딩에 상당한 깊이가 있습니다. 가져오기 6, 보여주기 3 형식은 상위 10을 넘어선 창의적인 카운터 전략을 허용합니다.
+
+  ---
+
+  ## 메타 생태계 맵
+
+  ### 핵심 메타 그룹 및 카운터 관계
+
+  LAIC 2025 메타는 distinct한 역할과 카운터 역학을 가진 상호 연결된 포켓몬 그룹을 통해 이해할 수 있습니다:
+
+  #### **그룹 1: Ghost/Psychic 코어**(지배적 존재)
+
+  **주요 멤버:** Oranguru, Dusknoir, Dusclops, Bronzong, Runerigus
+
+  - **특징:** 높은 내구도, Ghost STAB 기술, 우수한 일관성
+  - **카운터됨(레이팅 800+):**
+    - Fearow(834 vs Dusknoir)
+    - Trumbeak(847 vs Dusknoir)
+    - Rufflet(875 vs Dusknoir)
+  - **소프트 카운터:** Dark 타입 기술(Crunch, Brutal Swing), Steel 타입
+  - **위협:** 서로(Ghost vs Ghost), Psychic 타입, Fighting 타입
+
+  #### **그룹 2: Ice Wall 코어**(안티-Flying/Dragon)
+
+  **주요 멤버:** Glalie, Dewgong, Sealeo, Walrein, Arctibax
+
+  - **특징:** Icy Wind 디버프, 안티-Dragon 커버리지, 내구도
+  - **하드 카운터됨(800+):**
+    - Bronzong(754 vs Glalie)
+    - Metang(903 vs Glalie)
+  - **소프트 카운터:** Fire 타입(Turtonator, Skeledirge), Steel 타입
+  - **위협:** Dragon 타입, Flying 타입, Ground 타입
+
+  #### **그룹 3: Fire/Dragon 압박**(공격적 위협)
+
+  **주요 멤버:** Turtonator, Charizard, Skeledirge, Gyarados
+
+  - **특징:** 높은 공격, Fire 또는 Dragon STAB, 공격적 압박
+  - **하드 카운터됨(800+):**
+    - Drampa(804 vs Turtonator)
+    - Kommo-o(825 vs Turtonator)
+    - Rapidash-G(915 vs Charizard)
+    - Cetoddle(800 vs Charizard)
+  - **소프트 카운터:** Water 타입, Rock 타입, Dragon 타입
+  - **위협:** Steel 타입(Turtonator 907 vs Bronzong), Ice 타입, Grass 타입
+
+  #### **그룹 4: Steel/Psychic 벽**(방어 전문가)
+
+  **주요 멤버:** Bronzong, Metang, Claydol
+
+  - **특징:** Steel 타이핑, 방어 스탯, 독특한 저항
+  - **하드 카운터됨:**
+    - Turtonator(907 vs Bronzong)
+    - Charizard(666+ vs Metang)
+  - **소프트 카운터:** Fire 타입, Ground 타입, Fighting 타입
+  - **위협:** Ice 코어(Bronzong 754 vs Glalie), Fairy 타입, Rock 타입
+
+  #### **그룹 5: 안티메타 전문가**(전략적 픽)
+
+  **주요 멤버:** Drampa, Fearow, Dodrio, Emolga, Rapidash-G
+
+  - **특징:** 타겟팅된 하드 카운터, 서프라이즈 요소, 틈새 역할
+  - **카운터 관계:**
+    - Drampa: Turtonator 카운터(804)
+    - Fearow: Dusknoir 카운터(834), Emolga에 카운터됨(852)
+    - Dodrio: Froslass 카운터(900)
+    - Rapidash-G: Charizard 카운터(915)
+    - Emolga: Fearow 카운터(852)
+  - **위협:** 특정 메타 픽
+  - **취약성:** 카운터 전략을 인지하는 상대
+
+  ### 전략적 통찰
+
+  메타는 계층화된 가위바위보 역학으로 작동합니다:
+
+  1. **Ghost/Psychic 코어** - 중립 매치업에서 승리, Dark/Flying에 패배
+  2. **Ice Wall 코어** - Dragon/Flying 체크, Fire/Steel에 패배
+  3. **Fire/Dragon 압박** - Steel/Ice 파괴, Water/Rock/전문가 카운터에 패배
+  4. **Steel/Psychic 벽** - Ice/Fairy 방벽, Fire/Ground에 패배
+  5. **안티메타 전문가** - 특정 위협 하드 카운터, 광범위한 커버리지 부족
+
+  **팀 빌딩:** 최소 3개 그룹 + 특정 메타 픽을 위한 1-2마리 전문가 커버.
+
+  ---
+
+  ## 메타 분석: 상위 10 핵심 포켓몬
+
+  214마리 순위 포켓몬을 분석하는 종합 시뮬레이션을 기반으로, LAIC 2025 메타에서 최고 성능을 발휘하는 위협은 다음과 같습니다:
+
+  ### S+ 티어: 엘리트 수행자
+
+  #### 1. **Oranguru**(순위 #1)
+
+  - **기술 구성:** Confusion + Brutal Swing / Trailblaze
+  - **역할:** 내구형 Psychic/Normal 공격수
+  - **강점:**
+    - Ghost 상대 유리한 매치업: Dusknoir(739 레이팅), Runerigus(683 레이팅)
+    - Gyarados(672 레이팅), Glalie(616 레이팅), Dewgong(612 레이팅) 상대 강세
+  - **약점:** Bronzong(279), Metang(282), Drampa(395)
+  - **최상위 이유:** Confusion 압박을 동반한 우수한 내구도. Brutal Swing은 Ghost 타입에 Dark 커버리지를 제공하며, Trailblaze는 일반적인 위협에 대한 속도 제어를 제공.
+
+  #### 2. **Turtonator**(순위 #2)
+
+  - **기술 구성:** Incinerate + Brutal Swing / Dragon Claw
+  - **역할:** Fire/Dragon 공격적 위협
+  - **강점:**
+    - Bronzong 상대 907 매치업 레이팅 달성
+    - Oranguru(561 레이팅), Glalie(548 레이팅), Charizard(526 레이팅) 상대 승리
+  - **약점:** Drampa(195), Gyarados(231), Fearow(278)
+  - **최상위 이유:** Brutal Swing 접근성을 가진 독특한 Fire/Dragon 타이핑. Incinerate의 빠른 에너지 생성이 Steel 및 Ice 코어를 효과적으로 압박.
+
+  #### 3. **Runerigus**(순위 #3)
+
+  - **기술 구성:** Shadow Claw + Rock Tomb / Brutal Swing
+  - **역할:** Ground/Ghost 벽
+  - **강점:**
+    - Metang 상대 674 매치업 레이팅 달성(Metang은 325만 점수)
+    - Marowak Alolan(610 레이팅), Turtonator(582 레이팅) 상대 승리
+  - **약점:** Oranguru(316), Charizard(397), Dewgong(474)
+  - **최상위 이유:** Ground/Ghost 타이핑은 우수한 방어 프로필을 제공. Rock Tomb은 Flying 및 Fire 위협에 대한 필수 커버리지를 제공.
+
+  ### S 티어: 핵심 메타
+
+  #### 4. **Glalie**(순위 #4)
+
+  - **기술 구성:** Rollout + Avalanche / Shadow Ball
+  - **역할:** Ice 타입 클로저
+  - **강점:**
+    - Charizard 상대 760 매치업 레이팅 달성(Charizard는 239만 점수)
+    - Dewgong(667 레이팅), Gyarados(603 레이팅) 상대 승리
+  - **약점:** Bronzong(245), Oranguru(383), Dusknoir(422)
+  - **메타인 이유:** Rollout의 빠른 에너지 생성이 실드 압박 생성. Shadow Ball은 필수 Ghost 커버리지 제공.
+
+  #### 5. **Dewgong**(순위 #5)
+
+  - **기술 구성:** Ice Shard + Icy Wind / Drill Run
+  - **역할:** Water/Ice 지원
+  - **강점:**
+    - Fearow(668), Gyarados(630), Dusclops(621) 격파
+  - **약점:** Glalie(332), Bronzong(375), Oranguru(387)
+  - **메타인 이유:** Icy Wind 디버프가 팀 지원을 제공하며 Drill Run은 Steel 및 Fire 타입 처리.
+
+  #### 6. **Sealeo**(순위 #6)
+
+  - **기술 구성:** Powder Snow + Surf / Body Slam
+  - **역할:** 내구형 얼음 벽
+  - **강점:**
+    - 상위 10 중 5마리에 유리
+    - Dusclops(601), Gyarados(580), Dewgong(577) 격파
+  - **약점:** Dusknoir(238), Metang(298), Bronzong(304)
+  - **메타인 이유:** 강력한 안티메타 프로필. Body Slam의 낮은 에너지 비용이 일관된 중립 데미지 출력 가능.
+
+  #### 7. **Dusclops**(순위 #7)
+
+  - **기술 구성:** Hex + Shadow Punch / Ice Punch
+  - **역할:** Ghost 탱크
+  - **강점:**
+    - Metang(722/277), Togekiss(685/314) 격파
+  - **약점:** Oranguru(327), Gyarados(380), Turtonator(420)
+  - **메타인 이유:** 극단적인 방어 스탯(1499 CP에서 199.75). Shadow Punch는 일관된 압박을 가능하게 하며, Ice Punch는 Dragons 처리.
+
+  #### 8. **Bronzong**(순위 #8)
+
+  - **기술 구성:** Metal Sound + Psyshock / Payback
+  - **역할:** Steel/Psychic 벽
+  - **강점:**
+    - Glalie 상대 754 매치업 레이팅, Oranguru 상대 720, Dewgong 상대 625 달성
+  - **약점:** Turtonator(92!), Dusknoir(366), Charizard(384)
+  - **메타인 이유:** 독특한 Steel/Psychic 타이핑. Metal Sound 디버프가 Ghost 커버리지를 위해 Payback과 스택.
+
+  #### 9. **Gyarados**(순위 #9)
+
+  - **기술 구성:** Dragon Breath + Aqua Tail / Crunch
+  - **역할:** Water/Flying 공격수
+  - **강점:**
+    - Turtonator 상대 768 매치업 레이팅, Charizard 상대 760, Dusknoir 상대 677 달성
+  - **약점:** Oranguru(327), Dewgong(369), Glalie(396)
+  - **메타인 이유:** Dragon Breath가 일관된 압박 적용. Aqua Tail과 Crunch가 광범위한 중립 커버리지 제공.
+
+  #### 10. **Claydol**(순위 #10)
+
+  - **기술 구성:** Mud Slap + Rock Tomb / Ice Beam
+  - **역할:** Ground/Psychic 전문가
+  - **강점:**
+    - Glalie(673), Turtonator(657), Oranguru(640) 격파
+  - **약점:** Gyarados(152!), Runerigus(279), Dusknoir(338)
+  - **메타인 이유:** Rock Tomb + Ice Beam 커버리지 조합. 고데미지 Mud Slap 빠른 기술.
+
+  ---
+
+  ## 확장 메타: 완전한 티어 분류
+
+  ### S 티어 - 12개 핵심 메타 픽
+
+  대부분의 매치업에서 일관된 수행자. 경쟁 팀의 백본 형성:
+
+  | 순위 | 포켓몬      | 레이팅 | 주요 강점                   |
+  | ---- | ----------- | ------ | --------------------------- |
+  | 4    | **Glalie**  | 744    | Rollout 에너지 생성, Shadow Ball 커버리지 |
+  | 5    | **Dewgong** | 709    | Icy Wind 디버프, Drill Run 커버리지 |
+  | 6    | **Sealeo**  | 715    | 강력한 안티메타(5/10 유리) |
+  | 7    | **Dusclops** | 702   | 199.75 방어 스탯, Ghost 탱크 |
+  | 8    | **Bronzong** | 741   | Metal Sound 디버프, Payback |
+  | 9    | **Gyarados** | 706   | Dragon Breath 압박         |
+  | 10   | **Claydol**  | 580   | Rock Tomb + Ice Beam 커버리지 |
+  | 11   | **Dusknoir** | 702   | Dynamic Punch 커버리지     |
+  | 12   | **Marowak-A** | 656  | Fire/Ghost 하이브리드 타이핑 |
+  | 13   | **Walrein**  | 694   | Icicle Spear + Earthquake  |
+  | 14   | **Arctibax** | 667   | Dragon/Ice 압박            |
+  | 15   | **Goodra**   | 623   | Dragon 탱크 다용도성       |
+
+  ---
+
+  ### A+ 티어 - 22개 강력한 대안
+
+  견고한 2차 옵션 및 타겟팅된 카운터 픽:
+
+  **상위 A+ 수행자:**
+
+  - **#16 Fearow**(레이팅: 689) - 834 vs Dusknoir, Drill Run 커버리지
+  - **#17 Metang**(레이팅: 675) - 903 vs Glalie, Steel/Psychic 벽
+  - **#18 Rufflet**(레이팅: 638) - 875 vs Dusknoir, Rock Tomb 커버리지
+  - **#19 Skeledirge**(레이팅: 656) - Fire/Ghost 타이핑, Torch Song
+  - **#20 Grumpig**(레이팅: 649) - Dynamic Punch 스팸
+  - **#21 Talonflame**(레이팅: 650) - Incinerate + Fly + Brave Bird
+  - **#22 Altaria**(레이팅: 640) - Dragon Breath, Sky Attack, Flamethrower
+  - **#23 Froslass**(레이팅: 653) - Ice/Ghost 공격수
+  - **#24 Dragonair**(레이팅: 617) - Dragon 전문가
+  - **#25 Avalugg**(레이팅: 610) - Mirror Coat 기술
+  - **#26 Drampa**(레이팅: 591) - 804 vs Turtonator
+  - **#27 Cetoddle**(레이팅: 626) - Ice 내구도, 800 vs Charizard
+  - **#28 Dodrio**(레이팅: 606) - 900 vs Froslass
+  - **#29 Cofagrigus**(레이팅: 604) - Ghost 벽, 683 vs Metang
+  - **#30 Druddigon**(레이팅: 582) - Rock Tomb + Night Slash
+
+  **주목할 만한 A+ 픽(31-37):**
+
+  - **#31 Vespiquen**(레이팅: 592) - 757 vs Drampa, X-Scissor
+  - **#32 Castform-Snowy**(레이팅: 577) - Weather Ball Ice, 780 vs Drampa
+  - **#33 Togekiss**(레이팅: 548) - Aura Sphere + Ancient Power
+  - **#34 Trumbeak**(레이팅: 568) - 847 vs Dusknoir, Rock Blast
+  - **#35 Cetitan**(레이팅: 574) - 789 vs Charizard, Avalanche 스팸
+  - **#36 Dragalge**(레이팅: 574) - 725 vs Turtonator, Outrage
+  - **#37 Piloswine**(레이팅: 560) - Stone Edge 커버리지, Ice 압박
+
+  ---
+
+  ### A 티어 - 29개 실행 가능한 전문가
+
+  역할 플레이어 및 타겟팅된 카운터:
+
+  **주목할 만한 전문가:**
+
+  - **#50 Charizard**(레이팅: 515) - Blast Burn 클로저
+  - **#43 Zoroark-H**(레이팅: 551) - Ghost/Normal, 812 vs Froslass
+  - **#46 Kommo-o**(레이팅: 538) - 825 vs Turtonator
+  - **#49 Haunter**(레이팅: 518) - 빠른 Ghost, 727 vs Bronzong
+
+  **추가 A 티어 옵션(38-66):** 38. Golurk, 39. Toucannon, 40. Fletchinder, 41. Togetic, 42. Hypno, 44. Gligar, 45. Girafarig, 47. Shelgon, 48. Baxcalibur, 51. Drifblim, 52. Vanillish, 53. Raichu-A, 54. Skarmory, 55. Hakamo-o, 56. Emolga(852 vs Fearow), 57. Dartrix, 58. Cryogonal, 59. Corvisquire, 60. Armarouge, 61. Salamence, 62. Slowking-G, 63. Medicham, 64. Starmie, 65. Frigibax, 66. Gliscor
+
+  ---
+
+  ### B+ 티어 - 28개 틈새 픽
+
+  특정 응답으로 또는 팀 지원과 함께 토너먼트 실행 가능:
+
+  **주목할 만한 B+ 옵션:**
+
+  - **#68 Rapidash-G**(레이팅: 479) - 915 vs Charizard, Body Slam 스팸
+  - **#71 Annihilape**(레이팅: 477) - Rage Fist, Counter 압박
+  - **#75 Gengar**(레이팅: 484) - 빠른 Ghost, 765 vs Bronzong
+  - **#77 Trevenant**(레이팅: 472) - 805 vs Bronzong, Foul Play
+
+  **전체 B+ 로스터(67-94):** 67. Jumpluff, 69. Frillish, 70. Mamoswine, 72. Ledian, 73. Chimecho, 74. Chatot, 76. Pidgeot, 78. Abomasnow, 79. Gholdengo, 80. Bruxish, 81. Noctowl, 82. Pelipper, 83. Scyther, 84. Cloyster, 85. Decidueye, 86. Fraxure, 87. Wyrdeer, 88. Delphox, 89. Farfetch'd, 90. Haxorus, 91. Slowpoke, 92. Palossand, 93. Drifloon, 94. Mantyke
+
+  ---
+
+  ## 안티메타 전략
+
+  ### 메타 위협 이해
+
+  상위 10 포켓몬은 명확한 타입 약점 패턴을 가지고 있습니다:
+
+  **타입 약점 분류:**
+
+  - **5마리 포켓몬이 Dark에 약함**(Oranguru, Bronzong, Claydol, Dusclops, Runerigus)
+  - **5마리 포켓몬이 Ghost에 약함**(위와 동일)
+  - **5마리 포켓몬이 Rock에 약함**(Glalie, Dewgong, Sealeo, Gyarados, Charizard)
+  - **4마리 포켓몬이 Grass에 약함**(Runerigus, Claydol, Gyarados, Ground/Water 타입)
+
+  ### 상위 안티메타 포켓몬
+
+  #### **Sealeo**(순위 #6)
+
+  - 상위 메타 10 중 5마리에 유리
+  - Body Slam 스팸 + Powder Snow 압박
+  - 타겟: Dusclops, Gyarados, Dewgong, Runerigus, Glalie
+
+  #### **Dusknoir**(순위 #11)
+
+  - 상위 메타 10 중 5마리에 유리
+  - Dynamic Punch 커버리지, Shadow Punch 스팸
+  - 타겟: Bronzong, Glalie, Dusclops, Runerigus, Dewgong
+
+  #### **Fearow**(순위 #16)
+
+  - 상위 메타 10 중 4마리에 유리
+  - Drill Run 커버리지, 높은 공격
+  - 타겟: Dusknoir, Turtonator, Dusclops, Gyarados
+
+  #### **Drampa**(순위 #26)
+
+  - 상위 메타 10 중 4마리에 유리
+  - Outrage + Fly 커버리지
+  - 타겟: Turtonator(804), Dusknoir, Runerigus, Oranguru
+
+  ### 타입 기반 카운터 전략
+
+  #### **Ghost/Psychic 코어 상대**(Oranguru, Dusclops, Bronzong)
+
+  - Dark: Gyarados(Dragon Breath + Crunch)
+  - Ghost: Runerigus, Dusknoir, Froslass
+  - Steel: Bronzong, Metang
+
+  #### **Ice 코어 상대**(Glalie, Dewgong, Sealeo)
+
+  - Fire: Turtonator, Skeledirge, Talonflame
+  - Steel: Bronzong(754 vs Glalie), Metang
+  - Fighting 커버리지: Dynamic Punch(Dusknoir)
+
+  #### **Fire/Dragon 상대**(Turtonator, Gyarados)
+
+  - Water: Dewgong, Sealeo, Walrein
+  - Ground: Runerigus, Claydol
+  - Dragon: Arctibax, Drampa(804 vs Turtonator)
+
+  ---
+
+  ## 추천 팀 구성
+
+  고급 알고리즘 분석을 사용하여 시뮬레이션된 19,600개 팀을 기반으로, 최고 성능 팀 구성은 다음과 같습니다:
+
+  ### 팀 성능 개요
+
+  상위 6팀 모두 달성:
+
+  - **레이팅:** 92-93/100
+  - **메타 커버리지:** 100%
+  - **승률 범위:** 44-59%
+
+  **최고 성능:** 팀 #1(Oranguru/Dusknoir/Altaria) - 93/100 레이팅, 59% 승률
+
+  ### 팀 #1: 균형 잡힌 메타 코어 ⭐ 전체 최고
+
+  **레이팅: 93/100 | 승률: 59.0% | 메타 커버리지: 100%**
+
+  - **Lead:** Oranguru(Confusion / Brutal Swing / Trailblaze)
+  - **Switch:** Dusknoir(Astonish / Dynamic Punch / Shadow Punch)
+  - **Closer:** Altaria(Dragon Breath / Sky Attack / Flamethrower)
+
+  **전략:**
+
+  - Oranguru가 Confusion으로 즉각적인 압박 적용
+  - Dusknoir가 Ghost/Fighting 커버리지 제공
+  - Altaria가 Dragons 처리 및 Flying 커버리지 제공
+  - **위협:** Kommo-o 주의
+  - **작동 이유:** 내구도, 커버리지, 유연성의 완벽한 균형
+
+  ### 팀 #2: Ice/Fire/Ghost 삼위일체
+
+  **레이팅: 93/100 | 승률: 44.4% | 메타 커버리지: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Glalie(Rollout / Avalanche / Shadow Ball)
+  - **Closer:** Dusclops(Hex / Shadow Punch / Ice Punch)
+
+  **전략:**
+
+  - Turtonator가 Incinerate로 Steel/Ice 처리
+  - Glalie가 Ice 압박 및 Ghosts용 Shadow Ball 제공
+  - Dusclops가 물리 공격수 방벽
+  - **주요 위협:** 상대 Turtonator, Claydol
+  - **작동 이유:** 강력한 코어 매치업, Dusclops 방어 백본
+
+  ### 팀 #3: Flying 지원 코어
+
+  **레이팅: 93/100 | 승률: 50.1% | 메타 커버리지: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dusclops(Hex / Shadow Punch / Ice Punch)
+  - **Closer:** Togekiss(Peck / Aura Sphere / Ancient Power)
+
+  **전략:**
+
+  - Turtonator가 초기 위협 처리
+  - Dusclops가 방어적 피봇 제공
+  - Togekiss가 Aura Sphere로 Fairy/Fighting 커버리지 제공
+  - **주요 위협:** Froslass, Rufflet
+  - **작동 이유:** Togekiss의 Aura Sphere가 Ghost를 위협하는 Dark 타입 처리
+
+  ### 팀 #4: Flying 공격
+
+  **레이팅: 93/100 | 승률: 47.8% | 메타 커버리지: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dusclops(Hex / Shadow Punch / Ice Punch)
+  - **Closer:** Trumbeak(Peck / Drill Peck / Rock Blast)
+
+  **전략:**
+
+  - Turtonator가 강력하게 시작
+  - Dusclops가 피봇
+  - Trumbeak이 Rock Blast로 Rock 커버리지 제공
+  - **주요 위협:** Claydol, Sealeo, Turtonator 미러
+  - **작동 이유:** Rock Blast 서프라이즈 요소, 강력한 Flying 압박
+
+  ### 팀 #5: 내구형 Water 코어
+
+  **레이팅: 92/100 | 승률: 48.0% | 메타 커버리지: 100%**
+
+  - **Lead:** Dusclops(Hex / Shadow Punch / Ice Punch)
+  - **Switch:** Bronzong(Metal Sound / Psyshock / Payback)
+  - **Closer:** Altaria(Dragon Breath / Sky Attack / Flamethrower)
+
+  **전략:**
+
+  - Dusclops가 물리 공격수 방벽
+  - Bronzong이 Metal Sound로 디버프
+  - Altaria가 Dragon/Flying 클린업 제공
+  - **주요 위협:** Dusclops 미러, Sealeo, Glalie
+  - **작동 이유:** 극단적 내구도, 디버프 스택, Altaria 다용도성
+
+  ### 팀 #6: Water/Fire 압박
+
+  **레이팅: 92/100 | 승률: 47.3% | 메타 커버리지: 100%**
+
+  - **Lead:** Turtonator(Incinerate / Brutal Swing / Dragon Claw)
+  - **Switch:** Dewgong(Ice Shard / Icy Wind / Drill Run)
+  - **Closer:** Gyarados(Dragon Breath / Aqua Tail / Crunch)
+
+  **전략:**
+
+  - Turtonator가 초기에 Steel/Ice 처리
+  - Dewgong이 Icy Wind로 디버프
+  - Gyarados가 Dragon Breath 압박 적용
+  - **주요 위협:** Glalie, Rufflet, Grumpig
+  - **작동 이유:** 높은 공격적 압박, Icy Wind 지원
+
+  ---
+
+  ## 타입 커버리지 분석
+
+  ### 필수 커버리지 타입
+
+  **팀은 다음에 대한 답변 필요:**
+
+  1. **Ghost 커버리지**(5+ 위협)
+
+     - 가져오기: Dark 기술(Crunch, Brutal Swing, Payback)
+     - 또는: Ghost 기술(Shadow Ball, Shadow Claw, Hex)
+
+  2. **Steel 커버리지**(Bronzong, Metang)
+
+     - 가져오기: Fire 기술(Incinerate, Flamethrower)
+     - 또는: Fighting 기술(Dynamic Punch, Aura Sphere)
+     - 또는: Ground 기술(Earthquake, Drill Run)
+
+  3. **Ice 커버리지**(Glalie, Dewgong, Sealeo)
+
+     - 가져오기: Fire 기술(Incinerate, Flamethrower)
+     - 또는: Steel 타입(Bronzong 저항)
+     - 또는: Fighting 기술
+
+  4. **Dragon 커버리지**(Gyarados, Turtonator, Altaria)
+     - 가져오기: Dragon 기술(Dragon Breath, Dragon Claw)
+     - 또는: Ice 기술(Avalanche, Ice Punch, Icy Wind)
+     - 또는: Fairy 기술(Moonblast, Dazzling Gleam)
+
+  ---
+
+  ## 배틀 전략
+
+  ### 오프닝 전략
+
+  #### **안전한 리드:**
+
+  1. **Oranguru** - 거의 리드 매치업에서 심하게 지지 않음
+  2. **Turtonator** - 실드 강제, 좋은 중립 매치업
+  3. **Dusclops** - 물리 공격수 방벽, 에너지 축적
+
+  #### **공격적 리드:**
+
+  1. **Gyarados** - Dragon Breath 압박이 엄청남
+  2. **Glalie** - Rollout + Shadow Ball이 많은 이를 기습
+  3. **Fearow** - 빠른 기술이 신속하게 실드 강제
+
+  #### **위험하지만 보상있음:**
+
+  1. **Bronzong** - Glalie/Ice 상대 754+ 레이팅 달성하지만 Turtonator 상대 92 레이팅만
+  2. **Claydol** - Ice 상대 강함(673 vs Glalie)하지만 Water에 약함(152 vs Gyarados)
+
+  ---
+
+  ## 하드 카운터 픽
+
+  이 포켓몬들은 특정 메타 위협에 대해 **파괴적인 매치업**을 제공합니다. 특정 약점을 커버하기 위해 6마리 팀에서 전략적으로 사용하세요.
+
+  ### 핵 옵션(레이팅 ≥800)
+
+  **매우 유리한 매치업** - 이 매치업들은 800 이상의 레이팅 달성:
+
+  | 카운터 포켓몬  | 순위 | 상대      | 레이팅 | 작동 이유               |
+  | -------------- | ---- | --------- | ------ | ----------------------- |
+  | **Rapidash-G** | #68  | Charizard | 915    | Fairy 타이핑, Body Slam 압박 |
+  | **Turtonator** | #2   | Bronzong  | 907    | Fire 타이핑 vs Steel    |
+  | **Dodrio**     | #28  | Froslass  | 900    | Brave Bird 스팸, Flying 저항 |
+  | **Rufflet**    | #18  | Dusknoir  | 875    | Rock Tomb 커버리지      |
+  | **Emolga**     | #56  | Fearow    | 852    | Electric vs Flying      |
+  | **Trumbeak**   | #34  | Dusknoir  | 847    | Rock Blast + Flying 기술 |
+  | **Fearow**     | #16  | Dusknoir  | 834    | Flying + Drill Run 압박 |
+  | **Kommo-o**    | #46  | Turtonator | 825   | Fighting 저항, Dragon 기술 |
+  | **Zoroark-H**  | #43  | Froslass  | 812    | Ghost/Normal 저항 콤보  |
+  | **Drampa**     | #26  | Turtonator | 804   | Dragon/Normal 독특한 내구도 |
+  | **Cetoddle**   | #27  | Charizard | 800    | Ice 압박, 내구도        |
+  | **Bronzong**   | #8   | Glalie    | 754    | Steel이 모든 Ice 기술에 저항 |
+  | **Charizard**  | #50  | Metang    | 666+   | Fire vs Steel/Psychic   |
+
+  ### 전략적 카운터메타 픽
+
+  **특정 팀 원형에 답하기 위해 사용:**
+
+  #### **Ghost/Psychic 스택 상대**
+
+  - **Vespiquen** → Oranguru(700), Drampa(757) | Bug 타입 이점
+  - **Cofagrigus** → Bronzong(660), Metang(683) | Dark Pulse 스팸
+  - **Trevenant** → Bronzong(805), Marowak-A(729) | Foul Play 커버리지
+
+  #### **Ice 코어 팀 상대**
+
+  - **Armarouge** → Glalie(756 레이팅), Fearow(739 레이팅) | Fire/Psychic 압박
+  - **Skeledirge** → Glalie(794 레이팅), Bronzong(687 레이팅) | Fire/Ghost 독특
+  - **Turtonator** → Glalie(548 레이팅), Bronzong(907 레이팅) | Fire/Dragon 커버리지
+
+  #### **Dragon 중심 팀 상대**
+
+  - **Togetic** → Charizard(910 레이팅), Gyarados(743 레이팅) | Fairy 타이핑
+  - **Togekiss** → Gyarados(704 레이팅), Drampa(704 레이팅) | Fairy + Aura Sphere
+  - **Medicham** → Drampa(773 레이팅), Glalie(705 레이팅) | Fighting + Ice Punch
+
+  #### **Flying 중심 팀 상대**
+
+  - **Raichu-A** → Gyarados(833 레이팅), Dewgong(743 레이팅) | Electric 이점
+  - **Emolga** → Gyarados(768 레이팅), Charizard(768 레이팅) | 빠른 Electric 스팸
+
+  ---
+
+  ## 결론
+
+  LAIC 2025 메타는 내구형 Ghost/Psychic/Ice 코어에 집중되며, **Oranguru, Turtonator, Runerigus**가 레이팅을 선도합니다.
+
+  ## 부록: 분석 방법론
+
+  **데이터 출처:** LAIC 2025-1500 메타의 214마리 순위 포켓몬
+  **팀 시뮬레이션:** Battle Flow 레이팅 엔진을 사용하여 19,600개 팀 분석
+  **상위 수행자:** 상위 50 순위 포켓몬에서 20개 최고 레이팅 팀 식별
+  **평가 시스템:** 6구성 요소 점수(Lead, Switch, Closer, Consistency, Coverage, Bulk)
+  **매치업 데이터:** 실드 베이팅이 있는 일대일 배틀 시뮬레이션
+  **형식:** 가져오기 6, 보여주기 3 토너먼트 구조
+
+  _이 가이드는 2025 라틴 아메리카 인터내셔널 챔피언십을 위한 토너먼트 실행 가능한 포켓몬과 최적 팀 구성의 종합 분석을 나타냅니다._
