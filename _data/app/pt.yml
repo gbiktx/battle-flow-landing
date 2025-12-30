@@ -1,49 +1,52 @@
 name: BattleFlow App
-description: "Domine as batalhas PvP de Pokémon GO com o gerador inteligente de equipes do BattleFlow. Construa equipes vencedoras para Liga Super, Liga Ultra e Liga Master com análise meta avançada, simulações de batalha e composições estratégicas otimizadas para a GO Battle League (GBL)."
+description: "Crie equipes Pokémon GO vencedoras em segundos. O gerador inteligente do BattleFlow usa SEUS Pokémon para criar formações otimizadas para Liga Super, Liga Ultra e Liga Master. Pare de adivinhar—obtenha sugestões instantâneas com análise de cobertura, pontuações de sinergia e recomendações de membros para GO Battle League."
 full_description: |
-  <h2>O Melhor Gerador de Equipes PvP para Pokémon GO</h2>
+  <h2>Crie Equipes GBL Vencedoras com Seus Pokémon—Em Segundos</h2>
 
   <p>
-    BattleFlow revoluciona o jogo competitivo de Pokémon GO com poderosas ferramentas de
-    construção de equipes projetadas para treinadores que querem dominar a GO Battle League.
-    Nosso gerador avançado analisa milhares de combinações de Pokémon para criar formações
-    ótimas baseadas no meta atual, cobertura de tipos e estratégias de batalha.
+    Cansado de perder partidas na GO Battle League com equipes que não funcionam juntas?
+    BattleFlow analisa sua coleção real de Pokémon e gera instantaneamente equipes
+    competitivas otimizadas para qualquer liga ou copa. Sem mais horas de pesquisa—apenas
+    adicione seus Pokémon e obtenha sugestões de equipes prontas para usar com os melhores
+    leads, safe switches e closers.
   </p>
 
-  <h3>Recursos Poderosos</h3>
+  <h3>Seus Pokémon. Equipes Vencedoras. Zero Adivinhação.</h3>
   <ul>
-    <li><strong>Gerador de Equipes Avançado:</strong> Gere automaticamente equipes competitivas
-    para qualquer copa ou liga com algoritmos sofisticados</li>
+    <li><strong>Sugestões de Equipes Instantâneas:</strong> Importe sua caixa de Pokémon e obtenha
+    recomendações de equipes otimizadas em segundos—construídas com o que você realmente tem,
+    não com o que você gostaria de ter</li>
 
-    <li><strong>Simulador de Batalhas em Tempo Real:</strong> Teste suas equipes contra o meta com
-    linhas do tempo detalhadas, gerenciamento de escudos e rastreamento de energia</li>
+    <li><strong>Pontuação Inteligente de Equipes:</strong> Cada equipe sugerida inclui análise
+    de cobertura, avaliações de sinergia e análise de fraquezas para você entender exatamente
+    por que funciona</li>
 
-    <li><strong>Ferramentas de Análise Meta:</strong> Fique à frente da competição com rankings ao vivo,
-    avaliações de ameaças e análises de arquétipos</li>
+    <li><strong>Recomendações de Membros:</strong> Não sabe quem combina bem com seu Pokémon
+    favorito? Obtenha sugestões inteligentes de companheiros de equipe que cobrem fraquezas
+    e criam cores vencedores</li>
 
-    <li><strong>Calculadora de IVs e Otimizador:</strong> Encontre IVs perfeitos para PvP e calcule
-    produtos de stats exatos para qualquer Pokémon</li>
-
-    <li><strong>Sistema de Avaliação de Equipes:</strong> Avalie suas equipes com pontuação abrangente
-    baseada em qualidade de cobertura e profundidade estratégica</li>
-
-    <li><strong>Gerenciamento de Caixa Pokémon:</strong> Organize seu roster e gere equipes
-    da sua coleção real de Pokémon</li>
+    <li><strong>Funciona para Todas as Ligas:</strong> Liga Super, Liga Ultra, Liga Master,
+    Little Cup, copas especiais—gere equipes otimizadas para o que a GBL apresentar</li>
   </ul>
 
-  <h3>Construído para Treinadores Competitivos</h3>
-  <p>
-    Seja você escalando em batalhas ranqueadas, se preparando para torneios, ou experimentando
-    com escolhas ousadas, BattleFlow fornece ferramentas de nível profissional usadas pelos
-    melhores jogadores PvP.
-  </p>
-
-  <h3>Benefícios Principais</h3>
+  <h3>Mais que Apenas Construção de Equipes</h3>
   <ul>
-    <li>Economize horas construindo equipes com sugestões otimizadas instantâneas</li>
-    <li>Descubra sinergias ocultas e estratégias de contra-ataque</li>
-    <li>Teste composições ilimitadas com simulações detalhadas</li>
-    <li>Rastreie o desempenho da equipe e refine estratégias</li>
-    <li>Acesse rankings atualizados integrados com dados do PvPoke</li>
-    <li>Suporte multilíngue para treinadores globais</li>
+    <li><strong>Simulador de Batalhas:</strong> Teste suas equipes antes de batalhar com
+    simulações detalhadas mostrando cenários de escudos, gerenciamento de energia e resultados</li>
+
+    <li><strong>Rankings Meta ao Vivo:</strong> Veja quais Pokémon dominam a temporada atual
+    e construa equipes que contrariam o meta</li>
+
+    <li><strong>Verificador de IVs e Calculadora de Stats:</strong> Encontre os melhores IVs PvP
+    para seus Pokémon e calcule produtos de stats exatos para qualquer limite de CP</li>
+  </ul>
+
+  <h3>Por Que Treinadores Escolhem BattleFlow</h3>
+  <ul>
+    <li>Obtenha sugestões de equipes em segundos em vez de passar horas pesquisando</li>
+    <li>Construa equipes da SUA coleção—sem listas de "equipes ideais" irreais</li>
+    <li>Entenda a sinergia da equipe com pontuações claras e gráficos de cobertura</li>
+    <li>Encontre o terceiro membro perfeito quando você tem um core de dois</li>
+    <li>Teste equipes contra o meta antes de arriscar seu rating</li>
+    <li>Mantenha-se atualizado com dados de ranking integrados do PvPoke</li>
   </ul>
