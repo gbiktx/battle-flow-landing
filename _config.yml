@@ -4,23 +4,22 @@
 # You may also want to update /config/webpack.pwa.js in case you want to generate a Progressive Web App
 
 title: BattleFlow App
-email: gbiktx@pm.me
+email: hello@baru.software
 description: A companion app for the Go Battle League
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://battleflow.app" # the base hostname & protocol for your site, e.g. http://example.com
 theme_color: '#efeeff'
 twitter_username: gabiektx
 github_username: gbiktx
-author: Gabriel Aguirre
+author: Baru Software Co
 logo: assets/images/large-logo.png
 twitter:
   username: gabiektx
 social:
-  name: Gabriel Aguirre
+  name: Baru Software Co
   links:
-    - https://twitter.com/gabiektx
-    - https://www.linkedin.com/in/gabriel-aguirre-a88284104
-    - https://github.com/gbiktx
+    - https://baru.software/
+    - mailto:hello@baru.software
 
 languages: ["en", "es", "fr", "de", "it", "pt", "zh-Hans", "zh-Hant", "ja", "ko"]
 default_lang: "en"

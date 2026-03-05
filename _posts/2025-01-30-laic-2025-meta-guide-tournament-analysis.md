@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2025-01-30
-author: Gabriel Aguirre
+author: Baru Software Co
 categories: [Tournament Guide, Meta Analysis]
 tags:
   [

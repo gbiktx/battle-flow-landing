@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2025-01-29
-author: Gabriel Aguirre
+author: Baru Software Co
 categories: [Advanced Strategy, Energy Management]
 tags:
   [

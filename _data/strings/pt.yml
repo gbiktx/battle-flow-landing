@@ -3,16 +3,16 @@ app:
   description: Descrição
 
 footer:
-  copyright: Feito com ❤️ na América Latina por <a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel!</a>
+  copyright: Feito com ❤️ na América Latina por <a href="https://baru.software/" target="_blank">Baru Software Co</a>
   links:
     - title: Início
       url: /pt
     - title: Blog
       url: /pt/blog
     - title: Privacidade
-      url: /privacy
+      url: /pt/privacy
     - title: Termos e Condições
-      url: /tac
+      url: /pt/tac
     - title: Modelo
       url: https://github.com/sandoche/Mobile-app-landingpage-template
       target: _blank

@@ -3,16 +3,16 @@ app:
   description: 説明
 
 footer:
-  copyright: ラテンアメリカで<a href="https://www.linkedin.com/in/gabriel-aguirre-a88284104" target="_blank">Gabriel</a>が❤️を込めて作成！
+  copyright: ラテンアメリカで<a href="https://baru.software/" target="_blank">Baru Software Co</a>が❤️を込めて作成！
   links:
     - title: ホーム
       url: /ja
     - title: ブログ
       url: /ja/blog
     - title: プライバシー
-      url: /privacy
+      url: /ja/privacy
     - title: 利用規約
-      url: /tac
+      url: /ja/tac
     - title: テンプレート
       url: https://github.com/sandoche/Mobile-app-landingpage-template
       target: _blank

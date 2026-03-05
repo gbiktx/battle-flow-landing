@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2025-02-10
-author: Gabriel Aguirre
+author: Baru Software Co
 categories: [Features, Strategy]
 tags:
   [
