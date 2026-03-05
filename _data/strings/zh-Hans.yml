@@ -4,6 +4,7 @@ app:
 
 footer:
   copyright: 由<a href="https://baru.software/" target="_blank">Baru Software Co</a>在拉丁美洲用❤️制作！
+  disclaimer: BattleFlow 是一款独立的伴侣应用，与 Niantic、Nintendo、GAME FREAK 或 The Pokemon Company 无关联，也未获得其认可、赞助或特别批准。Pokemon 及 Pokemon 角色名称是 Nintendo/The Pokemon Company 的商标。
   links:
     - title: 首页
       url: /zh-hans

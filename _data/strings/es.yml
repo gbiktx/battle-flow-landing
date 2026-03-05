@@ -10,6 +10,7 @@ blog:
 
 footer:
   copyright: Hecho con ❤️ en América Latina por <a href="https://baru.software/" target="_blank">Baru Software Co</a>
+  disclaimer: BattleFlow es una app complementaria independiente y no esta afiliada, respaldada, patrocinada ni aprobada especificamente por Niantic, Nintendo, GAME FREAK o The Pokemon Company. Pokemon y los nombres de personajes de Pokemon son marcas registradas de Nintendo/The Pokemon Company.
   links:
     - title: Inicio
       url: /es

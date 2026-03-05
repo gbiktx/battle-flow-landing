@@ -4,6 +4,7 @@ app:
 
 footer:
   copyright: ラテンアメリカで<a href="https://baru.software/" target="_blank">Baru Software Co</a>が❤️を込めて作成！
+  disclaimer: BattleFlowは独立したコンパニオンアプリであり、Niantic、Nintendo、GAME FREAK、The Pokemon Companyと提携、承認、スポンサー関係、または特別な許可関係はありません。PokemonおよびPokemonのキャラクター名はNintendo/The Pokemon Companyの商標です。
   links:
     - title: ホーム
       url: /ja
