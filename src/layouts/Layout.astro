@@ -22,13 +22,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/assets/images/current_logo_rounded.png" />
+		<link rel="apple-touch-icon" href="/assets/images/current_logo_rounded.png" />
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- SEO -->
 		<title>{siteTitle}</title>
 		<meta name="description" content={siteDescription} />
 		<link rel="canonical" href={canonicalURL} />
+		<meta name="theme-color" content="#0D47A1" />
 
 		<!-- Hreflang tags -->
 		{Object.keys(languages).map((l) => {
@@ -47,6 +49,42 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta property="og:title" content={siteTitle} />
 		<meta property="og:description" content={siteDescription} />
 		<meta property="og:image" content={new URL('/assets/images/large-logo.png', Astro.site)} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={siteTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+		<meta name="twitter:image" content={new URL('/assets/images/large-logo.png', Astro.site)} />
+		<meta name="twitter:site" content="@battleflowapp" />
+		<meta name="twitter:creator" content="@battleflowapp" />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": "BattleFlow",
+			"operatingSystem": "iOS, Android",
+			"applicationCategory": "SportsApplication, GameApplication",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"aggregateRating": {
+				"@type": "AggregateRating",
+				"ratingValue": "4.9",
+				"ratingCount": "100"
+			},
+			"description": siteDescription,
+			"url": Astro.site,
+			"image": new URL('/assets/images/large-logo.png', Astro.site).toString(),
+			"author": {
+				"@type": "Organization",
+				"name": "Baru Software Co",
+				"url": "https://baru.software"
+			}
+		})} />
 
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">

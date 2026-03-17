@@ -31,11 +31,11 @@ const t = useTranslations(lang);
 
         <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start animate-slide-up delay-300">
           <a href="https://apps.apple.com/us/app/battleflow/id6738843812" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-brand-dark font-bold hover:scale-105 transition-transform flex items-center justify-center gap-3 card-shadow">
-            <img src="/assets/images/ios.svg" alt="" class="h-8 w-auto invert" />
+            <img src="/assets/images/ios.svg" alt="App Store" class="h-8 w-auto invert" />
             {t('hero.cta_ios')}
           </a>
           <a href="https://play.google.com/store/apps/details?id=com.baru.software.oak" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-blue/10 border border-brand-blue/30 text-white font-bold hover:bg-brand-blue/20 transition-colors flex items-center justify-center gap-3">
-            <img src="/assets/images/google-play-badge.png" alt="" class="h-8 w-auto object-contain" />
+            <img src="/assets/images/google-play-badge.png" alt="Google Play Store" class="h-8 w-auto object-contain" />
             {t('hero.cta_android')}
           </a>
         </div>
@@ -50,7 +50,7 @@ const t = useTranslations(lang);
           <!-- App Icon with iOS mask -->
           <div class="relative w-full h-full bg-brand-dark p-1 rounded-[22.5%] overflow-hidden card-shadow">
             <img 
-              src="/assets/images/appicon.png" 
+              src="/assets/images/current_logo_rounded.png" 
               alt="BattleFlow Icon" 
               class="w-full h-full object-cover rounded-[22%] scale-[1.02]"
               style="mask-image: url('/assets/images/ios-mask.svg'); mask-size: contain; mask-repeat: no-repeat;"
