@@ -3,10 +3,10 @@ import { languages } from '../../i18n/ui';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Hero from '../../components/Hero.astro';
+import Intro from '../../components/Intro.astro';
+import MainFeatures from '../../components/MainFeatures.astro';
 import Stats from '../../components/Stats.astro';
 import Features from '../../components/Features.astro';
-import Showcase from '../../components/Showcase.astro';
-import Description from '../../components/Description.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
 
@@ -15,18 +15,15 @@ export function getStaticPaths() {
     .filter(lang => lang !== 'en')
     .map((lang) => ({ params: { lang } }));
 }
-
-const { lang } = Astro.params;
 ---
 
 <Layout>
 	<Nav />
 	<main>
 		<Hero />
-		<Stats />
+		<Intro />
+		<MainFeatures />
 		<Features />
-		<Showcase />
-		<Description />
 		<CTA />
 	</main>
 	<Footer />

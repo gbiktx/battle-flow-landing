@@ -11,14 +11,14 @@ export const appData: Record<string, { full_description: string }> = {
   </ul>`
   },
   es: {
-    full_description: `<h2>Crea Equipos GBL Ganadores con Tus Pokémon—En Segundos</h2>
-  <p>¿Cansado de perder partidas de GO Battle League con equipos que no funcionan juntos? BattleFlow analiza tu colección real de Pokémon y genera instantáneamente equipos competitivos optimizados para cualquier liga o copa. Sin más horas de investigación—solo agrega tus Pokémon y obtén sugerencias de equipos listas para usar con los mejores leads, safe switches y closers.</p>
-  <h3>Tus Pokémon. Equipos Ganadores. Cero Adivinanzas.</h3>
+    full_description: `<h2>Crea equipos de GBL ganadores con tus Pokémon en segundos</h2>
+  <p>¿Cansado de perder combates en la GO Battle League con equipos sin sinergia? BattleFlow analiza tu colección real de Pokémon y genera instantáneamente equipos competitivos optimizados para cualquier liga o copa. Ahorra horas de investigación: solo tienes que añadir tus Pokémon para obtener sugerencias de equipos listas para usar con los mejores leads, safe switches y closers.</p>
+  <h3>Tus Pokémon. Equipos ganadores. Sin adivinanzas.</h3>
   <ul>
-    <li><strong>Sugerencias de Equipos Instantáneas:</strong> Importa tu caja de Pokémon y obtén recomendaciones de equipos optimizados en segundos—construidos con lo que realmente tienes, no con lo que desearías tener</li>
-    <li><strong>Puntuación Inteligente de Equipos:</strong> Cada equipo sugerido incluye análisis de cobertura, calificaciones de sinergia y desglose de debilidades para que sepas exactamente por qué funciona</li>
-    <li><strong>Recomendaciones de Miembros:</strong> ¿No sabes quién combina bien con tu Pokémon favorito? Obtén sugerencias inteligentes de compañeros que cubren debilidades y crean cores ganadores</li>
-    <li><strong>Funciona para Todas las Ligas:</strong> Liga Súper, Liga Ultra, Liga Maestra, Little Cup, copas especiales—genera equipos optimizados para lo que GBL te presente</li>
+    <li><strong>Sugerencias de equipos instantáneas:</strong> Importa tu caja de Pokémon y obtén recomendaciones optimizadas en segundos, basadas en los Pokémon que ya tienes.</li>
+    <li><strong>Puntuación inteligente de equipos:</strong> Cada equipo sugerido incluye un análisis de cobertura, calificaciones de sinergia y desgloses de debilidades para que comprendas por qué funciona.</li>
+    <li><strong>Recomendaciones de compañeros:</strong> ¿No sabes quién combina bien con tu Pokémon favorito? Obtén sugerencias inteligentes de compañeros que cubren debilidades y crean núcleos ganadores.</li>
+    <li><strong>Compatible con todas las ligas:</strong> Liga Súper, Liga Ultra, Liga Master, Copa Chica o copas especiales; genera equipos optimizados para cualquier formato de la GBL.</li>
   </ul>`
   }
 };
@@ -95,374 +95,571 @@ If you have questions about privacy, contact Baru Software Co:
 
 *   Website: [https://baru.software/](https://baru.software/)
 *   Email: [hello@baru.software](mailto:hello@baru.software)`,
-  es: `Esta Politica de Privacidad se aplica a la app movil BattleFlow (la "Aplicacion"), ofrecida por Baru Software Co ("nosotros").
+  es: `Esta Política de Privacidad se aplica a la aplicación móvil BattleFlow (la "Aplicación"), proporcionada por Baru Software Co ("nosotros", "nuestro" o "nos").
 
-**Recopilacion y Uso de la Informacion**
+**Recopilación y uso de la información**
 
-Recopilamos datos limitados para operar y mejorar la Aplicacion. Esto puede incluir:
+Recopilamos información limitada para operar y mejorar la Aplicación. Dependiendo de su uso, esto puede incluir:
 
-*   Analitica de uso (pantallas vistas, interacciones y eventos)
-*   Datos de fallos y diagnostico
-*   Estado y eventos de compras/suscripciones para funciones premium
-*   Datos creados en la app, como equipos, registros de batalla y preferencias
+*   Analítica de uso de la aplicación (por ejemplo, pantallas vistas, interacciones con funciones y eventos de la aplicación).
+*   Datos de fallos y diagnósticos (para el control de la estabilidad).
+*   Estado y eventos de compras o suscripciones necesarios para proporcionar funciones premium.
+*   Contenido creado en la aplicación, como equipos, registros de batalla y preferencias.
 
-La mayor parte de estos datos se guarda localmente en tu dispositivo.
+La mayor parte de los datos de la aplicación (como equipos, registros de batalla y preferencias) se almacena localmente en su dispositivo.
 
-No recopilamos de forma intencional datos precisos de GPS.
+No recopilamos intencionadamente datos precisos de ubicación GPS a través de la Aplicación.
 
-**Servicios de Terceros**
+**Servicios de terceros**
+
+La Aplicación utiliza servicios de terceros que pueden procesar datos de acuerdo con sus propias políticas de privacidad:
 
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**Como Usamos la Informacion**
+**Cómo utilizamos la información**
 
-*   Proveer funciones de la app
-*   Mejorar rendimiento y estabilidad
-*   Procesar y restaurar suscripciones
-*   Comunicar actualizaciones importantes
+Utilizamos la información para:
 
-**Acceso de Terceros y Conservacion**
+*   Proporcionar las funciones de la aplicación y mantener la calidad del servicio.
+*   Supervisar el rendimiento, corregir errores y mejorar la experiencia del usuario.
+*   Procesar y restaurar compras o suscripciones integradas en la aplicación.
+*   Comunicar actualizaciones importantes cuando sea necesario.
 
-No vendemos informacion personal. Compartimos datos limitados con proveedores necesarios para operar la app y cuando la ley lo exige.
+**Acceso de terceros**
 
-Conservamos la informacion solo el tiempo necesario para los fines descritos.
+No vendemos información personal. Podemos compartir datos limitados con proveedores de servicios que nos ayudan a ejecutar la Aplicación (por ejemplo, análisis, control de fallos y suscripciones) y cuando la ley lo exija.
 
-**Menores de Edad**
+**Retención de datos**
 
-La Aplicacion no esta dirigida a menores de 13 anos y no recopilamos conscientemente informacion personal de menores de 13.
+Conservamos los datos únicamente durante el tiempo necesario para los fines aquí descritos, a menos que la ley exija un periodo de retención más largo.
+
+Si desea que eliminemos los datos asociados a sus solicitudes de asistencia u otra información facilitada directamente, póngase en contacto con nosotros en [hello@baru.software](mailto:hello@baru.software).
+
+**Privacidad de los menores**
+
+La Aplicación no está dirigida a niños menores de 13 años, y no recopilamos conscientemente información personal de niños menores de 13 años.
+
+**Derechos de exclusión voluntaria**
+
+Puede detener fácilmente toda la recopilación de información por parte de la Aplicación desinstalándola. Puede utilizar los procesos de desinstalación estándar disponibles en su dispositivo móvil o a través del mercado o la red de aplicaciones móviles.
+
+**Seguridad**
+
+Utilizamos medidas de seguridad administrativas, técnicas y organizativas razonables para proteger la información procesada por la Aplicación.
 
 **Cambios**
 
-Podemos actualizar esta Politica de Privacidad y los cambios entran en vigor al publicarse en esta pagina.
+Podemos actualizar esta Política de Privacidad periódicamente. Los cambios entrarán en vigor cuando se publiquen en esta página.
 
-Esta politica de privacidad es efectiva desde 2026-03-04.
+Esta política de privacidad es efectiva a partir del 2026-03-04.
+
+**Su consentimiento**
+
+Al utilizar la Aplicación, usted acepta esta Política de Privacidad.
 
 **Contacto**
 
+Si tiene alguna pregunta sobre la privacidad, póngase en contacto con Baru Software Co:
+
 *   Sitio web: [https://baru.software/](https://baru.software/)
-*   Email: [hello@baru.software](mailto:hello@baru.software)`,
-  fr: `Cette Politique de Confidentialite s'applique a l'application mobile BattleFlow (l'"Application"), fournie par Baru Software Co ("nous").
+*   Correo electrónico: [hello@baru.software](mailto:hello@baru.software)`,
+  fr: `Cette Politique de Confidentialité s'applique à l'application mobile BattleFlow (l'"Application"), fournie par Baru Software Co ("nous", "notre" ou "nos").
 
-**Collecte et Utilisation des Donnees**
+**Collecte et utilisation des données**
 
-Nous collectons des donnees limitees pour exploiter et ameliorer l'Application, notamment:
+Nous collectons des informations limitées pour exploiter et améliorer l'Application. Selon votre utilisation, celles-ci peuvent inclure :
 
-*   Donnees d'usage (ecrans consultes, interactions, evenements)
-*   Donnees de crash et de diagnostic
-*   Statut et evenements d'achats/abonnements premium
-*   Donnees creees dans l'app (equipes, journaux de combat, preferences)
+*   Analyses d'utilisation (par exemple, écrans consultés, interactions et événements).
+*   Données de plantage et de diagnostic (pour le suivi de la stabilité).
+*   Statut et événements d'achats/abonnements nécessaires aux fonctionnalités premium.
+*   Contenu créé dans l'application (équipes, journaux de combat, préférences).
 
-La plupart de ces donnees sont stockees localement sur votre appareil.
+La plupart des données (équipes, journaux de combat, préférences) sont stockées localement sur votre appareil.
 
-Nous ne collectons pas volontairement de donnees GPS precises.
+Nous ne collectons pas volontairement de données GPS précises via l'Application.
 
-**Services Tiers**
+**Services tiers**
+
+L'Application utilise des services tiers qui peuvent traiter des données selon leurs propres politiques :
 
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**Utilisation des Donnees**
+**Utilisation des informations**
 
-*   Fournir les fonctionnalites de l'app
-*   Ameliorer les performances et la stabilite
-*   Traiter et restaurer les abonnements
-*   Communiquer les mises a jour importantes
+Nous utilisons les informations pour :
 
-**Partage et Conservation**
+*   Fournir les fonctionnalités et maintenir la qualité du service.
+*   Suivre les performances, corriger les bugs et améliorer l'expérience utilisateur.
+*   Traiter et restaurer les achats intégrés et les abonnements.
+*   Communiquer les mises à jour importantes si nécessaire.
 
-Nous ne vendons pas de donnees personnelles. Nous partageons des donnees limitees avec des prestataires necessaires et lorsque la loi l'exige.
+**Accès des tiers**
 
-Nous conservons les donnees uniquement pour la duree necessaire aux finalites decrites.
+Nous ne vendons pas d'informations personnelles. Nous partageons des données limitées avec des prestataires qui nous aident à exploiter l'Application (analyses, suivi des bugs, abonnements) ou lorsque la loi l'exige.
 
-**Enfants**
+**Conservation des données**
 
-L'Application n'est pas destinee aux enfants de moins de 13 ans, et nous ne collectons pas sciemment leurs donnees personnelles.
+Nous ne conservons les données que le temps nécessaire aux finalités décrites, sauf si la loi impose une période plus longue.
+
+Pour demander la suppression de données liées à vos demandes de support, contactez-nous à [hello@baru.software](mailto:hello@baru.software).
+
+**Vie privée des enfants**
+
+L'Application ne s'adresse pas aux enfants de moins de 13 ans et nous ne collectons pas sciemment d'informations personnelles les concernant.
+
+**Droit de retrait**
+
+Vous pouvez arrêter toute collecte en désinstallant l'Application via les processus standard de votre appareil ou du magasin d'applications.
+
+**Sécurité**
+
+Nous utilisons des mesures administratives, techniques et organisationnelles raisonnables pour protéger les données traitées.
 
 **Modifications**
 
-Nous pouvons mettre a jour cette Politique. Les changements prennent effet lors de leur publication.
+Nous pouvons mettre à jour cette Politique. Les changements prennent effet dès leur publication sur cette page.
 
-Cette politique de confidentialite est effective a compter du 2026-03-04.
+Cette politique de confidentialité est effective à compter du 2026-03-04.
+
+**Votre consentement**
+
+En utilisant l'Application, vous acceptez cette Politique de Confidentialité.
 
 **Contact**
 
-*   Site web: [https://baru.software/](https://baru.software/)
-*   Email: [hello@baru.software](mailto:hello@baru.software)`,
-  de: `Diese Datenschutzerklarung gilt fur die mobile App BattleFlow (die "Anwendung") von Baru Software Co ("wir").
+Pour toute question, contactez Baru Software Co :
 
-**Datenerhebung und Nutzung**
+*   Site web : [https://baru.software/](https://baru.software/)
+*   Email : [hello@baru.software](mailto:hello@baru.software)`,
+  de: `Diese Datenschutzerklärung gilt für die mobile App BattleFlow (die „Anwendung“), bereitgestellt von Baru Software Co („wir“, „unser“ oder „uns“).
 
-Wir erheben begrenzte Daten, um die Anwendung bereitzustellen und zu verbessern. Dazu konnen gehoren:
+**Datenerhebung und -nutzung**
 
-*   Nutzungsanalysen (aufgerufene Bildschirme, Interaktionen, Ereignisse)
-*   Absturz- und Diagnosedaten
-*   Kauf- und Abonnementstatus fur Premium-Funktionen
-*   Von dir erstellte Inhalte wie Teams, Kampfprotokolle und Einstellungen
+Wir erheben begrenzte Informationen, um die Anwendung bereitzustellen und zu verbessern. Je nach Nutzung können dies sein:
 
-Die meisten dieser Daten werden lokal auf deinem Geraet gespeichert.
+*   Nutzungsanalysen (z. B. aufgerufene Bildschirme, Interaktionen und Ereignisse).
+*   Absturz- und Diagnosedaten (zur Stabilitätsüberwachung).
+*   Kauf- und Abonnementstatus für Premium-Funktionen.
+*   In der App erstellte Inhalte wie Teams, Kampfprotokolle und Einstellungen.
 
-Wir erfassen nicht absichtlich prazise GPS-Standortdaten.
+Die meisten App-Daten (wie Teams, Kampfprotokolle und Einstellungen) werden lokal auf Ihrem Gerät gespeichert.
+
+Wir erfassen über die Anwendung nicht absichtlich präzise GPS-Standortdaten.
 
 **Dienste Dritter**
 
+Die Anwendung nutzt Dienste Dritter, die Daten gemäß ihren eigenen Datenschutzrichtlinien verarbeiten können:
+
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**Wofur wir Daten nutzen**
+**Wie wir Informationen verwenden**
 
-*   App-Funktionen bereitstellen
-*   Stabilitat und Leistung verbessern
-*   Abonnements verarbeiten und wiederherstellen
-*   Wichtige Hinweise kommunizieren
+Wir verwenden Informationen, um:
 
-**Weitergabe und Aufbewahrung**
+*   App-Funktionen bereitzustellen und die Servicequalität aufrechtzuerhalten.
+*   Die Leistung zu überwachen, Fehler zu beheben und die Benutzererfahrung zu verbessern.
+*   In-App-Käufe/Abonnements zu verarbeiten und wiederherzustellen.
+*   Wichtige Aktualisierungen zu kommunizieren, wenn dies erforderlich ist.
 
-Wir verkaufen keine personenbezogenen Daten. Wir teilen begrenzte Daten nur mit notwendigen Dienstleistern und wenn es gesetzlich erforderlich ist.
+**Zugriff Dritter**
 
-Daten werden nur so lange gespeichert, wie es fur die genannten Zwecke erforderlich ist.
+Wir verkaufen keine personenbezogenen Daten. Wir teilen begrenzte Daten mit Dienstleistern, die uns beim Betrieb der Anwendung unterstützen (z. B. Analysen, Absturzüberwachung und Abonnements), sowie wenn dies gesetzlich erforderlich ist.
 
-**Kinder**
+**Datenspeicherung**
 
-Die Anwendung richtet sich nicht an Kinder unter 13 Jahren. Wir erfassen wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren.
+Wir speichern Daten nur so lange, wie es für die hier beschriebenen Zwecke erforderlich ist, es sei denn, eine längere Speicherung ist gesetzlich vorgeschrieben.
 
-**Anderungen**
+Wenn Sie möchten, dass wir Daten im Zusammenhang mit Ihren Support-Anfragen löschen, kontaktieren Sie uns unter [hello@baru.software](mailto:hello@baru.software).
 
-Wir konnen diese Datenschutzerklarung aktualisieren. Anderungen gelten ab Veroffentlichung auf dieser Seite.
+**Privatsphäre von Kindern**
 
-Diese Datenschutzerklarung ist wirksam ab 2026-03-04.
+Die Anwendung richtet sich nicht an Kinder unter 13 Jahren, und wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren.
+
+**Opt-out-Rechte**
+
+Sie können die Erhebung von Informationen durch die Anwendung einfach beenden, indem Sie diese deinstallieren.
+
+**Sicherheit**
+
+Wir setzen angemessene administrative, technische und organisatorische Sicherheitsvorkehrungen ein, um die verarbeiteten Informationen zu schützen.
+
+**Änderungen**
+
+Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden mit der Veröffentlichung auf dieser Seite wirksam.
+
+Diese Datenschutzerklärung ist gültig ab dem 2026-03-04.
+
+**Ihre Zustimmung**
+
+Durch die Nutzung der Anwendung stimmen Sie dieser Datenschutzerklärung zu.
 
 **Kontakt**
 
+Bei Fragen zum Datenschutz wenden Sie sich bitte an Baru Software Co:
+
 *   Website: [https://baru.software/](https://baru.software/)
 *   E-Mail: [hello@baru.software](mailto:hello@baru.software)`,
-  it: `La presente Informativa sulla Privacy si applica all'app mobile BattleFlow (l'"Applicazione"), fornita da Baru Software Co ("noi").
+  it: `La presente Informativa sulla Privacy si applica all'app mobile BattleFlow (l'"Applicazione"), fornita da Baru Software Co ("noi", "nostro" o "ci").
 
-**Raccolta e Uso delle Informazioni**
+**Raccolta e uso delle informazioni**
 
-Raccogliamo dati limitati per fornire e migliorare l'Applicazione, tra cui:
+Raccogliamo informazioni limitate per operare e migliorare l'Applicazione. A seconda dell'uso, queste possono includere:
 
-*   Analisi di utilizzo (schermate viste, interazioni, eventi)
-*   Dati di crash e diagnostica
-*   Stato ed eventi di acquisto/abbonamento premium
-*   Dati creati nell'app (team, registri battaglia, preferenze)
+*   Analisi sull'utilizzo dell'app (ad esempio, schermate visualizzate, interazioni e eventi).
+*   Dati su crash e diagnostica (per il monitoraggio della stabilità).
+*   Stato ed eventi di acquisto/abbonamento per le funzionalità premium.
+*   Contenuti creati nell'app, come team, registri di battaglia e preferenze.
 
-La maggior parte di questi dati e salvata localmente sul dispositivo.
+La maggior parte dei dati (team, registri, preferenze) è memorizzata localmente sul dispositivo.
 
-Non raccogliamo intenzionalmente dati GPS precisi.
+Non raccogliamo intenzionalmente dati precisi sulla posizione GPS tramite l'Applicazione.
 
-**Servizi di Terze Parti**
+**Servizi di terze parti**
+
+L'Applicazione utilizza servizi di terze parti che possono trattare i dati secondo le proprie informative:
 
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**Come Usiamo le Informazioni**
+**Come utilizziamo le informazioni**
 
-*   Fornire le funzionalita dell'app
-*   Migliorare stabilita e prestazioni
-*   Gestire e ripristinare abbonamenti
-*   Comunicare aggiornamenti importanti
+Utilizziamo le informazioni per:
 
-**Condivisione e Conservazione**
+*   Fornire le funzionalità dell'app e mantenere la qualità del servizio.
+*   Monitorare le prestazioni, correggere bug e migliorare l'esperienza utente.
+*   Gestire e ripristinare acquisti in-app e abbonamenti.
+*   Comunicare aggiornamenti importanti quando necessario.
 
-Non vendiamo dati personali. Condividiamo dati limitati con fornitori necessari al funzionamento del servizio e quando richiesto dalla legge.
+**Accesso di terze parti**
 
-Conserviamo i dati solo per il tempo necessario alle finalita descritte.
+Non vendiamo dati personali. Condividiamo dati limitati con fornitori che ci aiutano a gestire l'Applicazione (analisi, monitoraggio crash, abbonamenti) e quando richiesto dalla legge.
 
-**Minori**
+**Conservazione dei dati**
 
-L'Applicazione non e destinata a minori di 13 anni e non raccogliamo consapevolmente dati personali di minori di 13 anni.
+Conserviamo i dati solo per il tempo necessario alle finalità descritte, salvo diversamente richiesto dalla legge.
+
+Per richiedere la cancellazione dei dati legati alle richieste di supporto, contattaci a [hello@baru.software](mailto:hello@baru.software).
+
+**Privacy dei minori**
+
+L'Applicazione non è destinata a minori di 13 anni e non raccogliamo consapevolmente i loro dati personali.
+
+**Diritti di opt-out**
+
+È possibile interrompere la raccolta dei dati disinstallando l'Applicazione tramite le procedure standard del dispositivo o dello store.
+
+**Sicurezza**
+
+Adottiamo ragionevoli misure amministrative, tecniche e organizzative per proteggere le informazioni trattate.
 
 **Modifiche**
 
-Possiamo aggiornare questa Informativa. Le modifiche hanno effetto dalla pubblicazione su questa pagina.
+Possiamo aggiornare periodicamente questa Informativa. Le modifiche diventano efficaci al momento della pubblicazione su questa pagina.
 
-Questa informativa sulla privacy e in vigore dal 2026-03-04.
+La presente informativa sulla privacy è in vigore dal 2026-03-04.
+
+**Consenso**
+
+Utilizzando l'Applicazione, l'utente acconsente alla presente Informativa sulla Privacy.
 
 **Contatti**
 
+Per domande sulla privacy, contatta Baru Software Co:
+
 *   Sito web: [https://baru.software/](https://baru.software/)
 *   Email: [hello@baru.software](mailto:hello@baru.software)`,
-  pt: `Esta Politica de Privacidade se aplica ao app movel BattleFlow ("Aplicativo"), fornecido pela Baru Software Co ("nos").
+  pt: `Esta Política de Privacidade aplica-se ao aplicativo móvel BattleFlow (o "Aplicativo"), fornecido pela Baru Software Co ("nós", "nosso" ou "nos").
 
-**Coleta e Uso de Informacoes**
+**Coleta e Uso de Informações**
 
-Coletamos dados limitados para operar e melhorar o Aplicativo, incluindo:
+Coletamos informações limitadas para operar e melhorar o Aplicativo. Dependendo de como você o utiliza, isso pode incluir:
 
-*   Analitica de uso (telas vistas, interacoes e eventos)
-*   Dados de falhas e diagnostico
-*   Status e eventos de compras/assinaturas premium
-*   Dados criados no app, como times, registros de batalha e preferencias
+*   Análise de uso do aplicativo (por exemplo, telas visualizadas, interações com recursos e eventos do aplicativo).
+*   Dados de falhas e diagnósticos (para monitoramento de estabilidade).
+*   Status e eventos de compra/assinatura necessários para fornecer recursos premium.
+*   Conteúdo criado no aplicativo, como equipes, registros de batalha e preferências.
 
-A maior parte desses dados e armazenada localmente no seu dispositivo.
+A maioria dos dados do aplicativo (como equipes, registros de batalha e preferências) é armazenada localmente no seu dispositivo.
 
-Nao coletamos intencionalmente dados precisos de GPS.
+Não coletamos intencionalmente dados precisos de localização GPS através do Aplicativo.
 
-**Servicos de Terceiros**
+**Serviços de Terceiros**
+
+O Aplicativo utiliza serviços de terceiros que podem processar dados de acordo com suas próprias políticas de privacidade:
 
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**Como Usamos as Informacoes**
+**Como Utilizamos as Informações**
 
-*   Fornecer recursos do app
-*   Melhorar desempenho e estabilidade
-*   Processar e restaurar assinaturas
-*   Comunicar atualizacoes importantes
+Utilizamos as informações para:
 
-**Compartilhamento e Retencao**
+*   Fornecer recursos do aplicativo e manter a qualidade do serviço.
+*   Monitorar o desempenho, corrigir erros e melhorar a experiência do usuário.
+*   Processar e restaurar compras/assinaturas no aplicativo.
+*   Comunicar atualizações importantes quando necessário.
 
-Nao vendemos dados pessoais. Compartilhamos dados limitados com provedores necessarios para operar o servico e quando exigido por lei.
+**Acesso de Terceiros**
 
-Retemos dados apenas pelo tempo necessario para as finalidades descritas.
+Não vendemos informações pessoais. Podemos compartilhar dados limitados com prestadores de serviços que nos ajudam a operar o Aplicativo (por exemplo, análises, monitoramento de falhas e assinaturas) e quando legalmente exigido.
 
-**Criancas**
+**Retenção de Dados**
 
-O Aplicativo nao e direcionado a criancas menores de 13 anos e nao coletamos conscientemente dados pessoais de menores de 13 anos.
+Retemos os dados apenas pelo tempo necessário para os fins aqui descritos, a menos que um período de retenção mais longo seja exigido por lei.
 
-**Alteracoes**
+Se desejar que excluamos os dados associados às suas solicitações de suporte ou outras informações fornecidas diretamente, entre em contato conosco em [hello@baru.software](mailto:hello@baru.software).
 
-Podemos atualizar esta Politica de Privacidade. As alteracoes entram em vigor quando publicadas nesta pagina.
+**Privacidade de Crianças**
 
-Esta politica de privacidade e efetiva a partir de 2026-03-04.
+O Aplicativo não é direcionado a crianças menores de 13 anos e não coletamos conscientemente informações pessoais de crianças menores de 13 anos.
 
-**Contato**
+**Direitos de Desativação (Opt-Out)**
+
+Você pode interromper facilmente toda a coleta de informações pelo Aplicativo desinstalando-o. Você pode usar os processos padrão de desinstalação disponíveis em seu dispositivo móvel ou através do mercado de aplicativos móveis.
+
+**Segurança**
+
+Utilizamos salvaguardas administrativas, técnicas e organizacionais razoáveis para proteger as informações processadas pelo Aplicativo.
+
+**Alterações**
+
+Podemos atualizar esta Política de Privacidade periodicamente. As alterações entram em vigor quando publicadas nesta página.
+
+Esta política de privacidade é efetiva a partir de 2026-03-04.
+
+**Seu Consentimento**
+
+Ao utilizar o Aplicativo, você concorda com esta Política de Privacidade.
+
+**Contate-nos**
+
+Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software Co:
 
 *   Site: [https://baru.software/](https://baru.software/)
-*   Email: [hello@baru.software](mailto:hello@baru.software)`,
+*   E-mail: [hello@baru.software](mailto:hello@baru.software)`,
   ja: `このプライバシーポリシーは、Baru Software Co（以下「当社」）が提供するBattleFlowモバイルアプリ（以下「本アプリ」）に適用されます。
 
-**収集する情報と利用目的**
+**情報の収集と利用**
 
-本アプリの提供・改善のため、次のような限定的な情報を収集する場合があります。
+当社は、本アプリの運営および改善のために、限定的な情報を収集します。利用状況に応じて、以下の情報が含まれる場合があります。
 
-*   利用分析（閲覧画面、操作、イベント）
-*   クラッシュおよび診断データ
-*   プレミアム機能提供に必要な購入・サブスクリプション情報
-*   チーム、バトルログ、設定など、アプリ内で作成されたデータ
+*   アプリの利用状況分析（例：表示された画面、機能の操作、アプリイベント）
+*   クラッシュおよび診断データ（安定性監視のため）
+*   プレミアム機能の提供に必要な購入・サブスクリプションのステータス/イベント
+*   チーム、バトルログ、設定など、アプリ内で作成されたコンテンツ
 
-これらの多くは端末内にローカル保存されます。
+ほとんどのアプリデータ（チーム、バトルログ、設定など）は、お客様の端末内にローカルに保存されます。
 
-本アプリは、意図的に正確なGPS位置情報を収集しません。
+本アプリは、意図的に正確なGPS位置情報を収集することはありません。
 
 **第三者サービス**
 
+本アプリは、独自のプライバシーポリシーに従ってデータを処理する可能性のある第三者サービスを利用しています。
+
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**情報の共有と保持**
+**情報の利用目的**
 
-当社は個人情報を販売しません。サービス提供に必要な範囲で、第三者サービス事業者と限定的に共有する場合があります。また、法令に基づく場合に開示することがあります。
+収集した情報は、以下の目的で利用されます。
 
-情報は、本ポリシーに記載の目的に必要な期間のみ保持します。
+*   アプリ機能の提供およびサービス品質の維持
+*   パフォーマンスの監視、バグの修正、ユーザー体験の向上
+*   アプリ内購入・サブスクリプションの処理および復元
+*   必要に応じた重要なアップデートの通知
+
+**第三者へのアクセス**
+
+当社は個人情報を販売しません。本アプリの運営を支援するサービスプロバイダー（分析、クラッシュ監視、サブスクリプションなど）と限定的なデータを共有する場合、および法律で義務付けられている場合を除き、第三者に開示することはありません。
+
+**データの保持**
+
+当社は、法律でより長い保持期間が義務付けられていない限り、本ポリシーに記載された目的のために必要な期間のみデータを保持します。
+
+サポートリクエストや直接提供された情報に関連するデータの削除をご希望の場合は、[hello@baru.software](mailto:hello@baru.software) までご連絡ください。
 
 **子どものプライバシー**
 
-本アプリは13歳未満を対象としておらず、13歳未満の個人情報を意図的に収集しません。
+本アプリは13歳未満の子どもを対象としておらず、13歳未満の子どもから意図的に個人情報を収集することはありません。
+
+**オプトアウト権**
+
+本アプリをアンインストールすることで、本アプリによるすべての情報収集を簡単に停止できます。端末の標準的なアンインストール手順をご利用ください。
+
+**セキュリティ**
+
+当社は、本アプリで処理される情報を保護するために、合理的な管理的、技術的、および組織的な安全管理措置を講じています。
 
 **変更**
 
-本ポリシーは更新される場合があります。変更は本ページへの掲載時に効力を生じます。
+当社は、本プライバシーポリシーを随時更新することがあります。変更は本ページに掲載された時点で有効となります。
 
-本ポリシーの発効日: 2026-03-04
+本プライバシーポリシーの発効日: 2026-03-04
+
+**同意**
+
+本アプリを使用することにより、本プライバシーポリシーに同意したものとみなされます。
 
 **お問い合わせ**
 
-*   Website: [https://baru.software/](https://baru.software/)
-*   Email: [hello@baru.software](mailto:hello@baru.software)`,
-  ko: `본 개인정보 처리방침은 Baru Software Co(이하 "당사")가 제공하는 BattleFlow 모바일 앱(이하 "앱")에 적용됩니다.
+プライバシーに関するご質問がある場合は、Baru Software Co までお問い合わせください。
 
-**수집 정보 및 이용 목적**
+*   ウェブサイト: [https://baru.software/](https://baru.software/)
+*   メール: [hello@baru.software](mailto:hello@baru.software)`,
+  ko: `본 개인정보 처리방침은 Baru Software Co(이하 "당사")가 제공하는 BattleFlow 모바일 앱(이하 "애플리케이션")에 적용됩니다.
 
-당사는 앱 운영 및 개선을 위해 다음과 같은 제한된 정보를 수집할 수 있습니다.
+**정보 수집 및 이용**
 
-*   이용 분석 데이터(화면 조회, 상호작용, 이벤트)
-*   크래시 및 진단 데이터
-*   프리미엄 기능 제공에 필요한 구매/구독 상태 정보
-*   팀, 배틀 로그, 설정 등 앱 내에서 생성한 데이터
+당사는 애플리케이션 운영 및 개선을 위해 제한된 정보를 수집합니다. 이용 방식에 따라 다음이 포함될 수 있습니다.
 
-대부분의 데이터는 기기에 로컬로 저장됩니다.
+*   앱 이용 분석(예: 조회한 화면, 기능 상호작용, 앱 이벤트)
+*   크래시 및 진단 데이터(안정성 모니터링 목적)
+*   프리미엄 기능 제공에 필요한 구매 및 구독 상태/이벤트
+*   팀, 배틀 로그, 설정 등 앱 내에서 생성한 콘텐츠
 
-당사는 의도적으로 정밀 GPS 위치 정보를 수집하지 않습니다.
+대부분의 앱 데이터(팀, 배틀 로그, 설정 등)는 사용자의 기기에 로컬로 저장됩니다.
+
+당사는 애플리케이션을 통해 의도적으로 정밀 GPS 위치 정보를 수집하지 않습니다.
 
 **제3자 서비스**
+
+애플리케이션은 자체 개인정보 처리방침에 따라 데이터를 처리할 수 있는 제3자 서비스를 사용합니다.
 
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**공유 및 보관**
+**정보 이용 방식**
 
-당사는 개인정보를 판매하지 않습니다. 서비스 운영에 필요한 범위에서만 제3자 제공업체와 제한적으로 공유하며, 법령에 따라 공개가 요구되는 경우 공개할 수 있습니다.
+당사는 수집한 정보를 다음과 같은 목적으로 이용합니다.
 
-정보는 본 방침의 목적 달성에 필요한 기간 동안만 보관됩니다.
+*   앱 기능 제공 및 서비스 품질 유지
+*   성능 모니터링, 버그 수정 및 사용자 경험 개선
+*   인앱 구매/구독 처리 및 복원
+*   필요 시 중요한 업데이트 알림
+
+**제3자 접근**
+
+당사는 개인정보를 판매하지 않습니다. 애플리케이션 운영을 돕는 서비스 제공업체(분석, 크래시 모니터링, 구독 관리 등)와 제한된 데이터를 공유할 수 있으며, 법적 요구가 있는 경우에 한해 공유합니다.
+
+**데이터 보관**
+
+당사는 법률에 따라 더 긴 보관 기간이 요구되지 않는 한, 본 방침에 명시된 목적에 필요한 기간 동안만 데이터를 보관합니다.
+
+지원 요청 또는 직접 제공한 정보와 관련된 데이터의 삭제를 원하시는 경우, [hello@baru.software](mailto:hello@baru.software)로 문의해 주시기 바랍니다.
 
 **아동 개인정보**
 
-앱은 13세 미만 아동을 대상으로 하지 않으며, 13세 미만의 개인정보를 고의로 수집하지 않습니다.
+애플리케이션은 13세 미만 아동을 대상으로 하지 않으며, 13세 미만 아동으로부터 고의로 개인정보를 수집하지 않습니다.
+
+**수집 거부 권리**
+
+애플리케이션을 삭제함으로써 모든 정보 수집을 간단히 중단할 수 있습니다. 모바일 기기 또는 앱 마켓에서 제공하는 표준 삭제 프로세스를 이용하시기 바랍니다.
+
+**보안**
+
+당사는 애플리케이션에서 처리되는 정보를 보호하기 위해 합리적인 관리적, 기술적, 조직적 보호 조치를 사용합니다.
 
 **변경 사항**
 
-본 방침은 수시로 업데이트될 수 있으며, 본 페이지에 게시되는 시점부터 효력이 발생합니다.
+당사는 본 개인정보 처리방침을 수시로 업데이트할 수 있습니다. 변경 사항은 본 페이지에 게시되는 시점부터 효력이 발생합니다.
 
-시행일: 2026-03-04
+본 개인정보 처리방침 시행일: 2026-03-04
 
-**문의**
+**동의**
 
-*   Website: [https://baru.software/](https://baru.software/)
-*   Email: [hello@baru.software](mailto:hello@baru.software)`,
+애플리케이션을 이용함으로써 귀하는 본 개인정보 처리방침에 동의하게 됩니다.
+
+**문의처**
+
+개인정보와 관련하여 궁금한 점이 있으시면 Baru Software Co로 문의해 주십시오.
+
+*   웹사이트: [https://baru.software/](https://baru.software/)
+*   이메일: [hello@baru.software](mailto:hello@baru.software)`,
   'zh-Hans': `本隐私政策适用于由 Baru Software Co（以下简称“我们”）提供的 BattleFlow 移动应用（以下简称“应用”）。
 
 **信息收集与使用**
 
-为提供和改进应用，我们可能收集有限信息，包括：
+为运营并改进应用，我们收集有限的信息。根据您的使用方式，这可能包括：
 
-*   使用分析数据（页面浏览、功能交互、事件）
-*   崩溃与诊断数据
-*   提供高级功能所需的购买/订阅状态数据
-*   你在应用中创建的数据（如队伍、对战记录、偏好设置）
+*   应用使用情况分析（例如：浏览的页面、功能交互和应用事件）。
+*   崩溃及诊断数据（用于稳定性监控）。
+*   提供高级功能所需的购买及订阅状态/事件。
+*   您在应用中创建的内容，如队伍、对战记录和偏好设置。
 
-上述大部分数据会存储在你的设备本地。
+大部分应用数据（如队伍、对战记录和偏好设置）均存储在您的设备本地。
 
-我们不会主动收集精确 GPS 位置信息。
+我们不会通过本应用主动收集精确的 GPS 位置数据。
 
 **第三方服务**
 
-*   [Google Play Services](https://www.google.com/policies/privacy/)
+本应用使用的第三方服务可能会根据其自身的隐私政策处理数据：
+
+*   [Google Play 服务](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**共享与保存**
+**我们如何使用信息**
 
-我们不会出售个人信息。我们仅在提供服务所必需的范围内与第三方服务商共享有限数据，或在法律要求下进行披露。
+我们将信息用于：
 
-我们仅在实现本政策所述目的所需期限内保存数据。
+*   提供应用功能并维持服务质量。
+*   监控性能、修复错误并改善用户体验。
+*   处理并恢复应用内购买/订阅。
+*   必要时沟通重要更新。
+
+**第三方访问**
+
+我们不会出售个人信息。我们可能会与帮助我们运营应用的某些服务提供商（例如分析、崩溃监控和订阅服务）共享有限的数据，或在法律要求时共享。
+
+**数据保留**
+
+除非法律要求更长的保留期，否则我们仅在实现本文所述目的所需的期限内保留数据。
+
+如果您希望我们删除与您的支持请求或其他直接提供的信息相关的资料，请通过 [hello@baru.software](mailto:hello@baru.software) 联系我们。
 
 **儿童隐私**
 
-本应用不面向 13 岁以下儿童，我们不会故意收集 13 岁以下儿童的个人信息。
+本应用不面向 13 岁以下的儿童，我们不会故意收集 13 岁以下儿童的个人信息。
 
-**政策更新**
+**退出权利**
 
-我们可能会更新本隐私政策。更新内容在本页面发布时生效。
+您可以通过卸载应用轻松停止应用收集所有信息。您可以使用移动设备或应用商店提供的标准卸载流程。
 
-生效日期：2026-03-04
+**安全**
+
+我们采用合理的管理、技术和组织保障措施来保护应用处理的信息。
+
+**变更**
+
+我们可能会不时更新本隐私政策。变更自在本页面发布之日起生效。
+
+本隐私政策自 2026-03-04 起生效。
+
+**您的同意**
+
+使用本应用即表示您同意本隐私政策。
 
 **联系我们**
+
+如果您对隐私有任何疑问，请联系 Baru Software Co：
 
 *   网站: [https://baru.software/](https://baru.software/)
 *   邮箱: [hello@baru.software](mailto:hello@baru.software)`,
@@ -470,41 +667,70 @@ Esta politica de privacidade e efetiva a partir de 2026-03-04.
 
 **資訊蒐集與使用**
 
-為了提供與改善應用程式，我們可能蒐集有限資訊，包括：
+為了營運並改善應用程式，我們蒐集有限的資訊。根據您的使用方式，這可能包括：
 
-*   使用分析資料（頁面瀏覽、功能互動、事件）
-*   當機與診斷資料
-*   提供進階功能所需的購買/訂閱狀態資料
-*   你在應用程式中建立的資料（如隊伍、對戰紀錄、偏好設定）
+*   應用程式使用情況分析（例如：瀏覽的頁面、功能互動和應用程式事件）。
+*   當機及診斷資料（用於穩定性監控）。
+*   提供進階功能所需的購買及訂閱狀態/事件。
+*   您在應用程式中建立的內容，如隊伍、對戰紀錄和偏好設定。
 
-上述大部分資料會儲存在你的裝置本機。
+大部分應用程式資料（如隊伍、對戰紀錄和偏好設定）均儲存在您的裝置本機。
 
-我們不會主動蒐集精確 GPS 位置資訊。
+我們不會透過本應用程式主動蒐集精確的 GPS 位置數據。
 
 **第三方服務**
 
-*   [Google Play Services](https://www.google.com/policies/privacy/)
+本應用程式使用的第三方服務可能會根據其自身的隱私政策處理資料：
+
+*   [Google Play 服務](https://www.google.com/policies/privacy/)
 *   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
 *   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
 *   [RevenueCat](https://www.revenuecat.com/privacy)
 
-**共享與保存**
+**我們如何使用資訊**
 
-我們不會出售個人資訊。我們僅在提供服務所必需的範圍內與第三方服務商共享有限資料，或在法律要求下揭露。
+我們將資訊用於：
 
-我們僅在達成本政策所述目的所需期間內保存資料。
+*   提供應用程式功能並維持服務品質。
+*   監控效能、修復錯誤並改善使用者體驗。
+*   處理並恢復應用程式內購買/訂閱。
+*   必要時溝通重要更新。
+
+**第三方存取**
+
+我們不會出售個人資訊。我們可能會與協助我們營運應用程式的某些服務供應商（例如分析、當機監控和訂閱服務）共享有限的資料，或在法律要求時共享。
+
+**資料保留**
+
+除非法律要求更長的保留期，否則我們僅在實現本文所述目的所需的期限內保留資料。
+
+如果您希望我們刪除與您的支援請求或其他直接提供的資訊相關的資料，請透過 [hello@baru.software](mailto:hello@baru.software) 聯絡我們。
 
 **兒童隱私**
 
-本應用程式不面向 13 歲以下兒童，我們不會故意蒐集 13 歲以下兒童的個人資訊。
+本應用程式不面向 13 歲以下的兒童，我們不會故意蒐集 13 歲以下兒童的個人資訊。
 
-**政策更新**
+**退出權利**
 
-我們可能更新本隱私政策。更新內容於本頁面發佈時生效。
+您可以透過解除安裝應用程式輕鬆停止應用程式蒐集所有資訊。您可以使用行動裝置或應用程式商店提供的標準解除安裝程序。
 
-生效日期：2026-03-04
+**安全**
+
+我們採用合理的管理、技術和組織保障措施來保護應用程式處理的資訊。
+
+**變更**
+
+我們可能會不時更新本隱私政策。變更自在本頁面發佈之日起生效。
+
+本隱私政策自 2026-03-04 起生效。
+
+**您的同意**
+
+使用本應用程式即表示您同意本隱私政策。
 
 **聯絡我們**
+
+如果您對隱私有任何疑問，請聯絡 Baru Software Co：
 
 *   網站: [https://baru.software/](https://baru.software/)
 *   Email: [hello@baru.software](mailto:hello@baru.software)`
@@ -550,35 +776,43 @@ If you have questions about these Terms, contact Baru Software Co:
 
 *   Website: [https://baru.software/](https://baru.software/)
 *   Email: [hello@baru.software](mailto:hello@baru.software)`,
-  es: `Estos Terminos y Condiciones se aplican a la aplicacion movil BattleFlow (la "Aplicacion"), proporcionada por Baru Software Co ("nosotros", "nuestro" o "nos") como un servicio de descarga gratuita con suscripciones pagas opcionales.
+  es: `Estos Términos y Condiciones se aplican a la aplicación móvil BattleFlow (la "Aplicación"), proporcionada por Baru Software Co ("nosotros", "nuestro" o "nos") como un servicio de descarga gratuita con suscripciones de pago opcionales.
 
-Al descargar o usar la Aplicacion, aceptas estos Terminos. Si no estas de acuerdo, por favor no uses la Aplicacion.
+Al descargar o utilizar la Aplicación, usted acepta estos Términos. Si no está de acuerdo, le rogamos que no utilice la Aplicación.
 
-Todos los derechos, titulos e intereses en la Aplicacion (incluidas marcas registradas, derechos de autor y otra propiedad intelectual) pertenecen a Baru Software Co y sus licenciantes. No puedes copiar, modificar, realizar ingenieria inversa, decompilar, crear obras derivadas o hacer un mal uso de la Aplicacion, excepto segun lo permitido por la ley.
+Todos los derechos, títulos e intereses sobre la Aplicación (incluidas marcas comerciales, derechos de autor y otra propiedad intelectual) pertenecen a Baru Software Co y sus licenciantes. No podrá copiar, modificar, realizar ingeniería inversa, descompilar, crear obras derivadas ni hacer un uso indebido de la Aplicación, salvo en la medida en que lo permita la ley.
 
-Podemos actualizar, suspender o descontinuar partes de la Aplicacion en cualquier momento, incluidas funciones, fuentes de datos y ofertas de suscripcion. Tambien podemos cambiar los precios de las funciones pagas, y cualquier cargo se presentara claramente antes de la compra.
+Podemos actualizar, suspender o discontinuar partes de la Aplicación en cualquier momento, incluyendo funciones, fuentes de datos y ofertas de suscripción. También podemos cambiar los precios de las funciones de pago; cualquier cargo se presentará claramente antes de la compra.
 
-Eres responsable de mantener seguros tu dispositivo y tus credenciales de acceso. Recomendamos no realizar jailbreak ni rootear tu dispositivo, ya que hacerlo puede reducir la seguridad y afectar la funcionalidad de la aplicacion.
+Usted es responsable de mantener la seguridad de su dispositivo y de sus credenciales de acceso. Recomendamos no realizar jailbreak ni rootear su dispositivo, ya que esto puede reducir la seguridad y afectar a la funcionalidad de la aplicación.
 
-La Aplicacion utiliza servicios de terceros que tienen sus propios terminos:
+La Aplicación utiliza servicios de terceros que tienen sus propios términos:
 
-*   [Servicios de Google Play](https://policies.google.com/terms)
+*   [Google Play Services](https://policies.google.com/terms)
 *   [Firebase Crashlytics](https://firebase.google.com/terms/crashlytics)
 *   [Mixpanel](https://mixpanel.com/legal/terms-of-use/)
 *   [RevenueCat](https://www.revenuecat.com/terms)
 
-Para el maximo alcance permitido por la ley, la Aplicacion se proporciona "TAL CUAL" y "SEGUN DISPONIBILIDAD" sin garantias de ningun tipo. No garantizamos la disponibilidad ininterrumpida, la precision completa o la idoneidad para un proposito particular.
+Algunas funciones requieren una conexión activa a Internet. No nos hacemos responsables de las limitaciones de funcionalidad causadas por problemas de conectividad, restricciones del operador, cortes o falta de datos.
 
-Tu uso de la Aplicacion tambien se rige por nuestra Politica de Privacidad.
+Al utilizar la Aplicación, también pueden aplicarse los términos de su operador móvil o de la tienda de aplicaciones. Usted es responsable de cualquier tarifa de uso de datos, cargos de roaming o costes de compra.
 
-**Cambios en estos Terminos y Condiciones**
+En la medida máxima permitida por la ley, la Aplicación se proporciona "TAL CUAL" y "SEGÚN DISPONIBILIDAD" sin garantías de ningún tipo. No garantizamos la disponibilidad ininterrumpida, la precisión completa o la idoneidad para un propósito particular.
 
-Podemos actualizar estos Terminos de vez en cuando. Las actualizaciones entran en vigor cuando se publican en esta pagina.
+En la medida máxima permitida por la ley, Baru Software Co no será responsable de daños indirectos, incidentales, especiales, consecuentes o punitivos, ni de ninguna pérdida de datos, beneficios o fondo de comercio derivados del uso de la Aplicación.
 
-Estos terminos y condiciones son efectivos a partir del 2026-03-04.
+El uso de la Aplicación también se rige por nuestra Política de Privacidad.
+
+**Cambios en estos Términos y Condiciones**
+
+Podemos actualizar estos Términos periódicamente. Las actualizaciones entrarán en vigor cuando se publiquen en esta página.
+
+Estos términos y condiciones son efectivos a partir del 2026-03-04.
 
 **Contacto**
 
+Si tiene alguna pregunta sobre estos Términos, póngase en contacto con Baru Software Co:
+
 *   Sitio web: [https://baru.software/](https://baru.software/)
-*   Correo electronico: [hello@baru.software](mailto:hello@baru.software)`
+*   Correo electrónico: [hello@baru.software](mailto:hello@baru.software)`
 };

@@ -1,5 +1,6 @@
 ---
 import { languages } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
 import { privacyData } from '../../i18n/data';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
@@ -13,15 +14,16 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 const content = privacyData[lang] || privacyData.en;
 const html = await marked.parse(content);
 ---
 
-<Layout title="Privacy Policy">
+<Layout title={t('privacy.title')}>
 	<Nav />
 	<main class="pt-32 pb-24">
 		<div class="container mx-auto max-w-3xl px-6">
-			<h1 class="text-4xl md:text-6xl mb-12">Privacy Policy</h1>
+			<h1 class="text-4xl md:text-6xl mb-12">{t('privacy.title')}</h1>
 			<div class="prose prose-invert prose-brand lg:prose-xl max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter prose-a:text-brand-blue prose-strong:text-white" set:html={html} />
 		</div>
 	</main>
