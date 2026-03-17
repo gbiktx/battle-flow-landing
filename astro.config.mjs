@@ -8,7 +8,7 @@ export default defineConfig({
   site: 'https://battleflow.app',
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-Hans', 'zh-Hant', 'ja', 'ko'],
+    locales: ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-hans', 'zh-hant', 'ja', 'ko'],
     routing: {
       prefixDefaultLocale: false
     }

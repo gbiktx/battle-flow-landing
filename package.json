@@ -7,8 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run test:routes",
     "preview": "astro preview",
+    "test:routes": "node scripts/verify-routes.js",
     "astro": "astro"
   },
   "dependencies": {

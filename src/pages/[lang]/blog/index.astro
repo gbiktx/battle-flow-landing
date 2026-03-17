@@ -13,7 +13,7 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as any);
+const t = useTranslations(lang as keyof typeof languages);
 
 const posts = await getCollection('blog', ({ id }) => {
   return id.startsWith(`${lang}/`);

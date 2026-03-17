@@ -13,6 +13,6 @@ export function getLangFromUrl(url: URL) {
 export function useTranslations(lang: keyof UI) {
   return function t(key: Keys): string {
     const translation = ui[lang]?.[key as keyof UI[typeof lang]];
-    return (translation || ui[defaultLang][key]) as string;
+    return (translation !== undefined ? translation : ui[defaultLang][key]) as string;
   }
 }
