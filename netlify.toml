@@ -1,7 +1,14 @@
 [build]
-  publish = "_site/"
   command = "npm run build"
-[build.environment]
-  RUBY_VERSION = "3.3.6"
-  NODE_VERSION = "18"
-  NPM_FLAGS = "--include=optional"
+  publish = "dist"
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false

@@ -1,0 +1,29 @@
+---
+import { languages } from '../../i18n/ui';
+import { tacData } from '../../i18n/data';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { marked } from 'marked';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter(lang => lang !== 'en')
+    .map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const content = tacData[lang] || tacData.en;
+const html = await marked.parse(content);
+---
+
+<Layout title="Terms & Conditions">
+	<Nav />
+	<main class="pt-32 pb-24">
+		<div class="container mx-auto max-w-3xl px-6">
+			<h1 class="text-4xl md:text-6xl mb-12">Terms & Conditions</h1>
+			<div class="prose prose-invert prose-brand lg:prose-xl max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter prose-a:text-brand-blue prose-strong:text-white" set:html={html} />
+		</div>
+	</main>
+	<Footer />
+</Layout>

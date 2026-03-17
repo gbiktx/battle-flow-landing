@@ -1,0 +1,41 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="py-12 bg-white/5 border-y border-white/10 relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+      
+      <div class="text-center group">
+        <div class="text-3xl md:text-5xl font-black mb-2 gradient-text group-hover:scale-110 transition-transform">
+          4+
+        </div>
+        <div class="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-[0.2em]">
+          {t('stats.leagues')}
+        </div>
+      </div>
+
+      <div class="text-center group">
+        <div class="text-3xl md:text-5xl font-black mb-2 gradient-text group-hover:scale-110 transition-transform">
+          800+
+        </div>
+        <div class="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-[0.2em]">
+          {t('stats.pokemon')}
+        </div>
+      </div>
+
+      <div class="text-center group col-span-2 md:col-span-1">
+        <div class="text-3xl md:text-5xl font-black mb-2 gradient-text group-hover:scale-110 transition-transform">
+          &lt;1S
+        </div>
+        <div class="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-[0.2em]">
+          {t('stats.speed')}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

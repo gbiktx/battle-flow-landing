@@ -1,0 +1,91 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+  <!-- Background Glows -->
+  <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-blue/20 blur-[120px] rounded-full pointer-events-none"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+      
+      <!-- Content -->
+      <div class="flex-1 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-sm font-bold tracking-wide uppercase mb-6 animate-fade-in">
+          <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
+          {t('hero.badge')}
+        </div>
+
+        <h1 class="text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-8 animate-slide-up">
+          <span class="block text-white opacity-90">{t('hero.title1')}</span>
+          <span class="block gradient-text italic">{t('hero.title2')}</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-400 max-w-xl mb-10 leading-relaxed animate-slide-up delay-200">
+          {t('hero.subtitle')}
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start animate-slide-up delay-300">
+          <a href="https://apps.apple.com/us/app/battleflow/id6738843812" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-brand-dark font-bold hover:scale-105 transition-transform flex items-center justify-center gap-3 card-shadow">
+            <img src="/assets/images/ios.svg" alt="" class="h-8 w-auto invert" />
+            {t('hero.cta_ios')}
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.baru.software.oak" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-blue/10 border border-brand-blue/30 text-white font-bold hover:bg-brand-blue/20 transition-colors flex items-center justify-center gap-3">
+            <img src="/assets/images/google-play-badge.png" alt="" class="h-8 w-auto object-contain" />
+            {t('hero.cta_android')}
+          </a>
+        </div>
+      </div>
+
+      <!-- App Icon / Visual -->
+      <div class="flex-shrink-0 relative animate-float">
+        <div class="relative w-48 h-48 md:w-64 md:h-64">
+          <!-- Multi-layered shadow -->
+          <div class="absolute inset-0 bg-brand-blue/30 blur-3xl rounded-full translate-y-8"></div>
+          
+          <!-- App Icon with iOS mask -->
+          <div class="relative w-full h-full bg-brand-dark p-1 rounded-[22.5%] overflow-hidden card-shadow">
+            <img 
+              src="/assets/images/appicon.png" 
+              alt="BattleFlow Icon" 
+              class="w-full h-full object-cover rounded-[22%] scale-[1.02]"
+              style="mask-image: url('/assets/images/ios-mask.svg'); mask-size: contain; mask-repeat: no-repeat;"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  .animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .delay-200 { animation-delay: 0.2s; opacity: 0; }
+  .delay-300 { animation-delay: 0.3s; opacity: 0; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+</style>

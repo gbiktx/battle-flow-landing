@@ -1,0 +1,13 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+import { appData } from '../i18n/data';
+
+const lang = getLangFromUrl(Astro.url);
+const content = appData[lang] || appData.en;
+---
+
+<section class="py-24 px-6 bg-white/2 overflow-hidden">
+  <div class="container mx-auto max-w-4xl">
+    <div class="prose prose-invert prose-brand prose-lg max-w-none" set:html={content.full_description} />
+  </div>
+</section>

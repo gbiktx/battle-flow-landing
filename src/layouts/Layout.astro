@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const siteTitle = title ? `${title} | BattleFlow` : 'BattleFlow | Performance-First Pokémon GO PvP';
+const siteDescription = description || t('hero.subtitle');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO -->
+		<title>{siteTitle}</title>
+		<meta name="description" content={siteDescription} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Hreflang tags -->
+		{Object.keys(languages).map((l) => {
+			const segments = Astro.url.pathname.split('/').filter(Boolean);
+			if (Object.keys(languages).includes(segments[0])) {
+				segments.shift();
+			}
+			const path = l === 'en' ? `/${segments.join('/')}` : `/${l}/${segments.join('/')}`;
+			return <link rel="alternate" hreflang={l} href={new URL(path, Astro.site)} />;
+		})}
+		<link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+
+		<!-- Open Graph / Social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:image" content={new URL('/assets/images/large-logo.png', Astro.site)} />
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="min-h-screen">
+		<slot />
+	</body>
+</html>

@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-12 px-6 bg-black/50 border-t border-white/5">
+  <div class="container mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-12 mb-12">
+      
+      <div class="max-w-xs">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/assets/images/appicon.png" alt="" class="w-8 h-8 rounded-lg shadow-lg" />
+          <span class="text-xl font-black tracking-tighter">BATTLEFLOW</span>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6">
+          {t('footer.disclaimer')}
+        </p>
+        <div class="flex gap-4">
+          <a href="https://x.com/battleflowapp" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-12">
+        <div>
+          <h4 class="text-white text-xs font-black uppercase tracking-widest mb-6">Explore</h4>
+          <ul class="space-y-4 text-sm text-gray-500 font-medium">
+            <li><a href={`/${lang === 'en' ? '' : lang}`} class="hover:text-white transition-colors">{t('nav.home')}</a></li>
+            <li><a href={`/${lang === 'en' ? '' : lang + '/'}blog`} class="hover:text-white transition-colors">{t('nav.blog')}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white text-xs font-black uppercase tracking-widest mb-6">Legal</h4>
+          <ul class="space-y-4 text-sm text-gray-500 font-medium">
+            <li><a href={`/${lang === 'en' ? '' : lang + '/'}privacy`} class="hover:text-white transition-colors">{t('nav.privacy')}</a></li>
+            <li><a href={`/${lang === 'en' ? '' : lang + '/'}tac`} class="hover:text-white transition-colors">{t('nav.terms')}</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-gray-600 text-xs font-bold uppercase tracking-widest">
+        &copy; {currentYear} {t('footer.copyright')}
+      </p>
+      
+      <div class="flex items-center gap-6">
+        <a href="https://baru.software" target="_blank">
+          <img src="/assets/images/large-logo.png" alt="Baru Software" class="h-8 opacity-30 hover:opacity-100 transition-opacity grayscale" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

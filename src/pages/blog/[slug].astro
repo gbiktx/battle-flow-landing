@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog', ({ id }) => id.startsWith('en/'));
+	return posts.map((post) => {
+		const slug = post.id.split('/')[1];
+		return {
+			params: { slug },
+			props: { post },
+		};
+	});
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const lang = 'en';
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+	<Nav />
+	<main class="pt-32 pb-24">
+		<article class="container mx-auto max-w-3xl px-6">
+			<header class="mb-12">
+				<div class="text-brand-blue text-xs font-black uppercase tracking-[0.3em] mb-6">
+					{post.data.categories?.[0] || 'Strategy'}
+				</div>
+				<h1 class="text-4xl md:text-6xl mb-8 leading-[0.9]">{post.data.title}</h1>
+				<div class="flex items-center gap-6 text-xs font-bold text-gray-500 uppercase tracking-widest border-y border-white/5 py-6">
+					<span>By {post.data.author}</span>
+					<span>•</span>
+					<span>{post.data.date.toLocaleDateString(lang)}</span>
+					<span>•</span>
+					<span>{post.data.reading_time} MIN READ</span>
+				</div>
+			</header>
+
+			<div class="prose prose-invert prose-brand lg:prose-xl max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter prose-a:text-brand-blue prose-strong:text-white">
+				<Content />
+			</div>
+		</article>
+	</main>
+	<Footer />
+</Layout>

@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const videos = [
+  { src: '/assets/images/Team-Generator-Preview.mp4', poster: '/assets/images/screenshots/1.png' },
+  { src: '/assets/images/Simulator-Preview.mp4', poster: '/assets/images/screenshots/2.png' },
+  { src: '/assets/images/IVChecker-Preview.mp4', poster: '/assets/images/screenshots/3.png' },
+];
+
+const screenshots = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+---
+
+<section class="py-24 bg-brand-dark/50 overflow-hidden">
+  <div class="container mx-auto px-6 mb-12">
+    <h2 class="text-3xl md:text-5xl text-center">{t('showcase.title')}</h2>
+  </div>
+
+  <div class="flex overflow-x-auto gap-6 px-6 pb-8 snap-x no-scrollbar">
+    <div class="flex gap-6 mx-auto">
+      {videos.map(v => (
+        <div class="w-[280px] md:w-[320px] aspect-[9/19.5] flex-shrink-0 snap-center rounded-3xl overflow-hidden glass card-shadow group">
+          <video 
+            src={v.src} 
+            poster={v.poster}
+            class="w-full h-full object-cover" 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+          ></video>
+        </div>
+      ))}
+
+      {screenshots.map(s => (
+        <div class="w-[280px] md:w-[320px] aspect-[9/19.5] flex-shrink-0 snap-center rounded-3xl overflow-hidden glass card-shadow">
+          <img 
+            src={`/assets/images/screenshots/${s}`} 
+            alt="App Screenshot" 
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
