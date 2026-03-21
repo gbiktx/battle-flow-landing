@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST_DIR = 'dist';
-const LANGUAGES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-hans', 'zh-hant', 'ja', 'ko'];
+const LANGUAGES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-Hans', 'zh-Hant', 'ja', 'ko'];
 const BASE_ROUTES = ['', 'privacy', 'tac', 'blog'];
 const BLOG_SLUGS = fs.readdirSync('src/content/blog/en')
   .filter(file => file.endsWith('.md'))
