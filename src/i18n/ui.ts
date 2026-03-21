@@ -5,8 +5,8 @@ export const languages = {
   de: 'Deutsch',
   it: 'Italiano',
   pt: 'Português',
-  'zh-hans': '简体中文',
-  'zh-hant': '繁體中文',
+  'zh-Hans': '简体中文',
+  'zh-Hant': '繁體中文',
   ja: '日本語',
   ko: '한국어',
 };
@@ -272,7 +272,7 @@ export const ui = {
     'privacy.title': 'Política de Privacidade',
     'tac.title': 'Termos e Condições',
   },
-  'zh-hans': {
+  'zh-Hans': {
     'nav.home': '首页',
     'nav.blog': '博客',
     'nav.privacy': '隐私政策',
@@ -315,7 +315,7 @@ export const ui = {
     'privacy.title': '隐私政策',
     'tac.title': '服务条款',
   },
-  'zh-hant': {
+  'zh-Hant': {
     'nav.home': '首頁',
     'nav.blog': '部落格',
     'nav.privacy': '隱私政策',

@@ -1,15 +1,20 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { languages } from '../../../i18n/ui';
 import Layout from '../../../layouts/Layout.astro';
 import Nav from '../../../components/Nav.astro';
 import Footer from '../../../components/Footer.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
+	const langKeys = Object.keys(languages);
+	
 	return posts
-		.filter(post => !post.id.startsWith('en/'))
+		.filter(post => !post.id.toLowerCase().startsWith('en/'))
 		.map((post) => {
-			const [lang, slug] = post.id.split('/');
+			const [idLang, slug] = post.id.split('/');
+			// Match the ID language to the standard config key (e.g. ja -> ja, zh-hans -> zh-Hans)
+			const lang = langKeys.find(k => k.toLowerCase() === idLang.toLowerCase()) || idLang;
 			return {
 				params: { lang, slug },
 				props: { post },

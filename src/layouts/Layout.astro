@@ -35,10 +35,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<!-- Hreflang tags -->
 		{Object.keys(languages).map((l) => {
 			const segments = Astro.url.pathname.split('/').filter(Boolean);
-			if (Object.keys(languages).includes(segments[0])) {
+			// Remove current language prefix if it exists
+			if (Object.keys(languages).some(lang => lang.toLowerCase() === segments[0]?.toLowerCase())) {
 				segments.shift();
 			}
-			const path = l === 'en' ? `/${segments.join('/')}` : `/${l}/${segments.join('/')}`;
+			
+			const base = segments.join('/');
+			const path = l === 'en' 
+				? `/${base}${base ? '/' : ''}` 
+				: `/${l}/${base}${base || l ? '/' : ''}`;
+				
 			return <link rel="alternate" hreflang={l} href={new URL(path, Astro.site)} />;
 		})}
 		<link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
