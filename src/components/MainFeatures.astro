@@ -4,26 +4,34 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+// Map i18n codes to directory names if they differ
+const langToDir: Record<string, string> = {
+  'zh-Hans': 'en', // Fallback to en if no zh-hans dir
+};
+
+const screenshotLang = langToDir[lang] || lang;
+const screenshotsDir = `/assets/images/screenshots/${screenshotLang}`;
+
 const mainFeatures = [
   {
     title: t('features.team_gen_title'),
     desc: t('features.team_gen_desc'),
     video: '/assets/images/Team-Generator-Preview.mp4',
-    poster: '/assets/images/screenshots/1.png',
+    poster: `${screenshotsDir}/1.png`,
     reversed: false
   },
   {
     title: t('features.sim_title'),
     desc: t('features.sim_desc'),
     video: '/assets/images/Simulator-Preview.mp4',
-    poster: '/assets/images/screenshots/2.png',
+    poster: `${screenshotsDir}/2.png`,
     reversed: true
   },
   {
     title: t('features.iv_title'),
     desc: t('features.iv_desc'),
     video: '/assets/images/IVChecker-Preview.mp4',
-    poster: '/assets/images/screenshots/3.png',
+    poster: `${screenshotsDir}/3.png`,
     reversed: false
   }
 ];

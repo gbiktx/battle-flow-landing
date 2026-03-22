@@ -56,6 +56,7 @@ export const ui = {
     'footer.copyright': 'Made with ❤️ in Latin America by Baru Software Co',
     'privacy.title': 'Privacy Policy',
     'tac.title': 'Terms & Conditions',
+    'showcase.title': 'App Screenshots',
   },
   es: {
     'nav.home': 'Inicio',
@@ -99,6 +100,7 @@ export const ui = {
     'footer.copyright': 'Hecho con ❤️ en América Latina por Baru Software Co',
     'privacy.title': 'Política de Privacidad',
     'tac.title': 'Términos y Condiciones',
+    'showcase.title': 'Capturas de Pantalla',
   },
   fr: {
     'nav.home': 'Accueil',
@@ -142,6 +144,7 @@ export const ui = {
     'footer.copyright': 'Fait avec ❤️ en Amérique Latine par Baru Software Co',
     'privacy.title': 'Politique de Confidentialité',
     'tac.title': 'Conditions Générales',
+    'showcase.title': 'Captures d\'écran',
   },
   de: {
     'nav.home': 'Startseite',
@@ -185,6 +188,7 @@ export const ui = {
     'footer.copyright': 'Mit ❤️ in Lateinamerika von Baru Software Co gemacht',
     'privacy.title': 'Datenschutzrichtlinie',
     'tac.title': 'Allgemeine Geschäftsbedingungen',
+    'showcase.title': 'App-Screenshots',
   },
   it: {
     'nav.home': 'Home',
@@ -228,6 +232,7 @@ export const ui = {
     'footer.copyright': 'Fatto con ❤️ in America Latina da Baru Software Co',
     'privacy.title': 'Informativa sulla Privacy',
     'tac.title': 'Termini e Condizioni',
+    'showcase.title': 'Screenshot dell\'App',
   },
   pt: {
     'nav.home': 'Início',
@@ -271,6 +276,7 @@ export const ui = {
     'footer.copyright': 'Feito com ❤️ na América Latina pela Baru Software Co',
     'privacy.title': 'Política de Privacidade',
     'tac.title': 'Termos e Condições',
+    'showcase.title': 'Capturas de Tela',
   },
   'zh-Hans': {
     'nav.home': '首页',
@@ -314,6 +320,7 @@ export const ui = {
     'footer.copyright': '由 Baru Software Co 在拉美倾情打造 ❤️',
     'privacy.title': '隐私政策',
     'tac.title': '服务条款',
+    'showcase.title': '应用截图',
   },
   'zh-Hant': {
     'nav.home': '首頁',
@@ -357,6 +364,7 @@ export const ui = {
     'footer.copyright': '由 Baru Software Co 在拉美傾情打造 ❤️',
     'privacy.title': '隱私政策',
     'tac.title': '服務條款',
+    'showcase.title': '應用截圖',
   },
   ja: {
     'nav.home': 'ホーム',
@@ -400,6 +408,7 @@ export const ui = {
     'footer.copyright': '中南米の Baru Software Co が ❤️ を込めて制作',
     'privacy.title': 'プライバシーポリシー',
     'tac.title': '利用規約',
+    'showcase.title': 'アプリのスクリーンショット',
   },
   ko: {
     'nav.home': '홈',
@@ -443,5 +452,6 @@ export const ui = {
     'footer.copyright': '라틴 아메리카의 Baru Software Co에서 ❤️로 제작되었습니다',
     'privacy.title': '개인정보 처리방침',
     'tac.title': '이용약관',
-  }
+    'showcase.title': '앱 스크린샷',
+    },
 } as const;
