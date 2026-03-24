@@ -60,18 +60,27 @@ const mainFeatures = [
             )}
           </div>
 
-          <!-- Video Visual -->
+          <!-- Visual element (Video for EN, Image for others) -->
           <div class="flex-1 w-full max-w-[320px] mx-auto">
             <div class="relative aspect-[9/19.5] rounded-[3rem] overflow-hidden glass card-shadow border-8 border-brand-dark/50">
-              <video 
-                src={f.video} 
-                poster={f.poster}
-                class="w-full h-full object-cover" 
-                autoplay 
-                muted 
-                loop 
-                playsinline
-              ></video>
+              {lang === 'en' ? (
+                <video 
+                  src={f.video} 
+                  poster={f.poster}
+                  class="w-full h-full object-cover" 
+                  autoplay 
+                  muted 
+                  loop 
+                  playsinline
+                ></video>
+              ) : (
+                <img 
+                  src={f.poster} 
+                  alt={f.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              )}
             </div>
           </div>
         </div>
