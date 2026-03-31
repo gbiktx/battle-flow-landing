@@ -9,7 +9,7 @@ const lang = 'en';
 const t = useTranslations(lang);
 
 const posts = await getCollection('blog', ({ id }) => {
-  return id.startsWith(`${lang}/`);
+  return id.toLowerCase().startsWith(`${lang.toLowerCase()}/`);
 });
 
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
