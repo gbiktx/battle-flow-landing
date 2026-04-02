@@ -41,9 +41,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			}
 			
 			const base = segments.join('/');
-			const path = l === 'en' 
-				? `/${base}${base ? '/' : ''}` 
-				: `/${l}/${base}${base || l ? '/' : ''}`;
+			const path = l === 'en'
+				? `/${base}${base ? '/' : ''}`
+				: `/${l}/${base}${base ? '/' : ''}`;
 				
 			return <link rel="alternate" hreflang={l} href={new URL(path, Astro.site)} />;
 		})}

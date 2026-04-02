@@ -15,7 +15,7 @@ function getLocalizedPath(newLang: string) {
   const base = segments.join('/');
   return newLang === 'en' 
     ? `/${base}${base ? '/' : ''}` 
-    : `/${newLang}/${base}${base || newLang ? '/' : ''}`;
+    : `/${newLang}/${base}${base ? '/' : ''}`;
 }
 ---
 
