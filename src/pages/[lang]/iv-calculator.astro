@@ -1,0 +1,23 @@
+---
+import { languages } from '../../i18n/ui';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import IvCalculatorWrapper from '../../components/IvCalculatorWrapper.astro';
+import DownloadButtons from '../../components/DownloadButtons.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter(lang => lang !== 'en')
+    .map((lang) => ({ params: { lang } }));
+}
+---
+
+<Layout>
+	<Nav />
+	<main class="pt-24">
+		<IvCalculatorWrapper />
+    <DownloadButtons />
+	</main>
+	<Footer />
+</Layout>
