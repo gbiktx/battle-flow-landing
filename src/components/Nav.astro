@@ -27,7 +27,7 @@ function getLocalizedPath(newLang: string) {
       <span class="text-xl font-black tracking-tighter">BATTLEFLOW</span>
     </a>
 
-    <div class="flex items-center gap-8">
+    <div class="flex items-center gap-4">
       <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
         <a href={`/${lang === 'en' ? '' : lang + '/'}`} class="hover:text-white transition-colors">{t('nav.home')}</a>
         <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class="hover:text-white transition-colors">{t('nav.blog')}</a>
@@ -51,7 +51,65 @@ function getLocalizedPath(newLang: string) {
           </svg>
         </div>
       </div>
+
+      <button id="mobile-menu-button" class="md:hidden p-2 text-gray-400 hover:text-white transition-colors" aria-label="Toggle Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
     </div>
 
   </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/95 z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center p-8">
+    <button id="close-menu-button" class="absolute top-6 right-6 p-2 text-gray-400 hover:text-white transition-colors" aria-label="Close Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="flex flex-col items-center gap-8 text-lg font-black uppercase tracking-[0.2em] text-white">
+      <a href={`/${lang === 'en' ? '' : lang + '/'}`} class="hover:text-brand-accent transition-colors">{t('nav.home')}</a>
+      <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class="hover:text-brand-accent transition-colors">{t('nav.blog')}</a>
+      <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class="hover:text-brand-accent transition-colors">{t('nav.iv')}</a>
+    </div>
+
+    <div class="mt-16 w-full max-w-xs">
+      <div class="h-px bg-white/10 w-full mb-8"></div>
+      <div class="grid grid-cols-2 gap-4">
+        {Object.entries(languages).map(([code, name]) => (
+          <a 
+            href={getLocalizedPath(code)}
+            class={`text-[10px] font-black uppercase tracking-widest text-center py-3 rounded-xl border ${code === lang ? 'bg-brand-accent text-brand-dark border-brand-accent' : 'bg-white/5 text-gray-400 border-white/10'}`}
+          >
+            {name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
 </nav>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const closeMenuButton = document.getElementById('close-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function toggleMenu() {
+    mobileMenu?.classList.toggle('translate-x-full');
+    document.body.classList.toggle('overflow-hidden');
+  }
+
+  mobileMenuButton?.addEventListener('click', toggleMenu);
+  closeMenuButton?.addEventListener('click', toggleMenu);
+
+  // Close menu when a link is clicked
+  const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
+  mobileMenuLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+      document.body.classList.remove('overflow-hidden');
+    });
+  });
+</script>
