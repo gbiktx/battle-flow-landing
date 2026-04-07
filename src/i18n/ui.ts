@@ -130,7 +130,7 @@ export const ui = {
   es: {
     'nav.home': 'Inicio',
     'nav.blog': 'Blog',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'Calculadora de IV',
     'nav.privacy': 'Privacidad',
     'nav.terms': 'Términos',
     'site.title': 'Generador de Equipos PvP de Pokémon GO',
@@ -243,7 +243,7 @@ export const ui = {
   fr: {
     'nav.home': 'Accueil',
     'nav.blog': 'Blog',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'Calculateur d'IV',
     'nav.privacy': 'Confidentialité',
     'nav.terms': 'Conditions',
     'site.title': 'Générateur d\'Équipes PvP Pokémon GO',
@@ -356,7 +356,7 @@ export const ui = {
   de: {
     'nav.home': 'Startseite',
     'nav.blog': 'Blog',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'IV-Rechner',
     'nav.privacy': 'Datenschutz',
     'nav.terms': 'Bedingungen',
     'site.title': 'Pokémon GO PvP Team Builder',
@@ -468,7 +468,7 @@ export const ui = {
   it: {
     'nav.home': 'Home',
     'nav.blog': 'Blog',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'Calcolatore IV',
     'nav.privacy': 'Privacy',
     'nav.terms': 'Termini',
     'site.title': 'Generatore di Squadre PvP Pokémon GO',
@@ -580,7 +580,7 @@ export const ui = {
   pt: {
     'nav.home': 'Início',
     'nav.blog': 'Blog',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'Calculadora de IV',
     'nav.privacy': 'Privacidade',
     'nav.terms': 'Termos',
     'site.title': 'Gerador de Equipes PvP Pokémon GO',
@@ -692,7 +692,7 @@ export const ui = {
   'zh-Hans': {
     'nav.home': '首页',
     'nav.blog': '博客',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'IV 计算器',
     'nav.privacy': '隐私政策',
     'nav.terms': '服务条款',
     'site.title': 'Pokémon GO PvP 阵容生成器',
@@ -804,7 +804,7 @@ export const ui = {
   'zh-Hant': {
     'nav.home': '首頁',
     'nav.blog': '部落格',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'IV 計算器',
     'nav.privacy': '隱私政策',
     'nav.terms': '服務條款',
     'site.title': 'Pokémon GO PvP 陣容生成器',
@@ -916,7 +916,7 @@ export const ui = {
   ja: {
     'nav.home': 'ホーム',
     'nav.blog': 'ブログ',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'IV計算機',
     'nav.privacy': 'プライバシー',
     'nav.terms': '規約',
     'site.title': 'Pokémon GO PvP チームビルダー',

@@ -62,7 +62,7 @@ function getLocalizedPath(newLang: string) {
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/95 z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center p-8">
+  <div id="mobile-menu" class="fixed inset-0 bg-brand-dark z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center p-8">
     <button id="close-menu-button" class="absolute top-6 right-6 p-2 text-gray-400 hover:text-white transition-colors" aria-label="Close Menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -70,9 +70,9 @@ function getLocalizedPath(newLang: string) {
     </button>
 
     <div class="flex flex-col items-center gap-12 text-2xl font-black uppercase tracking-[0.2em] text-white">
-      <a href={`/${lang === 'en' ? '' : lang + '/'}`} class="hover:text-brand-accent transition-colors">{t('nav.home')}</a>
-      <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class="hover:text-brand-accent transition-colors">{t('nav.blog')}</a>
-      <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class="hover:text-brand-accent transition-colors">{t('nav.iv')}</a>
+      <a href={`/${lang === 'en' ? '' : lang + '/'}`} class={`transition-colors ${currentPath === `/${lang === 'en' ? '' : lang + '/'}` ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.home')}</a>
+      <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class={`transition-colors ${currentPath.includes('/blog/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.blog')}</a>
+      <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class={`transition-colors ${currentPath.includes('/iv-calculator/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.iv')}</a>
     </div>
   </div>
 </nav>
