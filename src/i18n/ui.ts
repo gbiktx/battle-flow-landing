@@ -243,7 +243,7 @@ export const ui = {
   fr: {
     'nav.home': 'Accueil',
     'nav.blog': 'Blog',
-    'nav.iv': 'Calculateur d'IV',
+    'nav.iv': 'Calculateur d\'IV',
     'nav.privacy': 'Confidentialité',
     'nav.terms': 'Conditions',
     'site.title': 'Générateur d\'Équipes PvP Pokémon GO',
