@@ -1028,7 +1028,7 @@ export const ui = {
   ko: {
     'nav.home': '홈',
     'nav.blog': '블로그',
-    'nav.iv': 'IV Calculator',
+    'nav.iv': 'IV 계산기',
     'nav.privacy': '개인정보 보호',
     'nav.terms': '이용약관',
     'site.title': '포켓몬 GO PvP 팀 빌더',
