@@ -5,15 +5,19 @@ import Nav from '../../components/Nav.astro';
 import IvCalculatorWrapper from '../../components/IvCalculatorWrapper.astro';
 import DownloadButtons from '../../components/DownloadButtons.astro';
 import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 export function getStaticPaths() {
   return Object.keys(languages)
     .filter(lang => lang !== 'en')
     .map((lang) => ({ params: { lang } }));
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout>
+<Layout title={t('iv.title')} description={t('iv.subtitle')}>
 	<Nav />
 	<main class="pt-24 pb-20">
 		<IvCalculatorWrapper />

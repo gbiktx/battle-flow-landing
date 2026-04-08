@@ -4,6 +4,7 @@ import { languages } from '../../../i18n/ui';
 import { useTranslations } from '../../../i18n/utils';
 import Layout from '../../../layouts/Layout.astro';
 import Nav from '../../../components/Nav.astro';
+import DownloadButtons from '../../../components/DownloadButtons.astro';
 import Footer from '../../../components/Footer.astro';
 
 export function getStaticPaths() {
@@ -57,5 +58,6 @@ const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.val
 			</div>
 		</div>
 	</main>
+	<DownloadButtons />
 	<Footer />
 </Layout>

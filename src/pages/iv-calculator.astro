@@ -4,9 +4,13 @@ import Nav from '../components/Nav.astro';
 import IvCalculatorWrapper from '../components/IvCalculatorWrapper.astro';
 import DownloadButtons from '../components/DownloadButtons.astro';
 import Footer from '../components/Footer.astro';
+import { useTranslations } from '../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
 ---
 
-<Layout>
+<Layout title={t('iv.title')} description={t('iv.subtitle')}>
 	<Nav />
 	<main class="pt-24 pb-20">
 		<IvCalculatorWrapper />

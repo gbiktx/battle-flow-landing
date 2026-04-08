@@ -3,6 +3,7 @@ import { languages } from '../../i18n/ui';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import DownloadButtons from '../../components/DownloadButtons.astro';
 import MovedexComponent from '../../components/Movedex';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
@@ -16,7 +17,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('nav.movedex')}>
+<Layout title={t('movedex.title')} description={t('movedex.subtitle')}>
 	<Nav />
 	
 	<main class="pt-24 pb-20">
@@ -37,5 +38,6 @@ const t = useTranslations(lang);
 		<MovedexComponent client:load lang={lang} />
 	</main>
 
+	<DownloadButtons />
 	<Footer />
 </Layout>

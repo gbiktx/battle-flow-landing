@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const DIST_DIR = 'dist';
 const LANGUAGES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-Hans', 'zh-Hant', 'ja', 'ko'];
-const BASE_ROUTES = ['', 'privacy', 'tac', 'blog'];
+const BASE_ROUTES = ['', 'privacy', 'tac', 'blog', 'iv-calculator', 'movedex'];
 const BLOG_SLUGS = fs.readdirSync('src/content/blog/en')
   .filter(file => file.endsWith('.md'))
   .map(file => file.replace(/\.md$/, ''));
