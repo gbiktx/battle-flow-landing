@@ -6,14 +6,20 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="py-24 relative overflow-hidden" id="iv-calculator">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-5xl mb-4">{t('iv.title')}</h2>
-      <p class="text-gray-400 max-w-2xl mx-auto">{t('iv.subtitle')}</p>
-      <div class="h-1.5 w-24 bg-linear-to-r from-brand-blue to-brand-accent mx-auto mt-6 rounded-full"></div>
+<section class="pb-20 relative overflow-hidden" id="iv-calculator">
+  <div class="container mx-auto px-6 mb-12">
+    <div class="max-w-3xl">
+      <div class="inline-block bg-brand-blue/10 text-brand-blue px-4 py-1 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-6 border border-brand-blue/20">
+        {t('nav.iv')}
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 leading-none uppercase">
+        {t('iv.title')}
+      </h1>
+      <p class="text-xl text-gray-400 font-medium leading-relaxed">
+        {t('iv.subtitle')}
+      </p>
     </div>
-
-    <IvCalculator client:load lang={lang} />
   </div>
+
+  <IvCalculator client:load lang={lang} />
 </section>

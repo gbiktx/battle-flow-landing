@@ -30,6 +30,7 @@ function getLocalizedPath(newLang: string) {
     <div class="flex items-center gap-4">
       <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
         <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class={`transition-colors ${currentPath.includes('/blog/') ? 'text-brand-accent' : 'text-gray-400 hover:text-white'}`}>{t('nav.blog')}</a>
+        <a href={`/${lang === 'en' ? '' : lang + '/'}movedex/`} class={`transition-colors ${currentPath.includes('/movedex/') ? 'text-brand-accent' : 'text-gray-400 hover:text-white'}`}>{t('nav.movedex')}</a>
         <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class={`transition-colors ${currentPath.includes('/iv-calculator/') ? 'text-brand-accent' : 'text-gray-400 hover:text-white'}`}>{t('nav.iv')}</a>
       </div>
 
@@ -46,40 +47,41 @@ function getLocalizedPath(newLang: string) {
         </select>
         <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
           </svg>
         </div>
       </div>
 
       <button id="mobile-menu-button" class="md:hidden p-2 text-gray-400 hover:text-white transition-colors" aria-label="Toggle Menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
       </button>
     </div>
 
   </div>
-
-  <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-brand-dark z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center p-8">
-    <button id="close-menu-button" class="absolute top-6 right-6 p-2 text-gray-400 hover:text-white transition-colors" aria-label="Close Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-
-    <div class="flex flex-col items-center gap-12 text-2xl font-black uppercase tracking-[0.2em] text-white">
-      <a href={`/${lang === 'en' ? '' : lang + '/'}`} class={`flex items-center gap-3 transition-colors ${currentPath === `/${lang === 'en' ? '' : lang + '/'}` || currentPath === `/${lang === 'en' ? '' : lang}` ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-        {t('nav.home')}
-      </a>
-      <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class={`transition-colors ${currentPath.includes('/blog/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.blog')}</a>
-      <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class={`transition-colors ${currentPath.includes('/iv-calculator/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.iv')}</a>
-    </div>
-  </div>
 </nav>
+
+<!-- Mobile Menu Overlay - Moved outside nav for cleaner stacking -->
+<div id="mobile-menu" class="fixed inset-0 bg-[#0B0E1A] z-[100] translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-start pt-40 p-8">
+  <button id="close-menu-button" class="absolute top-6 right-6 p-2 text-gray-400 hover:text-white transition-colors" aria-label="Close Menu">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <div class="flex flex-col items-center gap-10 text-3xl font-black uppercase tracking-[0.2em] text-white">
+    <a href={`/${lang === 'en' ? '' : lang + '/'}`} class={`flex items-center gap-4 transition-colors ${currentPath === `/${lang === 'en' ? '' : lang + '/'}` || currentPath === `/${lang === 'en' ? '' : lang}` ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+      {t('nav.home')}
+    </a>
+    <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class={`transition-colors ${currentPath.includes('/blog/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.blog')}</a>
+    <a href={`/${lang === 'en' ? '' : lang + '/'}movedex/`} class={`transition-colors ${currentPath.includes('/movedex/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.movedex')}</a>
+    <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class={`transition-colors ${currentPath.includes('/iv-calculator/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.iv')}</a>
+  </div>
+</div>
 
 <script>
   const mobileMenuButton = document.getElementById('mobile-menu-button');

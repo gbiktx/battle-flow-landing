@@ -2,7 +2,8 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import pokemonData from '../data/pokemon.json';
 import translations from '../data/translations.json';
 import { PvPCalculator, type RankEntry } from '../lib/pvp-calculator';
-import { ui, defaultLang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { ui } from '../i18n/ui';
 
 interface Props {
   lang: string;
@@ -18,11 +19,31 @@ const LEAGUES = [
 const TARGET_LEVELS = [40, 41, 50, 51];
 
 const TYPE_COLORS: Record<string, string> = {
-  bug: '#aec92c', dark: '#6e7681', dragon: '#067fc4', electric: '#fedf6b',
-  fairy: '#f6a7e8', fighting: '#e34448', fire: '#feb04b', flying: '#a7c1f2',
-  ghost: '#7571d0', grass: '#59c079', ground: '#d2976b', ice: '#94ddd6',
-  normal: '#a3a49e', poison: '#a662c7', psychic: '#fda194', rock: '#d7cd90',
-  steel: '#5aafb4', water: '#6ac7e9',
+  bug: '#aec92c',
+  dark: '#6e7681',
+  dragon: '#067fc4',
+  electric: '#fedf6b',
+  fairy: '#f6a7e8',
+  fighting: '#e34448',
+  fire: '#feb04b',
+  flying: '#a7c1f2',
+  ghost: '#7571d0',
+  grass: '#59c079',
+  ground: '#d2976b',
+  ice: '#94ddd6',
+  normal: '#a3a49e',
+  poison: '#a662c7',
+  psychic: '#fda194',
+  rock: '#d7cd90',
+  steel: '#5aafb4',
+  water: '#6ac7e9',
+};
+
+const hexToRgba = (hex: string, opacity: number) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
 
 const NO_QUALIFIER_IDS = [29, 32, 122, 250, 474, 439, 782, 783, 784, 785, 786, 787, 788, 866, 1001, 1002, 1003, 1004];
@@ -40,25 +61,17 @@ export default function IvCalculator({ lang }: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [showFullTable, setShowFullTable] = useState(false);
   
-  // Input refs for auto-focus
   const atkRef = useRef<HTMLInputElement>(null);
   const defRef = useRef<HTMLInputElement>(null);
   const hpRef = useRef<HTMLInputElement>(null);
 
-  // Use strings for inputs
   const [inputAtk, setInputAtk] = useState('0');
   const [inputDef, setInputDef] = useState('15');
   const [inputHp, setInputHp] = useState('15');
   
   const [trackedIvs, setTrackedIvs] = useState<IVSet[]>([]);
 
-  // Safe translation helper
-  const t = (key: string): string => {
-    const currentLang = (lang || 'en') as keyof typeof ui;
-    const langObj = ui[currentLang] || ui[defaultLang];
-    const translation = (langObj as any)[key];
-    return translation !== undefined ? translation : (ui[defaultLang] as any)[key] || key;
-  };
+  const t = useTranslations(lang as keyof typeof ui);
 
   const getSpriteName = (dex: number, id: string) => {
     const safeId = id || '';
@@ -86,7 +99,6 @@ export default function IvCalculator({ lang }: Props) {
 
   const getPokemonName = (id: string, defaultName: string) => {
     const safeId = id || '';
-    // Special handling for mega and other forms to match translations.json keys
     let lookupId = safeId
       .replace('_mega_x', 'X')
       .replace('_mega_y', 'Y')
@@ -101,7 +113,7 @@ export default function IvCalculator({ lang }: Props) {
   };
 
   const getTypeName = (type: string) => {
-    return t(`type.${type.toLowerCase()}`);
+    return t(`type.${type.toLowerCase()}` as any);
   };
 
   const filteredPokemonList = useMemo(() => {
@@ -148,7 +160,6 @@ export default function IvCalculator({ lang }: Props) {
   }, [trackedIvs, allRanks, showFullTable]);
 
   const handleIvChange = (val: string, field: 'atk' | 'def' | 'hp') => {
-    // Only allow numbers
     const clean = val.replace(/\D/g, '');
     if (clean === '') {
       if (field === 'atk') setInputAtk('');
@@ -160,13 +171,11 @@ export default function IvCalculator({ lang }: Props) {
     const num = parseInt(clean);
     if (num > 15) return;
 
-    // Update state without leading zeros
     const finalVal = num.toString();
     if (field === 'atk') setInputAtk(finalVal);
     else if (field === 'def') setInputDef(finalVal);
     else if (field === 'hp') setInputHp(finalVal);
 
-    // Auto-focus logic: move if it's 0, 2-9, or 10-15. Stay if it's 1.
     const shouldMove = (num >= 2 && num <= 9) || (num >= 10 && num <= 15) || (clean === '0');
     if (shouldMove) {
       if (field === 'atk') defRef.current?.focus();
@@ -175,44 +184,70 @@ export default function IvCalculator({ lang }: Props) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-4 md:p-8 space-y-8">
-      
+    <div className="max-w-6xl mx-auto px-4 py-8 space-y-8">
       {/* Settings Panel */}
-      <div className="bg-brand-dark/40 rounded-[2.5rem] border border-white/10 p-8 shadow-2xl relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
-          
-          <div className="lg:col-span-4 space-y-6">
+      <div className="bg-brand-dark/40 rounded-[2.5rem] border border-white/10 p-5 md:p-8 shadow-2xl relative z-10 glass">
+        {/* Decorative Glows */}
+        <div className="absolute inset-0 overflow-hidden rounded-[2.5rem] pointer-events-none z-0">
+          <div className="absolute top-[-20%] left-[-10%] w-[40%] h-[60%] bg-brand-blue/10 blur-[100px] rounded-full"></div>
+          <div className="absolute bottom-[-20%] right-[-10%] w-[40%] h-[60%] bg-brand-accent/5 blur-[100px] rounded-full"></div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
+
+          <div className="lg:col-span-4 space-y-6 relative z-50">
+
             <div className="flex flex-col items-center text-center group">
               <div className="relative mb-4">
                 <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full scale-150 group-hover:scale-175 transition-transform duration-700"></div>
                 <div className="relative p-4 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
-                  <img src={spriteUrl} alt="" className="w-20 h-20 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
+                  <img src={spriteUrl} alt="" className="w-24 h-24 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
                 </div>
               </div>
-              <h3 className="text-2xl font-black text-white tracking-tighter">{getPokemonName(currentPokemon.id, currentPokemon.name)}</h3>
-              <div className="flex gap-2 mt-2">
-                {currentPokemon.types.filter(t => t !== 'none').map(type => (
-                  <span key={type} className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full text-white/90" style={{ backgroundColor: TYPE_COLORS[type] }}>{getTypeName(type)}</span>
-                ))}
+              <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{getPokemonName(currentPokemon.id, currentPokemon.name)}</h3>
+              <div className="flex gap-2 mt-3">
+                {currentPokemon.types.filter(t => t !== 'none').map(type => {
+                  const color = TYPE_COLORS[type] || '#ffffff';
+                  return (
+                    <span 
+                      key={type} 
+                      className="text-[10px] font-black uppercase px-3 py-1 rounded tracking-wider" 
+                      style={{ 
+                        backgroundColor: hexToRgba(color, 0.25),
+                        color: color,
+                        border: `1px solid ${hexToRgba(color, 0.5)}`
+                      }}
+                    >
+                      {getTypeName(type)}
+                    </span>
+                  );
+                })}
               </div>
             </div>
 
             <div className="relative">
-              <label htmlFor="pokemon-search" className="block text-[10px] font-black mb-2 text-gray-500 uppercase tracking-widest">{t('iv.change_pokemon')}</label>
-              <input 
-                id="pokemon-search"
-                type="text" 
-                className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-3 focus:outline-hidden focus:ring-2 focus:ring-brand-accent/50 text-white font-bold text-sm" 
-                placeholder={t('iv.search_placeholder')} 
-                value={searchTerm} 
-                onChange={(e) => setSearchTerm(e.target.value)} 
-              />
+              <label htmlFor="pokemon-search" className="block text-[10px] font-black mb-2 text-gray-500 uppercase tracking-widest">{t('iv.change_pokemon' as any)}</label>
+              <div className="relative">
+                <input 
+                  id="pokemon-search"
+                  type="text" 
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 focus:outline-hidden focus:ring-2 focus:ring-brand-accent/50 text-white font-bold text-sm placeholder-gray-500 transition-all" 
+                  placeholder={t('iv.search_placeholder' as any)} 
+                  value={searchTerm} 
+                  onChange={(e) => setSearchTerm(e.target.value)} 
+                />
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </div>
               {searchTerm && filteredPokemonList.length > 0 && (
-                <div className="absolute left-0 right-0 top-full mt-2 bg-brand-dark border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-60 overflow-y-auto z-[100]">
+                <div className="absolute left-0 right-0 top-full mt-2 bg-brand-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-60 overflow-y-auto z-[100]">
                   {filteredPokemonList.map(p => (
                     <button key={p.id} className="w-full text-left px-5 py-3 hover:bg-white/10 transition-colors flex items-center gap-4 text-white border-b border-white/5 last:border-0" onClick={() => { setSelectedId(p.id); setSearchTerm(''); }}>
                       <img src={`/assets/images/sprites/${getSpriteName(p.dex, p.id)}.png`} alt="" className="w-8 h-8 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
-                      <span className="font-bold text-sm">{getPokemonName(p.id, p.name)}</span>
+                      <span className="font-bold text-sm uppercase tracking-tight">{getPokemonName(p.id, p.name)}</span>
                     </button>
                   ))}
                 </div>
@@ -220,28 +255,36 @@ export default function IvCalculator({ lang }: Props) {
             </div>
           </div>
 
-          <div className="lg:col-span-8 flex flex-col justify-center space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-3">
-                <label className="text-xs font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> League
+          <div className="lg:col-span-8 flex flex-col justify-center space-y-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> {t('iv.league' as any)}
                 </label>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 gap-2 p-1 bg-white/5 rounded-2xl border border-white/10">
                   {LEAGUES.map(l => (
-                    <button key={l.id} className={`py-2.5 px-1 rounded-xl text-[9px] font-black uppercase transition-all border ${league.id === l.id ? 'bg-brand-accent border-brand-accent text-white shadow-lg' : 'bg-white/5 border-white/5 text-gray-400 hover:bg-white/10'}`} onClick={() => setLeague(l)}>
-                      {t(l.labelKey).replace(/League|Liga|Ligue|Cup/gi, "").trim()}
+                    <button 
+                      key={l.id} 
+                      className={`py-3 px-1 rounded-xl text-[10px] font-black uppercase transition-all ${league.id === l.id ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'}`} 
+                      onClick={() => setLeague(l)}
+                    >
+                      {t(l.labelKey as any).replace(/League|Liga|Ligue|Cup/gi, "").trim()}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <label className="text-xs font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> {t('iv.level_cap')}
+              <div className="space-y-4">
+                <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> {t('iv.level_cap' as any)}
                 </label>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 gap-2 p-1 bg-white/5 rounded-2xl border border-white/10">
                   {TARGET_LEVELS.map(l => (
-                    <button key={l} className={`py-2.5 rounded-xl text-[10px] font-black transition-all border ${maxLevel === l ? 'bg-brand-blue border-brand-blue text-white shadow-lg' : 'bg-white/5 border-white/5 text-gray-400 hover:bg-white/10'}`} onClick={() => setMaxLevel(l)}>
+                    <button 
+                      key={l} 
+                      className={`py-3 rounded-xl text-[10px] font-black transition-all ${maxLevel === l ? 'bg-brand-blue text-white shadow-lg shadow-brand-blue/20' : 'text-gray-400 hover:text-white'}`} 
+                      onClick={() => setMaxLevel(l)}
+                    >
                       {l}
                     </button>
                   ))}
@@ -249,10 +292,10 @@ export default function IvCalculator({ lang }: Props) {
               </div>
             </div>
 
-            <div className="bg-black/20 p-6 rounded-3xl border border-white/5 space-y-4">
-              <label className="text-xs font-black text-gray-400 uppercase tracking-widest block">{t('iv.analyze_custom')}</label>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <div className="grid grid-cols-3 gap-3 flex-1 w-full">
+            <div className="bg-white/5 p-5 md:p-8 rounded-[2rem] border border-white/10 space-y-6">
+              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">{t('iv.analyze_custom' as any)}</label>
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                <div className="grid grid-cols-3 gap-4 flex-1 w-full">
                   <div className="relative">
                     <input 
                       ref={atkRef} 
@@ -261,9 +304,9 @@ export default function IvCalculator({ lang }: Props) {
                       inputMode="numeric" 
                       value={inputAtk} 
                       onChange={(e) => handleIvChange(e.target.value, 'atk')}
-                      className="w-full bg-black/40 border border-white/10 rounded-2xl py-3 px-2 text-center text-xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-atk" className="absolute -top-2 left-1/2 -translate-x-1/2 bg-brand-dark px-2 text-[8px] font-black text-gray-500 tracking-tighter rounded-full border border-white/5 uppercase cursor-pointer">{t('iv.attack').slice(0, 3)}</label>
+                    <label htmlFor="iv-atk" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.attack' as any).slice(0, 3)}</label>
                   </div>
                   <div className="relative">
                     <input 
@@ -273,9 +316,9 @@ export default function IvCalculator({ lang }: Props) {
                       inputMode="numeric" 
                       value={inputDef} 
                       onChange={(e) => handleIvChange(e.target.value, 'def')}
-                      className="w-full bg-black/40 border border-white/10 rounded-2xl py-3 px-2 text-center text-xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-def" className="absolute -top-2 left-1/2 -translate-x-1/2 bg-brand-dark px-2 text-[8px] font-black text-gray-500 tracking-tighter rounded-full border border-white/5 uppercase cursor-pointer">{t('iv.defense').slice(0, 3)}</label>
+                    <label htmlFor="iv-def" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.defense' as any).slice(0, 3)}</label>
                   </div>
                   <div className="relative">
                     <input 
@@ -285,14 +328,14 @@ export default function IvCalculator({ lang }: Props) {
                       inputMode="numeric" 
                       value={inputHp} 
                       onChange={(e) => handleIvChange(e.target.value, 'hp')}
-                      className="w-full bg-black/40 border border-white/10 rounded-2xl py-3 px-2 text-center text-xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all"
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-hp" className="absolute -top-2 left-1/2 -translate-x-1/2 bg-brand-dark px-2 text-[8px] font-black text-gray-500 tracking-tighter rounded-full border border-white/5 uppercase cursor-pointer">{t('iv.hp').slice(0, 3)}</label>
+                    <label htmlFor="iv-hp" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.hp' as any).slice(0, 3)}</label>
                   </div>
                 </div>
-                <button onClick={handleAddTracked} className="w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-accent hover:bg-brand-accent/80 text-white px-8 py-4 rounded-2xl transition-all font-black uppercase tracking-widest shadow-xl active:scale-95">
+                <button onClick={handleAddTracked} className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-accent hover:brightness-110 text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-sm shadow-xl shadow-brand-accent/20 active:scale-95">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
-                  {t('iv.track_ivs')}
+                  {t('iv.track_ivs' as any)}
                 </button>
               </div>
             </div>
@@ -300,23 +343,24 @@ export default function IvCalculator({ lang }: Props) {
         </div>
       </div>
 
-      <div className="bg-brand-dark/40 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
-        <div className="px-10 py-8 bg-white/5 border-b border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6">
+      {/* Table Section */}
+      <div className="bg-brand-dark/40 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative z-0 glass">
+        <div className="px-5 py-6 md:px-10 md:py-10 bg-white/5 border-b border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-4 h-4 rounded-full bg-brand-accent animate-ping opacity-75"></div>
-            <h4 className="text-lg font-black text-white uppercase tracking-widest">
-              {showFullTable ? t('iv.top_100') : t('iv.top_10')}
+            <div className="w-3 h-3 rounded-full bg-brand-accent shadow-[0_0_12px_rgba(218,85,47,0.5)]"></div>
+            <h4 className="text-xl font-black text-white uppercase tracking-widest">
+              {showFullTable ? t('iv.top_100' as any) : t('iv.top_10' as any)}
             </h4>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             {trackedIvs.length > 0 && (
-              <button onClick={handleClearTracked} className="text-[10px] font-black text-gray-500 hover:text-white uppercase tracking-widest mr-4">
-                {t('iv.clear_tracked')}
+              <button onClick={handleClearTracked} className="text-[10px] font-black text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em] mr-2">
+                {t('iv.clear_tracked' as any)}
               </button>
             )}
-            <button onClick={() => setShowFullTable(!showFullTable)} className="px-6 py-2.5 bg-brand-accent/10 border border-brand-accent/30 rounded-full text-[10px] font-black text-brand-accent uppercase tracking-widest hover:bg-brand-accent hover:text-white transition-all shadow-lg">
-              {showFullTable ? t('iv.show_top_10') : t('iv.show_top_100')}
+            <button onClick={() => setShowFullTable(!showFullTable)} className="px-4 py-3 md:px-8 bg-white/5 border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all shadow-lg">
+              {showFullTable ? t('iv.show_top_10' as any) : t('iv.show_top_100' as any)}
             </button>
           </div>
         </div>
@@ -324,13 +368,13 @@ export default function IvCalculator({ lang }: Props) {
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left border-collapse min-w-[950px]">
             <thead>
-              <tr className="text-gray-500 bg-white/5 border-b border-white/10">
-                <th className="px-10 py-5 font-black uppercase tracking-widest text-[10px]">{t('iv.rank')}</th>
-                <th className="px-10 py-5 font-black uppercase tracking-widest text-[10px]">{t('iv.iv_set')}</th>
-                <th className="px-10 py-5 font-black uppercase tracking-widest text-[10px]">{t('iv.actual_stats')}</th>
-                <th className="px-10 py-5 font-black uppercase tracking-widest text-[10px]">{t('iv.level')}</th>
-                <th className="px-10 py-5 font-black uppercase tracking-widest text-[10px]">{t('iv.cp')}</th>
-                <th className="px-10 py-5 font-black uppercase tracking-widest text-[10px] text-right">{t('iv.perfection')}</th>
+              <tr className="text-gray-500 bg-white/[0.02] border-b border-white/5">
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.rank' as any)}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.iv_set' as any)}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.actual_stats' as any)}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.level' as any)}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.cp' as any)}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px] text-right">{t('iv.perfection' as any)}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 bg-black/10">
@@ -340,30 +384,30 @@ export default function IvCalculator({ lang }: Props) {
                 
                 return (
                   <tr key={`${r.rank}-${r.ivs.atk}-${r.ivs.def}-${r.ivs.hp}`} 
-                    className={`transition-all duration-300 ${isTracked ? 'bg-brand-accent/20' : isCurrentInput ? 'bg-brand-blue/20' : 'hover:bg-white/[0.03]'}`}>
-                    <td className="px-10 py-6 font-black text-white">
-                      <div className="flex items-center gap-3">
-                        {isTracked && <span className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_8px_rgba(255,89,94,0.8)]"></span>}
-                        <span className={r.rank <= 10 ? 'text-brand-accent text-lg' : ''}>#{r.rank}</span>
+                    className={`transition-all duration-300 ${isTracked ? 'bg-brand-accent/15' : isCurrentInput ? 'bg-brand-blue/15' : 'hover:bg-white/[0.03]'}`}>
+                    <td className="px-10 py-7 font-black text-white">
+                      <div className="flex items-center gap-4">
+                        {isTracked && <div className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(218,85,47,0.8)]"></div>}
+                        <span className={`text-lg ${r.rank <= 10 ? 'text-brand-accent' : 'opacity-60'}`}>#{r.rank}</span>
                       </div>
                     </td>
-                    <td className="px-10 py-6">
-                      <div className="flex gap-2 font-mono font-black text-white/80">
-                        <span className="w-10 text-center py-1.5 bg-black/40 rounded-lg">{r.ivs.atk}</span>
-                        <span className="w-10 text-center py-1.5 bg-black/40 rounded-lg">{r.ivs.def}</span>
-                        <span className="w-10 text-center py-1.5 bg-black/40 rounded-lg">{r.ivs.hp}</span>
+                    <td className="px-10 py-7">
+                      <div className="flex gap-2 font-black">
+                        <span className="w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.atk}</span>
+                        <span className="w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.def}</span>
+                        <span className="w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.hp}</span>
                       </div>
                     </td>
-                    <td className="px-10 py-6 font-bold text-gray-400 font-mono tracking-tighter">
+                    <td className="px-10 py-7 font-bold text-gray-400 tracking-tighter text-sm opacity-80">
                       {r.stats.atk} / {r.stats.def} / {r.stats.hp}
                     </td>
-                    <td className="px-10 py-6 font-black text-gray-300">Lvl {r.level}</td>
-                    <td className="px-10 py-6 font-black text-white tracking-tighter text-lg">{r.cp}</td>
-                    <td className="px-10 py-6 text-right">
-                      <div className="flex flex-col items-end">
-                        <span className={`font-black text-lg ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/90'}`}>{r.perfection}%</span>
-                        <div className="w-16 h-1 bg-white/5 rounded-full mt-1 overflow-hidden">
-                          <div className="h-full bg-brand-accent transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
+                    <td className="px-10 py-7 font-black text-gray-300 text-sm">Lvl {r.level}</td>
+                    <td className="px-10 py-7 font-black text-white tracking-tighter text-xl">{r.cp}</td>
+                    <td className="px-10 py-7 text-right">
+                      <div className="flex flex-col items-end gap-1.5">
+                        <span className={`font-black text-xl tracking-tighter ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/90'}`}>{r.perfection}%</span>
+                        <div className="w-24 h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                          <div className="h-full bg-brand-accent shadow-[0_0_8px_rgba(218,85,47,0.4)] transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
                         </div>
                       </div>
                     </td>

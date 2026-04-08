@@ -1,0 +1,41 @@
+---
+import { languages } from '../../i18n/ui';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import MovedexComponent from '../../components/Movedex';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter(lang => lang !== 'en')
+    .map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('nav.movedex')}>
+	<Nav />
+	
+	<main class="pt-24 pb-20">
+		<div class="container mx-auto px-6 mb-12">
+			<div class="max-w-3xl">
+				<div class="inline-block bg-brand-accent/10 text-brand-accent px-4 py-1 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-6 border border-brand-accent/20">
+					{t('nav.movedex')}
+				</div>
+				<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 leading-none">
+					{t('movedex.title')}
+				</h1>
+				<p class="text-xl text-gray-400 font-medium leading-relaxed">
+					{t('movedex.subtitle')}
+				</p>
+			</div>
+		</div>
+
+		<MovedexComponent client:load lang={lang} />
+	</main>
+
+	<Footer />
+</Layout>
