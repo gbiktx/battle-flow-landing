@@ -104,15 +104,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 		if (mixpanelToken) {
 			mixpanel.init(mixpanelToken, { track_pageview: false, persistence: 'localStorage' });
-			mixpanel.register({ 'Language': document.documentElement.lang });
-			mixpanel.track_pageview();
+
+			var langs = ['es','fr','de','it','pt','zh-hans','zh-hant','ja','ko'];
+			var path = window.location.pathname.replace(/\/$/, '') || '/';
+			var segments = path.split('/').filter(Boolean);
+			if (langs.indexOf(segments[0]) > -1) segments.shift();
+			var pageName = segments.length === 0 ? 'home' : segments.join('/');
+
+			mixpanel.register({ 'Language': document.documentElement.lang, 'Page Name': pageName });
+			mixpanel.track_pageview({ 'Page Name': pageName });
 
 			document.addEventListener('click', function(e) {
 				var link = e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
 				if (link) {
 					mixpanel.track('Store Click', {
 						'Store': link.href.indexOf('apps.apple.com') > -1 ? 'App Store' : 'Google Play',
-						'Page': window.location.pathname
+						'Page Name': pageName
 					});
 				}
 			});

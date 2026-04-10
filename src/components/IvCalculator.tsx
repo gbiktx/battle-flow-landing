@@ -4,6 +4,7 @@ import translations from '../data/translations.json';
 import { PvPCalculator, type RankEntry } from '../lib/pvp-calculator';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
+import { trackEvent } from '../lib/analytics';
 
 interface Props {
   lang: string;
@@ -138,6 +139,7 @@ export default function IvCalculator({ lang }: Props) {
     const hp = parseInt(inputHp) || 0;
     if (!trackedIvs.some(iv => iv.atk === atk && iv.def === def && iv.hp === hp)) {
       setTrackedIvs([{ atk, def, hp }, ...trackedIvs]);
+      trackEvent('IV Track', { 'Pokemon': selectedId, 'IV': `${atk}/${def}/${hp}`, 'League': league.id });
     }
   };
 
@@ -245,7 +247,7 @@ export default function IvCalculator({ lang }: Props) {
               {searchTerm && filteredPokemonList.length > 0 && (
                 <div className="absolute left-0 right-0 top-full mt-2 bg-brand-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-60 overflow-y-auto z-[100]">
                   {filteredPokemonList.map(p => (
-                    <button key={p.id} className="w-full text-left px-5 py-3 hover:bg-white/10 transition-colors flex items-center gap-4 text-white border-b border-white/5 last:border-0" onClick={() => { setSelectedId(p.id); setSearchTerm(''); }}>
+                    <button key={p.id} className="w-full text-left px-5 py-3 hover:bg-white/10 transition-colors flex items-center gap-4 text-white border-b border-white/5 last:border-0" onClick={() => { setSelectedId(p.id); setSearchTerm(''); trackEvent('IV Pokemon Select', { 'Pokemon': p.id }); }}>
                       <img src={`/assets/images/sprites/${getSpriteName(p.dex, p.id)}.png`} alt="" className="w-8 h-8 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
                       <span className="font-bold text-sm uppercase tracking-tight">{getPokemonName(p.id, p.name)}</span>
                     </button>
@@ -266,7 +268,7 @@ export default function IvCalculator({ lang }: Props) {
                     <button 
                       key={l.id} 
                       className={`py-3 px-1 rounded-xl text-[10px] font-black uppercase transition-all ${league.id === l.id ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'}`} 
-                      onClick={() => setLeague(l)}
+                      onClick={() => { setLeague(l); trackEvent('IV League Select', { 'League': l.id }); }}
                     >
                       {t(l.labelKey as any).replace(/League|Liga|Ligue|Cup/gi, "").trim()}
                     </button>
@@ -283,7 +285,7 @@ export default function IvCalculator({ lang }: Props) {
                     <button 
                       key={l} 
                       className={`py-3 rounded-xl text-[10px] font-black transition-all ${maxLevel === l ? 'bg-brand-blue text-white shadow-lg shadow-brand-blue/20' : 'text-gray-400 hover:text-white'}`} 
-                      onClick={() => setMaxLevel(l)}
+                      onClick={() => { setMaxLevel(l); trackEvent('IV Level Cap Select', { 'Level Cap': l }); }}
                     >
                       {l}
                     </button>

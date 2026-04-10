@@ -1,8 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import movesData from '../data/moves.json';
 import translations from '../data/translations.json';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
+import { trackEvent } from '../lib/analytics';
 
 interface Props {
   lang: string;
@@ -55,9 +56,21 @@ export default function Movedex({ lang }: Props) {
     return langTranslations[key] || defaultName;
   };
 
+  const searchTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    if (!searchTerm) return;
+    clearTimeout(searchTimer.current);
+    searchTimer.current = setTimeout(() => {
+      trackEvent('MoveDex Search', { 'Query': searchTerm, 'Move Category': moveType });
+    }, 800);
+    return () => clearTimeout(searchTimer.current);
+  }, [searchTerm]);
+
   const handleTypeClick = (type: string) => {
     setSelectedType(type);
     setSearchTerm('');
+    trackEvent('MoveDex Type Filter', { 'Type': type, 'Move Category': moveType });
   };
 
   const formatEffect = (move: any) => {
@@ -140,7 +153,7 @@ export default function Movedex({ lang }: Props) {
 
           <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10 w-full md:w-auto">
             <button
-              onClick={() => setMoveType('fast')}
+              onClick={() => { setMoveType('fast'); trackEvent('MoveDex Move Category', { 'Move Category': 'fast' }); }}
               className={`flex-1 md:flex-none px-6 py-2 rounded-lg text-xs font-black uppercase tracking-widest transition-all ${
                 moveType === 'fast' ? 'bg-brand-accent text-brand-dark shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'
               }`}
@@ -148,7 +161,7 @@ export default function Movedex({ lang }: Props) {
               {t('movedex.fast_moves')}
             </button>
             <button
-              onClick={() => setMoveType('charged')}
+              onClick={() => { setMoveType('charged'); trackEvent('MoveDex Move Category', { 'Move Category': 'charged' }); }}
               className={`flex-1 md:flex-none px-6 py-2 rounded-lg text-xs font-black uppercase tracking-widest transition-all ${
                 moveType === 'charged' ? 'bg-brand-accent text-brand-dark shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'
               }`}
