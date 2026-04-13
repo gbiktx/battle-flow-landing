@@ -1,29 +1,11 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getHomeFaqs } from '../lib/faqs';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const faqs = [
-  { q: t('faq.q1'), a: t('faq.a1') },
-  { q: t('faq.q2'), a: t('faq.a2') },
-  { q: t('faq.q3'), a: t('faq.a3') },
-  { q: t('faq.q4'), a: t('faq.a4') },
-  { q: t('faq.q5'), a: t('faq.a5') },
-];
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(({ q, a }) => ({
-    "@type": "Question",
-    "name": q,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": a,
-    },
-  })),
-};
+const faqs = getHomeFaqs(t);
 ---
 
 <section class="py-24 relative overflow-hidden bg-white/2">
@@ -50,5 +32,4 @@ const faqSchema = {
     </div>
   </div>
 
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </section>

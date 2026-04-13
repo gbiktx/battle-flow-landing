@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import DownloadButtons from '../../components/DownloadButtons.astro';
 import Footer from '../../components/Footer.astro';
+import { buildBlogListSchemas } from '../../lib/seo-schemas';
 
 const lang = 'en';
 const t = useTranslations(lang);
@@ -14,9 +15,28 @@ const posts = await getCollection('blog', ({ id }) => {
 });
 
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const jsonLd = buildBlogListSchemas({
+  siteUrl: Astro.site!,
+  lang,
+  pagePath: '/blog/',
+  name: t('blog.meta_title'),
+  description: t('blog.meta_description'),
+  navCrumbName: t('blog.nav_crumb'),
+  posts: sortedPosts.map((post) => ({
+    slug: post.id.split('/')[1],
+    title: post.data.title,
+    description: post.data.description,
+    date: post.data.date,
+  })),
+});
 ---
 
-<Layout title={t('blog.title')}>
+<Layout
+  title={t('blog.meta_title')}
+  description={t('blog.meta_description')}
+  jsonLd={jsonLd}
+>
 	<Nav />
 	<main class="pt-32 pb-24">
 		<div class="container mx-auto px-6">

@@ -12,7 +12,14 @@ const langToDir: Record<string, string> = {
 const screenshotLang = langToDir[lang] || lang;
 const screenshotsDir = `/assets/images/screenshots/${screenshotLang}`;
 
-const screenshots = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+const screenshots = [
+  { file: '1.png', alt: 'BattleFlow team generator screen showing optimized Pokémon GO PvP teams built from the user collection' },
+  { file: '2.png', alt: 'BattleFlow team profile view rating threat control, coverage, recovery, and stability' },
+  { file: '3.png', alt: 'BattleFlow matchup simulator showing a turn-by-turn Pokémon GO PvP battle timeline' },
+  { file: '4.png', alt: 'BattleFlow IV checker displaying PvP rank 1 IV spreads and stat product for a Pokémon' },
+  { file: '5.png', alt: 'BattleFlow local meta analysis chart of the most common leads and closers in Go Battle League' },
+  { file: '6.png', alt: 'BattleFlow Pokémon box screen listing the trainer\u2019s best PvP candidates' },
+];
 ---
 
 <section class="py-24 bg-brand-dark/50 overflow-hidden">
@@ -24,11 +31,14 @@ const screenshots = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
     <div class="flex gap-6 mx-auto">
       {screenshots.map(s => (
         <div class="w-[280px] md:w-[320px] aspect-[9/19.5] flex-shrink-0 snap-center rounded-3xl overflow-hidden glass card-shadow">
-          <img 
-            src={`${screenshotsDir}/${s}`} 
-            alt="App Screenshot" 
+          <img
+            src={`${screenshotsDir}/${s.file}`}
+            alt={s.alt}
+            width="320"
+            height="693"
             class="w-full h-full object-cover"
             loading="lazy"
+            decoding="async"
           />
         </div>
       ))}

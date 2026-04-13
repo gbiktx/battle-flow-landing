@@ -69,9 +69,13 @@ const t = useTranslations(lang);
           
           <!-- App Icon with iOS mask -->
           <div class="relative w-full h-full bg-brand-dark p-1 rounded-[22.5%] overflow-hidden card-shadow">
-            <img 
-              src="/assets/images/current_logo_rounded.png" 
-              alt="BattleFlow Icon" 
+            <img
+              src="/assets/images/current_logo_rounded.png"
+              alt="BattleFlow app icon"
+              width="256"
+              height="256"
+              fetchpriority="high"
+              decoding="async"
               class="w-full h-full object-cover rounded-[22%] scale-[1.02]"
               style="mask-image: url('/assets/images/ios-mask.svg'); mask-size: contain; mask-repeat: no-repeat;"
             />

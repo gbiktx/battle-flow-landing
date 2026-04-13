@@ -11,15 +11,31 @@ import Features from '../../components/Features.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { buildFAQSchema, buildMobileAppSchemas } from '../../lib/seo-schemas';
+import { getHomeFaqs } from '../../lib/faqs';
 
 export function getStaticPaths() {
   return Object.keys(languages)
     .filter(lang => lang !== 'en')
     .map((lang) => ({ params: { lang } }));
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const jsonLd = [
+  ...buildMobileAppSchemas({
+    siteUrl: Astro.site!,
+    lang,
+    name: 'BattleFlow',
+    description: t('hero.subtitle'),
+  }),
+  buildFAQSchema({ questions: getHomeFaqs(t) }),
+];
 ---
 
-<Layout>
+<Layout jsonLd={jsonLd}>
 	<Nav />
 	<main>
 		<Hero />

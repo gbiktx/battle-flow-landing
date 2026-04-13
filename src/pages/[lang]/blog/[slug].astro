@@ -1,15 +1,17 @@
 ---
 import { getCollection, render } from 'astro:content';
 import { languages } from '../../../i18n/ui';
+import { useTranslations } from '../../../i18n/utils';
 import Layout from '../../../layouts/Layout.astro';
 import Nav from '../../../components/Nav.astro';
 import DownloadButtons from '../../../components/DownloadButtons.astro';
 import Footer from '../../../components/Footer.astro';
+import { buildBlogPostSchemas } from '../../../lib/seo-schemas';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 	const langKeys = Object.keys(languages);
-	
+
 	return posts
 		.filter(post => !post.id.toLowerCase().startsWith('en/'))
 		.map((post) => {
@@ -18,17 +20,31 @@ export async function getStaticPaths() {
 			const lang = langKeys.find(k => k.toLowerCase() === idLang.toLowerCase()) || idLang;
 			return {
 				params: { lang, slug },
-				props: { post },
+				props: { post, slug },
 			};
 		});
 }
 
-const { post } = Astro.props;
+const { post, slug } = Astro.props;
 const { Content } = await render(post);
 const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
+
+const jsonLd = buildBlogPostSchemas({
+	siteUrl: Astro.site!,
+	lang,
+	pagePath: `/${lang}/blog/${slug}/`,
+	title: post.data.title,
+	description: post.data.description,
+	author: post.data.author,
+	date: post.data.date,
+	image: '/assets/images/large-logo.png',
+	navCrumbName: t('blog.nav_crumb'),
+	blogIndexPath: `/${lang}/blog/`,
+});
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={post.data.title} description={post.data.description} jsonLd={jsonLd}>
 	<Nav />
 	<main class="pt-32 pb-24">
 		<article class="container mx-auto max-w-3xl px-6">
