@@ -1,13 +1,20 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
-import pokemonData from '../data/pokemon.json';
-import translations from '../data/translations.json';
+import React, { useState, useMemo, useRef } from 'react';
 import { PvPCalculator, type RankEntry } from '../lib/pvp-calculator';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
 import { trackEvent } from '../lib/analytics';
+import { pokemon as pokemonData } from '../lib/pokemon-data';
+import {
+  TYPE_COLORS,
+  hexToRgba,
+  getPokemonName,
+  getSpritePath,
+  type LocaleDictionary,
+} from '../lib/game-data';
 
 interface Props {
   lang: string;
+  translations: LocaleDictionary;
 }
 
 const LEAGUES = [
@@ -15,39 +22,14 @@ const LEAGUES = [
   { id: 'great', cap: 1500, labelKey: 'iv.great_league' },
   { id: 'ultra', cap: 2500, labelKey: 'iv.ultra_league' },
   { id: 'master', cap: 10000, labelKey: 'iv.master_league' },
-];
+] as const;
 
 const TARGET_LEVELS = [40, 41, 50, 51];
 
-const TYPE_COLORS: Record<string, string> = {
-  bug: '#aec92c',
-  dark: '#6e7681',
-  dragon: '#067fc4',
-  electric: '#fedf6b',
-  fairy: '#f6a7e8',
-  fighting: '#e34448',
-  fire: '#feb04b',
-  flying: '#a7c1f2',
-  ghost: '#7571d0',
-  grass: '#59c079',
-  ground: '#d2976b',
-  ice: '#94ddd6',
-  normal: '#a3a49e',
-  poison: '#a662c7',
-  psychic: '#fda194',
-  rock: '#d7cd90',
-  steel: '#5aafb4',
-  water: '#6ac7e9',
-};
-
-const hexToRgba = (hex: string, opacity: number) => {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-};
-
-const NO_QUALIFIER_IDS = [29, 32, 122, 250, 474, 439, 782, 783, 784, 785, 786, 787, 788, 866, 1001, 1002, 1003, 1004];
+// Stable across renders — pokemonData is imported, never mutated.
+const NON_SHADOW_POKEMON = pokemonData.filter(
+  (p) => !p.id.includes('_shadow') && !p.name.includes('(Shadow)')
+);
 
 interface IVSet {
   atk: number;
@@ -55,7 +37,7 @@ interface IVSet {
   hp: number;
 }
 
-export default function IvCalculator({ lang }: Props) {
+export default function IvCalculator({ lang, translations: langTranslations }: Props) {
   const [selectedId, setSelectedId] = useState('azumarill');
   const [league, setLeague] = useState(LEAGUES[1]);
   const [maxLevel, setMaxLevel] = useState(50);
@@ -74,64 +56,35 @@ export default function IvCalculator({ lang }: Props) {
 
   const t = useTranslations(lang as keyof typeof ui);
 
-  const getSpriteName = (dex: number, id: string) => {
-    const safeId = id || '';
-    let speciesId = safeId.replace("_xl", "").replace("_xs", "").replace("_shadow", "");
-    if (speciesId.includes("_alolan")) return `${dex}-alolan`;
-    if (speciesId.includes("_galarian")) return `${dex}-galarian`;
-    if (speciesId.includes("_hisuian")) return `${dex}-hisuian`;
-    if (speciesId.includes("_") && !NO_QUALIFIER_IDS.includes(dex)) {
-      const parts = speciesId.split("_");
-      parts[0] = dex.toString();
-      return parts.join("-");
-    }
-    return `${dex}`;
-  };
+  const currentPokemon = useMemo(
+    () =>
+      NON_SHADOW_POKEMON.find((p) => p.id === selectedId) ??
+      NON_SHADOW_POKEMON.find((p) => p.id === 'azumarill')!,
+    [selectedId]
+  );
 
-  const nonShadowPokemon = useMemo(() => 
-    pokemonData.filter(p => !p.id.includes('_shadow') && !p.name.includes('(Shadow)')), 
-  []);
+  const localizePokemon = (id: string, fallback: string) =>
+    getPokemonName(id, fallback, langTranslations);
 
-  const currentPokemon = useMemo(() => 
-    nonShadowPokemon.find(p => p.id === selectedId) || nonShadowPokemon.find(p => p.id === 'azumarill') || nonShadowPokemon[0], 
-  [selectedId, nonShadowPokemon]);
-
-  const langTranslations = (translations as any)[lang] || (translations as any)['en'] || {};
-
-  const getPokemonName = (id: string, defaultName: string) => {
-    const safeId = id || '';
-    let lookupId = safeId
-      .replace('_mega_x', 'X')
-      .replace('_mega_y', 'Y')
-      .replace('_mega', 'Mega')
-      .replace('_alolan', 'Alolan')
-      .replace('_galarian', 'Galarian')
-      .replace('_hisuian', 'Hisuian')
-      .replace('_paldean', 'Paldean');
-    
-    const camelCaseId = lookupId.split('_').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('');
-    return langTranslations[`pokemon${camelCaseId}`] || defaultName;
-  };
-
-  const getTypeName = (type: string) => {
-    return t(`type.${type.toLowerCase()}` as any);
-  };
+  // Dynamic key — TS can't narrow `type.${string}` to a ui.ts key statically.
+  const getTypeName = (type: string) => t(`type.${type.toLowerCase()}` as Parameters<typeof t>[0]);
 
   const filteredPokemonList = useMemo(() => {
     if (!searchTerm) return [];
     const term = searchTerm.toLowerCase();
-    return nonShadowPokemon
-      .filter(p => 
-        p.id.toLowerCase().includes(term) || 
+    return NON_SHADOW_POKEMON
+      .filter((p) =>
+        p.id.toLowerCase().includes(term) ||
         p.name.toLowerCase().includes(term) ||
-        getPokemonName(p.id, p.name).toLowerCase().includes(term)
+        localizePokemon(p.id, p.name).toLowerCase().includes(term)
       )
       .slice(0, 10);
-  }, [searchTerm, lang, nonShadowPokemon]);
+  }, [searchTerm, langTranslations]);
 
-  const allRanks = useMemo(() => {
-    return PvPCalculator.generateRanks(currentPokemon as any, league.cap, 0, maxLevel);
-  }, [currentPokemon, league, maxLevel]);
+  const allRanks = useMemo(
+    () => PvPCalculator.generateRanks(currentPokemon, league.cap, 0, maxLevel),
+    [currentPokemon, league, maxLevel]
+  );
 
   const handleAddTracked = () => {
     const atk = parseInt(inputAtk) || 0;
@@ -145,7 +98,7 @@ export default function IvCalculator({ lang }: Props) {
 
   const handleClearTracked = () => setTrackedIvs([]);
 
-  const spriteUrl = `/assets/images/sprites/${getSpriteName(currentPokemon.dex, currentPokemon.id)}.png`;
+  const spriteUrl = getSpritePath(currentPokemon);
 
   const tableData = useMemo(() => {
     const limit = showFullTable ? 100 : 10;
@@ -178,8 +131,9 @@ export default function IvCalculator({ lang }: Props) {
     else if (field === 'def') setInputDef(finalVal);
     else if (field === 'hp') setInputHp(finalVal);
 
-    const shouldMove = (num >= 2 && num <= 9) || (num >= 10 && num <= 15) || (clean === '0');
-    if (shouldMove) {
+    // Auto-advance once the entry can't be extended into another valid IV (0 or >=2).
+    const shouldAdvance = num >= 2 || clean === '0';
+    if (shouldAdvance) {
       if (field === 'atk') defRef.current?.focus();
       else if (field === 'def') hpRef.current?.focus();
     }
@@ -203,12 +157,12 @@ export default function IvCalculator({ lang }: Props) {
               <div className="relative mb-4">
                 <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full scale-150 group-hover:scale-175 transition-transform duration-700"></div>
                 <div className="relative p-4 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
-                  <img src={spriteUrl} alt="" className="w-24 h-24 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
+                  <img src={spriteUrl} alt={`${localizePokemon(currentPokemon.id, currentPokemon.name)} sprite`} className="w-24 h-24 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
                 </div>
               </div>
-              <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{getPokemonName(currentPokemon.id, currentPokemon.name)}</h3>
+              <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{localizePokemon(currentPokemon.id, currentPokemon.name)}</h3>
               <div className="flex gap-2 mt-3">
-                {currentPokemon.types.filter(t => t !== 'none').map(type => {
+                {currentPokemon.types.filter((ty) => ty !== 'none').map((type) => {
                   const color = TYPE_COLORS[type] || '#ffffff';
                   return (
                     <span 
@@ -228,13 +182,13 @@ export default function IvCalculator({ lang }: Props) {
             </div>
 
             <div className="relative">
-              <label htmlFor="pokemon-search" className="block text-[10px] font-black mb-2 text-gray-500 uppercase tracking-widest">{t('iv.change_pokemon' as any)}</label>
+              <label htmlFor="pokemon-search" className="block text-[10px] font-black mb-2 text-gray-500 uppercase tracking-widest">{t('iv.change_pokemon')}</label>
               <div className="relative">
                 <input 
                   id="pokemon-search"
                   type="text" 
                   className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 focus:outline-hidden focus:ring-2 focus:ring-brand-accent/50 text-white font-bold text-sm placeholder-gray-500 transition-all" 
-                  placeholder={t('iv.search_placeholder' as any)} 
+                  placeholder={t('iv.search_placeholder')} 
                   value={searchTerm} 
                   onChange={(e) => setSearchTerm(e.target.value)} 
                 />
@@ -248,8 +202,8 @@ export default function IvCalculator({ lang }: Props) {
                 <div className="absolute left-0 right-0 top-full mt-2 bg-brand-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-60 overflow-y-auto z-[100]">
                   {filteredPokemonList.map(p => (
                     <button key={p.id} className="w-full text-left px-5 py-3 hover:bg-white/10 transition-colors flex items-center gap-4 text-white border-b border-white/5 last:border-0" onClick={() => { setSelectedId(p.id); setSearchTerm(''); trackEvent('IV Pokemon Select', { 'Pokemon': p.id }); }}>
-                      <img src={`/assets/images/sprites/${getSpriteName(p.dex, p.id)}.png`} alt="" className="w-8 h-8 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
-                      <span className="font-bold text-sm uppercase tracking-tight">{getPokemonName(p.id, p.name)}</span>
+                      <img src={getSpritePath(p)} alt={`${localizePokemon(p.id, p.name)} sprite`} className="w-8 h-8 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
+                      <span className="font-bold text-sm uppercase tracking-tight">{localizePokemon(p.id, p.name)}</span>
                     </button>
                   ))}
                 </div>
@@ -261,7 +215,7 @@ export default function IvCalculator({ lang }: Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-4">
                 <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> {t('iv.league' as any)}
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> {t('iv.league')}
                 </label>
                 <div className="grid grid-cols-4 gap-2 p-1 bg-white/5 rounded-2xl border border-white/10">
                   {LEAGUES.map(l => (
@@ -270,7 +224,7 @@ export default function IvCalculator({ lang }: Props) {
                       className={`py-3 px-1 rounded-xl text-[10px] font-black uppercase transition-all ${league.id === l.id ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'}`} 
                       onClick={() => { setLeague(l); trackEvent('IV League Select', { 'League': l.id }); }}
                     >
-                      {t(l.labelKey as any).replace(/League|Liga|Ligue|Cup/gi, "").trim()}
+                      {t(l.labelKey).replace(/League|Liga|Ligue|Cup/gi, "").trim()}
                     </button>
                   ))}
                 </div>
@@ -278,7 +232,7 @@ export default function IvCalculator({ lang }: Props) {
 
               <div className="space-y-4">
                 <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> {t('iv.level_cap' as any)}
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> {t('iv.level_cap')}
                 </label>
                 <div className="grid grid-cols-4 gap-2 p-1 bg-white/5 rounded-2xl border border-white/10">
                   {TARGET_LEVELS.map(l => (
@@ -295,7 +249,7 @@ export default function IvCalculator({ lang }: Props) {
             </div>
 
             <div className="bg-white/5 p-5 md:p-8 rounded-[2rem] border border-white/10 space-y-6">
-              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">{t('iv.analyze_custom' as any)}</label>
+              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">{t('iv.analyze_custom')}</label>
               <div className="flex flex-col sm:flex-row items-center gap-6">
                 <div className="grid grid-cols-3 gap-4 flex-1 w-full">
                   <div className="relative">
@@ -308,7 +262,7 @@ export default function IvCalculator({ lang }: Props) {
                       onChange={(e) => handleIvChange(e.target.value, 'atk')}
                       className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-atk" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.attack' as any).slice(0, 3)}</label>
+                    <label htmlFor="iv-atk" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.attack').slice(0, 3)}</label>
                   </div>
                   <div className="relative">
                     <input 
@@ -320,7 +274,7 @@ export default function IvCalculator({ lang }: Props) {
                       onChange={(e) => handleIvChange(e.target.value, 'def')}
                       className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-def" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.defense' as any).slice(0, 3)}</label>
+                    <label htmlFor="iv-def" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.defense').slice(0, 3)}</label>
                   </div>
                   <div className="relative">
                     <input 
@@ -332,12 +286,12 @@ export default function IvCalculator({ lang }: Props) {
                       onChange={(e) => handleIvChange(e.target.value, 'hp')}
                       className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-hp" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.hp' as any).slice(0, 3)}</label>
+                    <label htmlFor="iv-hp" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.hp').slice(0, 3)}</label>
                   </div>
                 </div>
                 <button onClick={handleAddTracked} className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-accent hover:brightness-110 text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-sm shadow-xl shadow-brand-accent/20 active:scale-95">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
-                  {t('iv.track_ivs' as any)}
+                  {t('iv.track_ivs')}
                 </button>
               </div>
             </div>
@@ -351,18 +305,18 @@ export default function IvCalculator({ lang }: Props) {
           <div className="flex items-center gap-4">
             <div className="w-3 h-3 rounded-full bg-brand-accent shadow-[0_0_12px_rgba(218,85,47,0.5)]"></div>
             <h4 className="text-xl font-black text-white uppercase tracking-widest">
-              {showFullTable ? t('iv.top_100' as any) : t('iv.top_10' as any)}
+              {showFullTable ? t('iv.top_100') : t('iv.top_10')}
             </h4>
           </div>
           
           <div className="flex items-center gap-6">
             {trackedIvs.length > 0 && (
               <button onClick={handleClearTracked} className="text-[10px] font-black text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em] mr-2">
-                {t('iv.clear_tracked' as any)}
+                {t('iv.clear_tracked')}
               </button>
             )}
             <button onClick={() => setShowFullTable(!showFullTable)} className="px-4 py-3 md:px-8 bg-white/5 border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all shadow-lg">
-              {showFullTable ? t('iv.show_top_10' as any) : t('iv.show_top_100' as any)}
+              {showFullTable ? t('iv.show_top_10') : t('iv.show_top_100')}
             </button>
           </div>
         </div>
@@ -371,12 +325,12 @@ export default function IvCalculator({ lang }: Props) {
           <table className="w-full text-sm text-left border-collapse min-w-[950px]">
             <thead>
               <tr className="text-gray-500 bg-white/[0.02] border-b border-white/5">
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.rank' as any)}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.iv_set' as any)}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.actual_stats' as any)}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.level' as any)}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.cp' as any)}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px] text-right">{t('iv.perfection' as any)}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.rank')}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.iv_set')}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.actual_stats')}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.level')}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.cp')}</th>
+                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px] text-right">{t('iv.perfection')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 bg-black/10">

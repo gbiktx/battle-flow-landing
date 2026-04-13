@@ -1,16 +1,7 @@
-import pokemonData from '../data/pokemon.json';
-import cpms from '../data/cpms.json';
+import cpms from '../data/cpms.json' with { type: 'json' };
+import type { Pokemon } from './game-data';
 
-export interface Pokemon {
-  id: string;
-  name: string;
-  atk: number;
-  def: number;
-  hp: number;
-  types: string[];
-  tags: string[];
-  evolutions?: string[];
-}
+export type { Pokemon };
 
 export interface IVs {
   atk: number;
@@ -33,6 +24,8 @@ export interface RankEntry {
   statProduct: number;
   perfection: number;
 }
+
+export const MAX_IV = 15;
 
 export class PvPCalculator {
   static calculateCp(pokemon: Pokemon, ivs: IVs, level: number): number {
@@ -76,9 +69,9 @@ export class PvPCalculator {
   static generateRanks(pokemon: Pokemon, maxCp: number, minIv: number = 0, maxLevel: number = 50): RankEntry[] {
     const entries: RankEntry[] = [];
 
-    for (let atk = minIv; atk <= 15; atk++) {
-      for (let def = minIv; def <= 15; def++) {
-        for (let hp = minIv; hp <= 15; hp++) {
+    for (let atk = minIv; atk <= MAX_IV; atk++) {
+      for (let def = minIv; def <= MAX_IV; def++) {
+        for (let hp = minIv; hp <= MAX_IV; hp++) {
           const ivs = { atk, def, hp };
           const { level, cp } = this.findBestLevel(pokemon, ivs, maxCp, maxLevel);
           const stats = this.getActualStats(pokemon, ivs, level);

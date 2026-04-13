@@ -3,12 +3,18 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { languages } from '../i18n/ui';
 import '../styles/global.css';
 
+type JsonLd = Record<string, unknown>;
+
 interface Props {
 	title?: string;
 	description?: string;
+	/** Additional JSON-LD blocks. The default `WebSite` + `Organization` is always emitted. */
+	jsonLd?: JsonLd | JsonLd[];
+	/** Optional image URL to preload as `<link rel="preload" as="image">` (for LCP). */
+	preloadImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, jsonLd, preloadImage } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -16,13 +22,44 @@ const siteTitle = title ? `${title} | BattleFlow` : `${t('site.title')}`;
 const mixpanelToken = import.meta.env.PUBLIC_MIXPANEL_TOKEN || '';
 const siteDescription = description || t('hero.subtitle');
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/assets/images/large-logo.png', Astro.site);
+
+// Map our locale codes to OpenGraph locale format (underscored)
+const ogLocaleMap: Record<string, string> = {
+	en: 'en_US', es: 'es_ES', fr: 'fr_FR', de: 'de_DE', it: 'it_IT',
+	pt: 'pt_BR', 'zh-Hans': 'zh_CN', 'zh-Hant': 'zh_TW', ja: 'ja_JP', ko: 'ko_KR',
+};
+const currentOgLocale = ogLocaleMap[lang] ?? 'en_US';
+const alternateOgLocales = Object.entries(ogLocaleMap)
+	.filter(([code]) => code !== lang)
+	.map(([, og]) => og);
+
+const defaultSchemas: JsonLd[] = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: 'BattleFlow',
+		url: Astro.site,
+		inLanguage: lang,
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Organization',
+		name: 'Baru Software Co',
+		url: 'https://baru.software',
+		logo: new URL('/assets/images/large-logo.png', Astro.site).toString(),
+	},
+];
+
+const extraSchemas: JsonLd[] = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const allSchemas = [...defaultSchemas, ...extraSchemas];
 ---
 
 <!DOCTYPE html>
 <html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/png" href="/assets/images/current_logo_rounded.png" />
 		<link rel="apple-touch-icon" href="/assets/images/current_logo_rounded.png" />
 		<meta name="generator" content={Astro.generator} />
@@ -32,6 +69,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="description" content={siteDescription} />
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="theme-color" content="#0D47A1" />
+
+		{preloadImage && <link rel="preload" as="image" href={preloadImage} />}
 
 		<!-- Hreflang tags -->
 		{Object.keys(languages).map((l) => {
@@ -55,7 +94,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={siteTitle} />
 		<meta property="og:description" content={siteDescription} />
-		<meta property="og:image" content={new URL('/assets/images/large-logo.png', Astro.site)} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:site_name" content="BattleFlow" />
+		<meta property="og:locale" content={currentOgLocale} />
+		{alternateOgLocales.map((l) => (
+			<meta property="og:locale:alternate" content={l} />
+		))}
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -67,38 +111,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="twitter:creator" content="@battleflowapp" />
 
 		<!-- Structured Data -->
-		<script type="application/ld+json" is:inline set:html={JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "SoftwareApplication",
-			"name": "BattleFlow",
-			"operatingSystem": "iOS, Android",
-			"applicationCategory": "SportsApplication, GameApplication",
-			"offers": {
-				"@type": "Offer",
-				"price": "0",
-				"priceCurrency": "USD"
-			},
-			"aggregateRating": {
-				"@type": "AggregateRating",
-				"ratingValue": "4.9",
-				"ratingCount": "100"
-			},
-			"description": siteDescription,
-			"url": Astro.site,
-			"image": new URL('/assets/images/large-logo.png', Astro.site).toString(),
-			"author": {
-				"@type": "Organization",
-				"name": "Baru Software Co",
-				"url": "https://baru.software"
-			}
-		})} />
+		{allSchemas.map((schema) => (
+			<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+		))}
 
-		<!-- Fonts -->
+		<!-- Fonts — preconnect only; the stylesheet itself is loaded after content below. -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="min-h-screen">
+		<slot />
 
-		<!-- Mixpanel Analytics -->
+		<!-- Mixpanel Analytics — loaded after content so it doesn't block LCP. -->
 		<script is:inline define:vars={{ mixpanelToken }}>
 		(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
 
@@ -125,8 +150,5 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			});
 		}
 		</script>
-	</head>
-	<body class="min-h-screen">
-		<slot />
 	</body>
 </html>

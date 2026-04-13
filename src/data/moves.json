@@ -147,6 +147,21 @@
     "turns": 1
   },
   {
+    "id": "AURA_WHEEL_DARK",
+    "name": "Aura Wheel",
+    "type": "dark",
+    "power": 100,
+    "energy": 45,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      1,
+      0
+    ],
+    "buffTarget": "self",
+    "buffApplyChance": "1"
+  },
+  {
     "id": "AURA_WHEEL_ELECTRIC",
     "name": "Aura Wheel",
     "type": "electric",
@@ -588,20 +603,20 @@
     "turns": 1
   },
   {
-    "id": "DARKEST_LARIAT",
-    "name": "Darkest Lariat",
-    "type": "dark",
-    "power": 120,
-    "energy": 60,
-    "energyGain": 0,
-    "turns": 1
-  },
-  {
     "id": "DARK_PULSE",
     "name": "Dark Pulse",
     "type": "dark",
     "power": 80,
     "energy": 50,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "DARKEST_LARIAT",
+    "name": "Darkest Lariat",
+    "type": "dark",
+    "power": 120,
+    "energy": 60,
     "energyGain": 0,
     "turns": 1
   },
@@ -744,15 +759,6 @@
     "turns": 3
   },
   {
-    "id": "DRAINING_KISS",
-    "name": "Draining Kiss",
-    "type": "fairy",
-    "power": 60,
-    "energy": 55,
-    "energyGain": 0,
-    "turns": 1
-  },
-  {
     "id": "DRAIN_PUNCH",
     "name": "Drain Punch",
     "type": "fighting",
@@ -766,6 +772,15 @@
     ],
     "buffTarget": "self",
     "buffApplyChance": "1"
+  },
+  {
+    "id": "DRAINING_KISS",
+    "name": "Draining Kiss",
+    "type": "fairy",
+    "power": 60,
+    "energy": 55,
+    "energyGain": 0,
+    "turns": 1
   },
   {
     "id": "DRILL_PECK",
@@ -819,15 +834,6 @@
     "turns": 1
   },
   {
-    "id": "EARTHQUAKE",
-    "name": "Earthquake",
-    "type": "ground",
-    "power": 110,
-    "energy": 65,
-    "energyGain": 0,
-    "turns": 1
-  },
-  {
     "id": "EARTH_POWER",
     "name": "Earth Power",
     "type": "ground",
@@ -841,6 +847,15 @@
     ],
     "buffTarget": "opponent",
     "buffApplyChance": ".1"
+  },
+  {
+    "id": "EARTHQUAKE",
+    "name": "Earthquake",
+    "type": "ground",
+    "power": 110,
+    "energy": 65,
+    "energyGain": 0,
+    "turns": 1
   },
   {
     "id": "EMBER",
@@ -960,15 +975,6 @@
     "turns": 3
   },
   {
-    "id": "FLAMETHROWER",
-    "name": "Flamethrower",
-    "type": "fire",
-    "power": 90,
-    "energy": 55,
-    "energyGain": 0,
-    "turns": 1
-  },
-  {
     "id": "FLAME_BURST",
     "name": "Flame Burst",
     "type": "fire",
@@ -998,6 +1004,15 @@
     "type": "fire",
     "power": 80,
     "energy": 45,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "FLAMETHROWER",
+    "name": "Flamethrower",
+    "type": "fire",
+    "power": 90,
+    "energy": 55,
     "energyGain": 0,
     "turns": 1
   },
@@ -1104,6 +1119,15 @@
     "turns": 2
   },
   {
+    "id": "FRUSTRATION",
+    "name": "Frustration",
+    "type": "normal",
+    "power": 10,
+    "energy": 70,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "FURY_CUTTER",
     "name": "Fury Cutter",
     "type": "bug",
@@ -1149,11 +1173,29 @@
     "turns": 3
   },
   {
+    "id": "GIGA_DRAIN",
+    "name": "Giga Drain",
+    "type": "grass",
+    "power": 50,
+    "energy": 80,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "GIGA_IMPACT",
     "name": "Giga Impact",
     "type": "normal",
     "power": 150,
     "energy": 80,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "GIGATON_HAMMER",
+    "name": "Gigaton Hammer",
+    "type": "steel",
+    "power": 130,
+    "energy": 60,
     "energyGain": 0,
     "turns": 1
   },
@@ -1209,6 +1251,15 @@
     "turns": 1
   },
   {
+    "id": "HEART_STAMP",
+    "name": "Heart Stamp",
+    "type": "psychic",
+    "power": 40,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "HEAT_WAVE",
     "name": "Heat Wave",
     "type": "fire",
@@ -1233,6 +1284,15 @@
     "power": 7,
     "energy": 0,
     "energyGain": 13,
+    "turns": 3
+  },
+  {
+    "id": "HIDDEN_POWER_NORMAL",
+    "name": "Hidden Power",
+    "type": "normal",
+    "power": 9,
+    "energy": 0,
+    "energyGain": 8,
     "turns": 3
   },
   {
@@ -1443,15 +1503,6 @@
     "turns": 1
   },
   {
-    "id": "LEAFAGE",
-    "name": "Leafage",
-    "type": "grass",
-    "power": 6,
-    "energy": 0,
-    "energyGain": 8,
-    "turns": 2
-  },
-  {
     "id": "LEAF_BLADE",
     "name": "Leaf Blade",
     "type": "grass",
@@ -1489,6 +1540,15 @@
     ],
     "buffTarget": "opponent",
     "buffApplyChance": ".5"
+  },
+  {
+    "id": "LEAFAGE",
+    "name": "Leafage",
+    "type": "grass",
+    "power": 6,
+    "energy": 0,
+    "energyGain": 8,
+    "turns": 2
   },
   {
     "id": "LICK",
@@ -1595,6 +1655,15 @@
     "type": "steel",
     "power": 70,
     "energy": 45,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "MEGA_DRAIN",
+    "name": "Mega Drain",
+    "type": "grass",
+    "power": 25,
+    "energy": 55,
     "energyGain": 0,
     "turns": 1
   },
@@ -1728,21 +1797,6 @@
     "turns": 1
   },
   {
-    "id": "MUDDY_WATER",
-    "name": "Muddy Water",
-    "type": "water",
-    "power": 35,
-    "energy": 35,
-    "energyGain": 0,
-    "turns": 2,
-    "buffs": [
-      -1,
-      0
-    ],
-    "buffTarget": "opponent",
-    "buffApplyChance": ".3"
-  },
-  {
     "id": "MUD_BOMB",
     "name": "Mud Bomb",
     "type": "ground",
@@ -1768,6 +1822,21 @@
     "energy": 0,
     "energyGain": 10,
     "turns": 3
+  },
+  {
+    "id": "MUDDY_WATER",
+    "name": "Muddy Water",
+    "type": "water",
+    "power": 35,
+    "energy": 35,
+    "energyGain": 0,
+    "turns": 2,
+    "buffs": [
+      -1,
+      0
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": ".3"
   },
   {
     "id": "MYSTICAL_FIRE",
@@ -1850,8 +1919,6 @@
       0,
       1
     ],
-    "buffTarget": "both",
-    "buffApplyChance": "1",
     "buffsSelf": [
       0,
       1
@@ -1859,7 +1926,9 @@
     "buffsOpponent": [
       0,
       -1
-    ]
+    ],
+    "buffTarget": "both",
+    "buffApplyChance": "1"
   },
   {
     "id": "OCTAZOOKA",
@@ -2234,6 +2303,24 @@
     "buffApplyChance": "0.5"
   },
   {
+    "id": "REST",
+    "name": "Rest",
+    "type": "normal",
+    "power": 50,
+    "energy": 35,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "RETURN",
+    "name": "Return",
+    "type": "normal",
+    "power": 130,
+    "energy": 70,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "ROAR_OF_TIME",
     "name": "Roar of Time",
     "type": "dragon",
@@ -2336,21 +2423,6 @@
     "turns": 1
   },
   {
-    "id": "SANDSEAR_STORM",
-    "name": "Sandsear Storm",
-    "type": "ground",
-    "power": 60,
-    "energy": 45,
-    "energyGain": 0,
-    "turns": 1,
-    "buffs": [
-      -1,
-      0
-    ],
-    "buffTarget": "opponent",
-    "buffApplyChance": "1"
-  },
-  {
     "id": "SAND_ATTACK",
     "name": "Sand Attack",
     "type": "ground",
@@ -2370,6 +2442,21 @@
     "buffs": [
       0,
       -1
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": "1"
+  },
+  {
+    "id": "SANDSEAR_STORM",
+    "name": "Sandsear Storm",
+    "type": "ground",
+    "power": 60,
+    "energy": 45,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      -1,
+      0
     ],
     "buffTarget": "opponent",
     "buffApplyChance": "1"
@@ -2666,6 +2753,21 @@
     "turns": 4
   },
   {
+    "id": "SPRINGTIDE_STORM",
+    "name": "Springtide Storm (Speculative)",
+    "type": "fairy",
+    "power": 60,
+    "energy": 45,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      -1,
+      0
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": "1"
+  },
+  {
     "id": "STEEL_WING",
     "name": "Steel Wing",
     "type": "steel",
@@ -2852,15 +2954,6 @@
     "turns": 1
   },
   {
-    "id": "THUNDERBOLT",
-    "name": "Thunderbolt",
-    "type": "electric",
-    "power": 90,
-    "energy": 55,
-    "energyGain": 0,
-    "turns": 1
-  },
-  {
     "id": "THUNDER_CAGE",
     "name": "Thunder Cage",
     "type": "electric",
@@ -2903,6 +2996,15 @@
     "turns": 2
   },
   {
+    "id": "THUNDERBOLT",
+    "name": "Thunderbolt",
+    "type": "electric",
+    "power": 90,
+    "energy": 55,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "TORCH_SONG",
     "name": "Torch Song",
     "type": "fire",
@@ -2933,21 +3035,6 @@
     "buffApplyChance": "1"
   },
   {
-    "id": "TRIPLE_AXEL",
-    "name": "Triple Axel",
-    "type": "ice",
-    "power": 60,
-    "energy": 45,
-    "energyGain": 0,
-    "turns": 1,
-    "buffs": [
-      1,
-      0
-    ],
-    "buffTarget": "self",
-    "buffApplyChance": "1"
-  },
-  {
     "id": "TRI_ATTACK",
     "name": "Tri Attack",
     "type": "normal",
@@ -2961,6 +3048,21 @@
     ],
     "buffTarget": "opponent",
     "buffApplyChance": ".5"
+  },
+  {
+    "id": "TRIPLE_AXEL",
+    "name": "Triple Axel",
+    "type": "ice",
+    "power": 60,
+    "energy": 45,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      1,
+      0
+    ],
+    "buffTarget": "self",
+    "buffApplyChance": "1"
   },
   {
     "id": "TWISTER",
@@ -2985,6 +3087,21 @@
     ],
     "buffTarget": "opponent",
     "buffApplyChance": ".3"
+  },
+  {
+    "id": "V_CREATE",
+    "name": "V-Create",
+    "type": "fire",
+    "power": 95,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      0,
+      -3
+    ],
+    "buffTarget": "self",
+    "buffApplyChance": "1"
   },
   {
     "id": "VICE_GRIP",
@@ -3029,30 +3146,6 @@
     "buffApplyChance": "1"
   },
   {
-    "id": "V_CREATE",
-    "name": "V-Create",
-    "type": "fire",
-    "power": 95,
-    "energy": 40,
-    "energyGain": 0,
-    "turns": 1,
-    "buffs": [
-      0,
-      -3
-    ],
-    "buffTarget": "self",
-    "buffApplyChance": "1"
-  },
-  {
-    "id": "WATERFALL",
-    "name": "Waterfall",
-    "type": "water",
-    "power": 11,
-    "energy": 0,
-    "energyGain": 10,
-    "turns": 3
-  },
-  {
     "id": "WATER_GUN",
     "name": "Water Gun",
     "type": "water",
@@ -3077,6 +3170,15 @@
     "power": 6,
     "energy": 0,
     "energyGain": 14,
+    "turns": 3
+  },
+  {
+    "id": "WATERFALL",
+    "name": "Waterfall",
+    "type": "water",
+    "power": 11,
+    "energy": 0,
+    "energyGain": 10,
     "turns": 3
   },
   {
@@ -3125,21 +3227,6 @@
     "turns": 1
   },
   {
-    "id": "WILDBOLT_STORM",
-    "name": "Wildbolt Storm",
-    "type": "electric",
-    "power": 60,
-    "energy": 45,
-    "energyGain": 0,
-    "turns": 1,
-    "buffs": [
-      -1,
-      0
-    ],
-    "buffTarget": "opponent",
-    "buffApplyChance": "1"
-  },
-  {
     "id": "WILD_CHARGE",
     "name": "Wild Charge",
     "type": "electric",
@@ -3152,6 +3239,21 @@
       -2
     ],
     "buffTarget": "self",
+    "buffApplyChance": "1"
+  },
+  {
+    "id": "WILDBOLT_STORM",
+    "name": "Wildbolt Storm",
+    "type": "electric",
+    "power": 60,
+    "energy": 45,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      -1,
+      0
+    ],
+    "buffTarget": "opponent",
     "buffApplyChance": "1"
   },
   {

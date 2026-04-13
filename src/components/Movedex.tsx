@@ -1,60 +1,33 @@
-import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
-import movesData from '../data/moves.json';
-import translations from '../data/translations.json';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
 import { trackEvent } from '../lib/analytics';
+import { moves as movesData } from '../lib/moves-data';
+import {
+  TYPE_COLORS,
+  hexToRgba,
+  getMoveName,
+  type Move,
+  type MoveCategory,
+  type LocaleDictionary,
+} from '../lib/game-data';
 
 interface Props {
   lang: string;
+  translations: LocaleDictionary;
 }
 
-const TYPE_COLORS: Record<string, string> = {
-  bug: '#aec92c',
-  dark: '#6e7681',
-  dragon: '#067fc4',
-  electric: '#fedf6b',
-  fairy: '#f6a7e8',
-  fighting: '#e34448',
-  fire: '#feb04b',
-  flying: '#a7c1f2',
-  ghost: '#7571d0',
-  grass: '#59c079',
-  ground: '#d2976b',
-  ice: '#94ddd6',
-  normal: '#a3a49e',
-  poison: '#a662c7',
-  psychic: '#fda194',
-  rock: '#d7cd90',
-  steel: '#5aafb4',
-  water: '#6ac7e9',
-};
-
-const hexToRgba = (hex: string, opacity: number) => {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-};
-
-const toCamelCase = (str: string) => {
-  return str.toLowerCase().split('_').map((word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }).join('');
-};
-
-export default function Movedex({ lang }: Props) {
+export default function Movedex({ lang, translations: langTranslations }: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('all');
-  const [moveType, setMoveType] = useState<'fast' | 'charged'>('fast');
+  const [moveType, setMoveType] = useState<MoveCategory>('fast');
 
   const t = useTranslations(lang as keyof typeof ui);
-  const langTranslations = (translations as any)[lang] || (translations as any)['en'] || {};
 
-  const getMoveName = (id: string, defaultName: string) => {
-    const key = 'move' + toCamelCase(id);
-    return langTranslations[key] || defaultName;
-  };
+  const localizedMoves = useMemo(
+    () => movesData.map((m) => ({ move: m, label: getMoveName(m.id, m.name, langTranslations) })),
+    [langTranslations]
+  );
 
   const searchTimer = useRef<ReturnType<typeof setTimeout>>();
 
@@ -65,7 +38,7 @@ export default function Movedex({ lang }: Props) {
       trackEvent('MoveDex Search', { 'Query': searchTerm, 'Move Category': moveType });
     }, 800);
     return () => clearTimeout(searchTimer.current);
-  }, [searchTerm]);
+  }, [searchTerm, moveType]);
 
   const handleTypeClick = (type: string) => {
     setSelectedType(type);
@@ -73,7 +46,7 @@ export default function Movedex({ lang }: Props) {
     trackEvent('MoveDex Type Filter', { 'Type': type, 'Move Category': moveType });
   };
 
-  const formatEffect = (move: any) => {
+  const formatEffect = (move: Move) => {
     const effects: string[] = [];
     const chance = Math.round(parseFloat(move.buffApplyChance || '0') * 100);
     const probLabel = t('movedex.prob');
@@ -118,16 +91,19 @@ export default function Movedex({ lang }: Props) {
   };
 
   const filteredMoves = useMemo(() => {
-    return movesData.filter((move: any) => {
-      const isCorrectType = moveType === 'fast' ? move.energyGain > 0 : move.energy > 0;
-      const matchesSearch = move.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          getMoveName(move.id, move.name).toLowerCase().includes(searchTerm.toLowerCase());
-      const moveTypeLower = (move.type || '').toLowerCase();
-      const matchesType = selectedType === 'all' || moveTypeLower === selectedType.toLowerCase();
-      
-      return isCorrectType && matchesSearch && matchesType;
-    }).sort((a: any, b: any) => getMoveName(a.id, a.name).localeCompare(getMoveName(b.id, b.name)));
-  }, [searchTerm, selectedType, moveType, lang]);
+    const term = searchTerm.toLowerCase();
+    const selectedTypeLower = selectedType.toLowerCase();
+    return localizedMoves
+      .filter(({ move, label }) => {
+        const isCorrectType = moveType === 'fast' ? move.energyGain > 0 : move.energy > 0;
+        if (!isCorrectType) return false;
+        if (selectedType !== 'all' && move.type.toLowerCase() !== selectedTypeLower) return false;
+        if (!term) return true;
+        return move.name.toLowerCase().includes(term) || label.toLowerCase().includes(term);
+      })
+      .sort((a, b) => a.label.localeCompare(b.label))
+      .map(({ move }) => move);
+  }, [searchTerm, selectedType, moveType, localizedMoves]);
 
   const types = ['all', ...Object.keys(TYPE_COLORS)];
 
@@ -193,7 +169,7 @@ export default function Movedex({ lang }: Props) {
 
       {/* Moves List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative z-0">
-        {filteredMoves.map((move: any) => {
+        {filteredMoves.map((move) => {
           const dpt = moveType === 'fast' ? (move.power / move.turns).toFixed(2) : null;
           const ept = moveType === 'fast' ? (move.energyGain / move.turns).toFixed(2) : null;
           const dpe = moveType === 'charged' ? (move.power / move.energy).toFixed(2) : null;
@@ -209,7 +185,7 @@ export default function Movedex({ lang }: Props) {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-lg font-black tracking-tight text-white mb-1 group-hover:text-brand-accent transition-colors uppercase">
-                      {getMoveName(move.id, move.name)}
+                      {getMoveName(move.id, move.name, langTranslations)}
                     </h3>
                     <div 
                       className="inline-block px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider"

@@ -5,12 +5,28 @@ import Footer from '../components/Footer.astro';
 import DownloadButtons from '../components/DownloadButtons.astro';
 import MovedexComponent from '../components/Movedex';
 import { useTranslations } from '../i18n/utils';
+import { getMoveTranslations } from '../lib/translation-slices';
+import { buildFeaturePageSchemas } from '../lib/seo-schemas';
 
 const lang = 'en';
 const t = useTranslations(lang);
+const translations = getMoveTranslations(lang);
+
+const jsonLd = buildFeaturePageSchemas({
+  siteUrl: Astro.site!,
+  lang,
+  pagePath: '/movedex/',
+  name: t('movedex.meta_title'),
+  description: t('movedex.meta_description'),
+  navCrumbName: t('nav.movedex'),
+});
 ---
 
-<Layout title={t('movedex.title')} description={t('movedex.subtitle')}>
+<Layout
+  title={t('movedex.meta_title')}
+  description={t('movedex.meta_description')}
+  jsonLd={jsonLd}
+>
 	<Nav />
 	
 	<main class="pt-24 pb-20">
@@ -28,7 +44,7 @@ const t = useTranslations(lang);
 			</div>
 		</div>
 
-		<MovedexComponent client:load lang={lang} />
+		<MovedexComponent client:load lang={lang} translations={translations} />
 	</main>
 
 	<DownloadButtons />

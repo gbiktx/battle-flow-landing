@@ -6,6 +6,7 @@ import IvCalculatorWrapper from '../../components/IvCalculatorWrapper.astro';
 import DownloadButtons from '../../components/DownloadButtons.astro';
 import Footer from '../../components/Footer.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { buildFeaturePageSchemas, IV_CALCULATOR_FEATURE_LIST } from '../../lib/seo-schemas';
 
 export function getStaticPaths() {
   return Object.keys(languages)
@@ -15,9 +16,24 @@ export function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const jsonLd = buildFeaturePageSchemas({
+  siteUrl: Astro.site!,
+  lang,
+  pagePath: `/${lang}/iv-calculator/`,
+  name: t('iv.meta_title'),
+  description: t('iv.meta_description'),
+  navCrumbName: t('nav.iv'),
+  featureList: IV_CALCULATOR_FEATURE_LIST,
+});
 ---
 
-<Layout title={t('iv.title')} description={t('iv.subtitle')}>
+<Layout
+	title={t('iv.meta_title')}
+	description={t('iv.meta_description')}
+	jsonLd={jsonLd}
+	preloadImage="/assets/images/sprites/184.png"
+>
 	<Nav />
 	<main class="pt-24 pb-20">
 		<IvCalculatorWrapper />

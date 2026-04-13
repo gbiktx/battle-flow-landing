@@ -1,9 +1,11 @@
 ---
 import IvCalculator from './IvCalculator';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getPokemonTranslations } from '../lib/translation-slices';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translations = getPokemonTranslations(lang);
 ---
 
 <section class="pb-20 relative overflow-hidden" id="iv-calculator">
@@ -21,5 +23,29 @@ const t = useTranslations(lang);
     </div>
   </div>
 
-  <IvCalculator client:load lang={lang} />
+  <IvCalculator client:load lang={lang} translations={translations} />
+
+  <div class="container mx-auto px-6 mt-20">
+    <article class="max-w-3xl mx-auto text-gray-300 leading-relaxed space-y-8">
+      <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">
+        {t('iv.explainer_title')}
+      </h2>
+      <p class="text-lg">{t('iv.explainer_intro')}</p>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-black text-white">{t('iv.explainer_sp_title')}</h3>
+        <p>{t('iv.explainer_sp_body')}</p>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-black text-white">{t('iv.explainer_rank_title')}</h3>
+        <p>{t('iv.explainer_rank_body')}</p>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-black text-white">{t('iv.explainer_levels_title')}</h3>
+        <p>{t('iv.explainer_levels_body')}</p>
+      </div>
+    </article>
+  </div>
 </section>
