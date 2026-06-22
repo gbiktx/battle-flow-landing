@@ -1215,6 +1215,21 @@
     "buffApplyChance": "1"
   },
   {
+    "id": "GLAIVE_RUSH",
+    "name": "Glaive Rush",
+    "type": "dragon",
+    "power": 90,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      0,
+      -1
+    ],
+    "buffTarget": "self",
+    "buffApplyChance": "1"
+  },
+  {
     "id": "GRASS_KNOT",
     "name": "Grass Knot",
     "type": "grass",

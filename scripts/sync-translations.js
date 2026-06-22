@@ -52,10 +52,17 @@ for (const [lang, { moves: movesSuffix, pokemon: pokemonSuffix }] of Object.entr
 
   if (localizedMoves) {
     for (const move of moves) {
-      const localized = localizedMoves[move.id];
+      let localized = localizedMoves[move.id];
       if (localized == null || localized === '') {
-        missingMoves++;
-        continue;
+        // Base locale must always resolve, so fall back to the canonical
+        // English name carried in moves.json (mirrors arb_generator.rb's
+        // `fetch(move_id, original_move_name)`). Other locales stay missing.
+        if (lang === 'en' && move.name) {
+          localized = move.name;
+        } else {
+          missingMoves++;
+          continue;
+        }
       }
       bucket[moveKey(move.id)] = localized;
       moveCount++;
