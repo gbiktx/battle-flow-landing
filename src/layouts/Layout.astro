@@ -162,6 +162,7 @@ const allSchemas = [...defaultSchemas, ...extraSchemas];
 				if (link) {
 					mixpanel.track('Store Click', {
 						'Store': link.href.indexOf('apps.apple.com') > -1 ? 'App Store' : 'Google Play',
+						'Placement': link.getAttribute('data-placement') || 'unknown',
 						'Page Name': pageName
 					});
 				}
