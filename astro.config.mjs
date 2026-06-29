@@ -20,6 +20,16 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   integrations: [sitemap({
+    // trailingSlash is 'always', but @astrojs/sitemap emits <loc> without the
+    // slash — that points Google at the non-canonical (redirected) URL of every
+    // page, which leaves low-authority pages (the blog) unindexed. Force the
+    // canonical trailing-slash form on every entry.
+    serialize(item) {
+      if (!item.url.endsWith('/')) {
+        item.url += '/';
+      }
+      return item;
+    },
     i18n: {
       defaultLocale: 'en',
       locales: {
