@@ -31,6 +31,29 @@ URL Inspection API (coverage/indexing status per URL) uses the same auth, endpoi
 `POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect`
 with `{inspectionUrl, siteUrl: "sc-domain:battleflow.app"}`.
 
+## App Store Connect — iOS ASO funnel (live)
+
+App-side install/ASO data via the App Store Connect Analytics API.
+
+- **Key**: an ASC API key (`.p8`) with the **Admin** role (Admin is required to
+  *register* analytics report types; App Manager — the RevenueCat key — cannot).
+  Provide via env, never commit:
+  `ASC_KEY_P8` (path), `ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_APP_ID` (BattleFlow = `6738843812`).
+- **Script**: [`scripts/asc_analytics.py`](../scripts/asc_analytics.py) — `--status`,
+  `--list`, `--download "<report name>" --granularity DAILY --out x.csv`.
+- **Setup is done**: two `analyticsReportRequests` are registered on the app —
+  ONGOING (daily, forward) and ONE_TIME_SNAPSHOT (~1yr history). Apple generates the
+  files ~a day after registration; `--status` shows when they're ready.
+- **The ASO reports that matter**:
+  - `App Store Discovery and Engagement Standard/Detailed` (APP_STORE_ENGAGEMENT) —
+    impressions, product-page views, conversion, **by source (Search/Browse/Referral)**;
+    Detailed adds **App Store search terms** (the store analog of GSC queries).
+  - `App Downloads Standard/Detailed` (COMMERCE) — first-time downloads by territory/source.
+
+Android note: the RevenueCat `billing@` service account reaches Android Publisher +
+Play Developer Reporting (ratings/vitals), but Google Play has **no** store-listing
+acquisition/conversion API — that data is Play Console UI + the GCS bulk-report bucket.
+
 ## ⚠️ Gotchas (don't reintroduce)
 
 - **Sitemap trailing slashes.** `trailingSlash: 'always'`, so every canonical page
