@@ -26,6 +26,12 @@ const LEAGUES = [
 
 const TARGET_LEVELS = [40, 41, 50, 51];
 
+// Store links for the contextual "now build a team" CTA. `iv-result-cta` tagging
+// (data-placement + ct/utm_campaign) keeps this separable from the footer button
+// in Store Click analytics. Clicks are auto-tracked by the delegated listener in Layout.astro.
+const CTA_APP_STORE_URL = 'https://apps.apple.com/us/app/battleflow/id6738843812?ct=iv-result-cta';
+const CTA_PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.baru.software.oak&referrer=utm_source%3Dbattleflow-landing%26utm_medium%3Dweb%26utm_campaign%3Div-result-cta';
+
 // Stable across renders — pokemonData is imported, never mutated.
 const NON_SHADOW_POKEMON = pokemonData.filter(
   (p) => !p.id.includes('_shadow') && !p.name.includes('(Shadow)')
@@ -372,6 +378,48 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               })}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      {/* Contextual CTA — fires at peak intent, right after the user sees their rank. */}
+      <div className="bg-gradient-to-br from-brand-accent/15 via-brand-dark/40 to-brand-blue/10 rounded-[2.5rem] border border-white/10 shadow-2xl glass px-6 py-10 md:px-12 md:py-12 text-center">
+        <h3 className="text-2xl md:text-4xl font-black text-white tracking-tighter uppercase mb-8 max-w-2xl mx-auto leading-tight">
+          {t('iv.cta_build_team')}
+        </h3>
+        <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
+          <a
+            href={CTA_APP_STORE_URL}
+            data-placement="iv-result-cta"
+            target="_blank"
+            rel="noopener"
+            className="w-full sm:w-[240px] h-[72px] bg-black border border-white/20 rounded-2xl flex items-center px-6 gap-5 hover:bg-white/5 hover:border-white/60 transition-all group shadow-xl"
+          >
+            <svg viewBox="0 0 384 512" className="w-9 h-9 flex-shrink-0 fill-white transition-transform group-hover:scale-110">
+              <path d="M318.7 268.7c-.2-36.7 21.3-64.4 50.4-81.2-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.8-42.3 0-81.8 24.4-103.2 61.9-43.2 75.2-11.1 186.1 31 247.1 20.6 29.8 44.8 63.3 76.9 62.2 31.3-1.1 43.1-20.1 81-20.1 37.9 0 48.9 20.1 81.1 19.4 33.1-.7 54.4-30.3 74.9-59.7 23.6-34.1 33.2-67.1 33.5-68.8-.7-.3-64.9-24.9-65.5-98.4zM286.1 102c15.7-19.1 26.2-45.5 23.3-71.9-22.1 1-48.8 14.8-64.6 32.5-14.2 15.8-26.7 42.9-23.3 68.7 24.4 1.9 48.9-10.2 64.6-29.3z" />
+            </svg>
+            <div className="flex flex-col items-start leading-none text-left">
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Download on</span>
+              <span className="text-xl font-black text-white tracking-tight uppercase whitespace-nowrap">App Store</span>
+            </div>
+          </a>
+          <a
+            href={CTA_PLAY_STORE_URL}
+            data-placement="iv-result-cta"
+            target="_blank"
+            rel="noopener"
+            className="w-full sm:w-[240px] h-[72px] bg-black border border-white/20 rounded-2xl flex items-center px-6 gap-5 hover:bg-white/5 hover:border-white/60 transition-all group shadow-xl"
+          >
+            <svg viewBox="0 0 512 512" className="w-9 h-9 flex-shrink-0 transition-transform group-hover:scale-110">
+              <path fill="#4285F4" d="M12 25c-3 4-5 10-5 18v426c0 8 2 14 5 18l1 1L240 256v-2l-227-230z" />
+              <path fill="#FBBC05" d="M316 334l-76-78v-2l76-78 1 1 90 51c26 15 26 39 0 54l-90 51z" />
+              <path fill="#EA4335" d="M241 256l-229 231c4 3 10 4 17 0l308-175-96-56z" />
+              <path fill="#34A853" d="M241 256l96-56L30 25c-7-4-13-3-17 0l228 231z" />
+            </svg>
+            <div className="flex flex-col items-start leading-none text-left">
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Get it on</span>
+              <span className="text-xl font-black text-white tracking-tight uppercase whitespace-nowrap">Google Play</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
