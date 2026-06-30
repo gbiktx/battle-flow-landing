@@ -15,6 +15,9 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
+    'whatsnew.title': "What's New",
+    'whatsnew.subtitle': "See what's changed in each version of BattleFlow.",
+    'whatsnew.empty': 'No updates yet — check back soon.',
     'nav.home': 'Home',
     'nav.blog': 'Blog',
     'nav.iv': 'IV Calculator',
@@ -174,6 +177,9 @@ export const ui = {
     'movedex.defense': 'defense',
   },
   es: {
+    'whatsnew.title': 'Novedades',
+    'whatsnew.subtitle': 'Descubre qué cambió en cada versión de BattleFlow.',
+    'whatsnew.empty': 'Aún no hay novedades. Vuelve pronto.',
     'nav.home': 'Inicio',
     'nav.blog': 'Blog',
     'nav.iv': 'Calculadora de IV',
@@ -328,6 +334,9 @@ export const ui = {
     'movedex.turns_label': 'Turnos',
   },
   fr: {
+    'whatsnew.title': 'Nouveautés',
+    'whatsnew.subtitle': 'Découvrez les changements de chaque version de BattleFlow.',
+    'whatsnew.empty': 'Aucune nouveauté pour le moment. Revenez bientôt.',
     'nav.home': 'Accueil',
     'nav.blog': 'Blog',
     'nav.iv': 'Calculateur d\'IV',
@@ -482,6 +491,9 @@ export const ui = {
     'movedex.turns_label': 'Tours',
   },
   de: {
+    'whatsnew.title': 'Neuigkeiten',
+    'whatsnew.subtitle': 'Sieh dir an, was sich in jeder Version von BattleFlow geändert hat.',
+    'whatsnew.empty': 'Noch keine Neuigkeiten. Schau bald wieder vorbei.',
     'nav.home': 'Startseite',
     'nav.blog': 'Blog',
     'nav.iv': 'IV-Rechner',
@@ -636,6 +648,9 @@ export const ui = {
     'movedex.turns_label': 'Runden',
   },
   it: {
+    'whatsnew.title': 'Novità',
+    'whatsnew.subtitle': 'Scopri cosa è cambiato in ogni versione di BattleFlow.',
+    'whatsnew.empty': 'Ancora nessuna novità. Torna presto.',
     'nav.home': 'Home',
     'nav.blog': 'Blog',
     'nav.iv': 'Calcolatore IV',
@@ -790,6 +805,9 @@ export const ui = {
     'movedex.turns_label': 'Turni',
   },
   pt: {
+    'whatsnew.title': 'Novidades',
+    'whatsnew.subtitle': 'Veja o que mudou em cada versão do BattleFlow.',
+    'whatsnew.empty': 'Ainda não há novidades. Volte em breve.',
     'nav.home': 'Início',
     'nav.blog': 'Blog',
     'nav.iv': 'Calculadora de IV',
@@ -944,6 +962,9 @@ export const ui = {
     'movedex.turns_label': 'Turnos',
   },
   'zh-Hans': {
+    'whatsnew.title': '新功能',
+    'whatsnew.subtitle': '了解 BattleFlow 每个版本的更新内容。',
+    'whatsnew.empty': '暂无更新，敬请期待。',
     'nav.home': '首页',
     'nav.blog': '博客',
     'nav.iv': 'IV 计算器',
@@ -1098,6 +1119,9 @@ export const ui = {
     'movedex.defense': '防御',
   },
   'zh-Hant': {
+    'whatsnew.title': '新功能',
+    'whatsnew.subtitle': '瞭解 BattleFlow 每個版本的更新內容。',
+    'whatsnew.empty': '暫無更新，敬請期待。',
     'nav.home': '首頁',
     'nav.blog': '部落格',
     'nav.iv': 'IV 計算器',
@@ -1252,6 +1276,9 @@ export const ui = {
     'movedex.defense': '防禦',
   },
   ja: {
+    'whatsnew.title': '新着情報',
+    'whatsnew.subtitle': 'BattleFlow の各バージョンの変更点をご覧ください。',
+    'whatsnew.empty': 'まだ更新はありません。またチェックしてください。',
     'nav.home': 'ホーム',
     'nav.blog': 'ブログ',
     'nav.iv': 'IV計算機',
@@ -1406,6 +1433,9 @@ export const ui = {
     'movedex.turns_label': 'ターン',
   },
   ko: {
+    'whatsnew.title': '새로운 기능',
+    'whatsnew.subtitle': 'BattleFlow 각 버전의 변경 사항을 확인하세요.',
+    'whatsnew.empty': '아직 업데이트가 없습니다. 곧 다시 확인해 주세요.',
     'nav.home': '홈',
     'nav.blog': '블로그',
     'nav.iv': 'IV 계산기',

@@ -13,9 +13,11 @@ interface Props {
 	jsonLd?: JsonLd | JsonLd[];
 	/** Optional image URL to preload as `<link rel="preload" as="image">` (for LCP). */
 	preloadImage?: string;
+	/** When true, emit `<meta name="robots" content="noindex">` to keep thin/empty pages out of search. */
+	noindex?: boolean;
 }
 
-const { title, description, jsonLd, preloadImage } = Astro.props;
+const { title, description, jsonLd, preloadImage, noindex } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -79,6 +81,7 @@ const allSchemas = [...defaultSchemas, ...extraSchemas];
 		<meta name="description" content={siteDescription} />
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="theme-color" content="#0D47A1" />
+		{noindex && <meta name="robots" content="noindex" />}
 
 		{preloadImage && <link rel="preload" as="image" href={preloadImage} />}
 

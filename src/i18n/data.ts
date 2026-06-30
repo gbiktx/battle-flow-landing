@@ -1208,3 +1208,19 @@ BattleFlow Pro는 구매하신 앱 스토어(Apple App Store 또는 Google Play)
 *   웹사이트: [https://baru.software/](https://baru.software/)
 *   이메일: [hello@baru.software](mailto:hello@baru.software)`
 };
+
+// Changelog shown inside the app via a webview at /whats-new/ (and /[lang]/whats-new/).
+// One Markdown string per locale. List newest versions first; each version is an `## x.y.z`
+// heading followed by an italic date and **New** / **Improved** / **Fixed** sections.
+// Empty for now — when a locale has no entries the page renders a localized empty state
+// (the `whatsnew.empty` UI string). Example of an entry to add at the TOP of a locale string:
+//
+//   ## 2.4.0
+//   *June 2026*
+//
+//   **New**
+//
+//   - Movedex — browse every fast and charged move with full stats and effects.
+export const whatsNewData: Record<string, string> = {
+  en: ``,
+};
