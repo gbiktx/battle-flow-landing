@@ -2717,6 +2717,21 @@
     "turns": 3
   },
   {
+    "id": "SNIPE_SHOT",
+    "name": "Snipe Shot",
+    "type": "water",
+    "power": 65,
+    "energy": 35,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      2,
+      0
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": ".125"
+  },
+  {
     "id": "SOLAR_BEAM",
     "name": "Solar Beam",
     "type": "grass",
