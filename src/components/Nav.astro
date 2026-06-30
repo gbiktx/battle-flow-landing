@@ -30,6 +30,7 @@ function getLocalizedPath(newLang: string) {
     <div class="flex items-center gap-4">
       <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
         <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class={`transition-colors ${currentPath.includes('/blog/') ? 'text-brand-accent' : 'text-gray-400 hover:text-white'}`}>{t('nav.blog')}</a>
+        <a href={`/${lang === 'en' ? '' : lang + '/'}gbl-calendar/`} class={`transition-colors ${currentPath.includes('/gbl-calendar/') ? 'text-brand-accent' : 'text-gray-400 hover:text-white'}`}>{t('nav.gbl')}</a>
         <a href={`/${lang === 'en' ? '' : lang + '/'}movedex/`} class={`transition-colors ${currentPath.includes('/movedex/') ? 'text-brand-accent' : 'text-gray-400 hover:text-white'}`}>{t('nav.movedex')}</a>
         <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class={`transition-colors ${currentPath.includes('/iv-calculator/') ? 'text-brand-accent' : 'text-gray-400 hover:text-white'}`}>{t('nav.iv')}</a>
       </div>
@@ -78,6 +79,7 @@ function getLocalizedPath(newLang: string) {
       {t('nav.home')}
     </a>
     <a href={`/${lang === 'en' ? '' : lang + '/'}blog/`} class={`transition-colors ${currentPath.includes('/blog/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.blog')}</a>
+    <a href={`/${lang === 'en' ? '' : lang + '/'}gbl-calendar/`} class={`transition-colors ${currentPath.includes('/gbl-calendar/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.gbl')}</a>
     <a href={`/${lang === 'en' ? '' : lang + '/'}movedex/`} class={`transition-colors ${currentPath.includes('/movedex/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.movedex')}</a>
     <a href={`/${lang === 'en' ? '' : lang + '/'}iv-calculator/`} class={`transition-colors ${currentPath.includes('/iv-calculator/') ? 'text-brand-accent' : 'hover:text-brand-accent'}`}>{t('nav.iv')}</a>
   </div>

@@ -1,0 +1,57 @@
+---
+import { languages } from '../../i18n/ui';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import DownloadButtons from '../../components/DownloadButtons.astro';
+import GblCalendar from '../../components/GblCalendar';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { buildFeaturePageSchemas } from '../../lib/seo-schemas';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter(lang => lang !== 'en')
+    .map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const jsonLd = buildFeaturePageSchemas({
+  siteUrl: Astro.site!,
+  lang,
+  pagePath: `/${lang}/gbl-calendar/`,
+  name: t('gbl.meta_title'),
+  description: t('gbl.meta_description'),
+  navCrumbName: t('nav.gbl'),
+});
+---
+
+<Layout
+  title={t('gbl.meta_title')}
+  description={t('gbl.meta_description')}
+  jsonLd={jsonLd}
+>
+	<Nav />
+
+	<main class="pt-24 pb-20">
+		<div class="container mx-auto px-6 mb-12">
+			<div class="max-w-3xl">
+				<div class="inline-block bg-brand-accent/10 text-brand-accent px-4 py-1 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-6 border border-brand-accent/20">
+					{t('nav.gbl')}
+				</div>
+				<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 leading-none">
+					{t('gbl.title')}
+				</h1>
+				<p class="text-xl text-gray-400 font-medium leading-relaxed">
+					{t('gbl.subtitle')}
+				</p>
+			</div>
+		</div>
+
+		<GblCalendar client:load lang={lang} />
+	</main>
+
+	<DownloadButtons />
+	<Footer />
+</Layout>
