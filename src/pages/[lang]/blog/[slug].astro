@@ -14,14 +14,17 @@ export async function getStaticPaths() {
 
 	return posts
 		.filter(post => !post.id.toLowerCase().startsWith('en/'))
-		.map((post) => {
+		.flatMap((post) => {
 			const [idLang, slug] = post.id.split('/');
-			// Match the ID language to the standard config key (e.g. ja -> ja, zh-hans -> zh-Hans)
-			const lang = langKeys.find(k => k.toLowerCase() === idLang.toLowerCase()) || idLang;
-			return {
+			// Match the ID language to the standard config key (e.g. ja -> ja).
+			// Skip posts whose language isn't a supported locale, so a dropped
+			// locale (e.g. zh-Hans) can never emit orphan routes.
+			const lang = langKeys.find(k => k.toLowerCase() === idLang.toLowerCase());
+			if (!lang) return [];
+			return [{
 				params: { lang, slug },
 				props: { post, slug },
-			};
+			}];
 		});
 }
 

@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import { whatsNewData } from './src/i18n/data.ts';
 
-const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-Hans', 'zh-Hant', 'ja', 'ko'];
+const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-Hant', 'ja', 'ko'];
 
 // Keep empty What's New pages out of the sitemap (they're noindex until populated).
 // Matches /whats-new/ and /<locale>/whats-new/, mapping each to its locale's content.
@@ -52,7 +52,6 @@ export default defineConfig({
         de: 'de',
         it: 'it',
         pt: 'pt',
-        'zh-Hans': 'zh-Hans',
         'zh-Hant': 'zh-Hant',
         ja: 'ja',
         ko: 'ko'

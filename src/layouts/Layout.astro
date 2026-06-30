@@ -38,7 +38,7 @@ const ogImage = new URL('/assets/images/large-logo.png', Astro.site);
 // Map our locale codes to OpenGraph locale format (underscored)
 const ogLocaleMap: Record<string, string> = {
 	en: 'en_US', es: 'es_ES', fr: 'fr_FR', de: 'de_DE', it: 'it_IT',
-	pt: 'pt_BR', 'zh-Hans': 'zh_CN', 'zh-Hant': 'zh_TW', ja: 'ja_JP', ko: 'ko_KR',
+	pt: 'pt_BR', 'zh-Hant': 'zh_TW', ja: 'ja_JP', ko: 'ko_KR',
 };
 const currentOgLocale = ogLocaleMap[lang] ?? 'en_US';
 const alternateOgLocales = Object.entries(ogLocaleMap)
@@ -151,7 +151,7 @@ const allSchemas = [...defaultSchemas, ...extraSchemas];
 		if (mixpanelToken) {
 			mixpanel.init(mixpanelToken, { track_pageview: false, persistence: 'localStorage' });
 
-			var langs = ['es','fr','de','it','pt','zh-hans','zh-hant','ja','ko'];
+			var langs = ['es','fr','de','it','pt','zh-hant','ja','ko'];
 			var path = window.location.pathname.replace(/\/$/, '') || '/';
 			var segments = path.split('/').filter(Boolean);
 			if (langs.indexOf(segments[0]) > -1) segments.shift();

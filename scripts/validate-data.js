@@ -10,11 +10,11 @@ const VALID_TYPES = new Set([
   'steel', 'water',
 ]);
 
-// Locale → whether pokemon translations are expected. Flutter assets have no pt pokemon file.
+// Locale → whether pokemon translations are expected.
 const LOCALE_EXPECTS_POKEMON = {
   en: true, es: true, fr: true, de: true, it: true,
-  pt: false,
-  'zh-Hans': true, 'zh-Hant': true, ja: true, ko: true,
+  pt: true,
+  'zh-Hant': true, ja: true, ko: true,
 };
 
 const errors = [];

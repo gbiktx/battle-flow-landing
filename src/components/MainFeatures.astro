@@ -4,13 +4,7 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Map i18n codes to directory names if they differ
-const langToDir: Record<string, string> = {
-  'zh-Hans': 'en', // Fallback to en if no zh-hans dir
-};
-
-const screenshotLang = langToDir[lang] || lang;
-const screenshotsDir = `/assets/images/screenshots/${screenshotLang}`;
+const screenshotsDir = `/assets/images/screenshots/${lang}`;
 
 const mainFeatures = [
   {

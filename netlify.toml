@@ -7,6 +7,21 @@
   to = "/blog/:splat"
   status = 200
 
+# Dropped Simplified Chinese locale: 301 previously-indexed /zh-Hans/* URLs to
+# their Traditional equivalent (closer for a Chinese reader than the EN home).
+# Both casings, since the old sitemap emitted /zh-Hans/ while live URLs were lowercase.
+[[redirects]]
+  from = "/zh-Hans/*"
+  to = "/zh-Hant/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/zh-hans/*"
+  to = "/zh-Hant/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

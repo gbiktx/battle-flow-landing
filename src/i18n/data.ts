@@ -592,77 +592,6 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 
 *   웹사이트: [https://baru.software/](https://baru.software/)
 *   이메일: [hello@baru.software](mailto:hello@baru.software)`,
-  'zh-Hans': `本隐私政策适用于由 Baru Software Co（以下简称“我们”）提供的 BattleFlow 移动应用（以下简称“应用”）。
-
-**信息收集与使用**
-
-为运营并改进应用，我们收集有限的信息。根据您的使用方式，这可能包括：
-
-*   应用使用情况分析（例如：浏览的页面、功能交互和应用事件）。
-*   崩溃及诊断数据（用于稳定性监控）。
-*   提供高级功能所需的购买及订阅状态/事件。
-*   您在应用中创建的内容，如队伍、对战记录和偏好设置。
-
-大部分应用数据（如队伍、对战记录和偏好设置）均存储在您的设备本地。
-
-我们不会通过本应用主动收集精确的 GPS 位置数据。
-
-**第三方服务**
-
-本应用使用的第三方服务可能会根据其自身的隐私政策处理数据：
-
-*   [Google Play 服务](https://www.google.com/policies/privacy/)
-*   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
-*   [Mixpanel](https://mixpanel.com/legal/privacy-policy/)
-*   [RevenueCat](https://www.revenuecat.com/privacy)
-
-**我们如何使用信息**
-
-我们将信息用于：
-
-*   提供应用功能并维持服务质量。
-*   监控性能、修复错误并改善用户体验。
-*   处理并恢复应用内购买/订阅。
-*   必要时沟通重要更新。
-
-**第三方访问**
-
-我们不会出售个人信息。我们可能会与帮助我们运营应用的某些服务提供商（例如分析、崩溃监控和订阅服务）共享有限的数据，或在法律要求时共享。
-
-**数据保留**
-
-除非法律要求更长的保留期，否则我们仅在实现本文所述目的所需的期限内保留数据。
-
-如果您希望我们删除与您的支持请求或其他直接提供的信息相关的资料，请通过 [hello@baru.software](mailto:hello@baru.software) 联系我们。
-
-**儿童隐私**
-
-本应用不面向 13 岁以下的儿童，我们不会故意收集 13 岁以下儿童的个人信息。
-
-**退出权利**
-
-您可以通过卸载应用轻松停止应用收集所有信息。您可以使用移动设备或应用商店提供的标准卸载流程。
-
-**安全**
-
-我们采用合理的管理、技术和组织保障措施来保护应用处理的信息。
-
-**变更**
-
-我们可能会不时更新本隐私政策。变更自在本页面发布之日起生效。
-
-本隐私政策自 2026-03-04 起生效。
-
-**您的同意**
-
-使用本应用即表示您同意本隐私政策。
-
-**联系我们**
-
-如果您对隐私有任何疑问，请联系 Baru Software Co：
-
-*   网站: [https://baru.software/](https://baru.software/)
-*   邮箱: [hello@baru.software](mailto:hello@baru.software)`,
   'zh-Hant': `本隱私政策適用於由 Baru Software Co（以下簡稱「我們」）提供的 BattleFlow 行動應用程式（以下簡稱「應用程式」）。
 
 **資訊蒐集與使用**
@@ -1019,53 +948,6 @@ Se você tiver dúvidas sobre estes Termos, entre em contato com a Baru Software
 
 *   Site: [https://baru.software/](https://baru.software/)
 *   E-mail: [hello@baru.software](mailto:hello@baru.software)`,
-  'zh-Hans': `本条款和条件适用于由 Baru Software Co（以下简称“我们”）提供的 BattleFlow 移动应用（以下简称“应用”），该应用为免费下载服务，并提供可选的付费订阅。
-
-下载或使用本应用即表示您同意本条款。如您不同意，请勿使用本应用。
-
-本应用的所有权利、所有权及相关权益（包括商标、版权及其他知识产权）均归 Baru Software Co 及其许可方所有。除法律允许的情形外，您不得复制、修改、逆向工程、反编译、创建衍生作品或以其他方式滥用本应用。
-
-我们可能随时更新、暂停或终止本应用的部分内容，包括功能、数据来源和订阅产品。我们也可能调整付费功能的价格，任何收费都将在购买前清晰呈现。
-
-**订阅**
-
-BattleFlow Pro 是一项自动续订的订阅服务，通过您购买时所使用的应用商店（Apple App Store 或 Google Play）进行计费。款项将在您确认购买时从您的账户扣除，且除非在当前订阅期结束前至少 24 小时关闭自动续订，否则订阅将自动续期。您可以随时在 App Store 或 Google Play 的账户设置中管理或取消您的订阅。
-
-**订阅与购买所使用的应用商店绑定，无法在不同商店之间转移。** 在 Apple App Store 购买的订阅无法转移至 Google Play，反之亦然。如需更换计费平台，您必须在原商店取消订阅，并在新商店重新购买。在支持账户登录的情况下，即使计费仍归属于原商店，您的 Pro 权限也可能在您的多台设备间共享。
-
-退款由 Apple 或 Google 根据其各自的政策处理；我们无法直接提供应用商店的退款。
-
-您有责任妥善保管您的设备和访问凭据。我们建议您不要越狱（jailbreak）或获取设备的 root 权限，因为这样做可能会降低安全性并影响应用功能。
-
-本应用使用具有各自条款的第三方服务：
-
-*   [Google Play Services](https://policies.google.com/terms)
-*   [Firebase Crashlytics](https://firebase.google.com/terms/crashlytics)
-*   [Mixpanel](https://mixpanel.com/legal/terms-of-use/)
-*   [RevenueCat](https://www.revenuecat.com/terms)
-
-部分功能需要有效的互联网连接。对于因连接问题、运营商限制、服务中断或数据流量不足而导致的功能受限，我们概不负责。
-
-使用本应用时，您的移动运营商或应用商店条款也可能适用。您需自行承担任何数据使用费、漫游费或购买费用。
-
-在法律允许的最大范围内，本应用按“现状”和“现有可用”的基础提供，不附带任何形式的保证。我们不保证服务不间断可用、完全准确或适用于特定用途。
-
-在法律允许的最大范围内，对于因您使用本应用而产生的任何间接、附带、特殊、后果性或惩罚性损害，或任何数据、利润或商誉的损失，Baru Software Co 概不负责。
-
-您对本应用的使用还受我们隐私政策的约束。
-
-**本条款和条件的变更**
-
-我们可能会不时更新本条款。变更自在本页面发布之日起生效。
-
-本条款和条件自 2026-06-24 起生效。
-
-**联系我们**
-
-如您对本条款有任何疑问，请联系 Baru Software Co：
-
-*   网站：[https://baru.software/](https://baru.software/)
-*   邮箱：[hello@baru.software](mailto:hello@baru.software)`,
   'zh-Hant': `本條款與條件適用於由 Baru Software Co（以下簡稱「我們」）提供的 BattleFlow 行動應用程式（以下簡稱「應用程式」），該應用程式為免費下載服務，並提供選用的付費訂閱。
 
 下載或使用本應用程式即表示您同意本條款。若您不同意，請勿使用本應用程式。
