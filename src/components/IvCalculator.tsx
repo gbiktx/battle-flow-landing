@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { PvPCalculator, type RankEntry } from '../lib/pvp-calculator';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
@@ -10,6 +10,7 @@ import {
   getPokemonName,
   getSpritePath,
   type LocaleDictionary,
+  type Pokemon,
 } from '../lib/game-data';
 
 interface Props {
@@ -37,6 +38,33 @@ const NON_SHADOW_POKEMON = pokemonData.filter(
   (p) => !p.id.includes('_shadow') && !p.name.includes('(Shadow)')
 );
 
+const POKEMON_BY_ID = new Map<string, Pokemon>(pokemonData.map((p) => [p.id, p]));
+
+const PERFECT_IV = { atk: 15, def: 15, hp: 15 };
+
+// Walk the `evolutions` graph from a root Pokémon and return the whole family
+// (root first, then every descendant, breadth-first). Handles multi-branch lines
+// (Eevee, Slowpoke, Gloom) and guards against cycles / missing targets. Shadow
+// forms aren't linked in the data, so this stays on the non-shadow line.
+function getEvolutionFamily(root: Pokemon): Pokemon[] {
+  const family: Pokemon[] = [];
+  const seen = new Set<string>();
+  const queue: Pokemon[] = [root];
+  while (queue.length) {
+    const current = queue.shift()!;
+    if (seen.has(current.id)) continue;
+    seen.add(current.id);
+    family.push(current);
+    for (const nextId of current.evolutions ?? []) {
+      const next = POKEMON_BY_ID.get(nextId);
+      if (next && !seen.has(next.id)) queue.push(next);
+    }
+  }
+  return family;
+}
+
+const stripLeagueWord = (label: string) => label.replace(/League|Liga|Ligue|Cup/gi, '').trim();
+
 interface IVSet {
   atk: number;
   def: number;
@@ -49,6 +77,9 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const [maxLevel, setMaxLevel] = useState(50);
   const [searchTerm, setSearchTerm] = useState('');
   const [showFullTable, setShowFullTable] = useState(false);
+  const [showIvInput, setShowIvInput] = useState(false);
+  const [tableCollapsed, setTableCollapsed] = useState(false);
+  const [collapsedIvKeys, setCollapsedIvKeys] = useState<Set<string>>(new Set());
   
   const atkRef = useRef<HTMLInputElement>(null);
   const defRef = useRef<HTMLInputElement>(null);
@@ -61,6 +92,11 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const [trackedIvs, setTrackedIvs] = useState<IVSet[]>([]);
 
   const t = useTranslations(lang as keyof typeof ui);
+
+  // Jump straight into typing (and raise the mobile keyboard) when the IV fields reveal.
+  useEffect(() => {
+    if (showIvInput) atkRef.current?.select();
+  }, [showIvInput]);
 
   const currentPokemon = useMemo(
     () =>
@@ -92,6 +128,36 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
     [currentPokemon, league, maxLevel]
   );
 
+  const hasTracked = trackedIvs.length > 0;
+
+  const evolutionFamily = useMemo(
+    () => getEvolutionFamily(currentPokemon),
+    [currentPokemon]
+  );
+
+  // Rank tables per (form, league) across the whole evolution family, at the
+  // selected level cap. Keyed independently of the tracked IV values, so adding
+  // more IVs only costs cheap lookups. Capped leagues a form can't reach (its
+  // perfect CP is under the ceiling) are skipped and render as "—"; Master League
+  // has no effective cap, so it's always computed. Only built once an IV is tracked.
+  const evolutionRanks = useMemo(() => {
+    if (!hasTracked) return null;
+    const cache = new Map<string, RankEntry[]>();
+    for (const form of evolutionFamily) {
+      for (const lg of LEAGUES) {
+        const reaches =
+          lg.id === 'master' ||
+          PvPCalculator.calculateCp(form, PERFECT_IV, maxLevel) >= lg.cap;
+        if (!reaches) continue;
+        cache.set(`${form.id}|${lg.id}`, PvPCalculator.generateRanks(form, lg.cap, 0, maxLevel));
+      }
+    }
+    return cache;
+  }, [hasTracked, evolutionFamily, maxLevel]);
+
+  const showEvolutionSection = hasTracked && evolutionFamily.length > 0;
+  const showEvolutionBest = evolutionFamily.length > 1;
+
   const handleAddTracked = () => {
     const atk = parseInt(inputAtk) || 0;
     const def = parseInt(inputDef) || 0;
@@ -103,6 +169,19 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   };
 
   const handleClearTracked = () => setTrackedIvs([]);
+
+  const handleRemoveTracked = (target: IVSet) =>
+    setTrackedIvs((prev) =>
+      prev.filter((iv) => !(iv.atk === target.atk && iv.def === target.def && iv.hp === target.hp))
+    );
+
+  const toggleIvCollapsed = (key: string) =>
+    setCollapsedIvKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
 
   const spriteUrl = getSpritePath(currentPokemon);
 
@@ -143,6 +222,124 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
       if (field === 'atk') defRef.current?.focus();
       else if (field === 'def') hpRef.current?.focus();
     }
+  };
+
+  // One grid per tracked IV: family forms as rows, the four leagues as columns.
+  // Each cell is that locked spread's rank as that form in that league; the best
+  // (lowest-rank) form per league is highlighted — the evolution to aim for.
+  const renderEvolutionGrid = (iv: IVSet) => {
+    const rows = evolutionFamily.map((form) => ({
+      form,
+      entries: LEAGUES.map((lg) => {
+        const ranks = evolutionRanks?.get(`${form.id}|${lg.id}`);
+        return ranks?.find(
+          (r) => r.ivs.atk === iv.atk && r.ivs.def === iv.def && r.ivs.hp === iv.hp
+        ) ?? null;
+      }),
+    }));
+
+    const bestRowPerLeague = LEAGUES.map((_, li) => {
+      let bestIdx = -1;
+      let bestRank = Infinity;
+      rows.forEach((row, ri) => {
+        const e = row.entries[li];
+        if (e && e.rank < bestRank) {
+          bestRank = e.rank;
+          bestIdx = ri;
+        }
+      });
+      return bestIdx;
+    });
+
+    const ivKey = `${iv.atk}-${iv.def}-${iv.hp}`;
+    const collapsed = collapsedIvKeys.has(ivKey);
+
+    return (
+      <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.03] overflow-hidden">
+        <div className="flex items-center justify-between gap-2 p-3 md:p-5">
+          <button
+            onClick={() => toggleIvCollapsed(ivKey)}
+            aria-expanded={!collapsed}
+            className="flex items-center gap-2.5 flex-1 min-w-0 text-left"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className={`w-4 h-4 text-gray-500 flex-shrink-0 transition-transform ${collapsed ? '' : 'rotate-90'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" /></svg>
+            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500 hidden sm:inline">{t('iv.evo_your_iv')}</span>
+            <div className="flex gap-1.5 font-black">
+              {[iv.atk, iv.def, iv.hp].map((v, i) => (
+                <span key={i} className="w-8 md:w-9 text-center py-1.5 bg-black/40 rounded-lg border border-white/5 text-brand-accent text-sm">{v}</span>
+              ))}
+            </div>
+          </button>
+          <button
+            onClick={() => handleRemoveTracked(iv)}
+            aria-label={t('iv.remove_tracked')}
+            title={t('iv.remove_tracked')}
+            className="p-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+        {!collapsed && (
+        <div className="px-3 md:px-5 pb-4 pt-1 border-t border-white/5">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[280px] border-collapse">
+            <thead>
+              <tr>
+                <th className="w-px"></th>
+                {LEAGUES.map((lg) => (
+                  <th key={lg.id} className="px-1 py-2 text-center text-[9px] font-black uppercase tracking-wider text-gray-500">
+                    {stripLeagueWord(t(lg.labelKey))}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, ri) => (
+                <tr key={row.form.id} className="border-t border-white/5">
+                  <td className="py-2 pr-2 md:pr-3">
+                    <div className="flex items-center gap-1.5 md:gap-2">
+                      <img
+                        src={getSpritePath(row.form)}
+                        alt={`${localizePokemon(row.form.id, row.form.name)} sprite`}
+                        className="w-7 h-7 md:w-9 md:h-9 object-contain flex-shrink-0"
+                        onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}
+                      />
+                      <span className="text-[10px] md:text-xs font-black uppercase tracking-tight text-white leading-[1.15] max-w-[68px] md:max-w-none">
+                        {localizePokemon(row.form.id, row.form.name)}
+                      </span>
+                    </div>
+                  </td>
+                  {row.entries.map((e, li) => {
+                    if (!e) {
+                      return (
+                        <td key={li} className="text-center py-2">
+                          <span className="text-gray-600 text-sm font-black">—</span>
+                        </td>
+                      );
+                    }
+                    const isBest = showEvolutionBest && bestRowPerLeague[li] === ri;
+                    return (
+                      <td key={li} className="py-1.5 px-0.5 md:px-1">
+                        <div
+                          title={`${e.cp} CP · Lvl ${e.level}`}
+                          className={`mx-auto w-[48px] md:w-[64px] rounded-xl py-1.5 flex flex-col items-center gap-0.5 border ${isBest ? 'bg-brand-accent/20 border-brand-accent/50' : 'bg-black/30 border-white/5'}`}
+                        >
+                          <span className={`text-sm md:text-base font-black leading-none tracking-tighter ${isBest ? 'text-brand-accent' : 'text-white'}`}>#{e.rank}</span>
+                          <span className="text-[9px] font-bold text-gray-400 leading-none">{e.perfection}%</span>
+                          {isBest && <span className="text-[7px] font-black uppercase tracking-wider text-brand-accent leading-none mt-0.5">{t('iv.evo_best')}</span>}
+                        </div>
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        </div>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -244,7 +441,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                   {TARGET_LEVELS.map(l => (
                     <button 
                       key={l} 
-                      className={`py-3 rounded-xl text-[10px] font-black transition-all ${maxLevel === l ? 'bg-brand-blue text-white shadow-lg shadow-brand-blue/20' : 'text-gray-400 hover:text-white'}`} 
+                      className={`py-3 rounded-xl text-[10px] font-black transition-all ${maxLevel === l ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'}`}
                       onClick={() => { setMaxLevel(l); trackEvent('IV Level Cap Select', { 'Level Cap': l }); }}
                     >
                       {l}
@@ -254,7 +451,17 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               </div>
             </div>
 
-            <div className="bg-white/5 p-5 md:p-8 rounded-[2rem] border border-white/10 space-y-6">
+            <div className="bg-white/5 p-5 md:p-8 rounded-[2rem] border border-white/10">
+              {!showIvInput ? (
+                <button
+                  onClick={() => setShowIvInput(true)}
+                  className="w-full flex items-center justify-center gap-3 bg-brand-accent hover:brightness-110 text-white py-4 md:py-5 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-sm shadow-xl shadow-brand-accent/20 active:scale-95"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
+                  {t('iv.check_my_ivs')}
+                </button>
+              ) : (
+              <div className="space-y-6">
               <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">{t('iv.analyze_custom')}</label>
               <div className="flex flex-col sm:flex-row items-center gap-6">
                 <div className="grid grid-cols-3 gap-4 flex-1 w-full">
@@ -300,33 +507,62 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                   {t('iv.track_ivs')}
                 </button>
               </div>
+              </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
+      {/* Evolution × League breakdown — appears once an IV is tracked, above the generic
+          Top-10 table. Shows how the locked spread ranks as each evolution across every league. */}
+      {showEvolutionSection && (
+        <div className="bg-brand-dark/40 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative z-0 glass">
+          <div className="px-5 py-6 md:px-10 md:py-8 bg-white/5 border-b border-white/10">
+            <div className="flex items-center gap-4">
+              <div className="w-3 h-3 rounded-full bg-brand-blue shadow-[0_0_12px_rgba(59,130,246,0.5)]"></div>
+              <h4 className="text-xl font-black text-white uppercase tracking-widest">{t('iv.evo_title')}</h4>
+            </div>
+          </div>
+          <div className="p-4 md:p-8 space-y-5">
+            {trackedIvs.map((iv) => (
+              <div key={`${iv.atk}-${iv.def}-${iv.hp}`}>{renderEvolutionGrid(iv)}</div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Table Section */}
       <div className="bg-brand-dark/40 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative z-0 glass">
         <div className="px-5 py-6 md:px-10 md:py-10 bg-white/5 border-b border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             <div className="w-3 h-3 rounded-full bg-brand-accent shadow-[0_0_12px_rgba(218,85,47,0.5)]"></div>
             <h4 className="text-xl font-black text-white uppercase tracking-widest">
               {showFullTable ? t('iv.top_100') : t('iv.top_10')}
             </h4>
+            <span className="text-[9px] font-black uppercase tracking-wider text-brand-accent/90 bg-brand-accent/10 border border-brand-accent/30 rounded-full px-3 py-1">
+              {t('iv.pvp_badge')}
+            </span>
           </div>
           
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 md:gap-6">
             {trackedIvs.length > 0 && (
-              <button onClick={handleClearTracked} className="text-[10px] font-black text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em] mr-2">
+              <button onClick={handleClearTracked} className="text-[10px] font-black text-gray-500 hover:text-white transition-colors uppercase tracking-[0.2em]">
                 {t('iv.clear_tracked')}
               </button>
             )}
-            <button onClick={() => setShowFullTable(!showFullTable)} className="px-4 py-3 md:px-8 bg-white/5 border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all shadow-lg">
-              {showFullTable ? t('iv.show_top_10') : t('iv.show_top_100')}
+            {!tableCollapsed && (
+              <button onClick={() => setShowFullTable(!showFullTable)} className="px-4 py-3 md:px-8 bg-white/5 border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-[0.2em] hover:bg-white/10 transition-all shadow-lg">
+                {showFullTable ? t('iv.show_top_10') : t('iv.show_top_100')}
+              </button>
+            )}
+            <button onClick={() => setTableCollapsed((v) => !v)} aria-expanded={!tableCollapsed} aria-label={t('iv.toggle_table')} className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all shadow-lg flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" className={`w-4 h-4 text-white transition-transform ${tableCollapsed ? '' : 'rotate-180'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" /></svg>
             </button>
           </div>
         </div>
 
+        {!tableCollapsed && (
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left border-collapse min-w-[950px]">
             <thead>
@@ -379,6 +615,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* Contextual CTA — fires at peak intent, right after the user sees their rank. */}
