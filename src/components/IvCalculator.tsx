@@ -65,6 +65,24 @@ function getEvolutionFamily(root: Pokemon): Pokemon[] {
 
 const stripLeagueWord = (label: string) => label.replace(/League|Liga|Ligue|Cup/gi, '').trim();
 
+// 3-band stat-product verdict color, mirroring the app's percentToColor
+// (battle_flow design_system/app_colors.dart): best ≥98 (green), near 96–97
+// (amber), low ≤95 (red). floor() matches the app's perfectionPercent.toInt().
+// This is an IV-quality verdict (how close the spread is to rank 1 for that
+// form+league) — deliberately NOT a claim that the species itself is meta-good.
+const STAT_PRODUCT_BANDS = [
+  { color: '#00C853', label: '≥98%' },
+  { color: '#F2BC4E', label: '96–97%' },
+  { color: '#BA1A1A', label: '≤95%' },
+] as const;
+
+function statProductBandColor(perfection: number): string {
+  const p = Math.floor(perfection);
+  if (p >= 98) return STAT_PRODUCT_BANDS[0].color;
+  if (p > 95) return STAT_PRODUCT_BANDS[1].color;
+  return STAT_PRODUCT_BANDS[2].color;
+}
+
 interface IVSet {
   atk: number;
   def: number;
@@ -156,7 +174,6 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   }, [hasTracked, evolutionFamily, maxLevel]);
 
   const showEvolutionSection = hasTracked && evolutionFamily.length > 0;
-  const showEvolutionBest = evolutionFamily.length > 1;
 
   const handleAddTracked = () => {
     const atk = parseInt(inputAtk) || 0;
@@ -238,19 +255,6 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
       }),
     }));
 
-    const bestRowPerLeague = LEAGUES.map((_, li) => {
-      let bestIdx = -1;
-      let bestRank = Infinity;
-      rows.forEach((row, ri) => {
-        const e = row.entries[li];
-        if (e && e.rank < bestRank) {
-          bestRank = e.rank;
-          bestIdx = ri;
-        }
-      });
-      return bestIdx;
-    });
-
     const ivKey = `${iv.atk}-${iv.def}-${iv.hp}`;
     const collapsed = collapsedIvKeys.has(ivKey);
 
@@ -317,16 +321,18 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                         </td>
                       );
                     }
-                    const isBest = showEvolutionBest && bestRowPerLeague[li] === ri;
+                    const band = statProductBandColor(e.perfection);
                     return (
                       <td key={li} className="py-1.5 px-0.5 md:px-1">
                         <div
-                          title={`${e.cp} CP · Lvl ${e.level}`}
-                          className={`mx-auto w-[48px] md:w-[64px] rounded-xl py-1.5 flex flex-col items-center gap-0.5 border ${isBest ? 'bg-brand-accent/20 border-brand-accent/50' : 'bg-black/30 border-white/5'}`}
+                          title={`${e.cp} CP · Lvl ${e.level} · ${e.perfection}% stat product`}
+                          className="mx-auto w-[48px] md:w-[64px] rounded-xl overflow-hidden bg-black/30 border border-white/5 flex flex-col items-center"
                         >
-                          <span className={`text-sm md:text-base font-black leading-none tracking-tighter ${isBest ? 'text-brand-accent' : 'text-white'}`}>#{e.rank}</span>
-                          <span className="text-[9px] font-bold text-gray-400 leading-none">{e.perfection}%</span>
-                          {isBest && <span className="text-[7px] font-black uppercase tracking-wider text-brand-accent leading-none mt-0.5">{t('iv.evo_best')}</span>}
+                          <div className="pt-1.5 pb-1 flex flex-col items-center gap-0.5">
+                            <span className="text-sm md:text-base font-black leading-none tracking-tighter text-white">#{e.rank}</span>
+                            <span className="text-[9px] font-black leading-none" style={{ color: band }}>{e.perfection}%</span>
+                          </div>
+                          <div className="h-1 w-full" style={{ backgroundColor: band }}></div>
                         </div>
                       </td>
                     );
@@ -522,6 +528,16 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
             <div className="flex items-center gap-4">
               <div className="w-3 h-3 rounded-full bg-brand-blue shadow-[0_0_12px_rgba(59,130,246,0.5)]"></div>
               <h4 className="text-xl font-black text-white uppercase tracking-widest">{t('iv.evo_title')}</h4>
+            </div>
+            {/* Stat-product verdict legend — color = how close the spread is to rank 1 for
+                that form + league (IV quality), matching the app's percentToColor bands. */}
+            <div className="flex items-center gap-4 mt-3 flex-wrap">
+              {STAT_PRODUCT_BANDS.map((b) => (
+                <span key={b.label} className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: b.color }}></span>
+                  {b.label}
+                </span>
+              ))}
             </div>
           </div>
           <div className="p-4 md:p-8 space-y-5">
