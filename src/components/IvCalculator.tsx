@@ -452,7 +452,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
             {switcherForms.length > 1 && (
               <div className="space-y-2">
                 <label className="block text-[10px] font-black text-gray-500 uppercase tracking-widest">{t('iv.forms')}</label>
-                <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1">
+                <div className="flex flex-wrap gap-2">
                   {switcherForms.map((f) => {
                     const selected = f.id === currentPokemon.id;
                     const label = isMegaForm(f) ? megaQualifier(f) : localizePokemon(f.id, f.name);
@@ -461,10 +461,10 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                         key={f.id}
                         onClick={() => { setSelectedId(f.id); setSearchTerm(''); trackEvent('IV Form Switch', { 'Pokemon': f.id }); }}
                         title={formDisplayName(f)}
-                        className={`flex-none w-[54px] flex flex-col items-center gap-1 p-1.5 rounded-xl border transition-all active:scale-95 ${selected ? 'bg-brand-accent/15 border-brand-accent/60' : 'bg-white/5 border-white/10 hover:border-white/30'}`}
+                        className={`flex flex-col items-center gap-1 px-2.5 py-1.5 rounded-xl border transition-all active:scale-95 ${selected ? 'bg-brand-accent/15 border-brand-accent/60' : 'bg-white/5 border-white/10 hover:border-white/30'}`}
                       >
                         <img src={getSpritePath(f)} alt="" className="w-9 h-9 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')} />
-                        <span className={`text-[8px] font-black uppercase tracking-tight leading-none text-center w-full truncate ${selected ? 'text-brand-accent' : 'text-gray-400'}`}>{label}</span>
+                        <span className={`text-[9px] font-black uppercase tracking-tight leading-none text-center whitespace-nowrap ${selected ? 'text-brand-accent' : 'text-gray-400'}`}>{label}</span>
                       </button>
                     );
                   })}
