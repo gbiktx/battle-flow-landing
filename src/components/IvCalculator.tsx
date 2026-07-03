@@ -536,7 +536,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
       <div className="bg-brand-dark/40 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative z-0 glass">
         <div className="px-5 py-6 md:px-10 md:py-10 bg-white/5 border-b border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-4 flex-wrap">
-            <div className="w-3 h-3 rounded-full bg-brand-accent shadow-[0_0_12px_rgba(218,85,47,0.5)]"></div>
+            <div className="w-3 h-3 rounded-full bg-brand-accent shadow-[0_0_12px_rgba(3,147,218,0.5)]"></div>
             <h4 className="text-xl font-black text-white uppercase tracking-widest">
               {showFullTable ? t('iv.top_100') : t('iv.top_10')}
             </h4>
@@ -585,7 +585,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                     className={`transition-all duration-300 ${isTracked ? 'bg-brand-accent/15' : isCurrentInput ? 'bg-brand-blue/15' : 'hover:bg-white/[0.03]'}`}>
                     <td className="px-10 py-7 font-black text-white">
                       <div className="flex items-center gap-4">
-                        {isTracked && <div className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(218,85,47,0.8)]"></div>}
+                        {isTracked && <div className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(3,147,218,0.8)]"></div>}
                         <span className={`text-lg ${r.rank <= 10 ? 'text-brand-accent' : 'opacity-60'}`}>#{r.rank}</span>
                       </div>
                     </td>
@@ -605,7 +605,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                       <div className="flex flex-col items-end gap-1.5">
                         <span className={`font-black text-xl tracking-tighter ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/90'}`}>{r.perfection}%</span>
                         <div className="w-24 h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                          <div className="h-full bg-brand-accent shadow-[0_0_8px_rgba(218,85,47,0.4)] transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
+                          <div className="h-full bg-brand-accent shadow-[0_0_8px_rgba(3,147,218,0.4)] transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
                         </div>
                       </div>
                     </td>
