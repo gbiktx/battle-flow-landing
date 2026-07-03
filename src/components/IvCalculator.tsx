@@ -42,22 +42,61 @@ const POKEMON_BY_ID = new Map<string, Pokemon>(pokemonData.map((p) => [p.id, p])
 
 const PERFECT_IV = { atk: 15, def: 15, hp: 15 };
 
-// Walk the `evolutions` graph from a root Pokémon and return the whole family
-// (root first, then every descendant, breadth-first). Handles multi-branch lines
-// (Eevee, Slowpoke, Gloom) and guards against cycles / missing targets. Shadow
-// forms aren't linked in the data, so this stays on the non-shadow line.
-function getEvolutionFamily(root: Pokemon): Pokemon[] {
+// Reverse-evolution index: child id -> the first parent that evolves into it.
+// Lets us walk *up* to a line's base form (the `evolutions` field is forward-only).
+const PRE_EVOLUTION = new Map<string, string>();
+for (const p of pokemonData) {
+  for (const child of p.evolutions ?? []) {
+    if (!PRE_EVOLUTION.has(child)) PRE_EVOLUTION.set(child, p.id);
+  }
+}
+
+// Base form of a line — walk pre-evolutions to the top (cycle-guarded).
+function getEvolutionRoot(id: string): string {
+  let current = id;
+  const guard = new Set<string>();
+  while (PRE_EVOLUTION.has(current) && !guard.has(current)) {
+    guard.add(current);
+    current = PRE_EVOLUTION.get(current)!;
+  }
+  return current;
+}
+
+const isMegaForm = (p: Pokemon) => (p.tags?.includes('mega') ?? false) || p.id.includes('_mega');
+
+// Strip a mega suffix to the base species id (megas aren't in the evolution graph).
+const stripMegaSuffix = (id: string) => id.replace(/_mega(_x|_y)?$/, '');
+
+// Released Mega forms of a species, by the `{id}_mega[_x|_y]` convention —
+// megas are absent from `evolutions`, matching the app's EvolutionLeagueSuggester._megasOf.
+function getMegasOf(id: string): Pokemon[] {
+  const out: Pokemon[] = [];
+  for (const suffix of ['_mega', '_mega_x', '_mega_y']) {
+    const mega = POKEMON_BY_ID.get(id + suffix);
+    if (mega) out.push(mega);
+  }
+  return out;
+}
+
+// Breadth-first walk of a line from `start`: each form, then its evolution
+// targets, then its megas (leaves). Depth-capped at 3 and cycle-guarded,
+// mirroring the app's _evolutionCandidates. Handles multi-branch lines (Eevee).
+function buildFamily(start: Pokemon): Pokemon[] {
   const family: Pokemon[] = [];
   const seen = new Set<string>();
-  const queue: Pokemon[] = [root];
+  const queue: { p: Pokemon; depth: number }[] = [{ p: start, depth: 0 }];
   while (queue.length) {
-    const current = queue.shift()!;
-    if (seen.has(current.id)) continue;
-    seen.add(current.id);
-    family.push(current);
-    for (const nextId of current.evolutions ?? []) {
+    const { p, depth } = queue.shift()!;
+    if (seen.has(p.id)) continue;
+    seen.add(p.id);
+    family.push(p);
+    if (depth >= 3) continue;
+    for (const nextId of p.evolutions ?? []) {
       const next = POKEMON_BY_ID.get(nextId);
-      if (next && !seen.has(next.id)) queue.push(next);
+      if (next && !seen.has(next.id)) queue.push({ p: next, depth: depth + 1 });
+    }
+    for (const mega of getMegasOf(p.id)) {
+      if (!seen.has(mega.id)) queue.push({ p: mega, depth: depth + 1 });
     }
   }
   return family;
@@ -126,6 +165,18 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const localizePokemon = (id: string, fallback: string) =>
     getPokemonName(id, fallback, langTranslations);
 
+  // Mega qualifier ("Mega X"/"Mega Y"/"Mega") from the raw name — localizePokemon
+  // strips it, so pull it from `name` to tell the two megas apart.
+  const megaQualifier = (p: Pokemon) => p.name.match(/\(([^)]+)\)/)?.[1] ?? 'Mega';
+
+  // Full display name including the mega qualifier (e.g. "Charizard (Mega X)").
+  const formDisplayName = (p: Pokemon) => {
+    const base = localizePokemon(p.id, p.name);
+    if (!isMegaForm(p)) return base;
+    const q = megaQualifier(p);
+    return base.includes(q) ? base : `${base} (${q})`;
+  };
+
   // Dynamic key — TS can't narrow `type.${string}` to a ui.ts key statically.
   const getTypeName = (type: string) => t(`type.${type.toLowerCase()}` as Parameters<typeof t>[0]);
 
@@ -148,8 +199,16 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
 
   const hasTracked = trackedIvs.length > 0;
 
+  // Grid rows: the current form's evolution targets + megas (what this catch can
+  // become). Switcher: the whole line from its base — so you can hop base ↔ final
+  // ↔ mega and back regardless of which form is currently analyzed.
   const evolutionFamily = useMemo(
-    () => getEvolutionFamily(currentPokemon),
+    () => buildFamily(currentPokemon),
+    [currentPokemon]
+  );
+
+  const switcherForms = useMemo(
+    () => buildFamily(POKEMON_BY_ID.get(getEvolutionRoot(stripMegaSuffix(currentPokemon.id))) ?? currentPokemon),
     [currentPokemon]
   );
 
@@ -369,7 +428,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                   <img src={spriteUrl} alt={`${localizePokemon(currentPokemon.id, currentPokemon.name)} sprite`} className="w-24 h-24 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
                 </div>
               </div>
-              <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{localizePokemon(currentPokemon.id, currentPokemon.name)}</h3>
+              <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{formDisplayName(currentPokemon)}</h3>
               <div className="flex gap-2 mt-3">
                 {currentPokemon.types.filter((ty) => ty !== 'none').map((type) => {
                   const color = TYPE_COLORS[type] || '#ffffff';
@@ -389,6 +448,29 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                 })}
               </div>
             </div>
+
+            {switcherForms.length > 1 && (
+              <div className="space-y-2">
+                <label className="block text-[10px] font-black text-gray-500 uppercase tracking-widest">{t('iv.forms')}</label>
+                <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1">
+                  {switcherForms.map((f) => {
+                    const selected = f.id === currentPokemon.id;
+                    const label = isMegaForm(f) ? megaQualifier(f) : localizePokemon(f.id, f.name);
+                    return (
+                      <button
+                        key={f.id}
+                        onClick={() => { setSelectedId(f.id); setSearchTerm(''); trackEvent('IV Form Switch', { 'Pokemon': f.id }); }}
+                        title={formDisplayName(f)}
+                        className={`flex-none w-[54px] flex flex-col items-center gap-1 p-1.5 rounded-xl border transition-all active:scale-95 ${selected ? 'bg-brand-accent/15 border-brand-accent/60' : 'bg-white/5 border-white/10 hover:border-white/30'}`}
+                      >
+                        <img src={getSpritePath(f)} alt="" className="w-9 h-9 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')} />
+                        <span className={`text-[8px] font-black uppercase tracking-tight leading-none text-center w-full truncate ${selected ? 'text-brand-accent' : 'text-gray-400'}`}>{label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             <div className="relative">
               <label htmlFor="pokemon-search" className="block text-[10px] font-black mb-2 text-gray-500 uppercase tracking-widest">{t('iv.change_pokemon')}</label>
