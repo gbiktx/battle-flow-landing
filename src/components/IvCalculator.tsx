@@ -459,7 +459,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                     return (
                       <button
                         key={f.id}
-                        onClick={() => { setSelectedId(f.id); setSearchTerm(''); trackEvent('IV Form Switch', { 'Pokemon': f.id }); }}
+                        onClick={() => { setSelectedId(f.id); setSearchTerm(''); }}
                         title={formDisplayName(f)}
                         className={`flex flex-col items-center gap-1 px-2.5 py-1.5 rounded-xl border transition-all active:scale-95 ${selected ? 'bg-brand-accent/15 border-brand-accent/60' : 'bg-white/5 border-white/10 hover:border-white/30'}`}
                       >
@@ -492,7 +492,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               {searchTerm && filteredPokemonList.length > 0 && (
                 <div className="absolute left-0 right-0 top-full mt-2 bg-brand-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-60 overflow-y-auto z-[100]">
                   {filteredPokemonList.map(p => (
-                    <button key={p.id} className="w-full text-left px-5 py-3 hover:bg-white/10 transition-colors flex items-center gap-4 text-white border-b border-white/5 last:border-0" onClick={() => { setSelectedId(p.id); setSearchTerm(''); trackEvent('IV Pokemon Select', { 'Pokemon': p.id }); }}>
+                    <button key={p.id} className="w-full text-left px-5 py-3 hover:bg-white/10 transition-colors flex items-center gap-4 text-white border-b border-white/5 last:border-0" onClick={() => { setSelectedId(p.id); setSearchTerm(''); }}>
                       <img src={getSpritePath(p)} alt={`${localizePokemon(p.id, p.name)} sprite`} className="w-8 h-8 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
                       <span className="font-bold text-sm uppercase tracking-tight">{localizePokemon(p.id, p.name)}</span>
                     </button>
@@ -513,7 +513,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                     <button 
                       key={l.id} 
                       className={`py-3 px-1 rounded-xl text-[10px] font-black uppercase transition-all ${league.id === l.id ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'}`} 
-                      onClick={() => { setLeague(l); trackEvent('IV League Select', { 'League': l.id }); }}
+                      onClick={() => { setLeague(l); }}
                     >
                       {t(l.labelKey).replace(/League|Liga|Ligue|Cup/gi, "").trim()}
                     </button>
@@ -530,7 +530,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                     <button 
                       key={l} 
                       className={`py-3 rounded-xl text-[10px] font-black transition-all ${maxLevel === l ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/20' : 'text-gray-400 hover:text-white'}`}
-                      onClick={() => { setMaxLevel(l); trackEvent('IV Level Cap Select', { 'Level Cap': l }); }}
+                      onClick={() => { setMaxLevel(l); }}
                     >
                       {l}
                     </button>
