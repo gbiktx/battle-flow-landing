@@ -10,5 +10,10 @@ export function getHomeFaqs(t: (key: Keys) => string) {
     { q: t('faq.q3' as Keys), a: t('faq.a3' as Keys) },
     { q: t('faq.q4' as Keys), a: t('faq.a4' as Keys) },
     { q: t('faq.q5' as Keys), a: t('faq.a5' as Keys) },
+    { q: t('faq.q6' as Keys), a: t('faq.a6' as Keys) },
+    { q: t('faq.q7' as Keys), a: t('faq.a7' as Keys) },
+    { q: t('faq.q8' as Keys), a: t('faq.a8' as Keys) },
+    { q: t('faq.q9' as Keys), a: t('faq.a9' as Keys) },
+    { q: t('faq.q10' as Keys), a: t('faq.a10' as Keys) },
   ];
 }

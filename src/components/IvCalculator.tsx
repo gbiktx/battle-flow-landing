@@ -733,7 +733,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               <path d="M318.7 268.7c-.2-36.7 21.3-64.4 50.4-81.2-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.8-42.3 0-81.8 24.4-103.2 61.9-43.2 75.2-11.1 186.1 31 247.1 20.6 29.8 44.8 63.3 76.9 62.2 31.3-1.1 43.1-20.1 81-20.1 37.9 0 48.9 20.1 81.1 19.4 33.1-.7 54.4-30.3 74.9-59.7 23.6-34.1 33.2-67.1 33.5-68.8-.7-.3-64.9-24.9-65.5-98.4zM286.1 102c15.7-19.1 26.2-45.5 23.3-71.9-22.1 1-48.8 14.8-64.6 32.5-14.2 15.8-26.7 42.9-23.3 68.7 24.4 1.9 48.9-10.2 64.6-29.3z" />
             </svg>
             <div className="flex flex-col items-start leading-none text-left">
-              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Download on</span>
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">{t('download.ios_prefix')}</span>
               <span className="text-xl font-black text-white tracking-tight uppercase whitespace-nowrap">App Store</span>
             </div>
           </a>
@@ -751,7 +751,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               <path fill="#34A853" d="M241 256l96-56L30 25c-7-4-13-3-17 0l228 231z" />
             </svg>
             <div className="flex flex-col items-start leading-none text-left">
-              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Get it on</span>
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">{t('download.android_prefix')}</span>
               <span className="text-xl font-black text-white tracking-tight uppercase whitespace-nowrap">Google Play</span>
             </div>
           </a>
