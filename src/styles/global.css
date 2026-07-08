@@ -60,6 +60,12 @@
 
 /* Prose overrides for BattleFlow */
 .prose h2 { @apply text-3xl md:text-5xl font-black uppercase tracking-tighter mb-8 text-white; }
+
+/* Changelog (What's New): tight, real-changelog version headings with dividers,
+   rather than the marketing-sized prose h2 above. Higher specificity (.prose.changelog)
+   so it wins over the generic `.prose h2` rule. */
+.prose.changelog h2 { @apply text-xl md:text-2xl mt-14 mb-4 pt-8 border-t border-white/10; }
+.prose.changelog h2:first-child { @apply mt-0 pt-0 border-t-0; }
 .prose h3 { @apply text-xl md:text-2xl font-bold uppercase tracking-tight mt-12 mb-6 text-brand-blue; }
 .prose p { @apply text-gray-400 leading-relaxed mb-6; }
 .prose ul { @apply space-y-4 mb-8; }

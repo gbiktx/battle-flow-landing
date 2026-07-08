@@ -1104,5 +1104,355 @@ BattleFlow Pro는 구매하신 앱 스토어(Apple App Store 또는 Google Play)
 //
 //   - Movedex — browse every fast and charged move with full stats and effects.
 export const whatsNewData: Record<string, string> = {
-  en: ``,
+  en: `## v4.0
+
+**Pokémon Collection.** Keep your Pokémon in BattleFlow. Browse them in grid, list, or by species, with filtering, sorting, and a best-league suggestion for each one.
+
+**IV Scanner.** Scan a screenshot and BattleFlow reads the species, CP, and IVs for you — no manual typing. Scan many screenshots together in one batch.
+
+**Auto Scan.** Stream your screen and BattleFlow scans automatically as you appraise — no tapping needed.
+
+**Nickname rename.** Generate a competitive nickname — best league, IVs, and rank — from a scan and copy it straight to your clipboard.
+
+**Flashcard streaks.** A new daily drill keeps a streak going so your matchup practice stays sharp, with matchup decks built in.
+
+**Plus.** The Collection and scanner are fully localized, an owned-only filter across rankings, and many UI, performance, and stability improvements.
+
+## v3.5
+
+**Meta Profiles.** Build your own threat lists — even from your battle logs — so team scores reflect the metas you actually face.
+
+**MoveDex & Move Flashcards.** Browse every fast and charged move in one place, then drill the counts and movesets with the new trainer flashcard.
+
+**GBL Season Calendar.** See the current and upcoming cups and leagues right from the More menu.
+
+**Alternative Movesets.** BattleFlow's own moveset picks now appear alongside the rankings.
+
+**Plus.** Automatic data updates keep cups and rankings fresh and re-rate your saved teams, a refreshed look across the app, and dark-mode and offline fixes.
+
+## v3.2
+
+**Moveset Explorer.** Compare all move combinations for a Pokémon and find the optimal setup.
+
+**Matchup Map (Beta).** An experimental new way to explore Cup rankings.
+
+**Data Export.** Export your Battle Logs and Saved Teams directly to CSV, making it easier to track your progress and analyze your performance outside the app.
+
+## v3.1
+
+**Build Around Mode.** Start team generation from any Pokémon. Pick your favorite from Rankings or your Pokebox, and BattleFlow builds optimized teams around it — finding the best leads, safe swaps, and closers to complement your anchor.
+
+**Shiny Sprites (Pro).** See your shiny Pokémon throughout the app — in rankings, teams, Pokebox, IV checker, and generated teams. Toggle shinies per species with a sparkle animation.`,
+  es: `## v4.0
+
+**Colección de Pokémon.** Guarda tus Pokémon en BattleFlow. Explóralos en cuadrícula, lista o por especie, con filtros, ordenación y una sugerencia de mejor liga para cada uno.
+
+**Escáner de IVs.** Haz una captura y BattleFlow lee la especie, el PC y los IVs por ti, sin escribir nada a mano. Escanea varias capturas juntas en un solo lote.
+
+**Escaneo automático.** Transmite tu pantalla y BattleFlow escanea automáticamente mientras evalúas, sin tocar nada.
+
+**Renombrar apodos.** Genera un apodo competitivo — mejor liga, IVs y ranking — a partir de un escaneo y cópialo directamente al portapapeles.
+
+**Rachas de tarjetas.** Un nuevo reto diario mantiene tu racha para que tu práctica de enfrentamientos siga afilada, con mazos de enfrentamientos incluidos.
+
+**Además.** La Colección y el escáner están totalmente traducidos, un filtro de solo lo que tienes en los rankings y muchas mejoras de interfaz, rendimiento y estabilidad.
+
+## v3.5
+
+**Perfiles de Meta.** Crea tus propias listas de amenazas — incluso desde tus registros de batalla — para que las puntuaciones de equipo reflejen las metas que realmente enfrentas.
+
+**MoveDex y tarjetas de movimientos.** Explora todos los movimientos rápidos y cargados en un solo lugar y practica los conteos y los conjuntos de movimientos con el nuevo entrenador de tarjetas.
+
+**Calendario de temporada GBL.** Consulta las copas y ligas actuales y próximas directamente desde el menú Más.
+
+**Movimientos alternativos.** Las recomendaciones de movimientos propias de BattleFlow ahora aparecen junto a los rankings.
+
+**Además.** Las actualizaciones automáticas de datos mantienen las copas y los rankings al día y vuelven a evaluar tus equipos guardados, además de un diseño renovado en toda la app y correcciones de modo oscuro y sin conexión.
+
+## v3.2
+
+**Explorador de Movimientos.** Compara todas las combinaciones de movimientos de un Pokémon y encuentra la configuración óptima.
+
+**Mapa de Duelos (Beta).** Una nueva forma experimental de explorar los rankings de las Copas.
+
+**Exportación de Datos.** Exporta tus Registros de Batalla y Equipos Guardados directamente a CSV, lo que facilita el seguimiento de tu progreso y el análisis de tu rendimiento fuera de la aplicación.
+
+## v3.1
+
+**Modo Construir Alrededor.** Genera equipos a partir de cualquier Pokémon. Elige tu favorito de los Rankings o tu Pokebox, y BattleFlow construye equipos optimizados a su alrededor — encontrando los mejores leads, safe swaps y closers.
+
+**Sprites Shiny (Pro).** Ve tus Pokémon shiny en toda la app — rankings, equipos, Pokebox, verificador de IVs y equipos generados. Activa shinies por especie con animación de brillo.`,
+  fr: `## v4.0
+
+**Collection de Pokémon.** Conservez vos Pokémon dans BattleFlow. Parcourez-les en grille, en liste ou par espèce, avec filtres, tri et une suggestion de meilleure ligue pour chacun.
+
+**Scanner d'IV.** Prenez une capture et BattleFlow lit l'espèce, le PC et les IV pour vous, sans rien saisir. Scannez plusieurs captures d'un seul coup.
+
+**Scan auto.** Diffusez votre écran et BattleFlow scanne automatiquement pendant que vous évaluez, sans rien toucher.
+
+**Renommer les surnoms.** Générez un surnom compétitif — meilleure ligue, IV et classement — à partir d'un scan et copiez-le directement dans le presse-papiers.
+
+**Séries de cartes.** Un nouvel exercice quotidien entretient une série pour garder votre pratique des affrontements affûtée, avec des paquets d'affrontements intégrés.
+
+**En plus.** La Collection et le scanner sont entièrement traduits, un filtre « possédés uniquement » dans les classements, et de nombreuses améliorations d'interface, de performance et de stabilité.
+
+## v3.5
+
+**Profils de Méta.** Créez vos propres listes de menaces — même à partir de vos journaux de combat — pour que les notes d'équipe reflètent les métas que vous affrontez vraiment.
+
+**MoveDex et cartes d'attaques.** Parcourez toutes les attaques rapides et chargées au même endroit, puis révisez les comptes et les ensembles d'attaques avec le nouvel entraîneur de cartes.
+
+**Calendrier de saison GBL.** Consultez les coupes et ligues actuelles et à venir directement depuis le menu Plus.
+
+**Attaques alternatives.** Les recommandations d'attaques de BattleFlow apparaissent désormais à côté des classements.
+
+**En plus.** Les mises à jour automatiques des données gardent les coupes et classements à jour et réévaluent vos équipes enregistrées, avec un design rafraîchi dans toute l'application et des corrections en mode sombre et hors ligne.
+
+## v3.2
+
+**Explorateur d'Attaques.** Comparez toutes les combinaisons d'attaques pour un Pokémon et trouvez la configuration optimale.
+
+**Carte des Matchups (Bêta).** Une nouvelle façon expérimentale d'explorer les classements des Coupes.
+
+**Exportation de Données.** Exportez vos Journaux de Combat et vos Équipes Sauvegardées directement en CSV, ce qui facilite le suivi de vos progrès et l'analyse de vos performances en dehors de l'application.
+
+## v3.1
+
+**Mode Construire Autour.** Générez des équipes à partir de n'importe quel Pokémon. Choisissez votre favori dans les classements ou votre Pokebox, et BattleFlow construit des équipes optimisées autour de lui — trouvant les meilleurs leads, safe swaps et closers.
+
+**Sprites Shiny (Pro).** Voyez vos Pokémon shiny dans toute l'app — classements, équipes, Pokebox, vérificateur d'IVs et équipes générées. Activez les shinies par espèce avec une animation d'éclat.`,
+  de: `## v4.0
+
+**Pokémon-Sammlung.** Behalte deine Pokémon in BattleFlow. Durchstöbere sie als Raster, Liste oder nach Spezies, mit Filtern, Sortierung und einer Liga-Empfehlung für jedes.
+
+**IV-Scanner.** Mach einen Screenshot und BattleFlow liest Spezies, WP und IVs für dich aus — ohne Tippen. Scanne mehrere Screenshots in einem Stapel.
+
+**Auto-Scan.** Streame deinen Bildschirm und BattleFlow scannt beim Bewerten automatisch — ohne Tippen.
+
+**Spitznamen umbenennen.** Erstelle aus einem Scan einen kompetitiven Spitznamen — beste Liga, IVs und Rang — und kopiere ihn direkt in die Zwischenablage.
+
+**Lernkarten-Serien.** Eine neue tägliche Übung hält eine Serie am Laufen, damit dein Matchup-Training scharf bleibt — mit Matchup-Decks inklusive.
+
+**Plus.** Sammlung und Scanner sind vollständig übersetzt, ein „Nur im Besitz"-Filter in den Rankings sowie viele Verbesserungen bei UI, Leistung und Stabilität.
+
+## v3.5
+
+**Meta-Profile.** Erstelle eigene Bedrohungslisten — sogar aus deinen Kampfprotokollen — damit Teamwertungen die Metas widerspiegeln, denen du wirklich begegnest.
+
+**MoveDex & Move-Lernkarten.** Durchstöbere alle Sofort- und Lade-Attacken an einem Ort und übe dann Treffer-Counts und Movesets mit dem neuen Lernkarten-Trainer.
+
+**GBL-Saisonkalender.** Sieh dir aktuelle und kommende Cups und Ligen direkt im Mehr-Menü an.
+
+**Alternative Movesets.** BattleFlows eigene Move-Empfehlungen erscheinen jetzt neben den Rankings.
+
+**Plus.** Automatische Daten-Updates halten Cups und Rankings aktuell und bewerten deine gespeicherten Teams neu, dazu ein aufgefrischtes Design in der ganzen App sowie Dark-Mode- und Offline-Korrekturen.
+
+## v3.2
+
+**Moveset-Explorer.** Vergleiche alle Move-Kombinationen für ein Pokémon und finde das optimale Setup.
+
+**Matchup-Karte (Beta).** Ein experimenteller neuer Weg, um Cup-Rankings zu erkunden.
+
+**Datenexport.** Exportiere deine Kampfprotokolle und gespeicherten Teams direkt als CSV, um deinen Fortschritt einfacher zu verfolgen und deine Leistung außerhalb der App zu analysieren.
+
+## v3.1
+
+**Build-Around-Modus.** Starte die Teamgenerierung mit einem beliebigen Pokémon. Wähle deinen Favoriten aus den Rankings oder deiner Pokebox, und BattleFlow erstellt optimierte Teams drumherum — mit den besten Leads, Safe Swaps und Closern.
+
+**Shiny-Sprites (Pro).** Sieh deine Shiny-Pokémon in der gesamten App — Rankings, Teams, Pokebox, IV-Checker und generierte Teams. Aktiviere Shinies pro Spezies mit Glitzeranimation.`,
+  it: `## v4.0
+
+**Collezione di Pokémon.** Tieni i tuoi Pokémon in BattleFlow. Sfogliali a griglia, elenco o per specie, con filtri, ordinamento e un suggerimento sulla lega migliore per ciascuno.
+
+**Scanner IV.** Scatta uno screenshot e BattleFlow legge specie, PL e IV al posto tuo, senza digitare nulla. Scansiona più screenshot insieme in un unico blocco.
+
+**Scansione automatica.** Trasmetti lo schermo e BattleFlow scansiona automaticamente mentre valuti, senza toccare nulla.
+
+**Rinomina soprannomi.** Genera un soprannome competitivo — lega migliore, IV e posizione — da una scansione e copialo direttamente negli appunti.
+
+**Serie di flashcard.** Un nuovo esercizio giornaliero mantiene viva una serie per tenere allenata la pratica sui matchup, con mazzi di matchup inclusi.
+
+**Inoltre.** La Collezione e lo scanner sono completamente tradotti, un filtro «solo posseduti» nei ranking e tante migliorie a interfaccia, prestazioni e stabilità.
+
+## v3.5
+
+**Profili Meta.** Crea le tue liste di minacce — anche dai tuoi registri di battaglia — così i punteggi delle squadre riflettono le meta che affronti davvero.
+
+**MoveDex e flashcard delle mosse.** Sfoglia tutte le mosse veloci e cariche in un unico posto e allenati su conteggi e set di mosse con il nuovo allenatore di flashcard.
+
+**Calendario della stagione GBL.** Consulta le coppe e le leghe attuali e in arrivo direttamente dal menu Altro.
+
+**Mosse alternative.** I consigli sulle mosse di BattleFlow ora compaiono accanto alle classifiche.
+
+**Inoltre.** Gli aggiornamenti automatici dei dati mantengono coppe e classifiche aggiornate e rivalutano le squadre salvate, con un aspetto rinnovato in tutta l'app e correzioni per modalità scura e offline.
+
+## v3.2
+
+**Esploratore Set di Mosse.** Confronta tutte le combinazioni di mosse per un Pokémon e trova la configurazione ottimale.
+
+**Mappa dei Matchup (Beta).** Un nuovo modo sperimentale per esplorare le classifiche delle Coppe.
+
+**Esportazione Dati.** Esporta i tuoi Registri di Battaglia e le Squadre Salvate direttamente in CSV, facilitando il monitoraggio dei tuoi progressi e l'analisi delle tue prestazioni al di fuori dell'app.
+
+## v3.1
+
+**Modalità Costruisci Attorno.** Genera squadre partendo da qualsiasi Pokémon. Scegli il tuo preferito dai ranking o dalla Pokebox, e BattleFlow costruisce squadre ottimizzate attorno ad esso — trovando i migliori lead, safe swap e closer.
+
+**Sprite Shiny (Pro).** Visualizza i tuoi Pokémon shiny in tutta l'app — classifiche, squadre, Pokebox, verificatore IV e squadre generate. Attiva gli shiny per specie con animazione scintillante.`,
+  pt: `## v4.0
+
+**Coleção de Pokémon.** Guarde seus Pokémon no BattleFlow. Navegue em grade, lista ou por espécie, com filtros, ordenação e uma sugestão de melhor liga para cada um.
+
+**Scanner de IVs.** Tire uma captura e o BattleFlow lê a espécie, o PC e os IVs por você, sem digitar nada. Escaneie várias capturas juntas de uma só vez.
+
+**Escaneamento automático.** Transmita sua tela e o BattleFlow escaneia automaticamente enquanto você avalia, sem tocar em nada.
+
+**Renomear apelidos.** Gere um apelido competitivo — melhor liga, IVs e ranking — a partir de um escaneamento e copie direto para a área de transferência.
+
+**Sequências de flashcards.** Um novo desafio diário mantém uma sequência para deixar sua prática de confrontos afiada, com decks de confronto inclusos.
+
+**Além disso.** A Coleção e o scanner estão totalmente traduzidos, um filtro de apenas os que você possui nos rankings e muitas melhorias de interface, desempenho e estabilidade.
+
+## v3.5
+
+**Perfis de Meta.** Crie suas próprias listas de ameaças — até a partir dos seus registros de batalha — para que as pontuações de equipe reflitam as metas que você realmente enfrenta.
+
+**MoveDex e cartões de ataques.** Navegue por todos os ataques rápidos e carregados em um só lugar e treine as contagens e os conjuntos de ataques com o novo treinador de cartões.
+
+**Calendário da temporada GBL.** Veja as copas e ligas atuais e futuras direto no menu Mais.
+
+**Ataques alternativos.** As recomendações de ataques do próprio BattleFlow agora aparecem ao lado dos rankings.
+
+**Além disso.** As atualizações automáticas de dados mantêm copas e rankings em dia e reavaliam suas equipes salvas, com visual renovado em todo o app e correções de modo escuro e offline.
+
+## v3.2
+
+**Explorador de Conjunto de Ataques.** Compare todas as combinações de ataques de um Pokémon e encontre a configuração ideal.
+
+**Mapa de Confrontos (Beta).** Uma nova maneira experimental de explorar os rankings das Copas.
+
+**Exportação de Dados.** Exporte seus Registros de Batalha e Equipes Salvas diretamente para CSV, facilitando o acompanhamento do seu progresso e a análise do seu desempenho fora do aplicativo.
+
+## v3.1
+
+**Modo Construir ao Redor.** Gere equipes a partir de qualquer Pokémon. Escolha seu favorito dos Rankings ou da Pokebox, e BattleFlow monta equipes otimizadas ao redor dele — encontrando os melhores leads, safe swaps e closers.
+
+**Sprites Shiny (Pro).** Veja seus Pokémon shiny em todo o app — rankings, equipes, Pokebox, verificador de IVs e equipes geradas. Ative shinies por espécie com animação brilhante.`,
+  ja: `## v4.0
+
+**ポケモンコレクション**：あなたのポケモンを BattleFlow に登録。グリッド・リスト・種族別で表示でき、フィルター、並べ替え、ポケモンごとの最適リーグ提案にも対応。
+
+**IV スキャナー**：スクリーンショットを撮るだけで、BattleFlow が種族・CP・個体値を自動で読み取り。手入力は不要です。複数のスクリーンショットをまとめて一括スキャンも可能。
+
+**自動スキャン**：画面を配信するだけで、BattleFlow が評価中に自動でスキャン。タップは不要です。
+
+**ニックネーム変更**：スキャンから対戦向けのニックネーム（最適リーグ・個体値・順位）を生成し、そのままクリップボードにコピー。
+
+**フラッシュカードの連続記録**：新しい毎日のドリルで連続記録を維持し、対戦練習を鋭く保てます。対戦用デッキも内蔵。
+
+**さらに**：コレクションとスキャナーを完全ローカライズ、ランキングの「所持のみ」フィルター、そして UI・パフォーマンス・安定性の多数の改善。
+
+## v3.5
+
+**メタプロファイル**：バトルログからでも、自分だけの脅威リストを作成できます。チームスコアが実際に対戦するメタを反映します。
+
+**MoveDex と技フラッシュカード**：すべてのノーマルアタックとスペシャルアタックを一か所で閲覧し、新しいフラッシュカードトレーナーで回数や技構成を練習できます。
+
+**GBLシーズンカレンダー**：現在および今後のカップとリーグを「その他」メニューから確認できます。
+
+**代替技構成**：BattleFlow独自の技のおすすめがランキングの横に表示されるようになりました。
+
+**さらに**：自動データ更新でカップとランキングが常に最新になり、保存したチームが再評価されます。アプリ全体のデザイン刷新、ダークモードとオフラインの修正も含まれます。
+
+## v3.2
+
+**技構成エクスプローラー**：ポケモンのすべての技の組み合わせを比較して、最適な構成を見つけ出すことができます。
+
+**対面マップ（ベータ）**：カップのランキングを探索するための実験的な新しい方法。
+
+**データ書き出し**：バトルログと保存したチームをCSV形式で直接書き出せるようになりました。アプリ外での進捗管理やパフォーマンス分析がより簡単になります。
+
+## v3.1
+
+**ビルドアラウンドモード**：任意のポケモンからチーム生成を開始。ランキングやポケボックスからお気に入りを選ぶと、BattleFlowがそのポケモンを軸に最適なリード、セーフスワップ、クローザーを備えたチームを構築します。
+
+**色違いスプライト（Pro）**：色違いポケモンをアプリ全体で表示 — ランキング、チーム、ポケボックス、個体値チェッカー、生成チーム。種族ごとにキラキラアニメーション付きで切り替え可能。`,
+  ko: `## v4.0
+
+**포켓몬 컬렉션**: 포켓몬을 BattleFlow에 보관하세요. 그리드, 리스트, 종족별로 살펴보고 필터, 정렬, 포켓몬별 최적 리그 추천까지 제공합니다.
+
+**IV 스캐너**: 스크린샷만 찍으면 BattleFlow가 종족, CP, 개체값을 자동으로 읽어 줍니다. 직접 입력할 필요가 없습니다. 여러 스크린샷을 한 번에 일괄 스캔할 수도 있습니다.
+
+**자동 스캔**: 화면을 스트리밍하면 BattleFlow가 평가하는 동안 탭 없이 자동으로 스캔합니다.
+
+**닉네임 변경**: 스캔에서 대전용 닉네임(최적 리그, 개체값, 순위)을 생성해 바로 클립보드에 복사하세요.
+
+**플래시카드 연속 기록**: 새로운 일일 훈련으로 연속 기록을 이어가 매치업 연습을 날카롭게 유지하세요. 매치업 덱도 기본 제공됩니다.
+
+**추가로**: 컬렉션과 스캐너를 완전히 현지화했고, 랭킹에 '보유한 것만' 필터를 추가했으며, UI·성능·안정성도 폭넓게 개선했습니다.
+
+## v3.5
+
+**메타 프로필**: 배틀 로그를 기반으로도 나만의 위협 목록을 만들어, 팀 점수가 실제로 마주하는 메타를 반영하도록 하세요.
+
+**MoveDex 및 기술 플래시카드**: 모든 일반 기술과 스페셜 기술을 한곳에서 둘러보고, 새로운 플래시카드 트레이너로 카운트와 기술 배치를 연습하세요.
+
+**GBL 시즌 캘린더**: 현재와 예정된 컵과 리그를 더보기 메뉴에서 바로 확인하세요.
+
+**대체 기술 배치**: BattleFlow 자체 기술 추천이 이제 랭킹 옆에 표시됩니다.
+
+**추가로**: 자동 데이터 업데이트로 컵과 랭킹이 최신으로 유지되고 저장된 팀이 다시 평가됩니다. 앱 전반의 새로워진 디자인과 다크 모드·오프라인 수정도 포함됩니다.
+
+## v3.2
+
+**기술 배치 탐색기**: 포켓몬의 모든 기술 조합을 비교하여 가장 적합한 설정을 찾을 수 있습니다.
+
+**매치업 맵 (베타)**: 컵 랭킹을 탐색하는 새로운 실험적 방법입니다.
+
+**데이터 내보내기**: 배틀 로그와 저장된 팀을 CSV로 직접 내보낼 수 있어, 앱 외부에서도 진행 상황을 추적하고 성과를 분석하기가 더 쉬워졌습니다.
+
+## v3.1
+
+**빌드 어라운드 모드**: 원하는 포켓몬으로 팀 생성을 시작하세요. 랭킹이나 포켓박스에서 좋아하는 포켓몬을 선택하면 BattleFlow가 최적의 리드, 세이프 스왑, 클로저를 찾아 팀을 구축합니다.
+
+**색이 다른 스프라이트 (Pro)**: 앱 전체에서 색이 다른 포켓몬을 확인하세요 — 랭킹, 팀, 포켓박스, 개체값 체커, 생성된 팀. 종별로 반짝이는 애니메이션과 함께 전환 가능.`,
+  'zh-Hant': `## v4.0
+
+**寶可夢收藏**：把你的寶可夢保存在 BattleFlow 中。可依網格、清單或種類瀏覽，支援篩選、排序，並為每隻提供最佳聯盟建議。
+
+**IV 掃描器**：截圖即可讓 BattleFlow 自動辨識種類、CP 與個體值，無需手動輸入。還能一次批次掃描多張截圖。
+
+**自動掃描**：串流你的螢幕，BattleFlow 就會在你評估時自動掃描，無需點擊。
+
+**暱稱重新命名**：從一次掃描生成對戰用暱稱（最佳聯盟、個體值、排名），並直接複製到剪貼簿。
+
+**閃卡連續紀錄**：全新的每日訓練幫你保持連續紀錄，讓對位練習保持敏銳，並內建對位牌組。
+
+**此外**：收藏與掃描器已完整在地化，排行榜新增「僅持有」篩選，以及大量介面、效能與穩定性提升。
+
+## v3.5
+
+**Meta 檔案**：建立你自己的威脅清單——甚至可以來自你的對戰紀錄——讓隊伍評分反映你真正面對的對戰環境。
+
+**MoveDex 與招式記憶卡**：在同一處瀏覽所有快速招式與蓄力招式，然後用全新的記憶卡訓練器練習招式次數與招式組合。
+
+**GBL 賽季行事曆**：在「更多」選單中直接查看目前與即將開始的盃賽與聯賽。
+
+**替代招式組合**：BattleFlow 自有的招式推薦現在會顯示在排名旁邊。
+
+**此外**：自動資料更新讓盃賽與排名保持最新，並重新評估你儲存的隊伍，同時帶來全應用煥新的外觀以及深色模式與離線修正。
+
+## v3.2
+
+**技能組合瀏覽器**：比較寶可夢的所有技能組合，找到最佳配置。
+
+**對戰地圖（測試版）**：一種探索杯賽排名的實驗性新方法。
+
+**數據匯出**：將您的對戰日誌和儲存的陣容直接匯出為 CSV，讓您更輕鬆地在應用之外追蹤進度並分析表現。
+
+## v3.1
+
+**圍繞構建模式**：從任意寶可夢開始生成陣容。從排名或寶可夢盒子中選擇你的最愛，BattleFlow將圍繞它構建優化陣容 — 找到最佳先發、安全換手和終結者。
+
+**閃光精靈（Pro）**：在整個應用中查看你的閃光寶可夢 — 排名、陣容、寶可夢盒子、個體值檢查器和生成陣容。按物種切換閃光，帶閃爍動畫。`,
 };

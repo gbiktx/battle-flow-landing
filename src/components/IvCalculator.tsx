@@ -33,6 +33,15 @@ const TARGET_LEVELS = [40, 41, 50, 51];
 const CTA_APP_STORE_URL = 'https://apps.apple.com/us/app/battleflow/id6738843812?ct=iv-result-cta';
 const CTA_PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.baru.software.oak&referrer=utm_source%3Dbattleflow-landing%26utm_medium%3Dweb%26utm_campaign%3Div-result-cta';
 
+// Scan-demo media for the contextual CTA. The poster is always the localized
+// `scan.png` still, so first paint is correct per language; where a scan clip
+// exists it plays as a muted, inline, looping loop over the poster. English is
+// shared across all locales for now — drop a localized capture at
+// `public/assets/images/features/<lang>/scan.mp4` and map it in SCAN_VIDEO_BY_LANG
+// to override per locale. Set to null to fall back to the still image only.
+const SCAN_VIDEO_SHARED: string | null = null; // no clip yet — CTA shows the localized still
+const SCAN_VIDEO_BY_LANG: Record<string, string> = {};
+
 // Stable across renders — pokemonData is imported, never mutated.
 const NON_SHADOW_POKEMON = pokemonData.filter(
   (p) => !p.id.includes('_shadow') && !p.name.includes('(Shadow)')
@@ -149,6 +158,35 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const [trackedIvs, setTrackedIvs] = useState<IVSet[]>([]);
 
   const t = useTranslations(lang as keyof typeof ui);
+
+  // Scan-CTA media: localized still as poster, optional scan clip over it.
+  const scanPoster = `/assets/images/features/${lang}/scan.png`;
+  const scanVideo = SCAN_VIDEO_BY_LANG[lang] ?? SCAN_VIDEO_SHARED;
+
+  // One-time impression when the scan CTA scrolls into view. Pairs with the
+  // `iv-result-cta` Store Click to separate "never seen" from "seen, not clicked".
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const ctaSeenRef = useRef(false);
+  useEffect(() => {
+    const el = ctaRef.current;
+    if (!el || ctaSeenRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting) && !ctaSeenRef.current) {
+          ctaSeenRef.current = true;
+          trackEvent('CTA Shown', {
+            Placement: 'iv-result-cta',
+            'Has Video': Boolean(scanVideo),
+            Language: lang,
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [scanVideo, lang]);
 
   // Jump straight into typing (and raise the mobile keyboard) when the IV fields reveal.
   useEffect(() => {
@@ -716,11 +754,41 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
         )}
       </div>
 
-      {/* Contextual CTA — fires at peak intent, right after the user sees their rank. */}
-      <div className="bg-gradient-to-br from-brand-accent/15 via-brand-dark/40 to-brand-blue/10 rounded-[2.5rem] border border-white/10 shadow-2xl glass px-6 py-10 md:px-12 md:py-12 text-center">
-        <h3 className="text-2xl md:text-4xl font-black text-white tracking-tighter uppercase mb-8 max-w-2xl mx-auto leading-tight">
-          {t('iv.cta_build_team')}
+      {/* Contextual CTA — fires at peak intent, right after the user sees their rank.
+          Reframed around the scanner: the visitor just appraised IVs by hand, so we
+          pitch the same job automated. Scan clip plays over the localized still. */}
+      <div ref={ctaRef} className="bg-gradient-to-br from-brand-accent/15 via-brand-dark/40 to-brand-blue/10 rounded-[2.5rem] border border-white/10 shadow-2xl glass px-6 py-10 md:px-12 md:py-12 text-center">
+        <div className="mx-auto mb-8 w-full max-w-[190px]">
+          <div className="relative aspect-[9/19.5] rounded-[2rem] overflow-hidden glass card-shadow border-8 border-brand-dark/50">
+            {scanVideo ? (
+              <video
+                className="w-full h-full object-cover"
+                poster={scanPoster}
+                src={scanVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
+                aria-label={t('iv.cta_scan_title')}
+              />
+            ) : (
+              <img
+                src={scanPoster}
+                alt={t('iv.cta_scan_title')}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+          </div>
+        </div>
+        <h3 className="text-2xl md:text-4xl font-black text-white tracking-tighter uppercase mb-4 max-w-2xl mx-auto leading-tight">
+          {t('iv.cta_scan_title')}
         </h3>
+        <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto">
+          {t('iv.cta_scan_desc')}
+        </p>
         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
           <a
             href={CTA_APP_STORE_URL}
