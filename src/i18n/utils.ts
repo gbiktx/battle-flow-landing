@@ -8,7 +8,8 @@ export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as keyof UI;
   
-  // Case-insensitive lookup for codes like zh-hant -> zh-Hant
+  // Case-insensitive lookup so legacy inbound URLs (/zh-Hant/) still resolve
+  // to the lowercase key. Keys are lowercase; see docs/locale-casing-fix-plan.md.
   const langKey = Object.keys(ui).find(
     (key) => key.toLowerCase() === lang?.toLowerCase()
   );

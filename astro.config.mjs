@@ -6,7 +6,10 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import { whatsNewData } from './src/i18n/data.ts';
 
-const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-Hant', 'ja', 'ko'];
+// URL path segments — always lowercase. Netlify's CDN 301s mixed-case paths to
+// lowercase, so any uppercase here makes canonicals point at a redirect.
+// See docs/locale-casing-fix-plan.md.
+const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
 
 // Keep empty What's New pages out of the sitemap (they're noindex until populated).
 // Matches /whats-new/ and /<locale>/whats-new/, mapping each to its locale's content.
@@ -52,7 +55,8 @@ export default defineConfig({
         de: 'de',
         it: 'it',
         pt: 'pt',
-        'zh-Hant': 'zh-Hant',
+        // key = URL path segment (lowercase), value = hreflang code (BCP 47)
+        'zh-hant': 'zh-Hant',
         ja: 'ja',
         ko: 'ko'
       }

@@ -12,15 +12,20 @@
 # Both casings, since the old sitemap emitted /zh-Hans/ while live URLs were lowercase.
 [[redirects]]
   from = "/zh-Hans/*"
-  to = "/zh-Hant/:splat"
+  to = "/zh-hant/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "/zh-hans/*"
-  to = "/zh-Hant/:splat"
+  to = "/zh-hant/:splat"
   status = 301
   force = true
+
+# No explicit /zh-Hant/* -> /zh-hant/* rule here on purpose: Netlify's CDN
+# already 301s mixed-case paths natively (verified live). Adding a forced rule
+# whose target equals its own lowercased source risks redirecting every zh page
+# to itself. See docs/locale-casing-fix-plan.md.
 
 [[redirects]]
   from = "/*"

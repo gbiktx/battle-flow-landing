@@ -592,7 +592,7 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 
 *   웹사이트: [https://baru.software/](https://baru.software/)
 *   이메일: [hello@baru.software](mailto:hello@baru.software)`,
-  'zh-Hant': `本隱私政策適用於由 Baru Software Co（以下簡稱「我們」）提供的 BattleFlow 行動應用程式（以下簡稱「應用程式」）。
+  'zh-hant': `本隱私政策適用於由 Baru Software Co（以下簡稱「我們」）提供的 BattleFlow 行動應用程式（以下簡稱「應用程式」）。
 
 **資訊蒐集與使用**
 
@@ -948,7 +948,7 @@ Se você tiver dúvidas sobre estes Termos, entre em contato com a Baru Software
 
 *   Site: [https://baru.software/](https://baru.software/)
 *   E-mail: [hello@baru.software](mailto:hello@baru.software)`,
-  'zh-Hant': `本條款與條件適用於由 Baru Software Co（以下簡稱「我們」）提供的 BattleFlow 行動應用程式（以下簡稱「應用程式」），該應用程式為免費下載服務，並提供選用的付費訂閱。
+  'zh-hant': `本條款與條件適用於由 Baru Software Co（以下簡稱「我們」）提供的 BattleFlow 行動應用程式（以下簡稱「應用程式」），該應用程式為免費下載服務，並提供選用的付費訂閱。
 
 下載或使用本應用程式即表示您同意本條款。若您不同意，請勿使用本應用程式。
 
@@ -1416,7 +1416,7 @@ export const whatsNewData: Record<string, string> = {
 **빌드 어라운드 모드**: 원하는 포켓몬으로 팀 생성을 시작하세요. 랭킹이나 포켓박스에서 좋아하는 포켓몬을 선택하면 BattleFlow가 최적의 리드, 세이프 스왑, 클로저를 찾아 팀을 구축합니다.
 
 **색이 다른 스프라이트 (Pro)**: 앱 전체에서 색이 다른 포켓몬을 확인하세요 — 랭킹, 팀, 포켓박스, 개체값 체커, 생성된 팀. 종별로 반짝이는 애니메이션과 함께 전환 가능.`,
-  'zh-Hant': `## v4.0
+  'zh-hant': `## v4.0
 
 **寶可夢收藏**：把你的寶可夢保存在 BattleFlow 中。可依網格、清單或種類瀏覽，支援篩選、排序，並為每隻提供最佳聯盟建議。
 

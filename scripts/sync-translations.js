@@ -15,7 +15,8 @@ const LANG_MAP = {
   de: { moves: 'de', pokemon: 'de' },
   it: { moves: 'it', pokemon: 'it' },
   pt: { moves: 'pt', pokemon: 'pt' },
-  'zh-Hant': { moves: 'zh-Hant', pokemon: 'zh-Hant' },
+  // key = our locale (lowercase, doubles as URL segment); value = source filename suffix
+  'zh-hant': { moves: 'zh-Hant', pokemon: 'zh-Hant' },
   ja: { moves: 'ja', pokemon: 'ja' },
   ko: { moves: 'ko', pokemon: 'ko' },
 };

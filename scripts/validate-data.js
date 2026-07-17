@@ -14,7 +14,7 @@ const VALID_TYPES = new Set([
 const LOCALE_EXPECTS_POKEMON = {
   en: true, es: true, fr: true, de: true, it: true,
   pt: true,
-  'zh-Hant': true, ja: true, ko: true,
+  'zh-hant': true, ja: true, ko: true,
 };
 
 const errors = [];

@@ -38,8 +38,13 @@ const ogImage = new URL('/assets/images/large-logo.png', Astro.site);
 // Map our locale codes to OpenGraph locale format (underscored)
 const ogLocaleMap: Record<string, string> = {
 	en: 'en_US', es: 'es_ES', fr: 'fr_FR', de: 'de_DE', it: 'it_IT',
-	pt: 'pt_BR', 'zh-Hant': 'zh_TW', ja: 'ja_JP', ko: 'ko_KR',
+	pt: 'pt_BR', 'zh-hant': 'zh_TW', ja: 'ja_JP', ko: 'ko_KR',
 };
+
+// Locale keys are lowercase because they double as URL path segments (Netlify
+// 301s mixed-case paths). Language *tag attributes* still want BCP 47 casing.
+const bcp47: Record<string, string> = { 'zh-hant': 'zh-Hant' };
+const langTag = bcp47[lang] ?? lang;
 const currentOgLocale = ogLocaleMap[lang] ?? 'en_US';
 const alternateOgLocales = Object.entries(ogLocaleMap)
 	.filter(([code]) => code !== lang)
@@ -51,7 +56,7 @@ const defaultSchemas: JsonLd[] = [
 		'@type': 'WebSite',
 		name: 'BattleFlow',
 		url: Astro.site,
-		inLanguage: lang,
+		inLanguage: langTag,
 	},
 	{
 		'@context': 'https://schema.org',
@@ -68,7 +73,7 @@ const allSchemas = [...defaultSchemas, ...extraSchemas];
 ---
 
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang={langTag}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -98,7 +103,7 @@ const allSchemas = [...defaultSchemas, ...extraSchemas];
 				? `/${base}${base ? '/' : ''}`
 				: `/${l}/${base}${base ? '/' : ''}`;
 				
-			return <link rel="alternate" hreflang={l} href={new URL(path, Astro.site)} />;
+			return <link rel="alternate" hreflang={bcp47[l] ?? l} href={new URL(path, Astro.site)} />;
 		})}
 		<link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
 

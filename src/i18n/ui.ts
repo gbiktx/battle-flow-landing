@@ -5,7 +5,7 @@ export const languages = {
   de: 'Deutsch',
   it: 'Italiano',
   pt: 'Português',
-  'zh-Hant': '繁體中文',
+  'zh-hant': '繁體中文',
   ja: '日本語',
   ko: '한국어',
 };
@@ -1303,7 +1303,7 @@ export const ui = {
     'gbl.name_evolution': 'Copa Evolução',
     'gbl.name_naic2026': 'Copa NAIC 2026',
   },
-  'zh-Hant': {
+  'zh-hant': {
     'whatsnew.title': '新功能',
     'whatsnew.subtitle': '瞭解 BattleFlow 每個版本的更新內容。',
     'whatsnew.empty': '暫無更新，敬請期待。',
