@@ -657,6 +657,15 @@
     "turns": 1
   },
   {
+    "id": "DIVE",
+    "name": "Dive",
+    "type": "water",
+    "power": 50,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "DOOM_DESIRE",
     "name": "Doom Desire",
     "type": "steel",
@@ -2728,7 +2737,7 @@
       2,
       0
     ],
-    "buffTarget": "opponent",
+    "buffTarget": "self",
     "buffApplyChance": ".125"
   },
   {
