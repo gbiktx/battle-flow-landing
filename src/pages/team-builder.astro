@@ -4,14 +4,12 @@ import Nav from '../components/Nav.astro';
 import TeamBuilder from '../components/TeamBuilder.astro';
 import { useTranslations } from '../i18n/utils';
 import Layout from '../layouts/Layout.astro';
+import { getTeamBuilderFaqs } from '../lib/faqs';
 import { buildFAQSchema, buildMobileAppSchemas } from '../lib/seo-schemas';
 
 const lang = 'en';
 const t = useTranslations(lang);
-const questions = [3, 4].map((item) => ({
-  q: t(`team.faq${item}_q` as Parameters<typeof t>[0]),
-  a: t(`team.faq${item}_a` as Parameters<typeof t>[0]),
-}));
+const questions = getTeamBuilderFaqs(t);
 const jsonLd = [
   ...buildMobileAppSchemas({
     siteUrl: Astro.site!,

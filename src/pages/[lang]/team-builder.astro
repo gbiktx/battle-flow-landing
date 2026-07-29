@@ -5,6 +5,7 @@ import TeamBuilder from '../../components/TeamBuilder.astro';
 import { languages } from '../../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import Layout from '../../layouts/Layout.astro';
+import { getTeamBuilderFaqs } from '../../lib/faqs';
 import { buildFAQSchema, buildMobileAppSchemas } from '../../lib/seo-schemas';
 
 export function getStaticPaths() {
@@ -15,10 +16,7 @@ export function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const questions = [3, 4].map((item) => ({
-  q: t(`team.faq${item}_q` as Parameters<typeof t>[0]),
-  a: t(`team.faq${item}_a` as Parameters<typeof t>[0]),
-}));
+const questions = getTeamBuilderFaqs(t);
 const jsonLd = [
   ...buildMobileAppSchemas({
     siteUrl: Astro.site!,

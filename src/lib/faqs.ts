@@ -17,3 +17,14 @@ export function getHomeFaqs(t: (key: Keys) => string) {
     { q: t('faq.q10' as Keys), a: t('faq.a10' as Keys) },
   ];
 }
+
+/**
+ * Team Builder FAQ. Defined once so the rendered accordion and the FAQPage
+ * schema can't drift — they previously each hard-coded their own subset.
+ */
+export function getTeamBuilderFaqs(t: (key: Keys) => string) {
+  return [1, 2, 3, 4].map((n) => ({
+    q: t(`team.faq${n}_q` as Keys),
+    a: t(`team.faq${n}_a` as Keys),
+  }));
+}

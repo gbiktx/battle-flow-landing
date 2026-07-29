@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getTeamBuilderFaqs } from '../lib/faqs';
 import DownloadButtons from './DownloadButtons.astro';
 import StoreButtons from './StoreButtons.astro';
 
@@ -17,10 +18,7 @@ const scores = ['threat', 'coverage', 'recovery', 'consistency'].map((score) => 
   description: t(`team.score_${score}_desc` as Parameters<typeof t>[0]),
 }));
 
-const faqs = [3, 4].map((item) => ({
-  question: t(`team.faq${item}_q` as Parameters<typeof t>[0]),
-  answer: t(`team.faq${item}_a` as Parameters<typeof t>[0]),
-}));
+const faqs = getTeamBuilderFaqs(t);
 ---
 
 <main class="overflow-hidden">
@@ -107,13 +105,13 @@ const faqs = [3, 4].map((item) => ({
     <div class="container mx-auto max-w-4xl px-6">
       <h2 class="mb-14 text-center text-4xl md:text-6xl">{t('team.faq_title')}</h2>
       <div class="space-y-4">
-        {faqs.map(({ question, answer }) => (
+        {faqs.map(({ q, a }) => (
           <details class="group glass card-shadow rounded-2xl">
             <summary class="flex cursor-pointer list-none items-center justify-between p-6 text-lg font-bold md:p-8 md:text-xl">
-              {question}
+              {q}
               <span class="ml-4 text-brand-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
             </summary>
-            <p class="px-6 pb-6 leading-relaxed text-gray-400 md:px-8 md:pb-8">{answer}</p>
+            <p class="px-6 pb-6 leading-relaxed text-gray-400 md:px-8 md:pb-8">{a}</p>
           </details>
         ))}
       </div>
