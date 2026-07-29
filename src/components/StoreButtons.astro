@@ -1,0 +1,66 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import {
+  APP_STORE_ICON_PATH,
+  PLAY_STORE_ICON_PATHS,
+  STORE_BUTTON_ALIGNMENTS,
+  STORE_BUTTON_SIZES,
+  storeButtonClass,
+  storeButtonRowClass,
+  type StoreButtonAlign,
+  type StoreButtonSize,
+} from '../lib/store-buttons';
+import { getAppStoreUrl, getPlayStoreUrl } from '../lib/store-links';
+
+interface Props {
+  /** Mixpanel `Placement` dimension; also the default store campaign token. */
+  placement: string;
+  /** Store attribution token, when it must differ from the placement. */
+  campaign?: string;
+  size?: StoreButtonSize;
+  align?: StoreButtonAlign;
+  trackImpression?: boolean;
+}
+
+const {
+  placement,
+  campaign = placement,
+  size = 'standard',
+  align = 'center',
+  trackImpression = false,
+} = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const style = STORE_BUTTON_SIZES[size];
+const buttonClass = storeButtonClass(style);
+---
+
+<div
+  class={storeButtonRowClass(style, STORE_BUTTON_ALIGNMENTS[align])}
+  data-track-cta-impression={trackImpression ? placement : undefined}
+>
+  <a href={getAppStoreUrl(campaign)} data-placement={placement} target="_blank" rel="noopener" class={buttonClass}>
+    <div class={`${style.iconBox} flex-shrink-0 flex items-center justify-center`}>
+      <svg viewBox="0 0 384 512" class={`${style.icon} fill-white transition-transform group-hover:scale-110`} aria-hidden="true">
+        <path d={APP_STORE_ICON_PATH} />
+      </svg>
+    </div>
+    <div class="flex flex-col items-start leading-none text-left">
+      <span class={`${style.prefix} ${style.prefixMargin} font-bold text-gray-400 uppercase tracking-wider`}>{t('download.ios_prefix')}</span>
+      <span class={`${style.label} font-black text-white tracking-tight uppercase whitespace-nowrap`}>App Store</span>
+    </div>
+  </a>
+
+  <a href={getPlayStoreUrl(campaign)} data-placement={placement} target="_blank" rel="noopener" class={buttonClass}>
+    <div class={`${style.iconBox} flex-shrink-0 flex items-center justify-center`}>
+      <svg viewBox="0 0 512 512" class={`${style.icon} transition-transform group-hover:scale-110`} aria-hidden="true">
+        {PLAY_STORE_ICON_PATHS.map((p) => <path fill={p.fill} d={p.d} />)}
+      </svg>
+    </div>
+    <div class="flex flex-col items-start leading-none text-left">
+      <span class={`${style.prefix} ${style.prefixMargin} font-bold text-gray-400 uppercase tracking-wider`}>{t('download.android_prefix')}</span>
+      <span class={`${style.label} font-black text-white tracking-tight uppercase whitespace-nowrap`}>Google Play</span>
+    </div>
+  </a>
+</div>

@@ -5,7 +5,6 @@ import Nav from '../../components/Nav.astro';
 import Hero from '../../components/Hero.astro';
 import Intro from '../../components/Intro.astro';
 import MainFeatures from '../../components/MainFeatures.astro';
-import Stats from '../../components/Stats.astro';
 import Features from '../../components/Features.astro';
 import FAQ from '../../components/FAQ.astro';
 import CTA from '../../components/CTA.astro';
@@ -27,7 +26,6 @@ const jsonLd = [
   ...buildMobileAppSchemas({
     siteUrl: Astro.site!,
     lang,
-    name: 'BattleFlow',
     description: t('hero.subtitle'),
   }),
   buildFAQSchema({ questions: getHomeFaqs(t) }),

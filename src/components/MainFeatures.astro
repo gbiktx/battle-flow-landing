@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, localizedPath, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -26,7 +26,11 @@ const mainFeatures = [
     desc: t('features.team_gen_desc'),
     image: `${featuresDir}/build.png`,
     alt: 'BattleFlow team score details rating a Pokémon GO PvP team on threat control, coverage, recovery, and consistency',
-    reversed: false
+    reversed: false,
+    // Descriptive anchor text: this is the homepage's only internal link to the
+    // Team Builder landing page, so it should carry the query it ranks for.
+    href: localizedPath(lang, '/team-builder/'),
+    linkLabel: t('nav.team_builder')
   },
   {
     title: t('features.sim_title'),
@@ -64,6 +68,11 @@ const mainFeatures = [
               <p class="text-lg text-gray-400 leading-relaxed mb-8">
                 {f.desc}
               </p>
+              {f.href && (
+                <a href={f.href} class="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-brand-accent hover:text-white transition-colors">
+                  {f.linkLabel} <span aria-hidden="true">→</span>
+                </a>
+              )}
             </div>
 
             <!-- Screenshot Visual -->

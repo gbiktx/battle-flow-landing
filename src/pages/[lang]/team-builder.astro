@@ -1,0 +1,39 @@
+---
+import Footer from '../../components/Footer.astro';
+import Nav from '../../components/Nav.astro';
+import TeamBuilder from '../../components/TeamBuilder.astro';
+import { languages } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import { buildFAQSchema, buildMobileAppSchemas } from '../../lib/seo-schemas';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter((lang) => lang !== 'en')
+    .map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const questions = [3, 4].map((item) => ({
+  q: t(`team.faq${item}_q` as Parameters<typeof t>[0]),
+  a: t(`team.faq${item}_a` as Parameters<typeof t>[0]),
+}));
+const jsonLd = [
+  ...buildMobileAppSchemas({
+    siteUrl: Astro.site!,
+    lang,
+    pagePath: `/${lang}/team-builder/`,
+    description: t('team.meta_description'),
+    navCrumbName: t('nav.team_builder'),
+    featureList: [t('team.step1_desc'), t('team.scores_intro'), t('team.collection_desc')],
+  }),
+  buildFAQSchema({ questions }),
+];
+---
+
+<Layout title={t('team.meta_title')} description={t('team.meta_description')} jsonLd={jsonLd} preloadImage={`/assets/images/features/${lang}/build.png`}>
+  <Nav />
+  <TeamBuilder />
+  <Footer />
+</Layout>

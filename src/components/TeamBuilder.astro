@@ -1,0 +1,124 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import DownloadButtons from './DownloadButtons.astro';
+import StoreButtons from './StoreButtons.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const imageDir = `/assets/images/features/${lang}`;
+
+const steps = [1, 2, 3].map((step) => ({
+  title: t(`team.step${step}_title` as Parameters<typeof t>[0]),
+  description: t(`team.step${step}_desc` as Parameters<typeof t>[0]),
+}));
+
+const scores = ['threat', 'coverage', 'recovery', 'consistency'].map((score) => ({
+  title: t(`team.score_${score}_title` as Parameters<typeof t>[0]),
+  description: t(`team.score_${score}_desc` as Parameters<typeof t>[0]),
+}));
+
+const faqs = [3, 4].map((item) => ({
+  question: t(`team.faq${item}_q` as Parameters<typeof t>[0]),
+  answer: t(`team.faq${item}_a` as Parameters<typeof t>[0]),
+}));
+---
+
+<main class="overflow-hidden">
+  <section class="relative pt-36 pb-24">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(3,147,218,0.16),transparent_45%)]" aria-hidden="true"></div>
+    <div class="container relative mx-auto px-6 grid lg:grid-cols-[1.15fr_0.85fr] items-center gap-16">
+      <div class="max-w-3xl text-center lg:text-left">
+        <p class="inline-block mb-6 rounded-full border border-brand-accent/25 bg-brand-accent/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-brand-accent">
+          {t('team.eyebrow')}
+        </p>
+        <h1 class="leading-[0.92] text-glow">
+          <span class="block text-5xl sm:text-6xl lg:text-7xl">{t('team.meta_title')}</span>
+          <span class="block mt-5 text-2xl sm:text-3xl lg:text-4xl gradient-text italic">{t('team.hero_title')}</span>
+        </h1>
+        <p class="mt-8 text-lg sm:text-xl leading-relaxed text-gray-300">
+          {t('team.hero_subtitle')}
+        </p>
+        <div class="mt-9">
+          <StoreButtons placement="team-builder-hero" align="lg-start" trackImpression />
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-[330px]">
+        <div class="absolute -inset-8 rounded-full bg-brand-blue/20 blur-3xl" aria-hidden="true"></div>
+        <div class="relative aspect-[9/19.5] overflow-hidden rounded-[3rem] border-8 border-brand-dark/70 glass card-shadow">
+          <img src={`${imageDir}/build.png`} alt={t('team.screenshot_alt')} width="330" height="715" class="h-full w-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/5 bg-brand-dark/25 py-24">
+    <div class="container mx-auto px-6">
+      <div class="mx-auto mb-14 max-w-3xl text-center">
+        <h2 class="text-4xl md:text-6xl">{t('team.workflow_title')}</h2>
+        <p class="mt-5 text-lg leading-relaxed text-gray-400">{t('team.workflow_intro')}</p>
+      </div>
+      <ol class="grid gap-6 lg:grid-cols-3">
+        {steps.map((step, index) => (
+          <li class="glass card-shadow rounded-3xl p-8">
+            <span class="mb-7 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-accent text-lg font-black text-white">{index + 1}</span>
+            <h3 class="mb-4 text-2xl">{step.title}</h3>
+            <p class="leading-relaxed text-gray-400">{step.description}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="container mx-auto px-6">
+      <div class="mx-auto mb-14 max-w-3xl text-center">
+        <h2 class="text-4xl md:text-6xl">{t('team.scores_title')}</h2>
+        <p class="mt-5 text-lg leading-relaxed text-gray-400">{t('team.scores_intro')}</p>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {scores.map((score, index) => (
+          <article class="rounded-3xl border border-white/10 bg-linear-to-b from-white/8 to-white/3 p-7 card-shadow">
+            <div class="mb-6 h-1.5 w-14 rounded-full bg-linear-to-r from-brand-blue to-brand-accent" aria-hidden="true"></div>
+            <p class="mb-3 text-xs font-black uppercase tracking-[0.18em] text-brand-accent">0{index + 1}</p>
+            <h3 class="mb-4 text-xl">{score.title}</h3>
+            <p class="text-sm leading-relaxed text-gray-400">{score.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/5 bg-brand-dark/25 py-24">
+    <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24">
+      <div class="relative mx-auto w-full max-w-[300px] shrink-0">
+        <div class="relative aspect-[9/19.5] overflow-hidden rounded-[3rem] border-8 border-brand-dark/70 glass card-shadow">
+          <img src={`${imageDir}/collection.png`} alt={t('team.collection_alt')} width="300" height="650" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+        </div>
+      </div>
+      <div class="max-w-2xl text-center lg:text-left">
+        <h2 class="text-4xl md:text-6xl">{t('team.collection_title')}</h2>
+        <p class="mt-6 text-lg leading-relaxed text-gray-300">{t('team.collection_desc')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="container mx-auto max-w-4xl px-6">
+      <h2 class="mb-14 text-center text-4xl md:text-6xl">{t('team.faq_title')}</h2>
+      <div class="space-y-4">
+        {faqs.map(({ question, answer }) => (
+          <details class="group glass card-shadow rounded-2xl">
+            <summary class="flex cursor-pointer list-none items-center justify-between p-6 text-lg font-bold md:p-8 md:text-xl">
+              {question}
+              <span class="ml-4 text-brand-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="px-6 pb-6 leading-relaxed text-gray-400 md:px-8 md:pb-8">{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
+
+<DownloadButtons placement="team-builder-footer" trackImpression />

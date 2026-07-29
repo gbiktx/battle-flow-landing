@@ -1,7 +1,15 @@
+import { toBcp47 } from '../i18n/utils';
+import { APP_STORE_URL, PLAY_STORE_URL } from './store-links';
+
 type SchemaObject = Record<string, unknown>;
 
-const APP_STORE_URL = 'https://apps.apple.com/us/app/battleflow/id6738843812';
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.baru.software.oak';
+/**
+ * The app is one schema.org entity across every page and locale. Naming it
+ * differently per page (e.g. with the page's SEO title) splits the signal
+ * Google uses to consolidate app rich results, so the name is fixed here
+ * rather than passed in.
+ */
+const APP_NAME = 'BattleFlow';
 
 export const ORGANIZATION_SAME_AS = [
   APP_STORE_URL,
@@ -12,6 +20,18 @@ export const ORGANIZATION_SAME_AS = [
 
 function homeUrlFor(siteUrl: URL, lang: string): string {
   return new URL(lang === 'en' ? '/' : `/${lang}/`, siteUrl).toString();
+}
+
+/** The site-root -> page trail every non-home page emits. */
+function buildBreadcrumb(siteUrl: URL, lang: string, pageUrl: string, navCrumbName: string): SchemaObject {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: APP_NAME, item: homeUrlFor(siteUrl, lang) },
+      { '@type': 'ListItem', position: 2, name: navCrumbName, item: pageUrl },
+    ],
+  };
 }
 
 interface FeaturePageSchemasInput {
@@ -34,7 +54,6 @@ export function buildFeaturePageSchemas({
   featureList,
 }: FeaturePageSchemasInput): SchemaObject[] {
   const pageUrl = new URL(pagePath, siteUrl).toString();
-  const homeUrl = homeUrlFor(siteUrl, lang);
 
   const webApp: SchemaObject = {
     '@context': 'https://schema.org',
@@ -44,54 +63,62 @@ export function buildFeaturePageSchemas({
     applicationCategory: 'GameApplication',
     operatingSystem: 'Web',
     description,
-    inLanguage: lang,
+    inLanguage: toBcp47(lang),
     isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   };
   if (featureList) webApp.featureList = featureList;
 
-  const breadcrumb: SchemaObject = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'BattleFlow', item: homeUrl },
-      { '@type': 'ListItem', position: 2, name: navCrumbName, item: pageUrl },
-    ],
-  };
-
-  return [webApp, breadcrumb];
+  return [webApp, buildBreadcrumb(siteUrl, lang, pageUrl, navCrumbName)];
 }
 
 interface MobileAppSchemasInput {
   siteUrl: URL;
   lang: string;
-  name: string;
   description: string;
+  /** Page carrying the schema. Defaults to the locale home. */
+  pagePath?: string;
+  featureList?: string[];
+  /** Supply to append a BreadcrumbList for `pagePath`. */
+  navCrumbName?: string;
 }
 
+/**
+ * The `MobileApplication` pair (iOS + Android) for any page that pitches the
+ * app, optionally with a breadcrumb. Every page must describe the same entity,
+ * so only the page-specific fields — url, description, featureList — vary.
+ */
 export function buildMobileAppSchemas({
   siteUrl,
   lang,
-  name,
   description,
+  pagePath,
+  featureList,
+  navCrumbName,
 }: MobileAppSchemasInput): SchemaObject[] {
-  const baseApp = {
+  const pageUrl = pagePath ? new URL(pagePath, siteUrl).toString() : homeUrlFor(siteUrl, lang);
+
+  const baseApp: SchemaObject = {
     '@context': 'https://schema.org',
     '@type': 'MobileApplication',
-    name,
+    name: APP_NAME,
     description,
-    inLanguage: lang,
+    inLanguage: toBcp47(lang),
     applicationCategory: 'GameApplication',
     applicationSubCategory: 'Pokémon GO PvP companion',
+    url: pageUrl,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     author: { '@type': 'Organization', name: 'Baru Software Co', url: 'https://baru.software' },
-    url: new URL(lang === 'en' ? '/' : `/${lang}/`, siteUrl).toString(),
   };
+  if (featureList) baseApp.featureList = featureList;
 
-  return [
+  const schemas: SchemaObject[] = [
     { ...baseApp, operatingSystem: 'iOS', downloadUrl: APP_STORE_URL, installUrl: APP_STORE_URL },
     { ...baseApp, operatingSystem: 'Android', downloadUrl: PLAY_STORE_URL, installUrl: PLAY_STORE_URL },
   ];
+  if (navCrumbName) schemas.push(buildBreadcrumb(siteUrl, lang, pageUrl, navCrumbName));
+
+  return schemas;
 }
 
 interface FAQSchemaInput {
@@ -135,7 +162,6 @@ export function buildBlogListSchemas({
   posts,
 }: BlogListSchemaInput): SchemaObject[] {
   const pageUrl = new URL(pagePath, siteUrl).toString();
-  const homeUrl = homeUrlFor(siteUrl, lang);
 
   const blog: SchemaObject = {
     '@context': 'https://schema.org',
@@ -143,7 +169,7 @@ export function buildBlogListSchemas({
     name,
     description,
     url: pageUrl,
-    inLanguage: lang,
+    inLanguage: toBcp47(lang),
     blogPost: posts.map((p) => ({
       '@type': 'BlogPosting',
       headline: p.title,
@@ -153,16 +179,7 @@ export function buildBlogListSchemas({
     })),
   };
 
-  const breadcrumb: SchemaObject = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'BattleFlow', item: homeUrl },
-      { '@type': 'ListItem', position: 2, name: navCrumbName, item: pageUrl },
-    ],
-  };
-
-  return [blog, breadcrumb];
+  return [blog, buildBreadcrumb(siteUrl, lang, pageUrl, navCrumbName)];
 }
 
 interface BlogPostSchemaInput {
@@ -202,7 +219,7 @@ export function buildBlogPostSchemas({
     description,
     datePublished: date.toISOString(),
     dateModified: date.toISOString(),
-    inLanguage: lang,
+    inLanguage: toBcp47(lang),
     url: pageUrl,
     image: imageUrl,
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
@@ -221,7 +238,7 @@ export function buildBlogPostSchemas({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'BattleFlow', item: homeUrl },
+      { '@type': 'ListItem', position: 1, name: APP_NAME, item: homeUrl },
       { '@type': 'ListItem', position: 2, name: navCrumbName, item: blogUrl },
       { '@type': 'ListItem', position: 3, name: title, item: pageUrl },
     ],

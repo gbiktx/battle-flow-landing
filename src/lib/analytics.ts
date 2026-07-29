@@ -7,7 +7,7 @@ declare global {
 }
 
 export function trackEvent(event: string, properties?: Record<string, unknown>) {
-  if (typeof window !== 'undefined' && window.mixpanel) {
+  if (typeof window !== 'undefined' && typeof window.mixpanel?.track === 'function') {
     window.mixpanel.track(event, properties);
   }
 }
