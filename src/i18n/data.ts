@@ -34,10 +34,26 @@ We collect limited information to operate and improve the Application. Depending
 *   Crash and diagnostics data (for stability monitoring)
 *   Purchase and subscription status/events needed to provide premium features
 *   Content you create in the app, such as teams, battle logs, and preferences
+*   On-screen Pokémon stats read via the Scan / Auto Scan feature, processed entirely on your device (see "Screen Scanning" below)
 
 Most app data (such as teams, battle logs, and preferences) is stored locally on your device.
 
 We do not intentionally collect precise GPS location data through the Application.
+
+**Screen Scanning (Scan / Auto Scan)**
+
+To let you import a Pokémon's stats without typing them in, the Application can read text directly off the Pokémon GO appraisal screen while you use the Scan or Auto Scan feature:
+
+*   On Android, this uses the system's screen-capture permission (MediaProjection); you'll see Android's standard screen-recording notification for as long as scanning is active.
+*   On iOS, this uses Apple's ReplayKit screen-broadcast picker to read the screen live while scanning is active.
+
+Only the appraisal/stats region of the screen (species, CP, level, and IVs) is read — no other apps or screen content are captured. Text recognition (OCR) runs entirely on your device, using Google ML Kit on Android and Apple's Vision framework on iOS. No screenshot, screen recording, or recognized text is ever uploaded to us or to any third party, and none of it is saved to your photo library — captured frames are stored briefly in the app's local cache and deleted automatically once processed.
+
+Screen reading stops as soon as you exit the Scan screen or revoke the screen-recording permission in your device settings.
+
+If a scan fails, you can choose to attach the captured image to a bug report so we can investigate — this is only sent if you actively choose to send it.
+
+You can also import a Pokémon's stats by selecting an existing screenshot from your photo library instead of scanning live; this is processed the same way, entirely on your device.
 
 **Third-Party Services**
 
@@ -83,7 +99,7 @@ We use reasonable administrative, technical, and organizational safeguards to pr
 
 We may update this Privacy Policy from time to time. Changes are effective when posted on this page.
 
-This privacy policy is effective as of 2026-03-04.
+This privacy policy is effective as of 2026-07-30.
 
 **Your Consent**
 
@@ -105,10 +121,26 @@ Recopilamos información limitada para operar y mejorar la Aplicación. Dependie
 *   Datos de fallos y diagnósticos (para el control de la estabilidad).
 *   Estado y eventos de compras o suscripciones necesarios para proporcionar funciones premium.
 *   Contenido creado en la aplicación, como equipos, registros de batalla y preferencias.
+*   Estadísticas de Pokémon en pantalla, leídas mediante la función de Escaneo/Escaneo automático y procesadas por completo en su dispositivo (véase «Escaneo de pantalla» más abajo).
 
 La mayor parte de los datos de la aplicación (como equipos, registros de batalla y preferencias) se almacena localmente en su dispositivo.
 
 No recopilamos intencionadamente datos precisos de ubicación GPS a través de la Aplicación.
+
+**Escaneo de pantalla (Escaneo / Escaneo automático)**
+
+Para permitirle importar las estadísticas de un Pokémon sin necesidad de escribirlas, la Aplicación puede leer texto directamente de la pantalla de valoración de Pokémon GO mientras utiliza la función de Escaneo o Escaneo automático:
+
+*   En Android, esto utiliza el permiso de captura de pantalla del sistema (MediaProjection); verá la notificación estándar de grabación de pantalla de Android mientras el escaneo esté activo.
+*   En iOS, esto utiliza el selector de difusión de pantalla ReplayKit de Apple para leer la pantalla en vivo mientras el escaneo esté activo.
+
+Solo se lee la zona de valoración/estadísticas de la pantalla (especie, PC, nivel e IVs); no se captura contenido de ninguna otra aplicación ni de otras partes de la pantalla. El reconocimiento de texto (OCR) se realiza por completo en su dispositivo, mediante Google ML Kit en Android y el framework Vision de Apple en iOS. Ninguna captura de pantalla, grabación ni texto reconocido se sube nunca a nosotros ni a terceros, y nada se guarda en su galería de fotos: los fotogramas capturados se almacenan brevemente en la caché local de la aplicación y se eliminan automáticamente una vez procesados.
+
+La lectura de pantalla se detiene en cuanto sale de la pantalla de Escaneo o revoca el permiso de grabación de pantalla en los ajustes de su dispositivo.
+
+Si un escaneo falla, puede optar por adjuntar la imagen capturada a un informe de error para que podamos investigarlo; esto solo se envía si usted decide activamente hacerlo.
+
+También puede importar las estadísticas de un Pokémon seleccionando una captura de pantalla de su galería en lugar de escanear en vivo; se procesa de la misma manera, por completo en su dispositivo.
 
 **Servicios de terceros**
 
@@ -154,7 +186,7 @@ Utilizamos medidas de seguridad administrativas, técnicas y organizativas razon
 
 Podemos actualizar esta Política de Privacidad periódicamente. Los cambios entrarán en vigor cuando se publiquen en esta página.
 
-Esta política de privacidad es efectiva a partir del 2026-03-04.
+Esta política de privacidad es efectiva a partir del 2026-07-30.
 
 **Su consentimiento**
 
@@ -176,10 +208,26 @@ Nous collectons des informations limitées pour exploiter et améliorer l'Applic
 *   Données de plantage et de diagnostic (pour le suivi de la stabilité).
 *   Statut et événements d'achats/abonnements nécessaires aux fonctionnalités premium.
 *   Contenu créé dans l'application (équipes, journaux de combat, préférences).
+*   Statistiques de Pokémon lues à l'écran via la fonction Scan/Scan automatique, traitées entièrement sur votre appareil (voir « Lecture d'écran » ci-dessous).
 
 La plupart des données (équipes, journaux de combat, préférences) sont stockées localement sur votre appareil.
 
 Nous ne collectons pas volontairement de données GPS précises via l'Application.
+
+**Lecture d'écran (Scan / Scan automatique)**
+
+Pour vous permettre d'importer les statistiques d'un Pokémon sans les saisir, l'Application peut lire le texte directement sur l'écran d'évaluation de Pokémon GO lorsque vous utilisez la fonction Scan ou Scan automatique :
+
+*   Sur Android, cela utilise l'autorisation système de capture d'écran (MediaProjection) ; vous verrez la notification standard d'enregistrement d'écran d'Android tant que le scan est actif.
+*   Sur iOS, cela utilise le sélecteur de diffusion d'écran ReplayKit d'Apple pour lire l'écran en direct pendant que le scan est actif.
+
+Seule la zone d'évaluation/statistiques de l'écran (espèce, PC, niveau et IV) est lue — aucun autre contenu d'écran ni d'autre application n'est capturé. La reconnaissance de texte (OCR) s'effectue entièrement sur votre appareil, via Google ML Kit sur Android et le framework Vision d'Apple sur iOS. Aucune capture d'écran, enregistrement d'écran ou texte reconnu n'est jamais transmis à nous ou à des tiers, et rien n'est enregistré dans votre galerie photo : les images capturées sont stockées brièvement dans le cache local de l'application et supprimées automatiquement une fois traitées.
+
+La lecture d'écran s'arrête dès que vous quittez l'écran de Scan ou que vous révoquez l'autorisation d'enregistrement d'écran dans les paramètres de votre appareil.
+
+En cas d'échec d'un scan, vous pouvez choisir de joindre l'image capturée à un rapport de bug afin que nous puissions investiguer — cela n'est envoyé que si vous choisissez activement de le faire.
+
+Vous pouvez également importer les statistiques d'un Pokémon en sélectionnant une capture d'écran existante dans votre galerie plutôt qu'en scannant en direct ; elle est traitée de la même manière, entièrement sur votre appareil.
 
 **Services tiers**
 
@@ -225,7 +273,7 @@ Nous utilisons des mesures administratives, techniques et organisationnelles rai
 
 Nous pouvons mettre à jour cette Politique. Les changements prennent effet dès leur publication sur cette page.
 
-Cette politique de confidentialité est effective à compter du 2026-03-04.
+Cette politique de confidentialité est effective à compter du 2026-07-30.
 
 **Votre consentement**
 
@@ -247,10 +295,26 @@ Wir erheben begrenzte Informationen, um die Anwendung bereitzustellen und zu ver
 *   Absturz- und Diagnosedaten (zur Stabilitätsüberwachung).
 *   Kauf- und Abonnementstatus für Premium-Funktionen.
 *   In der App erstellte Inhalte wie Teams, Kampfprotokolle und Einstellungen.
+*   Über die Scan-/Auto-Scan-Funktion ausgelesene Pokémon-Werte auf dem Bildschirm, die vollständig auf Ihrem Gerät verarbeitet werden (siehe „Bildschirmerfassung" unten).
 
 Die meisten App-Daten (wie Teams, Kampfprotokolle und Einstellungen) werden lokal auf Ihrem Gerät gespeichert.
 
 Wir erfassen über die Anwendung nicht absichtlich präzise GPS-Standortdaten.
+
+**Bildschirmerfassung (Scan / Auto-Scan)**
+
+Damit Sie die Werte eines Pokémon importieren können, ohne sie einzutippen, kann die Anwendung Text direkt vom Bewertungsbildschirm von Pokémon GO auslesen, während Sie die Scan- oder Auto-Scan-Funktion nutzen:
+
+*   Unter Android wird dafür die System-Bildschirmaufnahme-Berechtigung (MediaProjection) verwendet; solange der Scan aktiv ist, sehen Sie die übliche Android-Benachrichtigung zur Bildschirmaufnahme.
+*   Unter iOS wird dafür Apples ReplayKit-Bildschirmübertragung verwendet, um den Bildschirm live zu lesen, während der Scan aktiv ist.
+
+Es wird nur der Bewertungs-/Statistikbereich des Bildschirms gelesen (Spezies, WP, Level und IVs) — es werden keine anderen Apps oder Bildschirminhalte erfasst. Die Texterkennung (OCR) erfolgt vollständig auf Ihrem Gerät, mit Google ML Kit unter Android und Apples Vision-Framework unter iOS. Kein Screenshot, keine Bildschirmaufnahme und kein erkannter Text werden jemals an uns oder Dritte übermittelt, und nichts wird in Ihrer Fotomediathek gespeichert: Erfasste Einzelbilder werden kurzzeitig im lokalen Cache der App gespeichert und nach der Verarbeitung automatisch gelöscht.
+
+Das Auslesen des Bildschirms endet, sobald Sie den Scan-Bildschirm verlassen oder die Bildschirmaufnahme-Berechtigung in den Geräteeinstellungen widerrufen.
+
+Schlägt ein Scan fehl, können Sie das erfasste Bild optional an einen Fehlerbericht anhängen, damit wir das Problem untersuchen können — dies wird nur gesendet, wenn Sie sich aktiv dafür entscheiden.
+
+Sie können die Werte eines Pokémon auch importieren, indem Sie anstelle eines Live-Scans einen vorhandenen Screenshot aus Ihrer Fotomediathek auswählen; dieser wird auf die gleiche Weise vollständig auf Ihrem Gerät verarbeitet.
 
 **Dienste Dritter**
 
@@ -296,7 +360,7 @@ Wir setzen angemessene administrative, technische und organisatorische Sicherhei
 
 Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden mit der Veröffentlichung auf dieser Seite wirksam.
 
-Diese Datenschutzerklärung ist gültig ab dem 2026-03-04.
+Diese Datenschutzerklärung ist gültig ab dem 2026-07-30.
 
 **Ihre Zustimmung**
 
@@ -318,10 +382,26 @@ Raccogliamo informazioni limitate per operare e migliorare l'Applicazione. A sec
 *   Dati su crash e diagnostica (per il monitoraggio della stabilità).
 *   Stato ed eventi di acquisto/abbonamento per le funzionalità premium.
 *   Contenuti creati nell'app, come team, registri di battaglia e preferenze.
+*   Statistiche del Pokémon lette a schermo tramite la funzione Scansione/Scansione automatica, elaborate interamente sul tuo dispositivo (vedi "Scansione dello schermo" più sotto).
 
 La maggior parte dei dati (team, registri, preferenze) è memorizzata localmente sul dispositivo.
 
 Non raccogliamo intenzionalmente dati precisi sulla posizione GPS tramite l'Applicazione.
+
+**Scansione dello schermo (Scansione / Scansione automatica)**
+
+Per consentirti di importare le statistiche di un Pokémon senza doverle digitare, l'Applicazione può leggere il testo direttamente dalla schermata di valutazione di Pokémon GO mentre utilizzi la funzione Scansione o Scansione automatica:
+
+*   Su Android, questo utilizza l'autorizzazione di sistema per l'acquisizione dello schermo (MediaProjection); vedrai la notifica standard di Android per la registrazione dello schermo finché la scansione è attiva.
+*   Su iOS, questo utilizza il selettore di trasmissione dello schermo ReplayKit di Apple per leggere lo schermo in tempo reale mentre la scansione è attiva.
+
+Viene letta solo l'area di valutazione/statistiche dello schermo (specie, PL, livello e IV): non vengono acquisiti contenuti di altre app o di altre parti dello schermo. Il riconoscimento del testo (OCR) avviene interamente sul tuo dispositivo, tramite Google ML Kit su Android e il framework Vision di Apple su iOS. Nessuno screenshot, registrazione dello schermo o testo riconosciuto viene mai caricato verso di noi o verso terze parti, e nulla viene salvato nella tua libreria foto: i fotogrammi acquisiti vengono conservati brevemente nella cache locale dell'app ed eliminati automaticamente una volta elaborati.
+
+La lettura dello schermo si interrompe non appena esci dalla schermata di Scansione o revochi l'autorizzazione di registrazione dello schermo nelle impostazioni del dispositivo.
+
+Se una scansione non riesce, puoi scegliere di allegare l'immagine acquisita a una segnalazione di errore per aiutarci a indagare: questo avviene solo se scegli attivamente di inviarla.
+
+Puoi anche importare le statistiche di un Pokémon selezionando uno screenshot esistente dalla tua libreria foto invece di scansionare dal vivo; viene elaborato allo stesso modo, interamente sul tuo dispositivo.
 
 **Servizi di terze parti**
 
@@ -367,7 +447,7 @@ Adottiamo ragionevoli misure amministrative, tecniche e organizzative per proteg
 
 Possiamo aggiornare periodicamente questa Informativa. Le modifiche diventano efficaci al momento della pubblicazione su questa pagina.
 
-La presente informativa sulla privacy è in vigore dal 2026-03-04.
+La presente informativa sulla privacy è in vigore dal 2026-07-30.
 
 **Consenso**
 
@@ -389,10 +469,26 @@ Coletamos informações limitadas para operar e melhorar o Aplicativo. Dependend
 *   Dados de falhas e diagnósticos (para monitoramento de estabilidade).
 *   Status e eventos de compra/assinatura necessários para fornecer recursos premium.
 *   Conteúdo criado no aplicativo, como equipes, registros de batalha e preferências.
+*   Estatísticas do Pokémon lidas na tela por meio do recurso de Escaneamento/Escaneamento automático, processadas inteiramente no seu dispositivo (veja "Leitura de Tela" abaixo).
 
 A maioria dos dados do aplicativo (como equipes, registros de batalha e preferências) é armazenada localmente no seu dispositivo.
 
 Não coletamos intencionalmente dados precisos de localização GPS através do Aplicativo.
+
+**Leitura de Tela (Escaneamento / Escaneamento Automático)**
+
+Para permitir que você importe as estatísticas de um Pokémon sem precisar digitá-las, o Aplicativo pode ler texto diretamente da tela de avaliação do Pokémon GO enquanto você usa o recurso de Escaneamento ou Escaneamento automático:
+
+*   No Android, isso utiliza a permissão de captura de tela do sistema (MediaProjection); você verá a notificação padrão de gravação de tela do Android enquanto o escaneamento estiver ativo.
+*   No iOS, isso utiliza o seletor de transmissão de tela ReplayKit da Apple para ler a tela ao vivo enquanto o escaneamento estiver ativo.
+
+Somente a área de avaliação/estatísticas da tela é lida (espécie, PC, nível e IVs) — nenhum outro app ou conteúdo da tela é capturado. O reconhecimento de texto (OCR) ocorre inteiramente no seu dispositivo, usando o Google ML Kit no Android e o framework Vision da Apple no iOS. Nenhuma captura de tela, gravação de tela ou texto reconhecido é enviado para nós ou para terceiros, e nada é salvo na sua galeria de fotos: os quadros capturados são armazenados brevemente no cache local do aplicativo e excluídos automaticamente após serem processados.
+
+A leitura de tela é interrompida assim que você sai da tela de Escaneamento ou revoga a permissão de gravação de tela nas configurações do seu dispositivo.
+
+Se um escaneamento falhar, você pode optar por anexar a imagem capturada a um relatório de erro para nos ajudar a investigar — isso só é enviado se você escolher ativamente enviá-lo.
+
+Você também pode importar as estatísticas de um Pokémon selecionando uma captura de tela existente da sua galeria em vez de escanear ao vivo; ela é processada da mesma forma, inteiramente no seu dispositivo.
 
 **Serviços de Terceiros**
 
@@ -438,7 +534,7 @@ Utilizamos salvaguardas administrativas, técnicas e organizacionais razoáveis 
 
 Podemos atualizar esta Política de Privacidade periodicamente. As alterações entram em vigor quando publicadas nesta página.
 
-Esta política de privacidade é efetiva a partir de 2026-03-04.
+Esta política de privacidade é efetiva a partir de 2026-07-30.
 
 **Seu Consentimento**
 
@@ -460,10 +556,26 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 *   クラッシュおよび診断データ（安定性監視のため）
 *   プレミアム機能の提供に必要な購入・サブスクリプションのステータス/イベント
 *   チーム、バトルログ、設定など、アプリ内で作成されたコンテンツ
+*   スキャン／自動スキャン機能で画面から読み取るポケモンのステータス（端末上でのみ処理されます。詳細は下記の「画面読み取り」をご覧ください）
 
 ほとんどのアプリデータ（チーム、バトルログ、設定など）は、お客様の端末内にローカルに保存されます。
 
 本アプリは、意図的に正確なGPS位置情報を収集することはありません。
+
+**画面読み取り（スキャン／自動スキャン）**
+
+ステータスを手入力せずに取り込めるようにするため、本アプリはスキャンまたは自動スキャン機能をご利用の際、Pokémon GOの評価画面から直接テキストを読み取ることがあります。
+
+*   Androidでは、システムの画面キャプチャ権限（MediaProjection）を使用します。スキャンが有効な間、Android標準の画面収録通知が表示されます。
+*   iOSでは、Appleの ReplayKit 画面ブロードキャストのピッカーを使用し、スキャンが有効な間、画面をリアルタイムで読み取ります。
+
+読み取られるのは画面の評価・ステータス部分（種類、CP、レベル、個体値）のみで、他のアプリや画面の他の部分がキャプチャされることはありません。文字認識（OCR）はすべて端末上で行われ、Androidでは Google ML Kit、iOSでは Appleの Vision フレームワークを使用します。スクリーンショット、画面収録、認識されたテキストが当社や第三者にアップロードされることは一切なく、写真ライブラリに保存されることもありません。キャプチャされたフレームはアプリのローカルキャッシュに一時的に保存され、処理後に自動的に削除されます。
+
+スキャン画面を終了するか、端末の設定で画面収録の権限を取り消すと、画面の読み取りは直ちに停止します。
+
+スキャンに失敗した場合、調査にご協力いただくため、キャプチャした画像を不具合報告に添付することを選択できます。これは、お客様が自らの意思で送信を選択した場合にのみ送信されます。
+
+また、ライブでスキャンする代わりに、写真ライブラリから既存のスクリーンショットを選んでポケモンのステータスを取り込むこともできます。この場合も同様に、すべて端末上で処理されます。
 
 **第三者サービス**
 
@@ -509,7 +621,7 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 
 当社は、本プライバシーポリシーを随時更新することがあります。変更は本ページに掲載された時点で有効となります。
 
-本プライバシーポリシーの発効日: 2026-03-04
+本プライバシーポリシーの発効日: 2026-07-30
 
 **同意**
 
@@ -531,10 +643,26 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 *   크래시 및 진단 데이터(안정성 모니터링 목적)
 *   프리미엄 기능 제공에 필요한 구매 및 구독 상태/이벤트
 *   팀, 배틀 로그, 설정 등 앱 내에서 생성한 콘텐츠
+*   스캔/자동 스캔 기능을 통해 화면에서 읽은 포켓몬 능력치(기기에서만 처리됨 — 아래 "화면 읽기" 참고)
 
 대부분의 앱 데이터(팀, 배틀 로그, 설정 등)는 사용자의 기기에 로컬로 저장됩니다.
 
 당사는 애플리케이션을 통해 의도적으로 정밀 GPS 위치 정보를 수집하지 않습니다.
+
+**화면 읽기(스캔 / 자동 스캔)**
+
+능력치를 직접 입력하지 않고도 가져올 수 있도록, 애플리케이션은 스캔 또는 자동 스캔 기능을 사용하는 동안 Pokémon GO의 감정 화면에서 텍스트를 직접 읽어올 수 있습니다.
+
+*   Android에서는 시스템 화면 캡처 권한(MediaProjection)을 사용합니다. 스캔이 활성화되어 있는 동안 Android의 표준 화면 기록 알림이 표시됩니다.
+*   iOS에서는 Apple의 ReplayKit 화면 브로드캐스트 선택기를 사용하여 스캔이 활성화되어 있는 동안 화면을 실시간으로 읽습니다.
+
+화면의 감정/능력치 영역(종류, CP, 레벨, 개체값)만 읽으며, 다른 앱이나 화면의 다른 부분은 캡처되지 않습니다. 텍스트 인식(OCR)은 전적으로 기기에서 이루어지며, Android에서는 Google ML Kit를, iOS에서는 Apple의 Vision 프레임워크를 사용합니다. 스크린샷, 화면 기록 또는 인식된 텍스트가 당사나 제3자에게 업로드되는 일은 없으며, 사진 보관함에 저장되지도 않습니다. 캡처된 프레임은 앱의 로컬 캐시에 잠시 저장되었다가 처리 후 자동으로 삭제됩니다.
+
+스캔 화면을 벗어나거나 기기 설정에서 화면 기록 권한을 철회하는 즉시 화면 읽기가 중단됩니다.
+
+스캔에 실패한 경우, 문제 조사에 도움이 되도록 캡처된 이미지를 오류 보고서에 첨부할 수 있습니다. 이는 사용자가 직접 전송을 선택한 경우에만 전송됩니다.
+
+실시간으로 스캔하는 대신 사진 보관함에서 기존 스크린샷을 선택하여 포켓몬의 능력치를 가져올 수도 있습니다. 이 경우에도 동일한 방식으로 전적으로 기기에서 처리됩니다.
 
 **제3자 서비스**
 
@@ -580,7 +708,7 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 
 당사는 본 개인정보 처리방침을 수시로 업데이트할 수 있습니다. 변경 사항은 본 페이지에 게시되는 시점부터 효력이 발생합니다.
 
-본 개인정보 처리방침 시행일: 2026-03-04
+본 개인정보 처리방침 시행일: 2026-07-30
 
 **동의**
 
@@ -602,10 +730,26 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 *   當機及診斷資料（用於穩定性監控）。
 *   提供進階功能所需的購買及訂閱狀態/事件。
 *   您在應用程式中建立的內容，如隊伍、對戰紀錄和偏好設定。
+*   透過掃描／自動掃描功能讀取的畫面上寶可夢數據，完全在您的裝置上處理（詳見下方「畫面讀取」）。
 
 大部分應用程式資料（如隊伍、對戰紀錄和偏好設定）均儲存在您的裝置本機。
 
 我們不會透過本應用程式主動蒐集精確的 GPS 位置數據。
+
+**畫面讀取（掃描／自動掃描）**
+
+為了讓您在不需手動輸入的情況下匯入寶可夢數據，本應用程式在您使用「掃描」或「自動掃描」功能時，可直接讀取 Pokémon GO 評估畫面上的文字：
+
+*   在 Android 上，此功能使用系統的螢幕擷取權限（MediaProjection）；掃描進行中時，您會看到 Android 標準的螢幕錄製通知。
+*   在 iOS 上，此功能使用 Apple 的 ReplayKit 螢幕廣播選擇器，在掃描進行中即時讀取畫面。
+
+僅會讀取畫面中的評估／數據區域（種類、CP、等級與個體值）——不會擷取其他應用程式或畫面其他部分的內容。文字辨識（OCR）完全在您的裝置上進行，Android 使用 Google ML Kit，iOS 使用 Apple 的 Vision 框架。任何螢幕截圖、螢幕錄製或辨識出的文字都不會上傳給我們或任何第三方，也不會儲存到您的相簿：擷取的畫面會暫存於應用程式的本機快取中，處理完成後會自動刪除。
+
+只要您離開掃描畫面，或在裝置設定中撤銷螢幕錄製權限，畫面讀取就會立即停止。
+
+若掃描失敗，您可以選擇將擷取的畫面附加到錯誤回報中，協助我們調查——僅在您主動選擇傳送時才會送出。
+
+您也可以改為從相簿選擇現有的螢幕截圖來匯入寶可夢數據，而不必即時掃描；這會以相同方式完全在您的裝置上處理。
 
 **第三方服務**
 
@@ -651,7 +795,7 @@ Se você tiver dúvidas sobre privacidade, entre em contato com a Baru Software 
 
 我們可能會不時更新本隱私政策。變更自在本頁面發佈之日起生效。
 
-本隱私政策自 2026-03-04 起生效。
+本隱私政策自 2026-07-30 起生效。
 
 **您的同意**
 
