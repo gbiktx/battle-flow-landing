@@ -1248,7 +1248,21 @@ BattleFlow Pro는 구매하신 앱 스토어(Apple App Store 또는 Google Play)
 //
 //   - Movedex — browse every fast and charged move with full stats and effects.
 export const whatsNewData: Record<string, string> = {
-  en: `## v4.0
+  en: `## v4.1.5
+
+**Team Builder from your Collection.** Build teams around the Pokémon you actually own, with meta-aware lead recommendations.
+
+**Matchup Lines.** A new view in the Battle Simulator shows the branching ways a matchup can play out, with a clearer legend and single-button coaching.
+
+**Pokebox Cleanup.** A free tool that ranks your copies by IV and league fit, species by species, and flags the rest for transfer — with toggleable protections for shiny, favorite, lucky, costume, and legacy-move Pokémon.
+
+**Battle log upgrades.** Per-set rating tracking, exact rating entry, and role-labeled opponents in your recent battles.
+
+**Manual data backup.** Export all your BattleFlow data to a file and restore it — handy when moving to a new device.
+
+**Plus.** Power-up cost estimates and recommended movesets on your Collection, an in-app annual upgrade from Settings, a new Collection filter/sort/layout toolkit, this What's New page, more reliable scanning, and a fix for a crash that could occur when opening the Battle tab.
+
+## v4.0
 
 **Pokémon Collection.** Keep your Pokémon in BattleFlow. Browse them in grid, list, or by species, with filtering, sorting, and a best-league suggestion for each one.
 
@@ -1287,7 +1301,21 @@ export const whatsNewData: Record<string, string> = {
 **Build Around Mode.** Start team generation from any Pokémon. Pick your favorite from Rankings or your Pokebox, and BattleFlow builds optimized teams around it — finding the best leads, safe swaps, and closers to complement your anchor.
 
 **Shiny Sprites (Pro).** See your shiny Pokémon throughout the app — in rankings, teams, Pokebox, IV checker, and generated teams. Toggle shinies per species with a sparkle animation.`,
-  es: `## v4.0
+  es: `## v4.1.5
+
+**Constructor de Equipos desde tu Colección.** Arma equipos con los Pokémon que realmente tienes, con recomendaciones de líder basadas en el meta.
+
+**Líneas de Enfrentamiento.** Una nueva vista en el Simulador de Batallas muestra cómo puede cambiar un enfrentamiento, con una leyenda más clara y consejos con un solo botón.
+
+**Limpieza de Pokebox.** Una herramienta gratuita que clasifica tus copias por IV y aptitud de liga, especie por especie, y marca el resto para transferir — con protecciones activables para Pokémon shiny, favoritos, con suerte, con disfraz y con movimiento legado.
+
+**Mejoras al registro de batallas.** Seguimiento de calificación por set, ingreso exacto de calificación y oponentes con rol identificado en tus batallas recientes.
+
+**Respaldo manual de datos.** Exporta todos tus datos de BattleFlow a un archivo y restáuralos — útil al cambiar de dispositivo.
+
+**Además.** Estimaciones de costo de mejora y movimientos recomendados en tu Colección, una actualización al plan anual desde Configuración, un nuevo conjunto de filtro/orden/diseño para la Colección, esta página de Novedades, escaneo más confiable y una corrección para un fallo que podía cerrar la pestaña de Batalla inesperadamente.
+
+## v4.0
 
 **Colección de Pokémon.** Guarda tus Pokémon en BattleFlow. Explóralos en cuadrícula, lista o por especie, con filtros, ordenación y una sugerencia de mejor liga para cada uno.
 
@@ -1326,7 +1354,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir Alrededor.** Genera equipos a partir de cualquier Pokémon. Elige tu favorito de los Rankings o tu Pokebox, y BattleFlow construye equipos optimizados a su alrededor — encontrando los mejores leads, safe swaps y closers.
 
 **Sprites Shiny (Pro).** Ve tus Pokémon shiny en toda la app — rankings, equipos, Pokebox, verificador de IVs y equipos generados. Activa shinies por especie con animación de brillo.`,
-  fr: `## v4.0
+  fr: `## v4.1.5
+
+**Générateur d'équipe depuis votre Collection.** Composez vos équipes à partir des Pokémon que vous possédez réellement, avec des recommandations de leaders adaptées à la méta.
+
+**Lignes de Confrontation.** Une nouvelle vue dans le Simulateur de Combat montre comment un affrontement peut évoluer différemment, avec une légende plus claire et des conseils en un clic.
+
+**Nettoyage du Pokebox.** Un outil gratuit qui classe vos exemplaires par IV et adéquation à la ligue, espèce par espèce, et signale le reste à transférer — avec des protections activables pour vos Pokémon chromatiques, favoris, chanceux, en costume et à capacité historique.
+
+**Améliorations du journal de combat.** Suivi des notes par set, saisie manuelle de note précise, et adversaires avec rôle indiqué dans vos combats récents.
+
+**Sauvegarde manuelle des données.** Exportez toutes vos données BattleFlow dans un fichier et restaurez-les — pratique lors d'un changement d'appareil.
+
+**En plus.** Estimations du coût d'amélioration et mouvements recommandés sur votre Collection, un passage à l'abonnement annuel depuis les Réglages, un nouvel ensemble filtre/tri/disposition pour la Collection, cette page Nouveautés, un scan plus fiable, et une correction pour un plantage qui pouvait survenir à l'ouverture de l'onglet Combat.
+
+## v4.0
 
 **Collection de Pokémon.** Conservez vos Pokémon dans BattleFlow. Parcourez-les en grille, en liste ou par espèce, avec filtres, tri et une suggestion de meilleure ligue pour chacun.
 
@@ -1365,7 +1407,21 @@ export const whatsNewData: Record<string, string> = {
 **Mode Construire Autour.** Générez des équipes à partir de n'importe quel Pokémon. Choisissez votre favori dans les classements ou votre Pokebox, et BattleFlow construit des équipes optimisées autour de lui — trouvant les meilleurs leads, safe swaps et closers.
 
 **Sprites Shiny (Pro).** Voyez vos Pokémon shiny dans toute l'app — classements, équipes, Pokebox, vérificateur d'IVs et équipes générées. Activez les shinies par espèce avec une animation d'éclat.`,
-  de: `## v4.0
+  de: `## v4.1.5
+
+**Team-Builder aus deiner Sammlung.** Stelle Teams aus den Pokémon zusammen, die du tatsächlich besitzt – mit Meta-basierten Empfehlungen für Anfangs-Pokémon.
+
+**Matchup-Linien.** Eine neue Ansicht im Kampfsimulator zeigt, wie ein Matchup unterschiedlich verlaufen kann, mit einer klareren Legende und Ein-Klick-Coaching.
+
+**Pokebox-Bereinigung.** Ein kostenloses Tool, das deine Exemplare Art für Art nach IV und Liga-Eignung bewertet und den Rest zum Transfer markiert — mit abschaltbaren Schutzfunktionen für schillernde, favorisierte, glückliche, Kostüm- und Legacy-Attacken-Pokémon.
+
+**Kampfprotokoll-Erweiterungen.** Bewertungs-Tracking pro Set, exakte Bewertungseingabe und rollenbeschriftete Gegner in deinen letzten Kämpfen.
+
+**Manuelles Daten-Backup.** Sichere alle deine BattleFlow-Daten in einer Datei und stelle sie wieder her — praktisch beim Gerätewechsel.
+
+**Plus.** Power-Up-Kostenschätzungen und empfohlene Movesets in deiner Sammlung, ein Wechsel zum Jahresabo direkt in den Einstellungen, ein neues Filter-/Sortier-/Layout-Set für die Sammlung, diese Neuigkeiten-Seite, zuverlässigeres Scannen und eine Korrektur für einen Absturz, der beim Öffnen des Kampf-Tabs auftreten konnte.
+
+## v4.0
 
 **Pokémon-Sammlung.** Behalte deine Pokémon in BattleFlow. Durchstöbere sie als Raster, Liste oder nach Spezies, mit Filtern, Sortierung und einer Liga-Empfehlung für jedes.
 
@@ -1404,7 +1460,21 @@ export const whatsNewData: Record<string, string> = {
 **Build-Around-Modus.** Starte die Teamgenerierung mit einem beliebigen Pokémon. Wähle deinen Favoriten aus den Rankings oder deiner Pokebox, und BattleFlow erstellt optimierte Teams drumherum — mit den besten Leads, Safe Swaps und Closern.
 
 **Shiny-Sprites (Pro).** Sieh deine Shiny-Pokémon in der gesamten App — Rankings, Teams, Pokebox, IV-Checker und generierte Teams. Aktiviere Shinies pro Spezies mit Glitzeranimation.`,
-  it: `## v4.0
+  it: `## v4.1.5
+
+**Creatore di Squadre dalla tua Collezione.** Crea squadre con i Pokémon che possiedi davvero, con consigli sul lead basati sul meta.
+
+**Linee di Scontro.** Una nuova vista nel Simulatore di Battaglia mostra come uno scontro può evolversi diversamente, con una legenda più chiara e consigli con un tocco.
+
+**Pulizia Pokebox.** Uno strumento gratuito che classifica le tue copie per IV e idoneità alla lega, specie per specie, e segnala il resto da trasferire — con protezioni disattivabili per i Pokémon shiny, preferiti, fortunati, in costume e con mosse leggendarie.
+
+**Miglioramenti al registro battaglie.** Tracciamento del rating per set, inserimento manuale del rating esatto e avversari etichettati per ruolo nelle battaglie recenti.
+
+**Backup manuale dei dati.** Esporta tutti i tuoi dati BattleFlow su file e ripristinali — comodo quando cambi dispositivo.
+
+**Inoltre.** Stime del costo di potenziamento e moveset consigliati sulla tua Collezione, un passaggio al piano annuale direttamente dalle Impostazioni, un nuovo set di filtro/ordinamento/layout per la Collezione, questa pagina Novità, scansione più affidabile e una correzione per un crash che poteva verificarsi aprendo la scheda Battaglia.
+
+## v4.0
 
 **Collezione di Pokémon.** Tieni i tuoi Pokémon in BattleFlow. Sfogliali a griglia, elenco o per specie, con filtri, ordinamento e un suggerimento sulla lega migliore per ciascuno.
 
@@ -1443,7 +1513,21 @@ export const whatsNewData: Record<string, string> = {
 **Modalità Costruisci Attorno.** Genera squadre partendo da qualsiasi Pokémon. Scegli il tuo preferito dai ranking o dalla Pokebox, e BattleFlow costruisce squadre ottimizzate attorno ad esso — trovando i migliori lead, safe swap e closer.
 
 **Sprite Shiny (Pro).** Visualizza i tuoi Pokémon shiny in tutta l'app — classifiche, squadre, Pokebox, verificatore IV e squadre generate. Attiva gli shiny per specie con animazione scintillante.`,
-  pt: `## v4.0
+  pt: `## v4.1.5
+
+**Montador de Times a partir da sua Coleção.** Monte times com os Pokémon que você realmente tem, com recomendações de líder baseadas no meta.
+
+**Linhas de Confronto.** Uma nova visualização no Simulador de Batalha mostra como um confronto pode se desenrolar de forma diferente, com legenda mais clara e dicas em um toque.
+
+**Limpeza do Pokebox.** Uma ferramenta gratuita que classifica suas cópias por IV e adequação à liga, espécie por espécie, e sinaliza o restante para transferir — com proteções ativáveis para Pokémon shiny, favoritos, sortudos, com fantasia e com movimento legado.
+
+**Melhorias no registro de batalhas.** Acompanhamento de rating por set, entrada manual de rating exato e oponentes com função identificada nas suas batalhas recentes.
+
+**Backup manual de dados.** Exporte todos os seus dados do BattleFlow para um arquivo e restaure-os — útil ao trocar de aparelho.
+
+**Além disso.** Estimativas de custo de power-up e movesets recomendados na sua Coleção, upgrade para o plano anual direto pelas Configurações, um novo conjunto de filtro/ordenação/layout para a Coleção, esta página de Novidades, escaneamento mais confiável e uma correção para uma falha que podia ocorrer ao abrir a aba Batalha.
+
+## v4.0
 
 **Coleção de Pokémon.** Guarde seus Pokémon no BattleFlow. Navegue em grade, lista ou por espécie, com filtros, ordenação e uma sugestão de melhor liga para cada um.
 
@@ -1482,7 +1566,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir ao Redor.** Gere equipes a partir de qualquer Pokémon. Escolha seu favorito dos Rankings ou da Pokebox, e BattleFlow monta equipes otimizadas ao redor dele — encontrando os melhores leads, safe swaps e closers.
 
 **Sprites Shiny (Pro).** Veja seus Pokémon shiny em todo o app — rankings, equipes, Pokebox, verificador de IVs e equipes geradas. Ative shinies por espécie com animação brilhante.`,
-  ja: `## v4.0
+  ja: `## v4.1.5
+
+**コレクションからのチーム構築**：実際に所持しているポケモンでチームを編成でき、メタを踏まえたリード推奨も表示されます。
+
+**マッチアップライン**：バトルシミュレーターの新しい画面で、対戦の展開パターンをより分かりやすい凡例とワンタップの解説付きで確認できます。
+
+**Pokebox クリーンアップ**：種族ごとに個体値とリーグ適性でランク付けし、残りを転送候補としてフラグ付けする無料ツール。色違い、お気に入り、ラッキー、コスチューム、限定技持ちのポケモンは個別にオン/オフできる保護機能付きです。
+
+**バトルログの強化**：セットごとのレーティング記録、正確なレーティングの手入力、直近のバトルでの役割ラベル付き対戦相手を追加。
+
+**手動データバックアップ**：BattleFlowのすべてのデータをファイルにバックアップして復元できます。機種変更の際に便利です。
+
+**さらに**：コレクションでの強化コストの見積もりとおすすめの技構成、設定から直接できる年間プランへのアップグレード、コレクションの新しいフィルター・並べ替え・レイアウトツール、この新着情報ページ、より安定したスキャン、そしてバトルタブを開いた際にクラッシュすることがあった不具合の修正。
+
+## v4.0
 
 **ポケモンコレクション**：あなたのポケモンを BattleFlow に登録。グリッド・リスト・種族別で表示でき、フィルター、並べ替え、ポケモンごとの最適リーグ提案にも対応。
 
@@ -1521,7 +1619,21 @@ export const whatsNewData: Record<string, string> = {
 **ビルドアラウンドモード**：任意のポケモンからチーム生成を開始。ランキングやポケボックスからお気に入りを選ぶと、BattleFlowがそのポケモンを軸に最適なリード、セーフスワップ、クローザーを備えたチームを構築します。
 
 **色違いスプライト（Pro）**：色違いポケモンをアプリ全体で表示 — ランキング、チーム、ポケボックス、個体値チェッカー、生成チーム。種族ごとにキラキラアニメーション付きで切り替え可能。`,
-  ko: `## v4.0
+  ko: `## v4.1.5
+
+**컬렉션 기반 팀 빌더**: 실제로 보유한 포켓몬으로 팀을 구성하고, 메타를 반영한 리드 추천을 받아보세요.
+
+**매치업 라인**: 배틀 시뮬레이터의 새로운 화면에서 더 명확한 범례와 원터치 코칭과 함께 대결이 어떻게 다르게 전개될 수 있는지 확인할 수 있습니다.
+
+**포켓박스 정리**: 종족별로 개체값과 리그 적합도로 순위를 매기고 나머지를 교환 대상으로 표시하는 무료 도구입니다. 이로치, 즐겨찾기, 럭키, 코스튬, 레거시 기술 포켓몬은 개별적으로 켜고 끌 수 있는 보호 기능이 있습니다.
+
+**배틀 로그 개선**: 세트별 레이팅 추적, 정확한 레이팅 직접 입력, 최근 배틀에서 역할이 표시된 상대 기능이 추가되었습니다.
+
+**수동 데이터 백업**: BattleFlow의 모든 데이터를 파일로 백업하고 복원할 수 있습니다. 기기를 변경할 때 유용합니다.
+
+**추가 사항**: 컬렉션의 강화 비용 예상치와 추천 기술 구성, 설정에서 바로 하는 연간 플랜 업그레이드, 컬렉션의 새로운 필터·정렬·레이아웃 도구, 이 새로운 기능 페이지, 더 안정적인 스캔, 그리고 배틀 탭을 열 때 발생할 수 있던 충돌 문제 수정.
+
+## v4.0
 
 **포켓몬 컬렉션**: 포켓몬을 BattleFlow에 보관하세요. 그리드, 리스트, 종족별로 살펴보고 필터, 정렬, 포켓몬별 최적 리그 추천까지 제공합니다.
 
@@ -1560,7 +1672,21 @@ export const whatsNewData: Record<string, string> = {
 **빌드 어라운드 모드**: 원하는 포켓몬으로 팀 생성을 시작하세요. 랭킹이나 포켓박스에서 좋아하는 포켓몬을 선택하면 BattleFlow가 최적의 리드, 세이프 스왑, 클로저를 찾아 팀을 구축합니다.
 
 **색이 다른 스프라이트 (Pro)**: 앱 전체에서 색이 다른 포켓몬을 확인하세요 — 랭킹, 팀, 포켓박스, 개체값 체커, 생성된 팀. 종별로 반짝이는 애니메이션과 함께 전환 가능.`,
-  'zh-hant': `## v4.0
+  'zh-hant': `## v4.1.5
+
+**從圖鑑組建隊伍**：使用你實際擁有的寶可夢組建隊伍，並取得基於目前環境的先發推薦。
+
+**對局線**：對戰模擬器新增畫面，搭配更清楚的圖例與單鍵教學，呈現同一場對局可能出現的不同走向。
+
+**Pokebox 清理**：一款免費工具，依個體值與聯盟適配度逐一物種為你的寶可夢排序，並標示出可放生的對象——閃光、收藏、幸運、變裝與絕版招式寶可夢皆有可個別開關的保護機制。
+
+**對戰紀錄升級**：新增單場分組評分追蹤、精確評分手動輸入，以及近期對戰中帶有角色標籤的對手顯示。
+
+**手動資料備份**：將所有 BattleFlow 資料備份到檔案並還原——更換裝置時特別實用。
+
+**其他**：圖鑑新增強化花費預估與推薦招式組合、可直接在設定中升級為年度方案、圖鑑新增篩選／排序／版面工具、這個新功能頁面、更穩定的掃描，以及修正了一個開啟「對戰」分頁時可能發生的當機問題。
+
+## v4.0
 
 **寶可夢收藏**：把你的寶可夢保存在 BattleFlow 中。可依網格、清單或種類瀏覽，支援篩選、排序，並為每隻提供最佳聯盟建議。
 
