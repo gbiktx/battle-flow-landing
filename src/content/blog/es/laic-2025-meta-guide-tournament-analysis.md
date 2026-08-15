@@ -25,7 +25,7 @@ reading_time: 15
 6. [Composiciones de Equipo Recomendadas](#composiciones-de-equipo-recomendadas)
 7. [Análisis de Cobertura de Tipos](#análisis-de-cobertura-de-tipos)
 8. [Estrategias de Batalla](#estrategias-de-batalla)
-9. [Contraataques Duros](#contraataques-duros)
+9. [Counters fuertes](#counters-fuertes)
 
 ---
 
@@ -97,9 +97,9 @@ Cada Pokémon es evaluado en **6 dimensiones clave** (escala 0-100):
 
 ## Mapa del Ecosistema Meta
 
-### Grupos Meta Principales y Relaciones de Contraataque
+### Grupos Meta Principales y Relaciones de Counters
 
-El meta LAIC 2025 puede entenderse a través de grupos interconectados de Pokémon con roles distintos y dinámicas de contraataque:
+El meta LAIC 2025 puede entenderse a través de grupos interconectados de Pokémon con roles distintos y dinámicas de counters:
 
 #### **Grupo 1: Núcleo Ghost/Psychic** (Presencia Dominante)
 
@@ -153,14 +153,14 @@ El meta LAIC 2025 puede entenderse a través de grupos interconectados de Pokém
 **Miembros Clave:** Drampa, Fearow, Dodrio, Emolga, Rapidash-G
 
 - **Características:** Contadores duros específicos, factor sorpresa, roles de nicho
-- **Relaciones de Contraataque:**
+- **Relaciones de counters:**
   - Drampa: Contrarresta Turtonator (804)
   - Fearow: Contrarresta Dusknoir (834), contrarrestado por Emolga (852)
   - Dodrio: Contrarresta Froslass (900)
   - Rapidash-G: Contrarresta Charizard (915)
   - Emolga: Contrarresta Fearow (852)
 - **Amenaza a:** Picks meta específicos
-- **Vulnerable a:** Oponentes conscientes de la estrategia de contraataque
+- **Vulnerable a:** Oponentes conscientes de la estrategia de counter
 
 ### Conocimiento Estratégico
 
@@ -306,7 +306,7 @@ Rendimiento consistente en la mayoría de enfrentamientos. Forman la columna ver
 
 ### Nivel A+ - 22 Alternativas Fuertes
 
-Opciones secundarias sólidas y picks de contraataque específicos:
+Opciones secundarias sólidas y picks de counter específicos:
 
 **Top Rendimiento A+:**
 
@@ -407,7 +407,7 @@ Los 10 principales Pokémon tienen patrones claros de debilidad de tipo:
 - Cobertura Outrage + Fly
 - Objetivos: Turtonator (804), Dusknoir, Runerigus, Oranguru
 
-### Estrategias de Contraataque Basadas en Tipos
+### Estrategias de counter basadas en tipos
 
 #### **Contra Núcleo Ghost/Psychic** (Oranguru, Dusclops, Bronzong)
 
@@ -594,7 +594,7 @@ Los 6 mejores equipos alcanzaron:
 
 ---
 
-## Contraataques Duros
+## Counters fuertes
 
 Estos Pokémon proporcionan **enfrentamientos devastadores** contra amenazas meta específicas. Úsalos estratégicamente en tu equipo de 6 para cubrir debilidades específicas.
 

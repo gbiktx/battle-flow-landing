@@ -24,6 +24,21 @@
     "buffApplyChance": "1"
   },
   {
+    "id": "ACID_SPRAY_PLUS",
+    "name": "Acid Spray+",
+    "type": "poison",
+    "power": 20,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      0,
+      -2
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": "1"
+  },
+  {
     "id": "ACROBATICS",
     "name": "Acrobatics",
     "type": "flying",
@@ -341,6 +356,21 @@
     "type": "fighting",
     "power": 50,
     "energy": 40,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      0,
+      -1
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": "1"
+  },
+  {
+    "id": "BRICK_BREAK_PLUS",
+    "name": "Brick Break+",
+    "type": "fighting",
+    "power": 40,
+    "energy": 35,
     "energyGain": 0,
     "turns": 1,
     "buffs": [
@@ -801,6 +831,15 @@
     "turns": 1
   },
   {
+    "id": "DRILL_PECK_PLUS",
+    "name": "Drill Peck+",
+    "type": "flying",
+    "power": 60,
+    "energy": 35,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "DRILL_RUN",
     "name": "Drill Run",
     "type": "ground",
@@ -839,6 +878,15 @@
     "type": "fighting",
     "power": 90,
     "energy": 45,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "DYNAMIC_PUNCH_PLUS",
+    "name": "Dynamic Punch+",
+    "type": "fighting",
+    "power": 130,
+    "energy": 80,
     "energyGain": 0,
     "turns": 1
   },
@@ -1169,6 +1217,15 @@
     "type": "psychic",
     "power": 110,
     "energy": 65,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "FUTURE_SIGHT_PLUS",
+    "name": "Future Sight+",
+    "type": "psychic",
+    "power": 130,
+    "energy": 80,
     "energyGain": 0,
     "turns": 1
   },
@@ -1599,6 +1656,21 @@
     "buffApplyChance": "0.3"
   },
   {
+    "id": "LIQUIDATION_PLUS",
+    "name": "Liquidation+",
+    "type": "water",
+    "power": 55,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      0,
+      -1
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": "0.3"
+  },
+  {
     "id": "LOCK_ON",
     "name": "Lock On",
     "type": "normal",
@@ -1878,6 +1950,21 @@
     "buffApplyChance": "1"
   },
   {
+    "id": "MYSTICAL_FIRE_PLUS",
+    "name": "Mystical Fire+",
+    "type": "fire",
+    "power": 50,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      -1,
+      0
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": "1"
+  },
+  {
     "id": "NATURES_MADNESS",
     "name": "Nature's Madness",
     "type": "fairy",
@@ -1999,6 +2086,15 @@
     "type": "dragon",
     "power": 110,
     "energy": 60,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "OUTRAGE_PLUS",
+    "name": "Outrage+",
+    "type": "dragon",
+    "power": 80,
+    "energy": 50,
     "energyGain": 0,
     "turns": 1
   },
@@ -2194,6 +2290,15 @@
     "type": "psychic",
     "power": 70,
     "energy": 60,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "PSYBEAM_PLUS",
+    "name": "Psybeam+",
+    "type": "psychic",
+    "power": 60,
+    "energy": 45,
     "energyGain": 0,
     "turns": 1
   },
@@ -2547,6 +2652,15 @@
     "name": "Seed Bomb",
     "type": "grass",
     "power": 55,
+    "energy": 40,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
+    "id": "SEED_BOMB_PLUS",
+    "name": "Seed Bomb+",
+    "type": "grass",
+    "power": 60,
     "energy": 40,
     "energyGain": 0,
     "turns": 1
@@ -2912,6 +3026,15 @@
     "turns": 1
   },
   {
+    "id": "SURF_PLUS",
+    "name": "Surf+",
+    "type": "water",
+    "power": 55,
+    "energy": 35,
+    "energyGain": 0,
+    "turns": 1
+  },
+  {
     "id": "SWIFT",
     "name": "Swift",
     "type": "normal",
@@ -3194,6 +3317,21 @@
     "buffApplyChance": "1"
   },
   {
+    "id": "VOLT_TACKLE_PLUS",
+    "name": "Volt Tackle+",
+    "type": "electric",
+    "power": 65,
+    "energy": 35,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      0,
+      -1
+    ],
+    "buffTarget": "self",
+    "buffApplyChance": "1"
+  },
+  {
     "id": "WATER_GUN",
     "name": "Water Gun",
     "type": "water",
@@ -3360,6 +3498,21 @@
     ],
     "buffTarget": "opponent",
     "buffApplyChance": ".33"
+  },
+  {
+    "id": "ZAP_CANNON_PLUS",
+    "name": "Zap Cannon+",
+    "type": "electric",
+    "power": 70,
+    "energy": 45,
+    "energyGain": 0,
+    "turns": 1,
+    "buffs": [
+      -1,
+      0
+    ],
+    "buffTarget": "opponent",
+    "buffApplyChance": "1"
   },
   {
     "id": "ZEN_HEADBUTT",
