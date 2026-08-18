@@ -29,6 +29,9 @@ const LEAGUES = [
 
 const TARGET_LEVELS = [40, 41, 50, 51];
 
+// Height of the site's sticky header — a field under it isn't really "in view".
+const STICKY_HEADER_OFFSET = 80;
+
 const SCAN_SHOWCASE_PLACEMENT = 'iv-result-cta';
 const POST_RESULT_PLACEMENT = 'iv-post-result-cta';
 
@@ -149,6 +152,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const atkRef = useRef<HTMLInputElement>(null);
   const defRef = useRef<HTMLInputElement>(null);
   const hpRef = useRef<HTMLInputElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const [inputAtk, setInputAtk] = useState('0');
   const [inputDef, setInputDef] = useState('15');
@@ -319,6 +323,24 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
       return next;
     });
 
+  // Tapping the hero sprite is the discoverable way into the species picker —
+  // on mobile the search field sits below the fold of the card, so focus it and
+  // scroll it into view. focus() is called straight off the tap so iOS raises
+  // the keyboard; select() lets a second tap retype over an existing query.
+  const focusSearch = () => {
+    const el = searchRef.current;
+    if (!el) return;
+    // preventScroll: `scroll-behavior: smooth` is global (global.css), so the
+    // browser's own focus scroll would animate and race the explicit one below.
+    el.focus({ preventScroll: true });
+    el.select();
+    // Only scroll when the field isn't already in view — on desktop it sits a
+    // few hundred px under the sprite and centering it would yank the page.
+    const r = el.getBoundingClientRect();
+    const clearOfHeader = r.top >= STICKY_HEADER_OFFSET && r.bottom <= window.innerHeight;
+    if (!clearOfHeader) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
   const spriteUrl = getSpritePath(currentPokemon);
 
   const tableData = useMemo(() => {
@@ -334,6 +356,18 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
 
     return [...trackedRankEntries, ...remainingTopList];
   }, [trackedIvs, allRanks, showFullTable]);
+
+  // Row highlight state, shared by the mobile card list and the desktop table.
+  // The inputs are parsed and the tracked spreads indexed once per render —
+  // `rowState` runs twice per row (both lists are in the DOM, CSS picks one).
+  const ivKeyOf = (iv: IVSet) => `${iv.atk}-${iv.def}-${iv.hp}`;
+  const trackedKeys = useMemo(() => new Set(trackedIvs.map(ivKeyOf)), [trackedIvs]);
+  const currentInputKey = `${parseInt(inputAtk)}-${parseInt(inputDef)}-${parseInt(inputHp)}`;
+
+  const rowState = (r: RankEntry) => {
+    const key = ivKeyOf(r.ivs);
+    return { isTracked: trackedKeys.has(key), isCurrentInput: key === currentInputKey };
+  };
 
   const handleIvChange = (val: string, field: 'atk' | 'def' | 'hp') => {
     const clean = val.replace(/\D/g, '');
@@ -403,7 +437,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
           </button>
         </div>
         {!collapsed && (
-        <div className="px-3 md:px-5 pb-4 pt-1 border-t border-white/5">
+        <div className="px-2 md:px-5 pb-4 pt-1 border-t border-white/5">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[280px] border-collapse">
             <thead>
@@ -419,15 +453,15 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
             <tbody>
               {rows.map((row, ri) => (
                 <tr key={row.form.id} className="border-t border-white/5">
-                  <td className="py-2 pr-2 md:pr-3">
+                  <td className="py-2 pr-1 md:pr-3">
                     <div className="flex items-center gap-1.5 md:gap-2">
                       <img
                         src={getSpritePath(row.form)}
                         alt={`${localizePokemon(row.form.id, row.form.name)} sprite`}
-                        className="w-7 h-7 md:w-9 md:h-9 object-contain flex-shrink-0"
+                        className="w-6 h-6 md:w-9 md:h-9 object-contain flex-shrink-0"
                         onError={(e) => (e.currentTarget.src = '/assets/images/appicon-96.webp')}
                       />
-                      <span className="text-[10px] md:text-xs font-black uppercase tracking-tight text-white leading-[1.15] max-w-[68px] md:max-w-none">
+                      <span className="text-[10px] md:text-xs font-black uppercase tracking-tight text-white leading-[1.15] break-words max-w-[60px] md:max-w-none">
                         {localizePokemon(row.form.id, row.form.name)}
                       </span>
                     </div>
@@ -445,10 +479,10 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                       <td key={li} className="py-1.5 px-0.5 md:px-1">
                         <div
                           title={`${e.cp} CP · Lvl ${e.level} · ${e.perfection}% stat product`}
-                          className="mx-auto w-[48px] md:w-[64px] rounded-xl overflow-hidden bg-black/30 border border-white/5 flex flex-col items-center"
+                          className="mx-auto w-[42px] md:w-[64px] rounded-xl overflow-hidden bg-black/30 border border-white/5 flex flex-col items-center"
                         >
                           <div className="pt-1.5 pb-1 flex flex-col items-center gap-0.5">
-                            <span className="text-sm md:text-base font-black leading-none tracking-tighter text-white">#{e.rank}</span>
+                            <span className="text-[13px] md:text-base font-black leading-none tracking-tighter text-white">#{e.rank}</span>
                             <span className="text-[9px] font-black leading-none" style={{ color: band }}>{e.perfection}%</span>
                           </div>
                           <div className="h-1 w-full" style={{ backgroundColor: band }}></div>
@@ -484,9 +518,20 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
             <div className="flex flex-col items-center text-center group">
               <div className="relative mb-4">
                 <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full scale-150 group-hover:scale-175 transition-transform duration-700"></div>
-                <div className="relative p-4 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
+                <button
+                  type="button"
+                  onClick={focusSearch}
+                  aria-label={t('iv.change_pokemon')}
+                  title={t('iv.change_pokemon')}
+                  className="relative block p-4 bg-white/5 backdrop-blur-md rounded-full border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-brand-accent/50 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent/60 active:scale-95 cursor-pointer"
+                >
                   <img src={spriteUrl} alt={`${localizePokemon(currentPokemon.id, currentPokemon.name)} sprite`} className="w-24 h-24 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon-96.webp')}/>
-                </div>
+                  <span className="absolute bottom-1 right-1 w-9 h-9 rounded-full bg-brand-accent border-2 border-brand-dark flex items-center justify-center shadow-lg shadow-brand-accent/30" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </span>
+                </button>
               </div>
               <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{formDisplayName(currentPokemon)}</h3>
               <div className="flex gap-2 mt-3">
@@ -537,6 +582,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               <div className="relative">
                 <input 
                   id="pokemon-search"
+                  ref={searchRef}
                   type="text" 
                   className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 focus:outline-hidden focus:ring-2 focus:ring-brand-accent/50 text-white font-bold text-sm placeholder-gray-500 transition-all" 
                   placeholder={t('iv.search_placeholder')} 
@@ -623,7 +669,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                       onChange={(e) => handleIvChange(e.target.value, 'atk')}
                       className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-atk" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.attack').slice(0, 3)}</label>
+                    <label htmlFor="iv-atk" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.atk_short')}</label>
                   </div>
                   <div className="relative">
                     <input 
@@ -635,7 +681,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                       onChange={(e) => handleIvChange(e.target.value, 'def')}
                       className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-def" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.defense').slice(0, 3)}</label>
+                    <label htmlFor="iv-def" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.def_short')}</label>
                   </div>
                   <div className="relative">
                     <input 
@@ -647,7 +693,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                       onChange={(e) => handleIvChange(e.target.value, 'hp')}
                       className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
-                    <label htmlFor="iv-hp" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.hp').slice(0, 3)}</label>
+                    <label htmlFor="iv-hp" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.hp_short')}</label>
                   </div>
                 </div>
                 <button onClick={handleAddTracked} className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-accent hover:brightness-110 text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-sm shadow-xl shadow-brand-accent/20 active:scale-95">
@@ -682,7 +728,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               ))}
             </div>
           </div>
-          <div className="p-4 md:p-8 space-y-5">
+          <div className="p-3 md:p-8 space-y-5">
             {trackedIvs.map((iv) => (
               <div key={`${iv.atk}-${iv.def}-${iv.hp}`}>{renderEvolutionGrid(iv)}</div>
             ))}
@@ -754,48 +800,98 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
         </div>
 
         {!tableCollapsed && (
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm text-left border-collapse min-w-[950px]">
+        <>
+        {/* Mobile: the six-column table needs ~700px, so below md the same rows
+            render as stacked cards — no horizontal scroller to discover. */}
+        <ul className="md:hidden divide-y divide-white/5 bg-black/10">
+          {tableData.map((r) => {
+            const { isTracked, isCurrentInput } = rowState(r);
+            return (
+              <li
+                key={`${r.rank}-${r.ivs.atk}-${r.ivs.def}-${r.ivs.hp}`}
+                className={`px-4 py-4 transition-colors duration-300 ${isTracked ? 'bg-brand-accent/15' : isCurrentInput ? 'bg-brand-blue/15' : ''}`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    {isTracked && <span className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(3,147,218,0.8)] flex-shrink-0"></span>}
+                    <span className={`font-black text-lg tracking-tighter ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/60'}`}>#{r.rank}</span>
+                    <div className="flex gap-1.5 font-black">
+                      {[
+                        [t('iv.atk_short'), r.ivs.atk],
+                        [t('iv.def_short'), r.ivs.def],
+                        [t('iv.hp_short'), r.ivs.hp],
+                      ].map(([label, v], i) => (
+                        <span key={i} className="w-9 flex flex-col items-center py-1 bg-black/40 rounded-lg border border-white/5">
+                          <span className="text-[8px] leading-none uppercase tracking-wider text-gray-500">{label}</span>
+                          <span className="mt-0.5 text-sm leading-none text-brand-accent">{v}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="text-right flex-shrink-0">
+                    <div className="font-black text-white text-xl tracking-tighter leading-none">
+                      {r.cp}
+                      <span className="ml-1 text-[10px] font-black uppercase tracking-widest text-gray-500">{t('iv.cp')}</span>
+                    </div>
+                    <div className="mt-1 text-[10px] font-black uppercase tracking-widest text-gray-500">{t('iv.level')} {r.level}</div>
+                  </div>
+                </div>
+                <div className="mt-3 flex items-center gap-3">
+                  <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                    <div className="h-full bg-brand-accent shadow-[0_0_8px_rgba(3,147,218,0.4)] transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
+                  </div>
+                  <span className={`font-black text-sm tracking-tighter ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/90'}`}>{r.perfection}%</span>
+                </div>
+                <div className="mt-1.5 flex items-baseline gap-2 text-[11px] font-bold tracking-tighter text-gray-500">
+                  <span className="text-[9px] font-black uppercase tracking-widest text-gray-600 flex-shrink-0">{t('iv.actual_stats')}</span>
+                  <span>{r.stats.atk} / {r.stats.def} / {r.stats.hp}</span>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="hidden md:block overflow-x-auto">
+          <table className="w-full text-sm text-left border-collapse min-w-[700px]">
             <thead>
               <tr className="text-gray-500 bg-white/[0.02] border-b border-white/5">
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.rank')}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.iv_set')}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.actual_stats')}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.level')}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.cp')}</th>
-                <th className="px-10 py-6 font-black uppercase tracking-[0.2em] text-[10px] text-right">{t('iv.perfection')}</th>
+                <th className="px-4 lg:px-10 py-5 lg:py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.rank')}</th>
+                <th className="px-4 lg:px-10 py-5 lg:py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.iv_set')}</th>
+                <th className="px-4 lg:px-10 py-5 lg:py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.actual_stats')}</th>
+                <th className="px-4 lg:px-10 py-5 lg:py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.level')}</th>
+                <th className="px-4 lg:px-10 py-5 lg:py-6 font-black uppercase tracking-[0.2em] text-[10px]">{t('iv.cp')}</th>
+                <th className="px-4 lg:px-10 py-5 lg:py-6 font-black uppercase tracking-[0.2em] text-[10px] text-right">{t('iv.perfection')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 bg-black/10">
-              {tableData.map((r, idx) => {
-                const isTracked = trackedIvs.some(iv => iv.atk === r.ivs.atk && iv.def === r.ivs.def && iv.hp === r.ivs.hp);
-                const isCurrentInput = r.ivs.atk === parseInt(inputAtk) && r.ivs.def === parseInt(inputDef) && r.ivs.hp === parseInt(inputHp);
-                
+              {tableData.map((r) => {
+                const { isTracked, isCurrentInput } = rowState(r);
+
                 return (
                   <tr key={`${r.rank}-${r.ivs.atk}-${r.ivs.def}-${r.ivs.hp}`} 
                     className={`transition-all duration-300 ${isTracked ? 'bg-brand-accent/15' : isCurrentInput ? 'bg-brand-blue/15' : 'hover:bg-white/[0.03]'}`}>
-                    <td className="px-10 py-7 font-black text-white">
-                      <div className="flex items-center gap-4">
+                    <td className="px-4 lg:px-10 py-5 lg:py-7 font-black text-white">
+                      <div className="flex items-center gap-3 lg:gap-4">
                         {isTracked && <div className="w-2 h-2 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(3,147,218,0.8)]"></div>}
                         <span className={`text-lg ${r.rank <= 10 ? 'text-brand-accent' : 'opacity-60'}`}>#{r.rank}</span>
                       </div>
                     </td>
-                    <td className="px-10 py-7">
-                      <div className="flex gap-2 font-black">
-                        <span className="w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.atk}</span>
-                        <span className="w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.def}</span>
-                        <span className="w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.hp}</span>
+                    <td className="px-4 lg:px-10 py-5 lg:py-7">
+                      <div className="flex gap-1.5 lg:gap-2 font-black">
+                        <span className="w-9 lg:w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.atk}</span>
+                        <span className="w-9 lg:w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.def}</span>
+                        <span className="w-9 lg:w-11 text-center py-2 bg-black/40 rounded-xl border border-white/5 text-brand-accent">{r.ivs.hp}</span>
                       </div>
                     </td>
-                    <td className="px-10 py-7 font-bold text-gray-400 tracking-tighter text-sm opacity-80">
+                    <td className="px-4 lg:px-10 py-5 lg:py-7 font-bold text-gray-400 tracking-tighter text-sm opacity-80">
                       {r.stats.atk} / {r.stats.def} / {r.stats.hp}
                     </td>
-                    <td className="px-10 py-7 font-black text-gray-300 text-sm">Lvl {r.level}</td>
-                    <td className="px-10 py-7 font-black text-white tracking-tighter text-xl">{r.cp}</td>
-                    <td className="px-10 py-7 text-right">
+                    <td className="px-4 lg:px-10 py-5 lg:py-7 font-black text-gray-300 text-sm whitespace-nowrap">{t('iv.level')} {r.level}</td>
+                    <td className="px-4 lg:px-10 py-5 lg:py-7 font-black text-white tracking-tighter text-xl">{r.cp}</td>
+                    <td className="px-4 lg:px-10 py-5 lg:py-7 text-right">
                       <div className="flex flex-col items-end gap-1.5">
                         <span className={`font-black text-xl tracking-tighter ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/90'}`}>{r.perfection}%</span>
-                        <div className="w-24 h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div className="w-20 lg:w-24 h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                           <div className="h-full bg-brand-accent shadow-[0_0_8px_rgba(3,147,218,0.4)] transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
                         </div>
                       </div>
@@ -806,6 +902,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
             </tbody>
           </table>
         </div>
+        </>
         )}
       </div>
 
