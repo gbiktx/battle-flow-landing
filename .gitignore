@@ -22,7 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
-\n# Legacy build output\n_site/\n\n# Firebase logs\nfirebase-debug.log\n
+
+# Legacy build output
+_site/
+
+# Firebase logs
+firebase-debug.log
 
 # Playwright
 /test-results/
