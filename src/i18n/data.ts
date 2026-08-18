@@ -1248,7 +1248,19 @@ BattleFlow Pro는 구매하신 앱 스토어(Apple App Store 또는 Google Play)
 //
 //   - Movedex — browse every fast and charged move with full stats and effects.
 export const whatsNewData: Record<string, string> = {
-  en: `## v4.1.5
+  en: `## v4.2
+
+**Scanning that doesn't give up.** BattleFlow now reads Pokémon whose CP is covered by their own sprite — the wings, tails and necks that used to make a scan fail — and when the evidence allows two possible CPs it offers you both instead of giving up. It also scans correctly when a Pokémon isn't at full HP, reads regional forms from clipped type labels, and handles Japanese, Korean and Chinese appraisals properly.
+
+**Meta Analysis, rebuilt as a coach.** One question at a time: your season record, then the teams you played it with, then what to do about the one you pick. Drill your lead matchups lists the openings you actually get with who on your line handles each, and takes them straight into flashcards. Explore leads ranks other leads to build around against the field you personally face — how many of your logged battles each one takes over, filtered by what you could field from your Collection today — then builds a team around your pick in one tap.
+
+**Learn.** A new home for getting better, with PvP Glossary, PvP Mechanics and Type Effectiveness decks in the game's own words. New in this release, Can You Tank It? drills the call you make most: your Pokémon at a given HP, their charged move about to land — do you survive it unshielded?
+
+**Collection Cleanup, redesigned.** Built around searches, with nine transfer-protection categories and keywords that follow Pokémon GO's language rather than the app's. Purified is now a first-class classification, a copy can declare which build it is for, and power-up costs are a full column table.
+
+**Plus.** Compare IV spreads side by side, including the best build at level 40 against level 50. Build as many custom flashcard decks as you want. Set any Pokémon to its shiny form and see it across the app. Cup names now come from the game itself in every language, and Latin American Spanish is its own locale.
+
+## v4.1.5
 
 **Team Builder from your Collection.** Build teams around the Pokémon you actually own, with meta-aware lead recommendations.
 
@@ -1301,7 +1313,19 @@ export const whatsNewData: Record<string, string> = {
 **Build Around Mode.** Start team generation from any Pokémon. Pick your favorite from Rankings or your Pokebox, and BattleFlow builds optimized teams around it — finding the best leads, safe swaps, and closers to complement your anchor.
 
 **Shiny Sprites (Pro).** See your shiny Pokémon throughout the app — in rankings, teams, Pokebox, IV checker, and generated teams. Toggle shinies per species with a sparkle animation.`,
-  es: `## v4.1.5
+  es: `## v4.2
+
+**Escaneo que no se rinde.** BattleFlow ahora lee Pokémon cuyos PC están tapados por su propio sprite —las alas, colas y cuellos que solían causar errores de escaneo— y, cuando la evidencia sugiere dos posibles PC, te ofrece ambos en lugar de darse por vencido. También escanea correctamente cuando un Pokémon no está al máximo de PS, lee las formas regionales a partir de etiquetas de tipo recortadas y procesa las valoraciones en japonés, coreano y chino.
+
+**Análisis del meta, reconstruido como entrenador.** Una pregunta a la vez: tu récord de la temporada, luego los equipos con los que jugaste y, por último, qué hacer con el que elijas. Practica tus enfrentamientos de Inicial enumera las aperturas que de verdad te tocan y quién de tu línea resuelve cada una, y las lleva directo a las tarjetas de estudio. Explora Iniciales clasifica otros Iniciales para armar un equipo alrededor, medidos contra el campo que tú enfrentas —cuántas de tus batallas registradas cubre cada uno, con filtro por lo que podrías usar hoy desde tu Colección— y arma el equipo con un toque.
+
+**Aprendizaje.** Un nuevo espacio para mejorar, con barajas de Glosario PvP, Mecánicas PvP y Efectividad de tipos en las propias palabras del juego. Como novedad en esta versión, ¿Puedes aguantarlo? entrena la decisión más frecuente: tu Pokémon con ciertos PS, su ataque cargado a punto de impactar… ¿sobrevives sin usar escudo?
+
+**Limpieza de la Colección, rediseñada.** Ahora gira en torno a búsquedas, con nueve categorías de protección de transferencia y palabras clave que siguen el lenguaje de Pokémon GO en lugar del de la aplicación. Los Pokémon purificados son una clasificación principal, cada copia puede declarar para qué formato está destinada y los costos de poder son una tabla de columnas completa.
+
+**Además.** Compara combinaciones de IV lado a lado, incluyendo la mejor configuración a nivel 40 contra nivel 50. Crea tantas barajas de tarjetas personalizadas como quieras. Configura cualquier Pokémon en su forma variocolor y visualízala en toda la app. Los nombres de las copas ahora provienen del propio juego en todos los idiomas, y el español de Latinoamérica cuenta con su propia localización.
+
+## v4.1.5
 
 **Constructor de Equipos desde tu Colección.** Arma equipos con los Pokémon que realmente tienes, con recomendaciones de líder basadas en el meta.
 
@@ -1354,7 +1378,19 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir Alrededor.** Genera equipos a partir de cualquier Pokémon. Elige tu favorito de los Rankings o tu Pokebox, y BattleFlow construye equipos optimizados a su alrededor — encontrando los mejores leads, safe swaps y closers.
 
 **Sprites Shiny (Pro).** Ve tus Pokémon shiny en toda la app — rankings, equipos, Pokebox, verificador de IVs y equipos generados. Activa shinies por especie con animación de brillo.`,
-  fr: `## v4.1.5
+  fr: `## v4.2
+
+**Un scan qui n'abandonne plus.** BattleFlow lit désormais les Pokémon dont les PC sont masqués par leur propre sprite — les ailes, queues et cous qui provoquaient auparavant des échecs de scan — et, lorsque les indices suggèrent deux PC possibles, vous propose les deux au lieu d'abandonner. Il scanne aussi correctement lorsqu'un Pokémon n'est pas au maximum de ses PV, lit les formes régionales à partir d'étiquettes de type tronquées et traite les évaluations en japonais, coréen et chinois.
+
+**L'Analyse du méta, reconstruite en coach.** Une question à la fois : votre historique de la saison, puis les compositions avec lesquelles vous avez joué, et enfin quoi faire de l'équipe choisie. Entraîne-toi sur tes matchups de lead liste les ouvertures que vous obtenez réellement et qui, dans votre équipe, gère chacune d'elles, puis les transforme directement en cartes d'entraînement. Explorer les leads classe d'autres leads autour desquels construire, face au terrain que vous affrontez vraiment — combien de vos combats enregistrés chacun reprend à son compte, filtré par ce que vous pourriez aligner dès aujourd'hui depuis votre Collection — et construit une équipe autour de votre choix en un geste.
+
+**Apprentissage.** Un nouvel espace pour progresser, avec des decks Glossaire PvP, Mécaniques PvP et Efficacité des types, dans les propres termes du jeu. Nouveauté de cette version, Pouvez-vous encaisser ? entraîne la décision la plus fréquente : votre Pokémon avec un certain nombre de PV, l'attaque chargée adverse sur le point d'impacter — survivez-vous sans bouclier ?
+
+**Le Nettoyage de la Collection, repensé.** Il s'organise autour des recherches, avec neuf catégories de protection contre le transfert et des mots-clés qui suivent la terminologie de Pokémon GO plutôt que celle de l'application. Les Pokémon Purifiés sont désormais une classification principale, un exemplaire peut déclarer le format auquel il est destiné, et les coûts d'amélioration s'affichent sous forme de tableau complet.
+
+**En plus.** Comparez les répartitions d'IV côte à côte, y compris la meilleure configuration au niveau 40 contre le niveau 50. Créez autant de decks de flashcards personnalisés que vous le souhaitez. Affichez n'importe quel Pokémon dans sa forme chromatique à travers toute l'application. Les noms des coupes proviennent désormais du jeu lui-même dans toutes les langues, et l'espagnol d'Amérique latine dispose de sa propre localisation.
+
+## v4.1.5
 
 **Générateur d'équipe depuis votre Collection.** Composez vos équipes à partir des Pokémon que vous possédez réellement, avec des recommandations de leaders adaptées à la méta.
 
@@ -1407,7 +1443,19 @@ export const whatsNewData: Record<string, string> = {
 **Mode Construire Autour.** Générez des équipes à partir de n'importe quel Pokémon. Choisissez votre favori dans les classements ou votre Pokebox, et BattleFlow construit des équipes optimisées autour de lui — trouvant les meilleurs leads, safe swaps et closers.
 
 **Sprites Shiny (Pro).** Voyez vos Pokémon shiny dans toute l'app — classements, équipes, Pokebox, vérificateur d'IVs et équipes générées. Activez les shinies par espèce avec une animation d'éclat.`,
-  de: `## v4.1.5
+  de: `## v4.2
+
+**Scannen, das nicht mehr aufgibt.** BattleFlow liest jetzt Pokémon, deren WP durch ihr eigenes Sprite verdeckt sind — die Flügel, Schweife und Hälse, die früher zu Scanfehlern führten — und bietet dir beide Werte zur Auswahl an, wenn die Daten zwei mögliche WP zulassen. Es scannt auch dann korrekt, wenn ein Pokémon nicht bei vollen KP ist, erkennt regionale Formen anhand abgeschnittener Typen-Etiketten und verarbeitet japanische, koreanische und chinesische Bewertungen richtig.
+
+**Die Meta-Analyse, neu als Coach.** Eine Frage nach der anderen: deine Saisonbilanz, dann die Teams, mit denen du gespielt hast, und schließlich was du mit dem ausgewählten Team tun solltest. Übe deine Lead-Matchups listet die Eröffnungen auf, die du tatsächlich bekommst, jeweils mit dem Teammitglied, das sie übernimmt – und führt sie direkt in Lernkarten über. Leads erkunden bewertet andere Leads, um die du ein Team bauen kannst, gegen das Feld, dem du persönlich begegnest — wie viele deiner protokollierten Kämpfe jeder davon übernimmt, gefiltert danach, was du heute aus deiner Sammlung aufstellen könntest — und baut mit einem Tipp ein Team um deine Wahl.
+
+**Lernen.** Ein neues Zuhause, um besser zu werden, mit Decks für PvP-Glossar, PvP-Mechaniken und Typen-Effektivität in den offiziellen Begriffen des Spiels. Neu in dieser Version trainiert Kannst du es einstecken? die häufigste Entscheidung in der GBL: dein Pokémon mit bestimmten KP, die gegnerische Lade-Attacke kurz vor dem Treffer – überlebst du ohne Schild?
+
+**Die Sammlungsbereinigung, neu gestaltet.** Sie ist um Suchfilter herum aufgebaut, mit neun Transfer-Schutzkategorien und Begriffen, die sich an Pokémon GO orientieren statt an der App. Erlöste Pokémon sind nun eine eigenständige Klassifizierung, ein Pokémon kann angeben, für welche Liga oder welchen Cup es aufgebaut wird, und die Level-Up-Kosten erscheinen als vollständige Tabelle.
+
+**Außerdem.** Vergleiche IV-Verteilungen direkt nebeneinander, einschließlich des besten Builds auf Level 40 gegenüber Level 50. Erstelle so viele eigene Karteikarten-Decks, wie du möchtest. Stelle jedes Pokémon auf seine schillernde Form ein und sieh sie in der gesamten App. Die Cup-Namen stammen jetzt in allen Sprachen direkt aus dem Spiel, und lateinamerikanisches Spanisch ist eine eigene Sprachfassung.
+
+## v4.1.5
 
 **Team-Builder aus deiner Sammlung.** Stelle Teams aus den Pokémon zusammen, die du tatsächlich besitzt – mit Meta-basierten Empfehlungen für Anfangs-Pokémon.
 
@@ -1460,7 +1508,19 @@ export const whatsNewData: Record<string, string> = {
 **Build-Around-Modus.** Starte die Teamgenerierung mit einem beliebigen Pokémon. Wähle deinen Favoriten aus den Rankings oder deiner Pokebox, und BattleFlow erstellt optimierte Teams drumherum — mit den besten Leads, Safe Swaps und Closern.
 
 **Shiny-Sprites (Pro).** Sieh deine Shiny-Pokémon in der gesamten App — Rankings, Teams, Pokebox, IV-Checker und generierte Teams. Aktiviere Shinies pro Spezies mit Glitzeranimation.`,
-  it: `## v4.1.5
+  it: `## v4.2
+
+**Una scansione che non si arrende.** BattleFlow ora legge i Pokémon i cui PL sono coperti dal proprio sprite — le ali, le code e i colli che prima causavano errori — e, quando i dati indicano due PL possibili, te li propone entrambi invece di arrendersi. Scansiona correttamente anche quando un Pokémon non è al massimo degli PS, legge le forme regionali dalle etichette dei tipi ritagliate e gestisce le valutazioni in giapponese, coreano e cinese.
+
+**L'Analisi del meta, ricostruita come allenatore.** Una domanda alla volta: il tuo record stagionale, poi le squadre con cui hai giocato e infine cosa fare del team che scegli. Allena i tuoi matchup da Lead elenca le aperture che ti capitano davvero e chi nella tua linea se ne occupa, portandole direttamente nelle flashcard. Esplora i Lead classifica altri Lead attorno a cui costruire, misurati sul campo che affronti tu — quante delle tue battaglie registrate ciascuno si prende in carico, con un filtro per ciò che potresti schierare oggi dalla tua Collezione — e costruisce la squadra attorno alla tua scelta con un tocco.
+
+**Apprendimento.** Un nuovo spazio per migliorare, con i mazzi Glossario PvP, Meccaniche PvP ed Efficacia dei tipi, con i termini ufficiali del gioco. Novità di questa versione, Riesci a incassarlo? allena la scelta più frequente nella Lega Lotte GO: il tuo Pokémon con determinati PS, la mossa caricata avversaria sul punto di colpire — sopravvivi senza usare lo scudo?
+
+**La Pulizia della Collezione, riprogettata.** È costruita attorno alle ricerche, con nove categorie di protezione dal trasferimento e parole chiave che seguono il linguaggio di Pokémon GO anziché quello dell'app. I Pokémon purificati sono ora una classificazione principale, una copia può dichiarare per quale formato è destinata e i costi di potenziamento sono mostrati in una tabella completa.
+
+**Inoltre.** Confronta le combinazioni di IV affiancate, inclusa la migliore configurazione al livello 40 contro il livello 50. Crea tutti i mazzi di flashcard personalizzati che desideri. Imposta qualsiasi Pokémon nella sua forma cromatica e vedila in tutta l'app. I nomi delle coppe provengono ora dal gioco stesso in ogni lingua, e lo spagnolo dell'America Latina ha una localizzazione dedicata.
+
+## v4.1.5
 
 **Creatore di Squadre dalla tua Collezione.** Crea squadre con i Pokémon che possiedi davvero, con consigli sul lead basati sul meta.
 
@@ -1513,7 +1573,19 @@ export const whatsNewData: Record<string, string> = {
 **Modalità Costruisci Attorno.** Genera squadre partendo da qualsiasi Pokémon. Scegli il tuo preferito dai ranking o dalla Pokebox, e BattleFlow costruisce squadre ottimizzate attorno ad esso — trovando i migliori lead, safe swap e closer.
 
 **Sprite Shiny (Pro).** Visualizza i tuoi Pokémon shiny in tutta l'app — classifiche, squadre, Pokebox, verificatore IV e squadre generate. Attiva gli shiny per specie con animazione scintillante.`,
-  pt: `## v4.1.5
+  pt: `## v4.2
+
+**Um escaneamento que não desiste.** O BattleFlow agora lê Pokémon cujos PCs estão cobertos pelo próprio sprite — as asas, caudas e pescoços que costumavam causar falhas — e, quando as evidências sugerem dois PCs possíveis, oferece ambos em vez de desistir. Também escaneia corretamente quando um Pokémon não está com o HP máximo, lê formas regionais a partir de etiquetas de tipo cortadas e processa as avaliações em japonês, coreano e chinês.
+
+**A Análise do meta, reconstruída como treinador.** Uma pergunta de cada vez: seu histórico da temporada, depois as equipes com as quais jogou e, por fim, o que fazer com a que escolher. Treine seus confrontos de Líder lista as aberturas que você realmente enfrenta e quem da sua linha dá conta de cada uma, levando-as direto para os flashcards. Explorar Líderes classifica outros Líderes para construir ao redor, medidos contra o cenário que você mesmo enfrenta — quantas das suas batalhas registradas cada um assume, com filtro pelo que você poderia escalar hoje a partir da sua Coleção — e monta a equipe em torno da sua escolha com um toque.
+
+**Aprendizado.** Um novo espaço para melhorar, com baralhos de Glossário PvP, Mecânicas PvP e Eficácia de tipos, nas próprias palavras do jogo. A novidade desta versão, Você consegue aguentar?, treina a decisão mais frequente na GBL: seu Pokémon com um determinado HP, o ataque carregado adversário prestes a atingir — você sobrevive sem usar escudo?
+
+**A Limpeza da Coleção, redesenhada.** Foi construída em torno de buscas, com nove categorias de proteção de transferência e palavras-chave que seguem a linguagem do Pokémon GO em vez da do aplicativo. Os Pokémon Purificados são agora uma classificação principal, cada cópia pode declarar para qual formato está destinada e os custos de fortalecimento aparecem em uma tabela completa.
+
+**Além disso.** Compare combinações de IV lado a lado, incluindo a melhor configuração no nível 40 contra o nível 50. Crie quantos baralhos de flashcards personalizados desejar. Defina qualquer Pokémon para sua forma brilhante e veja-a em todo o aplicativo. Os nomes das copas agora vêm do próprio jogo em todos os idiomas, e o espanhol latino-americano tem sua própria localização.
+
+## v4.1.5
 
 **Montador de Times a partir da sua Coleção.** Monte times com os Pokémon que você realmente tem, com recomendações de líder baseadas no meta.
 
@@ -1566,7 +1638,19 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir ao Redor.** Gere equipes a partir de qualquer Pokémon. Escolha seu favorito dos Rankings ou da Pokebox, e BattleFlow monta equipes otimizadas ao redor dele — encontrando os melhores leads, safe swaps e closers.
 
 **Sprites Shiny (Pro).** Veja seus Pokémon shiny em todo o app — rankings, equipes, Pokebox, verificador de IVs e equipes geradas. Ative shinies por espécie com animação brilhante.`,
-  ja: `## v4.1.5
+  ja: `## v4.2
+
+**あきらめないスキャン。** 翼や尻尾、首などのグラフィックにCPが重なって認識できなかった問題を解決し、スキャン失敗を大きく減らしました。CP候補が複数考えられる場合は、あきらめずに両方を提示して選べます。HPが満タンでないポケモンも正しく読み取れるため、レイドやジム戦の直後でも正確です。一部が欠けたタイプ表記からのリージョンフォーム判定、日本語・韓国語・中国語の評価画面にも対応しました。
+
+**環境分析が、あなたのコーチに。** シーズン戦績、使用したパーティ、そして選んだパーティで次に何をするかまで、一度に一つの疑問に答える構成に再設計しました。「初手対面を練習する」では、実際によく当たる初手対面と、自分のパーティの誰が受けられるかを一覧でき、そのままフラッシュカードで練習できます。「初手を探す」では、あなた自身が対戦した相手を基準に、軸にできる他の初手をランキング表示します。各候補が記録済みバトルのうち何戦を引き受けるかを示し、手持ちから今すぐ出せるかで絞り込め、選んだポケモンを軸にしたパーティをワンタップで組めます。
+
+**学習センター。** 上達のための新しい拠点です。PvP用語集、ゲーム内仕様、タイプ相性のデッキを、ゲーム公式の表現でクイズ形式に学べます。本バージョンの新機能「耐えられますか？」は、最も頻繁に迫られる判断を鍛えます。現在のHPと相手が放つスペシャルわざを見て、シールドなしで耐えられるか——瞬時に見極める練習ができます。
+
+**ボックス整理を刷新。** 検索を中心に再設計し、ポケモンGOの言葉づかいに沿った9つの転送保護カテゴリを用意しました。「ライトポケモン」は独立した分類になり、各個体に想定する育成先を設定でき、強化コストは列を備えた表で確認できます。
+
+**さらに。** 個体値を横並びで比較でき、レベル40とレベル50の最適な仕上がりも見比べられます。カスタムのフラッシュカードデッキは好きなだけ作成可能。どのポケモンも色違い表示に切り替えられ、アプリ全体に反映されます。カップ名はすべての言語でゲーム公式の名称になり、ラテンアメリカ向けスペイン語も独立したロケールになりました。
+
+## v4.1.5
 
 **コレクションからのチーム構築**：実際に所持しているポケモンでチームを編成でき、メタを踏まえたリード推奨も表示されます。
 
@@ -1619,7 +1703,19 @@ export const whatsNewData: Record<string, string> = {
 **ビルドアラウンドモード**：任意のポケモンからチーム生成を開始。ランキングやポケボックスからお気に入りを選ぶと、BattleFlowがそのポケモンを軸に最適なリード、セーフスワップ、クローザーを備えたチームを構築します。
 
 **色違いスプライト（Pro）**：色違いポケモンをアプリ全体で表示 — ランキング、チーム、ポケボックス、個体値チェッカー、生成チーム。種族ごとにキラキラアニメーション付きで切り替え可能。`,
-  ko: `## v4.1.5
+  ko: `## v4.2
+
+**포기하지 않는 스캔.** 날개, 꼬리, 목 등의 그래픽에 CP가 가려져 스캔이 실패하던 문제를 개선했습니다. 판단 가능한 CP 후보가 두 가지인 경우에는 포기하지 않고 두 가지를 모두 제안합니다. HP가 가득 차지 않은 포켓몬도 정확하게 인식하므로 레이드나 체육관 배틀 직후에도 바로 스캔할 수 있으며, 잘린 타입 라벨을 통한 리전폼 인식과 한국어·일본어·중국어 평가 화면 분석도 지원합니다.
+
+**메타 분석이 코치가 되었습니다.** 시즌 전적, 사용한 팀, 그리고 선택한 팀으로 다음에 무엇을 할지까지 한 번에 하나의 질문에 답하도록 재구성했습니다. '선봉 상성 연습하기'는 실제로 자주 마주치는 선봉 상성과 그것을 받아낼 우리 팀의 포켓몬을 함께 보여주고, 그대로 플래시카드 학습으로 이어집니다. '선봉 살펴보기'는 여러분이 직접 상대한 선봉을 기준으로 새로 축이 될 만한 선봉의 순위를 매기고, 각 후보가 기록된 배틀 중 몇 판을 대신 가져가는지 알려주며, 고른 포켓몬을 축으로 한 팀을 한 번의 탭으로 구성합니다.
+
+**학습 센터.** 더 잘하기 위한 새로운 공간입니다. PvP 용어집, PvP 배틀 메커니즘, 타입 상성 덱을 게임 공식 표현으로 학습할 수 있습니다. 이번 버전에 추가된 '버틸 수 있을까요?'는 가장 자주 내리는 판단을 훈련합니다. 특정 HP의 내 포켓몬이 상대의 스페셜 어택을 실드 없이 버텨낼 수 있을까요?
+
+**포켓몬 박스 정리 개편.** 검색을 중심으로 전면 개편되어 포켓몬 GO의 표현을 따르는 9가지 전송 보호 카테고리를 제공합니다. 정화 포켓몬이 주요 분류로 승격되었고, 개별 포켓몬에 어떤 육성 본체인지 태그를 지정할 수 있으며, 강화 비용은 열 테이블로 표시됩니다.
+
+**그 외.** 개체값 분배를 나란히 비교할 수 있고 레벨 40과 레벨 50 빌드도 비교할 수 있습니다. 커스텀 플래시카드 덱은 원하는 만큼 만들 수 있습니다. 어떤 포켓몬이든 색이 다른 모습으로 설정하면 앱 전체에 적용됩니다. 모든 언어에서 컵 이름이 게임 공식 명칭과 일치하게 되었고, 라틴아메리카 스페인어가 독자적인 로케일로 지원됩니다.
+
+## v4.1.5
 
 **컬렉션 기반 팀 빌더**: 실제로 보유한 포켓몬으로 팀을 구성하고, 메타를 반영한 리드 추천을 받아보세요.
 
@@ -1672,7 +1768,19 @@ export const whatsNewData: Record<string, string> = {
 **빌드 어라운드 모드**: 원하는 포켓몬으로 팀 생성을 시작하세요. 랭킹이나 포켓박스에서 좋아하는 포켓몬을 선택하면 BattleFlow가 최적의 리드, 세이프 스왑, 클로저를 찾아 팀을 구축합니다.
 
 **색이 다른 스프라이트 (Pro)**: 앱 전체에서 색이 다른 포켓몬을 확인하세요 — 랭킹, 팀, 포켓박스, 개체값 체커, 생성된 팀. 종별로 반짝이는 애니메이션과 함께 전환 가능.`,
-  'zh-hant': `## v4.1.5
+  'zh-hant': `## v4.2
+
+**不再輕易放棄的掃描**：現在能讀取 CP 被自身圖片遮擋的寶可夢——翅膀、尾巴與脖子過去常導致掃描失敗；當判斷出兩種可能的 CP 時，會同時提供兩者供你選擇，而非直接放棄。即使寶可夢未滿血也能正確掃描，並可從裁剪的屬性標籤讀取地區形態，中文、日文與韓文的評價畫面也已完整支援。
+
+**環境分析重構為你的教練**：每次專注解答一個問題——你的賽季記錄、你所使用的陣容，以及選定陣容之後該做什麼。「練習你的先發對位」列出你實際最常遇到的先發對位，並標明你陣容中由誰來應對，還可直接進入閃卡練習。「探索先發」以你親自遇過的對手為基準，為可以作為核心的其他先發排名，顯示每個候選能替你接下多少場已記錄的對戰，並可依你今天就能派出的寶可夢篩選，再一鍵圍繞所選寶可夢組建陣容。
+
+**學習中心**：提升技術的全新起點，收錄 PvP 詞彙表、PvP 機制與屬性相性牌組，皆以遊戲官方用語呈現。本版本全新推出「能扛下來嗎？」，鍛鍊你最常面臨的決策：你的寶可夢在特定 HP 下，面對即將命中的特殊招式，在無防禦網的情況下能否生還？
+
+**Pokebox 清理全新設計**：以搜尋為核心，提供九個符合《Pokémon GO》官方用語的轉送保護類別。淨化寶可夢現已列為主要分類，每隻寶可夢都可以標記其預計培養的方向，強化花費則以完整的表格欄位呈現。
+
+**其他**：可橫向對比個體值分佈，包括等級 40 與等級 50 的最佳配置；自由建立多個自訂閃卡牌組；將任何寶可夢設定為異色形態並在全應用程式中顯示。所有語言的盃賽名稱現在皆與遊戲官方一致，拉丁美洲西班牙語也擁有獨立的在地化版本。
+
+## v4.1.5
 
 **從圖鑑組建隊伍**：使用你實際擁有的寶可夢組建隊伍，並取得基於目前環境的先發推薦。
 
