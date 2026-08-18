@@ -232,4 +232,28 @@ finally:
         if os.path.exists(tmp):
             os.remove(tmp)
 
+# The 1024px PNGs above are masters, not what the pages load: every visitor-facing
+# use is a 32-256px <img>, and shipping 840 KB to paint a 32px icon was ~21 GB of
+# Netlify bandwidth a month. Emit the WebP derivatives the components reference,
+# sized 2x their CSS display box. large-logo.png stays PNG on purpose — it is the
+# og:image/twitter:image, fetched by social scrapers rather than by visitors, and
+# not every scraper handles WebP.
+derivatives = [
+    ("appicon.png", "appicon-96.webp", 96),                    # nav icon, w-8 (32px)
+    ("current_logo_rounded.png", "app-icon-512.webp", 512),    # hero, width=256
+    ("current_logo_rounded.png", "app-icon-64.webp", 64),      # footer, w-8 (32px)
+    ("large-logo.png", "baru-logo-64.webp", 64),               # footer, h-8 (32px)
+]
+for src_name, out_name, size in derivatives:
+    src_path = os.path.join(target_dir, src_name)
+    out_path = os.path.join(target_dir, out_name)
+    print(f"Compiling landing page {out_name} ({size}px)...")
+    subprocess.run(
+        ["cwebp", "-quiet", "-q", "90", "-alpha_q", "100",
+         "-resize", str(size), "0", "-metadata", "none", src_path, "-o", out_path],
+        check=True,
+    )
+    if not os.path.exists(out_path) or os.path.getsize(out_path) == 0:
+        raise RuntimeError(f"cwebp produced no output for {out_name}")
+
 print("All landing page branding assets compiled successfully!")

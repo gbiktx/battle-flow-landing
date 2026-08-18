@@ -159,7 +159,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const t = useTranslations(lang as keyof typeof ui);
 
   // Scan-CTA media: localized still as poster, optional scan clip over it.
-  const scanPoster = `/assets/images/features/${lang}/scan.png`;
+  const scanPoster = `/assets/images/features/${lang}/scan.webp`;
   const scanVideo = SCAN_VIDEO_BY_LANG[lang] ?? SCAN_VIDEO_SHARED;
 
   // One-time impression when the scan CTA scrolls into view. Pairs with the
@@ -425,7 +425,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                         src={getSpritePath(row.form)}
                         alt={`${localizePokemon(row.form.id, row.form.name)} sprite`}
                         className="w-7 h-7 md:w-9 md:h-9 object-contain flex-shrink-0"
-                        onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}
+                        onError={(e) => (e.currentTarget.src = '/assets/images/appicon-96.webp')}
                       />
                       <span className="text-[10px] md:text-xs font-black uppercase tracking-tight text-white leading-[1.15] max-w-[68px] md:max-w-none">
                         {localizePokemon(row.form.id, row.form.name)}
@@ -485,7 +485,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
               <div className="relative mb-4">
                 <div className="absolute inset-0 bg-white/5 blur-3xl rounded-full scale-150 group-hover:scale-175 transition-transform duration-700"></div>
                 <div className="relative p-4 bg-white/5 backdrop-blur-md rounded-full border border-white/10">
-                  <img src={spriteUrl} alt={`${localizePokemon(currentPokemon.id, currentPokemon.name)} sprite`} className="w-24 h-24 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
+                  <img src={spriteUrl} alt={`${localizePokemon(currentPokemon.id, currentPokemon.name)} sprite`} className="w-24 h-24 object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" onError={(e) => (e.currentTarget.src = '/assets/images/appicon-96.webp')}/>
                 </div>
               </div>
               <h3 className="text-3xl font-black text-white tracking-tighter uppercase">{formDisplayName(currentPokemon)}</h3>
@@ -523,7 +523,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                         title={formDisplayName(f)}
                         className={`flex flex-col items-center gap-1 px-2.5 py-1.5 rounded-xl border transition-all active:scale-95 ${selected ? 'bg-brand-accent/15 border-brand-accent/60' : 'bg-white/5 border-white/10 hover:border-white/30'}`}
                       >
-                        <img src={getSpritePath(f)} alt="" className="w-9 h-9 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')} />
+                        <img src={getSpritePath(f)} alt="" className="w-9 h-9 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon-96.webp')} />
                         <span className={`text-[9px] font-black uppercase tracking-tight leading-none text-center whitespace-nowrap ${selected ? 'text-brand-accent' : 'text-gray-400'}`}>{label}</span>
                       </button>
                     );
@@ -553,7 +553,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                 <div className="absolute left-0 right-0 top-full mt-2 bg-brand-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-60 overflow-y-auto z-[100]">
                   {filteredPokemonList.map(p => (
                     <button key={p.id} className="w-full text-left px-5 py-3 hover:bg-white/10 transition-colors flex items-center gap-4 text-white border-b border-white/5 last:border-0" onClick={() => { setSelectedId(p.id); setSearchTerm(''); }}>
-                      <img src={getSpritePath(p)} alt={`${localizePokemon(p.id, p.name)} sprite`} className="w-8 h-8 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon.png')}/>
+                      <img src={getSpritePath(p)} alt={`${localizePokemon(p.id, p.name)} sprite`} className="w-8 h-8 object-contain" onError={(e) => (e.currentTarget.src = '/assets/images/appicon-96.webp')}/>
                       <span className="font-bold text-sm uppercase tracking-tight">{localizePokemon(p.id, p.name)}</span>
                     </button>
                   ))}
