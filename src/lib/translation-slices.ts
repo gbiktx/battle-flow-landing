@@ -29,3 +29,20 @@ export const getMoveTranslations = (lang: string): LocaleDictionary =>
 
 export const getPokemonTranslations = (lang: string): LocaleDictionary =>
   pokemonSlices[lang] ?? pokemonSlices.en ?? EMPTY;
+
+/**
+ * Narrow a locale slice to the keys one island actually renders.
+ *
+ * Island props are serialized into the page HTML, so handing a component the
+ * full 1,740-species dictionary costs ~110 KB of markup *per island*. Passing
+ * only the ids a component can display keeps that off pages that mount more
+ * than one.
+ */
+export const pickTranslations = (dict: LocaleDictionary, keys: readonly string[]): LocaleDictionary => {
+  const out: LocaleDictionary = {};
+  for (const k of keys) {
+    const v = dict[k];
+    if (v !== undefined) out[k] = v;
+  }
+  return out;
+};

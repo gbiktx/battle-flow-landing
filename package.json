@@ -12,10 +12,14 @@
     "preview": "astro preview",
     "test:routes": "node scripts/verify-routes.js",
     "sync:gamemaster": "node scripts/sync-gamemaster.js",
+    "sync:drill-decks": "node scripts/sync-drill-decks.js",
+    "sync:move-pools": "node scripts/sync-move-pools.js",
     "sync:translations": "node scripts/sync-translations.js",
-    "sync:all": "pnpm sync:gamemaster && pnpm sync:translations && pnpm validate:data",
+    "sync:all": "pnpm sync:gamemaster && pnpm sync:drill-decks && pnpm sync:move-pools && pnpm sync:translations && pnpm validate:data",
     "validate:data": "node scripts/validate-data.js",
-    "astro": "astro"
+    "astro": "astro",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.3",
@@ -29,5 +33,8 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
   }
 }

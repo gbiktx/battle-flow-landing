@@ -1,0 +1,39 @@
+---
+import Footer from '../../components/Footer.astro';
+import MoveCounts from '../../components/MoveCounts.astro';
+import Nav from '../../components/Nav.astro';
+import { languages } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import { getMoveCountsFaqs } from '../../lib/faqs';
+import { buildFAQSchema, buildFeaturePageSchemas } from '../../lib/seo-schemas';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter((lang) => lang !== 'en')
+    .map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const questions = getMoveCountsFaqs(t);
+
+const jsonLd = [
+  ...buildFeaturePageSchemas({
+    siteUrl: Astro.site!,
+    lang,
+    pagePath: `/${lang}/move-counts/`,
+    name: t('drill.meta_title'),
+    description: t('drill.meta_description'),
+    navCrumbName: t('nav.move_counts'),
+    featureList: [t('drill.chart_title'), t('drill.mode_count'), t('drill.mode_moveset')],
+  }),
+  buildFAQSchema({ questions }),
+];
+---
+
+<Layout title={t('drill.meta_title')} description={t('drill.meta_description')} jsonLd={jsonLd}>
+  <Nav />
+  <MoveCounts />
+  <Footer />
+</Layout>

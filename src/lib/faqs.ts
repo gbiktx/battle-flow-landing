@@ -28,3 +28,12 @@ export function getTeamBuilderFaqs(t: (key: Keys) => string) {
     a: t(`team.faq${n}_a` as Keys),
   }));
 }
+
+/** Move-counts FAQ. Same contract as the team builder's: one source for the
+ * rendered accordion and the FAQPage schema. */
+export function getMoveCountsFaqs(t: (key: Keys) => string) {
+  return [1, 2, 3, 4].map((n) => ({
+    q: t(`drill.faq${n}_q` as Keys),
+    a: t(`drill.faq${n}_a` as Keys),
+  }));
+}
