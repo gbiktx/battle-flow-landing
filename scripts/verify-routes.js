@@ -4,6 +4,11 @@ import path from 'node:path';
 const DIST_DIR = 'dist';
 // URL path segments — must stay lowercase. See CASING_RATIONALE below.
 const LANGUAGES = ['en', 'es', 'es-419', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
+// Locale segments are lowercase; hreflang values are BCP 47 (mirrors toBcp47()
+// in src/i18n/utils.ts).
+const BCP_47 = { 'zh-hant': 'zh-Hant' };
+const toBcp47 = (lang) => BCP_47[lang] ?? lang;
+
 const BASE_ROUTES = ['', 'privacy', 'tac', 'blog', 'iv-calculator', 'movedex', 'whats-new', 'gbl-calendar', 'team-builder', 'move-counts'];
 const BLOG_SLUGS = fs.readdirSync('src/content/blog/en')
   .filter(file => file.endsWith('.md'))
@@ -141,5 +146,39 @@ if (casingErrors.length > 0) {
 }
 
 console.log('✅ All URL paths are lowercase.');
+
+// --- Sitemap guards ----------------------------------------------------------
+// @astrojs/sitemap fails *silently*: an invalid option (e.g. an hreflang value
+// its schema's /^[a-zA-Z-]+$/ rejects) logs one WARN line and emits no sitemap
+// at all. The hreflang alternates are hand-rolled in astro.config.mjs for that
+// reason — these guards make either regression a build failure. See docs/SEO.md.
+console.log('\n🔍 Verifying the sitemap...');
+
+const sitemapErrors = [];
+const sitemapPath = path.join(DIST_DIR, 'sitemap-0.xml');
+
+if (!fs.existsSync(path.join(DIST_DIR, 'sitemap-index.xml')) || !fs.existsSync(sitemapPath)) {
+  sitemapErrors.push('no sitemap in dist/ — check the @astrojs/sitemap WARN lines in the build log');
+} else {
+  const xml = fs.readFileSync(sitemapPath, 'utf8');
+
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
+  locs.filter(loc => !loc.endsWith('/'))
+    .forEach(loc => sitemapErrors.push(`<loc> without a trailing slash: ${loc}`));
+
+  // Every locale must appear as an hreflang alternate, x-default included.
+  const hreflangs = new Set([...xml.matchAll(/hreflang="([^"]+)"/g)].map(([, tag]) => tag));
+  ['x-default', ...LANGUAGES.map(toBcp47)]
+    .filter(tag => !hreflangs.has(tag))
+    .forEach(tag => sitemapErrors.push(`no <xhtml:link> alternate for hreflang="${tag}"`));
+}
+
+if (sitemapErrors.length > 0) {
+  console.error('\n❌ ERROR: sitemap problems in the build output:\n');
+  sitemapErrors.forEach(e => console.error(`   - ${e}`));
+  process.exit(1);
+}
+
+console.log('✅ Sitemap has trailing-slash <loc>s and every locale alternate.');
 console.log('\n✅ SUCCESS: All checks passed!');
 process.exit(0);

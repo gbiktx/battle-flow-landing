@@ -1,7 +1,7 @@
 export const languages = {
   en: 'English',
   es: 'Español',
-  'es-419': 'Español (Latinoamérica)',
+  'es-419': 'Español (LatAm)',
   fr: 'Français',
   de: 'Deutsch',
   it: 'Italiano',

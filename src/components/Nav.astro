@@ -36,10 +36,13 @@ const isHome = currentPath === homeHref || currentPath === homeHref.replace(/\/$
         ))}
       </div>
 
+      <!-- The phone-width cap is load-bearing: a native select sizes itself to its
+           widest *option*, so adding "Español (LatAm)" pushed the hamburger button
+           off-screen on a 412px viewport. Desktop has the room, so it opts out. -->
       <div class="relative group">
         <select 
           aria-label={t('nav.language')}
-          class="bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-xs font-bold uppercase tracking-widest outline-none cursor-pointer hover:bg-white/10 transition-colors appearance-none pr-8"
+          class="bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-xs font-bold uppercase tracking-widest outline-none cursor-pointer hover:bg-white/10 transition-colors appearance-none pr-8 max-w-[8rem] lg:max-w-none truncate"
           onchange="window.location.href = this.value"
         >
           {Object.entries(languages).map(([code, name]) => (
