@@ -5,11 +5,12 @@ import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 import { whatsNewData } from './src/i18n/data.ts';
+import { contentLang } from './src/i18n/content-lang.ts';
 
 // URL path segments — always lowercase. Netlify's CDN 301s mixed-case paths to
 // lowercase, so any uppercase here makes canonicals point at a redirect.
 // See docs/locale-casing-fix-plan.md.
-const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
+const LOCALES = ['en', 'es', 'es-419', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
 
 // Keep empty What's New pages out of the sitemap (they're noindex until populated).
 // Matches /whats-new/ and /<locale>/whats-new/, mapping each to its locale's content.
@@ -17,7 +18,7 @@ const shouldIncludeInSitemap = (url) => {
   const match = url.match(/\/(?:([a-zA-Z-]+)\/)?whats-new\/?$/);
   if (!match) return true;
   const locale = match[1] && LOCALES.includes(match[1]) ? match[1] : 'en';
-  return Boolean((whatsNewData[locale] ?? '').trim());
+  return Boolean((whatsNewData[contentLang(locale)] ?? '').trim());
 };
 
 // https://astro.build/config
@@ -46,6 +47,11 @@ export default defineConfig({
       }
       return item;
     },
+    // NOTE: `es-419` is deliberately absent. @astrojs/sitemap validates hreflang
+    // values against /^[a-zA-Z-]+$/, so any digit-bearing BCP 47 region ('es-419')
+    // fails the schema and kills sitemap generation entirely. Those pages still
+    // ship the full hreflang set in <head> (src/layouts/Layout.astro); they just
+    // don't get <xhtml:link> alternates here.
     i18n: {
       defaultLocale: 'en',
       locales: {

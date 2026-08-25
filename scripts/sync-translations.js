@@ -11,6 +11,9 @@ const OUT_FILE = 'src/data/translations.json';
 const LANG_MAP = {
   en: { moves: 'en', pokemon: 'en' },
   es: { moves: 'es', pokemon: 'es' },
+  // Latin American Spanish. Same species names as `es` (2 of 1026 differ), but
+  // 141 of 425 move names do — that dictionary is the whole reason the locale exists.
+  'es-419': { moves: 'es-419', pokemon: 'es-419' },
   fr: { moves: 'fr', pokemon: 'fr' },
   de: { moves: 'de', pokemon: 'de' },
   it: { moves: 'it', pokemon: 'it' },

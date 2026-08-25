@@ -62,6 +62,13 @@ acquisition/conversion API — that data is Play Console UI + the GCS bulk-repor
   low-authority pages (the blog) unindexed. Fixed via a `serialize()` in
   [`astro.config.mjs`](../astro.config.mjs) that appends the slash. **If you touch the
   sitemap config, verify `dist/sitemap-0.xml` still has trailing-slash `<loc>` URLs.**
+- **`es-419` has no sitemap `<xhtml:link>` alternates.** `@astrojs/sitemap` validates
+  hreflang values against `/^[a-zA-Z-]+$/`, so a digit-bearing BCP 47 region fails the
+  schema — and a failed schema kills sitemap generation *entirely* (silent: one WARN
+  line, no `dist/sitemap-0.xml`). The locale is therefore left out of `i18n.locales`;
+  its pages still carry the full hreflang set in `<head>`. **Any locale tag containing a digit needs
+  the same treatment (letter-only tags like `zh-Hant` are fine) — and check that
+  `dist/sitemap-0.xml` exists after the build.**
 - **Two sitemaps in play.** `@astrojs/sitemap` generates `sitemap-index.xml`; robots.txt
   points there. Make sure GSC has the same one submitted (not a stale `sitemap.xml`),
   and don't submit page URLs (e.g. `/privacy/`) as sitemaps.

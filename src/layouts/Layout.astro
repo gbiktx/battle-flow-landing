@@ -39,7 +39,7 @@ const englishEquivalentPath = stripLocalePrefix(Astro.url.pathname);
 
 // Map our locale codes to OpenGraph locale format (underscored)
 const ogLocaleMap: Record<string, string> = {
-	en: 'en_US', es: 'es_ES', fr: 'fr_FR', de: 'de_DE', it: 'it_IT',
+	en: 'en_US', es: 'es_ES', 'es-419': 'es_LA', fr: 'fr_FR', de: 'de_DE', it: 'it_IT',
 	pt: 'pt_BR', 'zh-hant': 'zh_TW', ja: 'ja_JP', ko: 'ko_KR',
 };
 
@@ -145,7 +145,7 @@ const allSchemas = [...defaultSchemas, ...extraSchemas];
 		if (mixpanelToken) {
 			mixpanel.init(mixpanelToken, { track_pageview: false, persistence: 'localStorage' });
 
-			var langs = ['es','fr','de','it','pt','zh-hant','ja','ko'];
+			var langs = ['es','es-419','fr','de','it','pt','zh-hant','ja','ko'];
 			var path = window.location.pathname.replace(/\/$/, '') || '/';
 			var segments = path.split('/').filter(Boolean);
 			if (langs.indexOf(segments[0]) > -1) segments.shift();

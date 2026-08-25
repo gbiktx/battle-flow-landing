@@ -1,6 +1,7 @@
 export const languages = {
   en: 'English',
   es: 'Español',
+  'es-419': 'Español (Latinoamérica)',
   fr: 'Français',
   de: 'Deutsch',
   it: 'Italiano',
@@ -12,7 +13,7 @@ export const languages = {
 
 export const defaultLang = 'en';
 
-export const ui = {
+const uiCopy = {
   en: {
     'whatsnew.title': "What's New",
     'whatsnew.subtitle': "See what's changed in each version of BattleFlow.",
@@ -2804,3 +2805,8 @@ export const ui = {
     'gbl.name_naic2026': 'NAIC 2026 컵',
   },
 } as const;
+
+// Latin American Spanish shares Spain's UI copy — only the game-data dictionary
+// (src/data/translations.json) differs. Alias rather than duplicate 310 lines;
+// give it its own block the day the copy diverges. See ./content-lang.ts.
+export const ui = { ...uiCopy, 'es-419': uiCopy.es } as const;

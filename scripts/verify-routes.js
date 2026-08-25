@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const DIST_DIR = 'dist';
 // URL path segments — must stay lowercase. See CASING_RATIONALE below.
-const LANGUAGES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
+const LANGUAGES = ['en', 'es', 'es-419', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
 const BASE_ROUTES = ['', 'privacy', 'tac', 'blog', 'iv-calculator', 'movedex', 'whats-new', 'gbl-calendar', 'team-builder', 'move-counts'];
 const BLOG_SLUGS = fs.readdirSync('src/content/blog/en')
   .filter(file => file.endsWith('.md'))

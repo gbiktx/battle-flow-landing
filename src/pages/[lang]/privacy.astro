@@ -1,6 +1,7 @@
 ---
 import { languages } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
+import { contentLang } from '../../i18n/content-lang';
 import { privacyData } from '../../i18n/data';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
@@ -15,7 +16,7 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params;
 const t = useTranslations(lang as keyof typeof languages);
-const content = privacyData[lang] || privacyData.en;
+const content = privacyData[contentLang(lang)] || privacyData.en;
 const html = await marked.parse(content);
 ---
 

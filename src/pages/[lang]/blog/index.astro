@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { languages } from '../../../i18n/ui';
 import { useTranslations } from '../../../i18n/utils';
+import { contentLang } from '../../../i18n/content-lang';
 import Layout from '../../../layouts/Layout.astro';
 import Nav from '../../../components/Nav.astro';
 import DownloadButtons from '../../../components/DownloadButtons.astro';
@@ -21,7 +22,7 @@ const langKeys = Object.keys(languages);
 const posts = await getCollection('blog', ({ id }) => {
   const [idLang] = id.split('/');
   const normalizedLang = langKeys.find(k => k.toLowerCase() === idLang.toLowerCase()) || idLang;
-  return normalizedLang === lang;
+  return normalizedLang === contentLang(lang);
 });
 
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());

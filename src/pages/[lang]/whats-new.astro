@@ -1,6 +1,7 @@
 ---
 import { languages } from '../../i18n/ui';
 import { useTranslations } from '../../i18n/utils';
+import { contentLang } from '../../i18n/content-lang';
 import { whatsNewData } from '../../i18n/data';
 import Layout from '../../layouts/Layout.astro';
 import { marked } from 'marked';
@@ -15,7 +16,7 @@ const { lang } = Astro.params;
 const t = useTranslations(lang as keyof typeof languages);
 // No English fallback: a locale with no entries shows its own localized empty state
 // rather than English changelog text under a translated heading.
-const content = (whatsNewData[lang] ?? '').trim();
+const content = (whatsNewData[contentLang(lang)] ?? '').trim();
 const html = content ? await marked.parse(content) : '';
 ---
 

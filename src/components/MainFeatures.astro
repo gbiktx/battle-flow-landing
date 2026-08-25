@@ -1,10 +1,11 @@
 ---
 import { getLangFromUrl, localizedPath, useTranslations } from '../i18n/utils';
+import { contentLang } from '../i18n/content-lang';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const featuresDir = `/assets/images/features/${lang}`;
+const featuresDir = `/assets/images/features/${contentLang(lang)}`;
 
 const mainFeatures = [
   {

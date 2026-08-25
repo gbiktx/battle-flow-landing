@@ -1,12 +1,13 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { contentLang } from '../i18n/content-lang';
 import { getTeamBuilderFaqs } from '../lib/faqs';
 import DownloadButtons from './DownloadButtons.astro';
 import StoreButtons from './StoreButtons.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const imageDir = `/assets/images/features/${lang}`;
+const imageDir = `/assets/images/features/${contentLang(lang)}`;
 
 const steps = [1, 2, 3].map((step) => ({
   title: t(`team.step${step}_title` as Parameters<typeof t>[0]),

@@ -14,7 +14,7 @@ const VALID_TYPES = new Set([
 
 // Locale → whether pokemon translations are expected.
 const LOCALE_EXPECTS_POKEMON = {
-  en: true, es: true, fr: true, de: true, it: true,
+  en: true, es: true, 'es-419': true, fr: true, de: true, it: true,
   pt: true,
   'zh-hant': true, ja: true, ko: true,
 };

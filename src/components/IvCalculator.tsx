@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { PvPCalculator, type RankEntry } from '../lib/pvp-calculator';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
+import { contentLang } from '../i18n/content-lang';
 import { trackEvent } from '../lib/analytics';
 import { CTA_VISIBILITY_THRESHOLDS, isCtaVisible } from '../lib/cta-visibility';
 import { pokemon as pokemonData } from '../lib/pokemon-data';
@@ -163,7 +164,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const t = useTranslations(lang as keyof typeof ui);
 
   // Scan-CTA media: localized still as poster, optional scan clip over it.
-  const scanPoster = `/assets/images/features/${lang}/scan.webp`;
+  const scanPoster = `/assets/images/features/${contentLang(lang)}/scan.webp`;
   const scanVideo = SCAN_VIDEO_BY_LANG[lang] ?? SCAN_VIDEO_SHARED;
 
   // One-time impression when the scan CTA scrolls into view. Pairs with the

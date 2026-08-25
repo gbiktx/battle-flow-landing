@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import { languages } from '../../../i18n/ui';
 import { useTranslations } from '../../../i18n/utils';
+import { contentLang } from '../../../i18n/content-lang';
 import Layout from '../../../layouts/Layout.astro';
 import Nav from '../../../components/Nav.astro';
 import DownloadButtons from '../../../components/DownloadButtons.astro';
@@ -21,10 +22,13 @@ export async function getStaticPaths() {
 			// locale (e.g. zh-Hans) can never emit orphan routes.
 			const lang = langKeys.find(k => k.toLowerCase() === idLang.toLowerCase());
 			if (!lang) return [];
-			return [{
-				params: { lang, slug },
+			// Regional variants have no posts of their own — serve the base locale's
+			// under their own URL (see src/i18n/content-lang.ts).
+			const variants = langKeys.filter(k => k !== lang && contentLang(k) === lang);
+			return [lang, ...variants].map((routeLang) => ({
+				params: { lang: routeLang, slug },
 				props: { post, slug },
-			}];
+			}));
 		});
 }
 

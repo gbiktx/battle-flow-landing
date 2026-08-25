@@ -15,7 +15,7 @@ const ROUTES = [
   '/move-counts/',
 ];
 
-const LOCALES = ['es', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
+const LOCALES = ['es', 'es-419', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
 
 // URL path segments are lowercase; language tag *values* are BCP 47. Netlify
 // 301s mixed-case paths, so a mixed-case canonical points at a redirect.
