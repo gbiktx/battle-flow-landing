@@ -1248,7 +1248,21 @@ BattleFlow Pro는 구매하신 앱 스토어(Apple App Store 또는 Google Play)
 //
 //   - Movedex — browse every fast and charged move with full stats and effects.
 export const whatsNewData: Record<string, string> = {
-  en: `## v4.2
+  en: `## v4.2.2
+
+**Import a whole gallery selection.** Pick several appraisal screenshots at once and BattleFlow scans the batch, then collects anything it couldn't read on a single review page — a form to pick, a CP to confirm, an IV spread to choose. Answer the question and it saves, with the screenshot beside it so you can read the answer off the picture.
+
+**Three scanner fixes.** Shadow Pokémon are recognised from the sprite's background instead of a line the IV appraisal covers. A clipped type row is now enough to identify a regional form. And picking a form settles it, rather than leaving the Pokémon marked for review.
+
+**Cramorant.** Gulp Missile is fully simulated, with sprites for both forms.
+
+**A draw is its own result.** Battle Notes records draws as a third outcome instead of folding them into losses.
+
+**Matchups in words.** The matchup grid reads as bands rather than the engine's internal 0–1000 number.
+
+**Cleanup leads with the search.** The Pokémon GO search string you came for is the first thing on the page, and cups are named the way the game names them.
+
+## v4.2
 
 **Scanning that doesn't give up.** BattleFlow now reads Pokémon whose CP is covered by their own sprite — the wings, tails and necks that used to make a scan fail — and when the evidence allows two possible CPs it offers you both instead of giving up. It also scans correctly when a Pokémon isn't at full HP, reads regional forms from clipped type labels, and handles Japanese, Korean and Chinese appraisals properly.
 
@@ -1313,7 +1327,21 @@ export const whatsNewData: Record<string, string> = {
 **Build Around Mode.** Start team generation from any Pokémon. Pick your favorite from Rankings or your Pokebox, and BattleFlow builds optimized teams around it — finding the best leads, safe swaps, and closers to complement your anchor.
 
 **Shiny Sprites (Pro).** See your shiny Pokémon throughout the app — in rankings, teams, Pokebox, IV checker, and generated teams. Toggle shinies per species with a sparkle animation.`,
-  es: `## v4.2
+  es: `## v4.2.2
+
+**Importa una selección entera de la galería.** Elige varias capturas de pantalla de evaluación a la vez y BattleFlow escanea el lote; todo lo que no pudo leer queda en una única página de revisión: una forma que elegir, un PC que confirmar, una distribución de IVs que seleccionar. Responde y se guarda, con la captura al lado para que puedas leer la respuesta en la imagen.
+
+**Tres correcciones del escáner.** Los Pokémon Oscuros se detectan por el fondo del sprite y no por una línea que la evaluación de IVs tapa. Una fila de tipos recortada ya basta para identificar una forma regional. Y elegir una forma la deja resuelta, en vez de dejar al Pokémon marcado para revisar.
+
+**Cramorant.** Tragamisil está totalmente simulado, con sprites para ambas formas.
+
+**El empate es un resultado propio.** Las Notas de Batalla registran los empates como un tercer resultado en lugar de contarlos como derrota.
+
+**Enfrentamientos en palabras.** La cuadrícula de enfrentamientos se lee por categorías en vez del número interno 0–1000 del motor.
+
+**La limpieza empieza por la búsqueda.** El texto de búsqueda de Pokémon GO que venías a buscar es lo primero de la página, y las copas llevan el nombre que les da el juego.
+
+## v4.2
 
 **Escaneo que no se rinde.** BattleFlow ahora lee Pokémon cuyos PC están tapados por su propio sprite —las alas, colas y cuellos que solían causar errores de escaneo— y, cuando la evidencia sugiere dos posibles PC, te ofrece ambos en lugar de darse por vencido. También escanea correctamente cuando un Pokémon no está al máximo de PS, lee las formas regionales a partir de etiquetas de tipo recortadas y procesa las valoraciones en japonés, coreano y chino.
 
@@ -1378,7 +1406,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir Alrededor.** Genera equipos a partir de cualquier Pokémon. Elige tu favorito de los Rankings o tu Pokebox, y BattleFlow construye equipos optimizados a su alrededor — encontrando los mejores leads, safe swaps y closers.
 
 **Sprites Shiny (Pro).** Ve tus Pokémon shiny en toda la app — rankings, equipos, Pokebox, verificador de IVs y equipos generados. Activa shinies por especie con animación de brillo.`,
-  fr: `## v4.2
+  fr: `## v4.2.2
+
+**Importez toute une sélection de la galerie.** Choisissez plusieurs captures d'écran d'évaluation à la fois : BattleFlow scanne le lot, puis rassemble sur une seule page tout ce qu'il n'a pas pu lire — une forme à choisir, des PC à confirmer, une répartition d'IV à sélectionner. Répondez et c'est enregistré, avec la capture à côté pour lire la réponse sur l'image.
+
+**Trois correctifs du scan.** Les Pokémon Obscurs sont reconnus à l'arrière-plan du sprite plutôt qu'à une ligne que l'évaluation des IV recouvre. Une ligne de types tronquée suffit désormais à identifier une forme régionale. Et choisir une forme la valide, au lieu de laisser le Pokémon marqué à vérifier.
+
+**Nigosier.** Dégobage est entièrement simulé, avec les sprites des deux formes.
+
+**L'égalité est un résultat à part entière.** Les Notes de combat enregistrent les égalités comme un troisième résultat au lieu de les compter comme des défaites.
+
+**Des matchups en mots.** La grille des matchups se lit en catégories plutôt qu'avec le nombre interne 0–1000 du moteur.
+
+**Le nettoyage commence par la recherche.** Le texte de recherche Pokémon GO que vous venez chercher est en tête de page, et les coupes portent le nom que le jeu leur donne.
+
+## v4.2
 
 **Un scan qui n'abandonne plus.** BattleFlow lit désormais les Pokémon dont les PC sont masqués par leur propre sprite — les ailes, queues et cous qui provoquaient auparavant des échecs de scan — et, lorsque les indices suggèrent deux PC possibles, vous propose les deux au lieu d'abandonner. Il scanne aussi correctement lorsqu'un Pokémon n'est pas au maximum de ses PV, lit les formes régionales à partir d'étiquettes de type tronquées et traite les évaluations en japonais, coréen et chinois.
 
@@ -1443,7 +1485,21 @@ export const whatsNewData: Record<string, string> = {
 **Mode Construire Autour.** Générez des équipes à partir de n'importe quel Pokémon. Choisissez votre favori dans les classements ou votre Pokebox, et BattleFlow construit des équipes optimisées autour de lui — trouvant les meilleurs leads, safe swaps et closers.
 
 **Sprites Shiny (Pro).** Voyez vos Pokémon shiny dans toute l'app — classements, équipes, Pokebox, vérificateur d'IVs et équipes générées. Activez les shinies par espèce avec une animation d'éclat.`,
-  de: `## v4.2
+  de: `## v4.2.2
+
+**Eine ganze Galerie-Auswahl importieren.** Wähle mehrere Bewertungs-Screenshots auf einmal aus, und BattleFlow scannt den Stapel — alles, was es nicht lesen konnte, sammelt es auf einer einzigen Prüfseite: eine Form zum Auswählen, ein WP zum Bestätigen, eine IV-Verteilung zum Auswählen. Beantworte die Frage und es wird gespeichert, mit dem Screenshot daneben, damit du die Antwort vom Bild ablesen kannst.
+
+**Drei Scanner-Korrekturen.** Crypto-Pokémon werden am Hintergrund des Sprites erkannt statt an einer Zeile, die die IV-Bewertung verdeckt. Eine abgeschnittene Typen-Zeile reicht jetzt aus, um eine regionale Form zu bestimmen. Und die Wahl einer Form schließt sie ab, statt das Pokémon weiter als zu prüfen zu markieren.
+
+**Urgl.** Würggeschoss wird vollständig simuliert, mit Sprites für beide Formen.
+
+**Unentschieden ist ein eigenes Ergebnis.** Die Kampfnotizen erfassen Unentschieden als dritten Ausgang, statt sie als Niederlage zu werten.
+
+**Matchups in Worten.** Die Matchup-Übersicht liest sich als Kategorien statt als interne 0–1000-Zahl der Engine.
+
+**Die Bereinigung beginnt mit der Suche.** Der Pokémon-GO-Suchtext, für den du gekommen bist, steht als Erstes auf der Seite, und Cups tragen die Namen, die das Spiel ihnen gibt.
+
+## v4.2
 
 **Scannen, das nicht mehr aufgibt.** BattleFlow liest jetzt Pokémon, deren WP durch ihr eigenes Sprite verdeckt sind — die Flügel, Schweife und Hälse, die früher zu Scanfehlern führten — und bietet dir beide Werte zur Auswahl an, wenn die Daten zwei mögliche WP zulassen. Es scannt auch dann korrekt, wenn ein Pokémon nicht bei vollen KP ist, erkennt regionale Formen anhand abgeschnittener Typen-Etiketten und verarbeitet japanische, koreanische und chinesische Bewertungen richtig.
 
@@ -1508,7 +1564,21 @@ export const whatsNewData: Record<string, string> = {
 **Build-Around-Modus.** Starte die Teamgenerierung mit einem beliebigen Pokémon. Wähle deinen Favoriten aus den Rankings oder deiner Pokebox, und BattleFlow erstellt optimierte Teams drumherum — mit den besten Leads, Safe Swaps und Closern.
 
 **Shiny-Sprites (Pro).** Sieh deine Shiny-Pokémon in der gesamten App — Rankings, Teams, Pokebox, IV-Checker und generierte Teams. Aktiviere Shinies pro Spezies mit Glitzeranimation.`,
-  it: `## v4.2
+  it: `## v4.2.2
+
+**Importa un'intera selezione dalla galleria.** Scegli più screenshot di valutazione contemporaneamente: BattleFlow scansiona il gruppo e raccoglie in un'unica pagina di revisione tutto ciò che non è riuscito a leggere — una forma da scegliere, un PL da confermare, una combinazione di IV da selezionare. Rispondi e viene salvato, con lo screenshot accanto per leggere la risposta dall'immagine.
+
+**Tre correzioni allo scanner.** I Pokémon Ombra vengono riconosciuti dallo sfondo dello sprite invece che da una riga che la valutazione IV copre. Una riga dei tipi tagliata ora basta per identificare una forma regionale. E scegliere una forma la definisce, invece di lasciare il Pokémon segnalato da controllare.
+
+**Cramorant.** Inghiottimissile è completamente simulato, con gli sprite di entrambe le forme.
+
+**Il pareggio è un risultato a sé.** Le Note di Battaglia registrano i pareggi come terzo esito invece di considerarli sconfitte.
+
+**Matchup a parole.** La griglia dei matchup si legge per fasce anziché con il numero interno 0–1000 del motore.
+
+**L'ottimizzazione parte dalla ricerca.** Il testo di ricerca di Pokémon GO che stavi cercando è la prima cosa nella pagina, e le coppe hanno il nome che dà loro il gioco.
+
+## v4.2
 
 **Una scansione che non si arrende.** BattleFlow ora legge i Pokémon i cui PL sono coperti dal proprio sprite — le ali, le code e i colli che prima causavano errori — e, quando i dati indicano due PL possibili, te li propone entrambi invece di arrendersi. Scansiona correttamente anche quando un Pokémon non è al massimo degli PS, legge le forme regionali dalle etichette dei tipi ritagliate e gestisce le valutazioni in giapponese, coreano e cinese.
 
@@ -1573,7 +1643,21 @@ export const whatsNewData: Record<string, string> = {
 **Modalità Costruisci Attorno.** Genera squadre partendo da qualsiasi Pokémon. Scegli il tuo preferito dai ranking o dalla Pokebox, e BattleFlow costruisce squadre ottimizzate attorno ad esso — trovando i migliori lead, safe swap e closer.
 
 **Sprite Shiny (Pro).** Visualizza i tuoi Pokémon shiny in tutta l'app — classifiche, squadre, Pokebox, verificatore IV e squadre generate. Attiva gli shiny per specie con animazione scintillante.`,
-  pt: `## v4.2
+  pt: `## v4.2.2
+
+**Importe uma seleção inteira da galeria.** Escolha vários screenshots de avaliação de uma vez: o BattleFlow escaneia o lote e reúne numa única página de revisão tudo o que não conseguiu ler — uma forma para escolher, um PC para confirmar, uma distribuição de IVs para selecionar. Responda e ele salva, com o screenshot ao lado para você ler a resposta na imagem.
+
+**Três correções no scanner.** Pokémon Sombrios são reconhecidos pelo fundo do sprite, e não por uma linha que a avaliação de IVs cobre. Uma linha de tipos cortada já basta para identificar uma forma regional. E escolher uma forma resolve a questão, em vez de deixar o Pokémon marcado para revisão.
+
+**Cramorant.** Mísseis Gulosos está totalmente simulado, com sprites para as duas formas.
+
+**O empate é um resultado próprio.** As Notas de Batalha registram empates como um terceiro resultado em vez de contá-los como derrota.
+
+**Confrontos em palavras.** A grade de confrontos é lida por faixas em vez do número interno 0–1000 do motor.
+
+**A limpeza começa pela busca.** O texto de busca do Pokémon GO que você veio buscar é a primeira coisa da página, e as copas têm o nome que o jogo dá a elas.
+
+## v4.2
 
 **Um escaneamento que não desiste.** O BattleFlow agora lê Pokémon cujos PCs estão cobertos pelo próprio sprite — as asas, caudas e pescoços que costumavam causar falhas — e, quando as evidências sugerem dois PCs possíveis, oferece ambos em vez de desistir. Também escaneia corretamente quando um Pokémon não está com o HP máximo, lê formas regionais a partir de etiquetas de tipo cortadas e processa as avaliações em japonês, coreano e chinês.
 
@@ -1638,7 +1722,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir ao Redor.** Gere equipes a partir de qualquer Pokémon. Escolha seu favorito dos Rankings ou da Pokebox, e BattleFlow monta equipes otimizadas ao redor dele — encontrando os melhores leads, safe swaps e closers.
 
 **Sprites Shiny (Pro).** Veja seus Pokémon shiny em todo o app — rankings, equipes, Pokebox, verificador de IVs e equipes geradas. Ative shinies por espécie com animação brilhante.`,
-  ja: `## v4.2
+  ja: `## v4.2.2
+
+**ギャラリーの複数選択をまとめて取り込み。** 評価画面のスクリーンショットを一度に複数選択すると、BattleFlowがまとめてスキャンし、読み取れなかったものだけを1つの確認ページに集めます。すがたを選ぶ、CPを確認する、個体値の組み合わせを選ぶ——答えるとそのまま保存され、元のスクリーンショットが隣に並ぶので、写真を見ながら答えられます。
+
+**スキャンの修正3点。** シャドウポケモンを、個体値評価が隠してしまう表示ではなくスプライトの背景色から判定するようにしました。タイプ表記が一部欠けていてもリージョンフォームを特定できます。すがたを選べばその時点で確定し、「要確認」のままになりません。
+
+**ウッウ。** うのミサイルを完全にシミュレートし、両方のすがたのスプライトを追加しました。
+
+**引き分けを独立した結果に。** バトルノートは引き分けを敗北にまとめず、3つ目の結果として記録します。
+
+**相性を言葉で表示。** 相性表を、エンジン内部の0〜1000の数値ではなく段階の表現で読めるようにしました。
+
+**整理は検索から。** 目的のポケモンGO検索文字列がページの先頭に表示され、カップはゲームと同じ名前で表示されます。
+
+## v4.2
 
 **あきらめないスキャン。** 翼や尻尾、首などのグラフィックにCPが重なって認識できなかった問題を解決し、スキャン失敗を大きく減らしました。CP候補が複数考えられる場合は、あきらめずに両方を提示して選べます。HPが満タンでないポケモンも正しく読み取れるため、レイドやジム戦の直後でも正確です。一部が欠けたタイプ表記からのリージョンフォーム判定、日本語・韓国語・中国語の評価画面にも対応しました。
 
@@ -1703,7 +1801,21 @@ export const whatsNewData: Record<string, string> = {
 **ビルドアラウンドモード**：任意のポケモンからチーム生成を開始。ランキングやポケボックスからお気に入りを選ぶと、BattleFlowがそのポケモンを軸に最適なリード、セーフスワップ、クローザーを備えたチームを構築します。
 
 **色違いスプライト（Pro）**：色違いポケモンをアプリ全体で表示 — ランキング、チーム、ポケボックス、個体値チェッカー、生成チーム。種族ごとにキラキラアニメーション付きで切り替え可能。`,
-  ko: `## v4.2
+  ko: `## v4.2.2
+
+**갤러리에서 선택한 여러 장을 한 번에 가져오기.** 평가 스크린샷을 여러 장 한 번에 선택하면 BattleFlow가 한꺼번에 스캔하고, 읽지 못한 것만 하나의 확인 페이지에 모아 줍니다. 모습을 고르고, CP를 확인하고, 개체값 조합을 선택하면 그대로 저장됩니다. 원본 스크린샷이 옆에 함께 표시되어 사진을 보고 답할 수 있습니다.
+
+**스캐너 수정 3가지.** 그림자 포켓몬을 개체값 평가가 가리는 문구가 아니라 스프라이트 배경으로 판별합니다. 타입 표기가 잘려 있어도 리전 폼을 구분할 수 있습니다. 모습을 선택하면 그 자리에서 확정되어 '확인 필요' 표시가 남지 않습니다.
+
+**윽우지.** 그대로꿀꺽미사일을 완전히 시뮬레이션하며, 두 모습의 스프라이트를 추가했습니다.
+
+**무승부는 그 자체로 하나의 결과.** 배틀 기록이 무승부를 패배로 묶지 않고 세 번째 결과로 기록합니다.
+
+**상성을 말로 표시.** 상성표를 엔진 내부의 0~1000 숫자가 아니라 등급 표현으로 읽을 수 있습니다.
+
+**정리는 검색부터.** 찾으러 온 포켓몬 GO 검색어가 페이지 맨 위에 표시되고, 컵은 게임이 부르는 이름으로 표시됩니다.
+
+## v4.2
 
 **포기하지 않는 스캔.** 날개, 꼬리, 목 등의 그래픽에 CP가 가려져 스캔이 실패하던 문제를 개선했습니다. 판단 가능한 CP 후보가 두 가지인 경우에는 포기하지 않고 두 가지를 모두 제안합니다. HP가 가득 차지 않은 포켓몬도 정확하게 인식하므로 레이드나 체육관 배틀 직후에도 바로 스캔할 수 있으며, 잘린 타입 라벨을 통한 리전폼 인식과 한국어·일본어·중국어 평가 화면 분석도 지원합니다.
 
