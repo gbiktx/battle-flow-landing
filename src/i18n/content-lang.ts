@@ -1,7 +1,8 @@
-// Regional locale variants get their own URL, hreflang and game-data dictionary
-// (LatAm Spanish renames 141 of 425 moves), but share the base locale's prose,
-// screenshots and blog posts until that copy actually diverges — one Spanish
-// source, two locales. Dependency-free so astro.config.mjs can import it too.
+// Regional locale variants get their own URL, hreflang, UI copy (src/i18n/ui.ts)
+// and game-data dictionary — LatAm Spanish renames 141 of 425 moves. What they
+// still share with the base locale is the long-form content nobody has rewritten:
+// blog posts, the legal pages, and the localized screenshots. Dependency-free so
+// astro.config.mjs can import it too.
 const CONTENT_FALLBACK: Record<string, string> = {
   'es-419': 'es',
 };
