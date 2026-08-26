@@ -1,4 +1,5 @@
 import { readJson, moveKey, pokemonKey } from './lib.js';
+import { languages } from '../src/i18n/ui.ts';
 
 const MOVES_FILE = 'src/data/moves.json';
 const POKEMON_FILE = 'src/data/pokemon.json';
@@ -12,12 +13,10 @@ const VALID_TYPES = new Set([
   'steel', 'water',
 ]);
 
-// Locale → whether pokemon translations are expected.
-const LOCALE_EXPECTS_POKEMON = {
-  en: true, es: true, 'es-419': true, fr: true, de: true, it: true,
-  pt: true,
-  'zh-hant': true, ja: true, ko: true,
-};
+// The site's own roster: every shipped locale needs move *and* pokemon
+// translations. Derived rather than re-listed so a new locale can't be added to
+// src/i18n/ and quietly skip validation here.
+const EXPECTED_LOCALES = Object.keys(languages);
 
 const errors = [];
 const warnings = [];
@@ -237,16 +236,26 @@ for (const id of pokemonIds) {
   if (!en[pokemonKey(id)]) warn(`translations.en: missing ${pokemonKey(id)} (pokemon ${id})`);
 }
 
-// Non-en locales: warn on missing. Skip pokemon for locales that don't source them (e.g. pt).
+// A shipped locale with no dictionary at all is an error, not a warning: the site
+// still builds and every page silently serves English names via the `?? en`
+// fallback in src/lib/translation-slices.ts. sync-translations.js writes `{}` when
+// its source file is missing (a moved battle_flow_assets checkout, a renamed
+// locale file), which is exactly how that happens.
+for (const loc of EXPECTED_LOCALES) {
+  const bucket = translations[loc];
+  if (!bucket || Object.keys(bucket).length === 0) {
+    err(`translations.${loc}: no dictionary — re-run pnpm sync:translations (missing source file?)`);
+  }
+}
+
+// Per-key gaps stay warnings: an upstream locale can legitimately lag a new move.
 for (const loc of LOCALES) {
   if (loc === 'en') continue;
   const bucket = translations[loc] ?? {};
   let missingMoves = 0;
   let missingPokemon = 0;
   for (const id of moveIds) if (!bucket[moveKey(id)]) missingMoves++;
-  if (LOCALE_EXPECTS_POKEMON[loc]) {
-    for (const id of pokemonIds) if (!bucket[pokemonKey(id)]) missingPokemon++;
-  }
+  for (const id of pokemonIds) if (!bucket[pokemonKey(id)]) missingPokemon++;
   if (missingMoves > 0) warn(`translations.${loc}: missing ${missingMoves} move keys`);
   if (missingPokemon > 0) warn(`translations.${loc}: missing ${missingPokemon} pokemon keys`);
 }

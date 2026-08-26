@@ -2,7 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { PvPCalculator, type RankEntry } from '../lib/pvp-calculator';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
-import { contentLang } from '../i18n/content-lang';
+import { contentLang } from '../i18n/locales';
 import { trackEvent } from '../lib/analytics';
 import { CTA_VISIBILITY_THRESHOLDS, isCtaVisible } from '../lib/cta-visibility';
 import { pokemon as pokemonData } from '../lib/pokemon-data';
@@ -41,7 +41,8 @@ const POST_RESULT_PLACEMENT = 'iv-post-result-cta';
 // exists it plays as a muted, inline, looping loop over the poster. English is
 // shared across all locales for now — drop a localized capture at
 // `public/assets/images/features/<lang>/scan.mp4` and map it in SCAN_VIDEO_BY_LANG
-// to override per locale. Set to null to fall back to the still image only.
+// to override per locale. Key it by the *content* locale (contentLang): regional
+// variants like es-419 have no screenshot directory of their own. Set to null to fall back to the still image only.
 const SCAN_VIDEO_SHARED: string | null = null; // no clip yet — CTA shows the localized still
 const SCAN_VIDEO_BY_LANG: Record<string, string> = {};
 
@@ -165,7 +166,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
 
   // Scan-CTA media: localized still as poster, optional scan clip over it.
   const scanPoster = `/assets/images/features/${contentLang(lang)}/scan.webp`;
-  const scanVideo = SCAN_VIDEO_BY_LANG[lang] ?? SCAN_VIDEO_SHARED;
+  const scanVideo = SCAN_VIDEO_BY_LANG[contentLang(lang)] ?? SCAN_VIDEO_SHARED;
 
   // One-time impression when the scan CTA scrolls into view. Pairs with the
   // `iv-result-cta` Store Click to separate "never seen" from "seen, not clicked".

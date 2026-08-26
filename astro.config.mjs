@@ -5,34 +5,37 @@ import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 import { whatsNewData } from './src/i18n/data.ts';
-import { contentLang } from './src/i18n/content-lang.ts';
+import { contentLang } from './src/i18n/locales.ts';
+import { languages } from './src/i18n/ui.ts';
+import { localizedPath, stripLocalePrefix, toBcp47 } from './src/i18n/utils.ts';
 
-// URL path segment (always lowercase) -> hreflang value (BCP 47). Netlify's CDN
-// 301s mixed-case paths to lowercase, so any uppercase in a *segment* makes
-// canonicals point at a redirect; the tag values keep their real casing.
-// See docs/locale-casing-fix-plan.md.
-const LOCALE_HREFLANG = {
-  en: 'en',
-  es: 'es',
-  'es-419': 'es-419',
-  fr: 'fr',
-  de: 'de',
-  it: 'it',
-  pt: 'pt',
-  'zh-hant': 'zh-Hant',
-  ja: 'ja',
-  ko: 'ko',
-};
-const LOCALES = Object.keys(LOCALE_HREFLANG);
+// One roster, shared with the <head> tags: `languages` keys are the URL path
+// segments (always lowercase — Netlify's CDN 301s mixed-case paths, so uppercase
+// in a segment makes canonicals point at a redirect, see
+// docs/locale-casing-fix-plan.md) and toBcp47() turns each into its real-cased
+// hreflang value. Deriving both from src/i18n/ instead of a second copy is what
+// keeps the sitemap's hreflang and the page's own <link rel="alternate"> in step.
+const LOCALES = Object.keys(languages);
 const SITE = 'https://battleflow.app';
 
 // Keep empty What's New pages out of the sitemap (they're noindex until populated).
 // Matches /whats-new/ and /<locale>/whats-new/, mapping each to its locale's content.
+// A non-locale parent segment (a blog post slugged `whats-new`) is a different page
+// and is left alone rather than gated on the English changelog.
 const hasWhatsNewContent = (url) => {
   const match = url.match(/\/(?:([a-zA-Z0-9-]+)\/)?whats-new\/?$/);
   if (!match) return true;
-  const locale = match[1] && LOCALES.includes(match[1]) ? match[1] : 'en';
-  return Boolean((whatsNewData[contentLang(locale)] ?? '').trim());
+  if (match[1] && !LOCALES.includes(match[1])) return true;
+  return Boolean((whatsNewData[contentLang(match[1] ?? 'en')] ?? '').trim());
+};
+
+// @astrojs/sitemap dropped localized status pages as a side effect of its `i18n`
+// option; that option is gone (see the hreflang note below), so do it here.
+const STATUS_PAGES = new Set(['404', '500']);
+const isStatusPage = (url) => {
+  const segments = new URL(url).pathname.split('/').filter(Boolean);
+  const last = segments.at(-1);
+  return Boolean(last && STATUS_PAGES.has(last));
 };
 
 // Every URL that survives the filter, so serialize() can build hreflang groups
@@ -40,30 +43,25 @@ const hasWhatsNewContent = (url) => {
 // locale. `filter` runs over all pages before the first serialize() call.
 const sitemapUrls = new Set();
 const shouldIncludeInSitemap = (url) => {
-  const keep = hasWhatsNewContent(url);
+  const keep = hasWhatsNewContent(url) && !isStatusPage(url);
   if (keep) sitemapUrls.add(url.endsWith('/') ? url : `${url}/`);
   return keep;
 };
 
-/** `/es/iv-calculator/` -> `/iv-calculator/`; English is served unprefixed. */
-const stripLocale = (pathname) => {
-  const [, first, ...rest] = pathname.split('/');
-  return LOCALES.includes(first) && first !== 'en' ? `/${rest.join('/')}` : pathname;
-};
-
-const localeUrl = (segment, path) =>
-  new URL(segment === 'en' ? path : `/${segment}${path}`, SITE).toString();
+const localeUrl = (segment, path) => new URL(localizedPath(segment, path), SITE).toString();
 
 // Hand-rolled because @astrojs/sitemap's own `i18n` option validates hreflang
 // values against /^[a-zA-Z-]+$/: `es-419` fails that schema, and a failed schema
 // drops sitemap generation *entirely* (one WARN line, no dist/sitemap-0.xml).
-// See docs/SEO.md. Emits x-default too, matching the <head> tags in Layout.astro.
+// See docs/SEO.md. Routing through the same stripLocalePrefix/localizedPath/toBcp47
+// the <head> uses keeps the two hreflang sets identical; x-default is emitted here
+// too, matching Layout.astro.
 const alternatesFor = (url) => {
-  const path = stripLocale(new URL(url).pathname);
+  const path = stripLocalePrefix(new URL(url).pathname);
   const links = [];
   for (const segment of LOCALES) {
     const sibling = localeUrl(segment, path);
-    if (sitemapUrls.has(sibling)) links.push({ lang: LOCALE_HREFLANG[segment], url: sibling });
+    if (sitemapUrls.has(sibling)) links.push({ lang: toBcp47(segment), url: sibling });
   }
   if (links.length < 2) return undefined;
   const english = localeUrl('en', path);

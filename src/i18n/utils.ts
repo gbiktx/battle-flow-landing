@@ -18,14 +18,9 @@ export function getLangFromUrl(url: URL) {
   return defaultLang;
 }
 
-// Locale keys are lowercase because they double as URL path segments (Netlify
-// 301s mixed-case paths). Language *tag values* — `<html lang>`, `hreflang`,
-// schema.org `inLanguage` — still want BCP 47 casing.
-const BCP_47: Record<string, string> = { 'zh-hant': 'zh-Hant' };
-
-export function toBcp47(lang: string): string {
-  return BCP_47[lang] ?? lang;
-}
+// Re-exported so `toBcp47` stays importable from the module the pages already
+// use; it lives in ./locales.ts because node scripts need it without pulling ui.ts.
+export { toBcp47 } from './locales';
 
 /**
  * Drop a leading locale segment: `/de/team-builder/` -> `/team-builder/`.

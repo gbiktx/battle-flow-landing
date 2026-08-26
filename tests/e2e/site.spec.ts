@@ -1,5 +1,8 @@
 import { expect, test } from '@playwright/test';
 
+import { languages } from '../../src/i18n/ui';
+import { toBcp47 } from '../../src/i18n/locales';
+
 // Mirrors BASE_ROUTES in scripts/verify-routes.js. That script proves the files
 // exist in dist/; this proves they render.
 const ROUTES = [
@@ -15,12 +18,9 @@ const ROUTES = [
   '/move-counts/',
 ];
 
-const LOCALES = ['es', 'es-419', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
-
-// URL path segments are lowercase; language tag *values* are BCP 47. Netlify
-// 301s mixed-case paths, so a mixed-case canonical points at a redirect.
-// See docs/locale-casing-fix-plan.md.
-const BCP_47: Record<string, string> = { 'zh-hant': 'zh-Hant' };
+// Derived from the site's own roster, so a new locale is covered the moment it
+// ships instead of when someone remembers to extend this list.
+const LOCALES = Object.keys(languages).filter((lang) => lang !== 'en');
 
 test.describe('every page renders', () => {
   for (const route of ROUTES) {
@@ -59,7 +59,7 @@ test.describe('SEO invariants', () => {
     await page.goto('/move-counts/');
 
     for (const locale of ['en', ...LOCALES]) {
-      const tag = BCP_47[locale] ?? locale;
+      const tag = toBcp47(locale);
       const expected = locale === 'en' ? '/move-counts/' : `/${locale}/move-counts/`;
       await expect(page.locator(`link[hreflang="${tag}"]`)).toHaveAttribute('href', new RegExp(`${expected}$`));
     }
@@ -165,7 +165,7 @@ test.describe('localization', () => {
       const response = await page.goto(`/${locale}/move-counts/`);
       expect(response?.status()).toBe(200);
 
-      await expect(page.locator('html')).toHaveAttribute('lang', BCP_47[locale] ?? locale);
+      await expect(page.locator('html')).toHaveAttribute('lang', toBcp47(locale));
       await expect(page.getByTestId('drill')).toBeVisible();
       await expect(page.getByTestId('counts-row').first()).toBeVisible();
     });
@@ -177,5 +177,22 @@ test.describe('localization', () => {
 
     await page.goto('/es/move-counts/');
     await expect(page.locator('h1')).not.toHaveText(english ?? '');
+  });
+
+  // es-419 exists *because* its game data and UI copy differ from Spain's — if it
+  // ever collapses back onto `es` (a widened fallback, a deleted ui block) every
+  // other check here still passes, so assert the difference itself.
+  test('es-419 is not a copy of es', async ({ page }) => {
+    await page.goto('/es/movedex/');
+    await page.getByPlaceholder(/Buscar/i).first().fill('aéreo');
+    await expect(page.getByText('Tajo Aéreo').first()).toBeVisible();
+
+    await page.goto('/es-419/movedex/');
+    await page.getByPlaceholder(/Buscar/i).first().fill('aéreo');
+    await expect(page.getByText('Corte Aéreo').first()).toBeVisible();   // move dictionary
+    await expect(page.getByText('Tajo Aéreo')).toHaveCount(0);
+
+    await page.goto('/es-419/gbl-calendar/');
+    await expect(page.getByText('Liga Superbola').first()).toBeVisible(); // UI copy
   });
 });

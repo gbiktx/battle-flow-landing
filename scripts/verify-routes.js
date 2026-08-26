@@ -1,13 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { languages } from '../src/i18n/ui.ts';
+import { toBcp47 } from '../src/i18n/locales.ts';
+
 const DIST_DIR = 'dist';
-// URL path segments — must stay lowercase. See CASING_RATIONALE below.
-const LANGUAGES = ['en', 'es', 'es-419', 'fr', 'de', 'it', 'pt', 'zh-hant', 'ja', 'ko'];
-// Locale segments are lowercase; hreflang values are BCP 47 (mirrors toBcp47()
-// in src/i18n/utils.ts).
-const BCP_47 = { 'zh-hant': 'zh-Hant' };
-const toBcp47 = (lang) => BCP_47[lang] ?? lang;
+// Read the roster from the site itself — a guard with its own copy of the locale
+// list can't catch a locale that was added to src/i18n/ but missed elsewhere.
+// Segments must stay lowercase (see CASING_RATIONALE below); toBcp47() supplies
+// the real-cased hreflang value.
+const LANGUAGES = Object.keys(languages);
 
 const BASE_ROUTES = ['', 'privacy', 'tac', 'blog', 'iv-calculator', 'movedex', 'whats-new', 'gbl-calendar', 'team-builder', 'move-counts'];
 const BLOG_SLUGS = fs.readdirSync('src/content/blog/en')
@@ -162,14 +164,39 @@ if (!fs.existsSync(path.join(DIST_DIR, 'sitemap-index.xml')) || !fs.existsSync(s
 } else {
   const xml = fs.readFileSync(sitemapPath, 'utf8');
 
-  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc);
-  locs.filter(loc => !loc.endsWith('/'))
-    .forEach(loc => sitemapErrors.push(`<loc> without a trailing slash: ${loc}`));
+  const entries = [...xml.matchAll(/<url>(.*?)<\/url>/gs)].map(([, body]) => ({
+    loc: body.match(/<loc>([^<]+)<\/loc>/)?.[1] ?? '',
+    tags: [...body.matchAll(/hreflang="([^"]+)"/g)].map(([, tag]) => tag),
+  }));
 
-  // Every locale must appear as an hreflang alternate, x-default included.
-  const hreflangs = new Set([...xml.matchAll(/hreflang="([^"]+)"/g)].map(([, tag]) => tag));
+  entries.filter(e => !e.loc.endsWith('/'))
+    .forEach(e => sitemapErrors.push(`<loc> without a trailing slash: ${e.loc}`));
+
+  // Alternates are checked per URL, not once for the whole file: "the tag appears
+  // somewhere" still passes when 149 of 150 entries have lost their alternates.
+  // The expected set is derived from the sitemap's own contents — locales sharing
+  // a base path — so a legitimately locale-limited page (an empty What's New) is
+  // not a failure, while a dropped locale is.
+  const basePath = (loc) => {
+    const [, first, ...rest] = new URL(loc).pathname.split('/');
+    return LANGUAGES.includes(first) && first !== 'en' ? `/${rest.join('/')}` : new URL(loc).pathname;
+  };
+  const groups = new Map();
+  for (const e of entries) groups.set(basePath(e.loc), (groups.get(basePath(e.loc)) ?? 0) + 1);
+
+  for (const e of entries) {
+    const siblings = groups.get(basePath(e.loc)) ?? 1;
+    if (siblings < 2) continue;                       // no alternates expected
+    const expected = siblings + 1;                    // + x-default
+    if (e.tags.length !== expected) {
+      sitemapErrors.push(`${e.loc}: ${e.tags.length} hreflang alternates, expected ${expected}`);
+    }
+  }
+
+  // …and every locale must be represented, x-default included.
+  const allTags = new Set(entries.flatMap(e => e.tags));
   ['x-default', ...LANGUAGES.map(toBcp47)]
-    .filter(tag => !hreflangs.has(tag))
+    .filter(tag => !allTags.has(tag))
     .forEach(tag => sitemapErrors.push(`no <xhtml:link> alternate for hreflang="${tag}"`));
 }
 

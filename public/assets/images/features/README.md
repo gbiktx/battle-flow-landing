@@ -11,5 +11,12 @@ To add or replace one:
 
     cwebp -q 82 -resize 640 0 -metadata none <master>.png -o <name>.webp
 
-Referenced by `MainFeatures.astro`, `TeamBuilder.astro` and, as the scan
-poster, `IvCalculator.tsx`.
+One directory per *content* locale, not per locale: regional variants resolve
+through `contentLang()` in `src/i18n/locales.ts`, so `/es-419/` renders the `es/`
+screenshots and deliberately has no directory of its own. Adding one here does
+nothing — nothing reads it. Give a variant its own screenshots by dropping its
+entry from `CONTENT_FALLBACK`, then adding the directory.
+
+Referenced by `MainFeatures.astro`, `TeamBuilder.astro`, the `preloadImage` in
+`src/pages/[lang]/team-builder.astro` and, as the scan poster,
+`IvCalculator.tsx` — all of them through `contentLang()`.

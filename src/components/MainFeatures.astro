@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, localizedPath, useTranslations } from '../i18n/utils';
-import { contentLang } from '../i18n/content-lang';
+import { contentLang } from '../i18n/locales';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
