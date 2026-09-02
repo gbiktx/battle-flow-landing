@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { PvPCalculator, type RankEntry } from '../lib/pvp-calculator';
+import { PvPCalculator, MEGA_CAPS, type RankEntry } from '../lib/pvp-calculator';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
 import { contentLang } from '../i18n/locales';
@@ -29,6 +29,7 @@ const LEAGUES = [
 ] as const;
 
 const TARGET_LEVELS = [40, 41, 50, 51];
+const IV_INPUT_MODE_STORAGE_KEY = 'battleflow.iv-input-mode';
 
 // Height of the site's sticky header — a field under it isn't really "in view".
 const STICKY_HEADER_OFFSET = 80;
@@ -141,8 +142,41 @@ interface IVSet {
   hp: number;
 }
 
+function IvBarInput({ label, semanticLabel, value, onChange }: { label: string; semanticLabel: string; value: number; onChange: (value: number) => void }) {
+  const fillColor = value === 15 ? '#DE7D80' : '#F1A64A';
+
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-8 text-[10px] font-black tracking-widest" style={{ color: fillColor }}>{label}</span>
+      <div className="relative h-5 flex-1 overflow-hidden rounded-full bg-white/15">
+        <input
+          aria-label={semanticLabel}
+          type="range"
+          min="0"
+          max="15"
+          step="1"
+          value={value}
+          onChange={(event) => onChange(Number(event.target.value))}
+          className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+        />
+        <div className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${(value / 15) * 100}%`, backgroundColor: fillColor }} />
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          {Array.from({ length: 14 }, (_, index) => (
+            <span
+              key={index}
+              className="absolute inset-y-0 -translate-x-1/2 bg-brand-dark/90"
+              style={{ left: `${((index + 1) / 15) * 100}%`, width: index === 4 || index === 9 ? 3 : 1 }}
+            />
+          ))}
+        </div>
+      </div>
+      <span className="w-5 text-right text-sm font-black text-white">{value}</span>
+    </div>
+  );
+}
+
 export default function IvCalculator({ lang, translations: langTranslations }: Props) {
-  const [selectedId, setSelectedId] = useState('azumarill');
+  const [selectedId, setSelectedId] = useState('sableye');
   const [league, setLeague] = useState(LEAGUES[1]);
   const [maxLevel, setMaxLevel] = useState(50);
   const [searchTerm, setSearchTerm] = useState('');
@@ -150,6 +184,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
   const [showIvInput, setShowIvInput] = useState(false);
   const [tableCollapsed, setTableCollapsed] = useState(false);
   const [collapsedIvKeys, setCollapsedIvKeys] = useState<Set<string>>(new Set());
+  const [useIvBars, setUseIvBars] = useState(false);
   
   const atkRef = useRef<HTMLInputElement>(null);
   const defRef = useRef<HTMLInputElement>(null);
@@ -202,10 +237,14 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
     if (showIvInput) atkRef.current?.select();
   }, [showIvInput]);
 
+  useEffect(() => {
+    setUseIvBars(window.localStorage.getItem(IV_INPUT_MODE_STORAGE_KEY) === 'bars');
+  }, []);
+
   const currentPokemon = useMemo(
     () =>
       NON_SHADOW_POKEMON.find((p) => p.id === selectedId) ??
-      NON_SHADOW_POKEMON.find((p) => p.id === 'azumarill')!,
+      NON_SHADOW_POKEMON.find((p) => p.id === 'sableye')!,
     [selectedId]
   );
 
@@ -223,6 +262,31 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
     const q = megaQualifier(p);
     return base.includes(q) ? base : `${base} (${q})`;
   };
+
+  const megaBase = useMemo(
+    () => isMegaForm(currentPokemon)
+      ? POKEMON_BY_ID.get(stripMegaSuffix(currentPokemon.id)) ?? null
+      : currentPokemon,
+    [currentPokemon]
+  );
+
+  const megaForms = useMemo(() => {
+    if (!megaBase) return [];
+    return isMegaForm(currentPokemon) ? [currentPokemon] : getMegasOf(megaBase.id);
+  }, [currentPokemon, megaBase]);
+
+  // Only the caps a Mega can actually be played at (MEGA_CAPS), and only the
+  // forms that have a real ceiling there — `findBestLevelBeforeEvolution`
+  // returns null when the Mega fits at max level, and a card built from that
+  // would name the Pokemon's own maximum as a limit.
+  const megaCpLimits = useMemo(() => {
+    const ivs = { atk: Number(inputAtk), def: Number(inputDef), hp: Number(inputHp) };
+    if (!megaBase || !MEGA_CAPS.includes(league.cap) || !megaForms.length || !Object.values(ivs).every((iv) => Number.isInteger(iv) && iv >= 0 && iv <= 15)) return [];
+    return megaForms.flatMap((mega) => {
+      const ceiling = PvPCalculator.findBestLevelBeforeEvolution(megaBase, mega, ivs, league.cap, maxLevel);
+      return ceiling ? [{ mega, ...ceiling }] : [];
+    });
+  }, [inputAtk, inputDef, inputHp, league, maxLevel, megaBase, megaForms]);
 
   // Dynamic key — TS can't narrow `type.${string}` to a ui.ts key statically.
   const getTypeName = (type: string) => t(`type.${type.toLowerCase()}` as Parameters<typeof t>[0]);
@@ -395,6 +459,41 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
       else if (field === 'def') hpRef.current?.focus();
     }
   };
+
+  const toggleIvInputMode = () => {
+    setUseIvBars((current) => {
+      const next = !current;
+      window.localStorage.setItem(IV_INPUT_MODE_STORAGE_KEY, next ? 'bars' : 'fields');
+      return next;
+    });
+  };
+
+  const formatStatDelta = (value: number) => {
+    return `${value > 0 ? '+' : ''}${value}`;
+  };
+
+  const statsWithDeltas = (entry: RankEntry) => {
+    const rankOne = allRanks[0];
+    return [
+      { stat: Math.round(entry.stats.atk), delta: Math.round(entry.stats.atk) - Math.round(rankOne.stats.atk) },
+      { stat: Math.round(entry.stats.def), delta: Math.round(entry.stats.def) - Math.round(rankOne.stats.def) },
+      { stat: Math.round(entry.stats.hp), delta: Math.round(entry.stats.hp) - Math.round(rankOne.stats.hp) },
+    ];
+  };
+
+  const renderStatsWithDeltas = (entry: RankEntry) => (
+    <>
+      {statsWithDeltas(entry).map(({ stat, delta }, index) => (
+        <React.Fragment key={index}>
+          {index > 0 && <span className="text-gray-600"> / </span>}
+          <span className="text-white">{stat}</span>
+          {delta !== 0 && (
+            <span className={delta > 0 ? 'text-emerald-400' : 'text-red-400'}> {formatStatDelta(delta)}</span>
+          )}
+        </React.Fragment>
+      ))}
+    </>
+  );
 
   // One grid per tracked IV: family forms as rows, the four leagues as columns.
   // Each cell is that locked spread's rank as that form in that league; the best
@@ -658,9 +757,16 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                 </button>
               ) : (
               <div className="space-y-6">
-              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">{t('iv.analyze_custom')}</label>
-              <div className="flex flex-col sm:flex-row items-center gap-6">
-                <div className="grid grid-cols-3 gap-4 flex-1 w-full">
+               <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">{t('iv.analyze_custom')}</label>
+               <div className="flex flex-col sm:flex-row items-center gap-6">
+                 {useIvBars ? (
+                   <div className="w-full flex-1 space-y-4 rounded-2xl border border-white/5 bg-black/20 px-4 py-5">
+                     <IvBarInput label={t('iv.atk_short')} semanticLabel={t('iv.attack')} value={Number(inputAtk) || 0} onChange={(value) => setInputAtk(String(value))} />
+                     <IvBarInput label={t('iv.def_short')} semanticLabel={t('iv.defense')} value={Number(inputDef) || 0} onChange={(value) => setInputDef(String(value))} />
+                     <IvBarInput label={t('iv.hp_short')} semanticLabel={t('iv.hp')} value={Number(inputHp) || 0} onChange={(value) => setInputHp(String(value))} />
+                   </div>
+                 ) : (
+                 <div className="grid grid-cols-3 gap-4 flex-1 w-full">
                   <div className="relative">
                     <input 
                       ref={atkRef} 
@@ -696,14 +802,49 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                       className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-2 text-center text-2xl font-black text-brand-accent focus:border-brand-accent outline-hidden transition-all shadow-inner"
                     />
                     <label htmlFor="iv-hp" className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#1A2035] px-3 py-0.5 text-[9px] font-black text-gray-400 tracking-widest rounded-full border border-white/10 uppercase cursor-pointer z-20 shadow-lg">{t('iv.hp_short')}</label>
-                  </div>
-                </div>
-                <button onClick={handleAddTracked} className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-accent hover:brightness-110 text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-sm shadow-xl shadow-brand-accent/20 active:scale-95">
+                   </div>
+                 </div>
+                 )}
+                 <button onClick={handleAddTracked} className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-accent hover:brightness-110 text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-sm shadow-xl shadow-brand-accent/20 active:scale-95">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
                   {t('iv.track_ivs')}
-                </button>
-              </div>
-              </div>
+                 </button>
+                </div>
+                <div className="flex items-center justify-between gap-4 border-t border-white/10 pt-4">
+                  <span className="text-xs font-bold text-gray-400">{t('iv.use_iv_bars')}</span>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-label={t('iv.use_iv_bars')}
+                    aria-checked={useIvBars}
+                    onClick={toggleIvInputMode}
+                    className={`relative h-7 w-12 rounded-full transition-colors ${useIvBars ? 'bg-brand-accent' : 'bg-white/15'}`}
+                  >
+                    <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-[left] ${useIvBars ? 'left-6' : 'left-1'}`} />
+                  </button>
+                </div>
+                </div>
+               )}
+
+              {showIvInput && megaCpLimits.length > 0 && megaBase && (
+                <div className="mt-5 grid gap-3 md:grid-cols-2">
+                  {megaCpLimits.map(({ mega, level, baseCp, evolvedCp }) => (
+                    <div key={mega.id} className="rounded-2xl border border-brand-accent/30 bg-brand-accent/10 px-4 py-4">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-brand-accent">{t('iv.mega_cp_limit')}</p>
+                      <p className="mt-1 text-sm font-bold text-white">
+                        {t('iv.mega_cp_keep')
+                          .replace('{base}', formDisplayName(megaBase))
+                          .replace('{cp}', String(baseCp))}
+                      </p>
+                      <p className="mt-1 text-xs font-medium text-gray-300">
+                        {t('iv.mega_cp_result')
+                          .replace('{mega}', formDisplayName(mega))
+                          .replace('{cp}', String(evolvedCp))
+                          .replace('{level}', String(level))}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
           </div>
@@ -838,15 +979,12 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                     <div className="mt-1 text-[10px] font-black uppercase tracking-widest text-gray-500">{t('iv.level')} {r.level}</div>
                   </div>
                 </div>
-                <div className="mt-3 flex items-center gap-3">
-                  <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div className="h-full bg-brand-accent shadow-[0_0_8px_rgba(3,147,218,0.4)] transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
-                  </div>
-                  <span className={`font-black text-sm tracking-tighter ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/90'}`}>{r.perfection}%</span>
-                </div>
-                <div className="mt-1.5 flex items-baseline gap-2 text-[11px] font-bold tracking-tighter text-gray-500">
+                <div className="mt-3 text-[11px] font-bold tracking-tighter text-gray-500">
                   <span className="text-[9px] font-black uppercase tracking-widest text-gray-600 flex-shrink-0">{t('iv.actual_stats')}</span>
-                  <span>{r.stats.atk} / {r.stats.def} / {r.stats.hp}</span>
+                  <div className="mt-0.5">{renderStatsWithDeltas(r)}</div>
+                </div>
+                <div className="mt-2 text-right">
+                  <span className="font-black text-sm tracking-tighter" style={{ color: statProductBandColor(r.perfection) }}>{r.perfection}%</span>
                 </div>
               </li>
             );
@@ -886,17 +1024,12 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
                       </div>
                     </td>
                     <td className="px-4 lg:px-10 py-5 lg:py-7 font-bold text-gray-400 tracking-tighter text-sm opacity-80">
-                      {r.stats.atk} / {r.stats.def} / {r.stats.hp}
+                      <div className="whitespace-nowrap text-[11px]">{renderStatsWithDeltas(r)}</div>
                     </td>
                     <td className="px-4 lg:px-10 py-5 lg:py-7 font-black text-gray-300 text-sm whitespace-nowrap">{t('iv.level')} {r.level}</td>
                     <td className="px-4 lg:px-10 py-5 lg:py-7 font-black text-white tracking-tighter text-xl">{r.cp}</td>
                     <td className="px-4 lg:px-10 py-5 lg:py-7 text-right">
-                      <div className="flex flex-col items-end gap-1.5">
-                        <span className={`font-black text-xl tracking-tighter ${r.rank <= 10 ? 'text-brand-accent' : 'text-white/90'}`}>{r.perfection}%</span>
-                        <div className="w-20 lg:w-24 h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                          <div className="h-full bg-brand-accent shadow-[0_0_8px_rgba(3,147,218,0.4)] transition-all duration-1000" style={{ width: `${r.perfection}%` }}></div>
-                        </div>
-                      </div>
+                      <span className="font-black text-xl tracking-tighter" style={{ color: statProductBandColor(r.perfection) }}>{r.perfection}%</span>
                     </td>
                   </tr>
                 );
