@@ -4,7 +4,7 @@
 // Regional locale variants get their own URL, hreflang, UI copy (src/i18n/ui.ts)
 // and game-data dictionary — LatAm Spanish renames 141 of 425 moves. What they
 // still share with the base locale is the long-form content nobody has rewritten:
-// blog posts, the legal pages, and the localized screenshots. Dependency-free so
+// the legal pages and the localized screenshots. Dependency-free so
 // astro.config.mjs can import it too.
 // Exported for tests/locales.test.ts, which is what catches a typo'd key here:
 // a key that isn't a shipped locale is a silent no-op at runtime.

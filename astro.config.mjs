@@ -20,8 +20,8 @@ const SITE = 'https://battleflow.app';
 
 // Keep empty What's New pages out of the sitemap (they're noindex until populated).
 // Matches /whats-new/ and /<locale>/whats-new/, mapping each to its locale's content.
-// A non-locale parent segment (a blog post slugged `whats-new`) is a different page
-// and is left alone rather than gated on the English changelog.
+// A non-locale parent segment (some other page slugged `whats-new`) is a different
+// page and is left alone rather than gated on the English changelog.
 const hasWhatsNewContent = (url) => {
   const match = url.match(/\/(?:([a-zA-Z0-9-]+)\/)?whats-new\/?$/);
   if (!match) return true;
@@ -87,8 +87,8 @@ export default defineConfig({
     filter: shouldIncludeInSitemap,
     // trailingSlash is 'always', but @astrojs/sitemap emits <loc> without the
     // slash — that points Google at the non-canonical (redirected) URL of every
-    // page, which leaves low-authority pages (the blog) unindexed. Force the
-    // canonical trailing-slash form on every entry.
+    // page, which leaves low-authority pages unindexed. Force the canonical
+    // trailing-slash form on every entry.
     serialize(item) {
       if (!item.url.endsWith('/')) {
         item.url += '/';

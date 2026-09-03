@@ -59,7 +59,7 @@ acquisition/conversion API — that data is Play Console UI + the GCS bulk-repor
 - **Sitemap trailing slashes.** `trailingSlash: 'always'`, so every canonical page
   ends in `/`. `@astrojs/sitemap` emits `<loc>` **without** the slash by default,
   which points Google at the non-canonical (redirected) URL of every page and leaves
-  low-authority pages (the blog) unindexed. Fixed via a `serialize()` in
+  low-authority pages unindexed. Fixed via a `serialize()` in
   [`astro.config.mjs`](../astro.config.mjs) that appends the slash. **If you touch the
   sitemap config, verify `dist/sitemap-0.xml` still has trailing-slash `<loc>` URLs.**
 - **Sitemap hreflang is hand-rolled, on purpose.** `@astrojs/sitemap`'s own `i18n`
@@ -91,7 +91,13 @@ acquisition/conversion API — that data is Play Console UI + the GCS bulk-repor
   it may be structural, in which case no snippet fixes it).
 - **EN `/iv-calculator/`** ranks page-1-bottom/page-2 (pos ~9–12) for `pvp iv checker`,
   `pvp rank checker`, etc. Title is fine — it's a ranking problem. Lever: internal links
-  (homepage + blog → the IV page, "PvP IV / rank checker" anchors) + content depth.
-- **Coverage recheck.** After the sitemap fix deploys, confirm blog posts move from
-  "Crawled/Discovered – currently not indexed" to indexed (URL Inspection API).
+  (homepage → the IV page, "PvP IV / rank checker" anchors) + content depth.
+- **The blog is gone (retired 2026-09-03).** All five posts were AI-generated; the only
+  one with organic traffic (`move-counting-…`, ~325 clicks/90d, pos ~4 for "pokemon go
+  fast move counting chart") divided charge cost by energy-per-TURN instead of
+  per-use, so every move count in it was ~2x too high — in all 9 locales. The indexed
+  URLs 301 to the page that answers the query (`netlify.toml`); `/move-counts/` does
+  the same maths correctly (`src/lib/move-counts.ts`). **Don't re-add generated meta
+  content**: ranked cup guides go stale within one cup rotation, and per-species /
+  "what beats X" queries have ~zero search demand.
 - **MoveDex** converts poorly ("movedex" is brand-ambiguous) — low priority.

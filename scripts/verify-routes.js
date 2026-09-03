@@ -11,10 +11,7 @@ const DIST_DIR = 'dist';
 // the real-cased hreflang value.
 const LANGUAGES = Object.keys(languages);
 
-const BASE_ROUTES = ['', 'privacy', 'tac', 'blog', 'iv-calculator', 'movedex', 'whats-new', 'gbl-calendar', 'team-builder', 'move-counts'];
-const BLOG_SLUGS = fs.readdirSync('src/content/blog/en')
-  .filter(file => file.endsWith('.md'))
-  .map(file => file.replace(/\.md$/, ''));
+const BASE_ROUTES = ['', 'privacy', 'tac', 'iv-calculator', 'movedex', 'whats-new', 'gbl-calendar', 'team-builder', 'move-counts'];
 
 const CASING_RATIONALE = `
   WHY THIS FAILS THE BUILD:
@@ -48,12 +45,10 @@ function checkPage(route) {
 
 // 1. Check English (root) routes
 BASE_ROUTES.forEach(route => checkPage(route));
-BLOG_SLUGS.forEach(slug => checkPage(path.join('blog', slug)));
 
 // 2. Check localized routes
 LANGUAGES.filter(lang => lang !== 'en').forEach(lang => {
   BASE_ROUTES.forEach(route => checkPage(path.join(lang, route)));
-  BLOG_SLUGS.forEach(slug => checkPage(path.join(lang, 'blog', slug)));
 });
 
 console.log(`\n🔍 Verifying ${totalExpected} routes in ${DIST_DIR}/...`);

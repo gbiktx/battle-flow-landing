@@ -2,10 +2,88 @@
   command = "pnpm build"
   publish = "dist"
 
+# Blog retired 2026-09-03: every post was AI-generated and the only one earning
+# organic traffic (move-counting, pos ~4 for "pokemon go fast move counting
+# chart") taught the wrong counting formula — it divided charge cost by energy
+# PER TURN instead of per use, so every count in it was ~2x too high, in all 9
+# locales. Rather than 404 the indexed URLs, 301 each to the page that actually
+# answers its query. /move-counts/ computes the same counts correctly
+# (src/lib/move-counts.ts).
+[[redirects]]
+  from = "/blog/move-counting-energy-management-pokemon-go-pvp/"
+  to = "/move-counts/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/blog/move-counting-energy-management-pokemon-go-pvp/"
+  to = "/:lang/move-counts/"
+  status = 301
+  force = true
+
+# Team/meta posts -> the team builder, which covers the same intent with live data.
+[[redirects]]
+  from = "/blog/master-your-teams-with-battleflow/"
+  to = "/team-builder/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/blog/master-your-teams-with-battleflow/"
+  to = "/:lang/team-builder/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/blog-electric-cup/"
+  to = "/team-builder/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/blog/blog-electric-cup/"
+  to = "/:lang/team-builder/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/laic-2025-meta-guide-tournament-analysis/"
+  to = "/team-builder/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/blog/laic-2025-meta-guide-tournament-analysis/"
+  to = "/:lang/team-builder/"
+  status = 301
+  force = true
+
+# Battle Notes is an app feature, not a web page — home carries its feature block.
+[[redirects]]
+  from = "/blog/battle-notes-meta-analysis-guide/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/:lang/blog/battle-notes-meta-analysis-guide/"
+  to = "/:lang/"
+  status = 301
+  force = true
+
+# The index and anything else left under /blog/ (stray slugs, old Jekyll dates).
+# Must stay AFTER the per-slug rules above: Netlify takes the first match.
+[[redirects]]
+  from = "/:lang/blog/*"
+  to = "/:lang/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/blog/*"
-  to = "/blog/:splat"
-  status = 200
+  to = "/"
+  status = 301
+  force = true
 
 # Dropped Simplified Chinese locale: 301 previously-indexed /zh-Hans/* URLs to
 # their Traditional equivalent (closer for a Chinese reader than the EN home).

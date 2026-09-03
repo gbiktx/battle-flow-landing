@@ -24,7 +24,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // Append brand suffix only when it keeps the title under the SERP cutoff (~60 chars).
-// Pages with long SEO titles (e.g. MoveDex, blog posts) keep their title intact.
+// Pages with long SEO titles (e.g. MoveDex) keep their title intact.
 const BRAND_SUFFIX = ' | BattleFlow';
 const SERP_TITLE_LIMIT = 60;
 const siteTitle = title

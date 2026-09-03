@@ -4,7 +4,7 @@ This is the landing page and marketing site for **BattleFlow**, a high-performan
 
 ## Project Overview
 
-- **Purpose**: Showcase BattleFlow app features, provide an IV calculator, and host a multilingual blog.
+- **Purpose**: Showcase BattleFlow app features and host the multilingual PvP tools (IV calculator, team builder, MoveDex, move counts, GBL calendar).
 - **Tech Stack**:
   - **Framework**: [Astro 6.0](https://astro.build/)
   - **UI Library**: [React 19](https://react.dev/) (used for interactive components like the IV Calculator)
@@ -19,7 +19,6 @@ This is the landing page and marketing site for **BattleFlow**, a high-performan
   - `IvCalculator.tsx`: A core React component for the PvP IV calculator.
 - `src/i18n/`: Translation data (`ui.ts`, `data.ts`) and utilities (`utils.ts`).
 - `src/data/`: Static game data (Pokémon base stats, CP multipliers) used by the IV calculator.
-- `src/content/`: Blog posts managed via Astro Content Collections.
 - `conductor/`: Contains project management documentation, migration plans, and testing results.
 
 ## Building and Running
@@ -39,5 +38,4 @@ This is the landing page and marketing site for **BattleFlow**, a high-performan
   - Page routes are duplicated under `src/pages/[lang]/` for non-default locales.
 - **Styling**: Uses Tailwind CSS. Global styles are in `src/styles/global.css`.
 - **Game Data**: Update `src/data/pokemon.json` or `src/data/cpms.json` when new game masters are released.
-- **Blog Content**: Blog posts are written in Markdown in `src/content/blog/[lang]/` and must follow the schema defined in `src/content.config.ts`.
 - **Performance**: The site prioritizes "Performance-First PvP" aesthetic: bold typography (Heebo Extra Bold), tight spacing, and high-performance KPI treatments.

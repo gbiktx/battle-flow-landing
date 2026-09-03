@@ -9,7 +9,6 @@ const ROUTES = [
   '/',
   '/privacy/',
   '/tac/',
-  '/blog/',
   '/iv-calculator/',
   '/movedex/',
   '/whats-new/',
