@@ -17,7 +17,9 @@ export type GblRule =
   | 'premierNoMythicalLegendary'
   | 'naicExclusion'
   | 'evolutionOnly'
-  | 'retroExclusion';
+  | 'retroExclusion'
+  | 'laicExclusion'
+  | 'seasonCatch';
 
 /** One league or cup running within a weekly window. */
 export interface GblFeature {
@@ -63,10 +65,6 @@ export function focusIndexAt(season: GblSeason, now: Date): number {
   return season.windows.length === 0 ? 0 : season.windows.length - 1;
 }
 
-// --- Forever Forward (Jun 2 – Sep 8 2026) -----------------------------------
-// Validated against https://pokemongo.com/news/go-battle-league-forever-forward
-// All rotations flip at 1:00 p.m. PDT = 20:00 UTC. Encoded once per season; when
-// a new season starts, replace this constant (or wire it to a data source).
 const SEASON_YEAR = 2026;
 
 const pt = (month: number, day: number): string =>
@@ -89,97 +87,94 @@ const window = (
   multiStardust = false,
 ): GblScheduleEntry => ({ start, end, features, multiStardust });
 
-export const foreverForward: GblSeason = {
-  name: 'Forever Forward',
+// --- Twilight Trails (Sep 8 – Dec 1 2026) -----------------------------------
+// Validated against https://pokemongo.com/news/go-battle-league-twilight-trails
+// (2026-09-04). All rotations flip at 1:00 p.m. PDT = 20:00 UTC.
+//
+// Two verbatim quirks of Niantic's table are preserved deliberately:
+//   - Nov 17 -> Nov 18 is a one-day gap. It is in the source.
+//   - Nov 18-25 and Nov 24-Dec 1 OVERLAP in the source. Every other handoff is a
+//     clean 7 days, so this reads as their error; the Nov 18 window is clipped to
+//     Nov 24 so two limited cups are never live at once. This matches the app
+//     (lib/ui/gbl/calendar/gbl_schedule.dart). Restore the published end date
+//     only if Niantic corrects the post.
+//
+// This file is now the ONLY copy of the schedule: the app dropped its native
+// calendar and embeds /embed/gbl-calendar instead. Updating a season here ships
+// to every app user on the next deploy, with no app release.
+const greatMega = feature({
+  title: 'Great League: Mega Edition', tier: 'great', cupName: 'mega',
+  cpLimit: '1500', rule: 'megaEdition',
+});
+const ultraMega = feature({
+  title: 'Ultra League: Mega Edition', tier: 'ultra', cupName: 'mega',
+  cpLimit: '2500', rule: 'megaEdition',
+});
+const masterMega = feature({
+  title: 'Master League: Mega Edition', tier: 'master', cupName: 'mega',
+  cpLimit: '10000', rule: 'megaEdition',
+});
+const littleCup = feature({
+  title: 'Little Cup', tier: 'little', cupName: 'all', cpLimit: '500',
+});
+const laic2026 = feature({
+  title: '2026 GO LAIC Cup', tier: 'great', cupName: 'laic2026',
+  cpLimit: '1500', rule: 'laicExclusion',
+});
+
+export const twilightTrails: GblSeason = {
+  name: 'Twilight Trails',
   windows: [
-    window(pt(6, 2), pt(6, 9), [
+    window(pt(9, 8), pt(9, 15), [greatMega, ultraMega, masterMega], true),
+    window(pt(9, 15), pt(9, 22), [
       greatLeague,
+      ultraMega,
       feature({
-        title: 'NAIC 2026 Cup', tier: 'great', cupName: 'naic2026', cpLimit: '1500',
-        eligibleTypes: ['fairy', 'normal', 'psychic', 'water'], rule: 'naicExclusion',
+        title: 'Willpower Cup', tier: 'great', cupName: 'willpower', cpLimit: '1500',
+        eligibleTypes: ['fighting', 'psychic', 'dark'],
       }),
     ]),
-    window(pt(6, 9), pt(6, 16), [
+    window(pt(9, 22), pt(9, 29), [
       ultraLeague,
-      feature({
-        title: 'NAIC 2026 Cup', tier: 'great', cupName: 'naic2026', cpLimit: '1500',
-        eligibleTypes: ['fairy', 'normal', 'psychic', 'water'], rule: 'naicExclusion',
-      }),
-    ]),
-    window(pt(6, 16), pt(6, 23), [
-      feature({
-        title: 'Master League: Mega Edition', tier: 'master', cupName: 'mega',
-        cpLimit: '10000', rule: 'megaEdition',
-      }),
-      feature({
-        title: 'Sunshine Cup', tier: 'great', cupName: 'sunshine', cpLimit: '1500',
-        eligibleTypes: ['normal', 'fire', 'grass', 'ground'],
-      }),
-    ], true),
-    window(pt(6, 23), pt(6, 30), [greatLeague, ultraLeague, masterLeague], true),
-    window(pt(6, 30), pt(7, 7), [
-      greatLeague,
-      feature({
-        title: 'Summer Cup', tier: 'great', cupName: 'summer', cpLimit: '1500',
-        eligibleTypes: ['normal', 'fire', 'water', 'grass', 'electric', 'bug'],
-      }),
-    ]),
-    window(pt(7, 7), pt(7, 14), [
-      ultraLeague,
-      feature({
-        title: 'Fantasy Cup: Ultra Edition', tier: 'ultra', cupName: 'fantasy',
-        cpLimit: '2500', eligibleTypes: ['dragon', 'steel', 'fairy'],
-      }),
-    ]),
-    window(pt(7, 14), pt(7, 21), [
-      masterLeague,
+      masterMega,
       feature({
         title: 'Retro Cup', tier: 'great', cupName: 'retro', cpLimit: '1500',
         rule: 'retroExclusion',
       }),
     ], true),
-    window(pt(7, 21), pt(7, 28), [greatLeague, ultraLeague, masterLeague], true),
-    window(pt(7, 28), pt(8, 4), [
-      greatLeague,
-      feature({
-        title: 'Master Premier', tier: 'master', cupName: 'premier', cpLimit: '10000',
-        rule: 'premierNoMythicalLegendary',
-      }),
-    ], true),
-    window(pt(8, 4), pt(8, 11), [
-      ultraLeague,
-      feature({
-        title: 'Weather Cup', tier: 'great', cupName: 'weather', cpLimit: '1500',
-        eligibleTypes: ['fire', 'water', 'ice', 'rock'],
-      }),
-    ]),
-    window(pt(8, 11), pt(8, 18), [
+    window(pt(9, 29), pt(10, 6), [
       masterLeague,
       feature({
-        title: 'Evolution Cup', tier: 'great', cupName: 'evolution', cpLimit: '1500',
-        rule: 'evolutionOnly',
+        title: 'Mega Color Cup', tier: 'great', cupName: 'color', cpLimit: '1500',
+        eligibleTypes: ['grass', 'fire', 'water', 'electric'], rule: 'megaEdition',
       }),
     ], true),
-    window(pt(8, 18), pt(8, 25), [
-      greatLeague,
+    window(pt(10, 6), pt(10, 13), [greatMega, ultraMega, masterMega], true),
+    window(pt(10, 13), pt(10, 20), [greatLeague, ultraMega, littleCup]),
+    window(pt(10, 20), pt(10, 27), [
+      ultraLeague,
+      masterMega,
       feature({
-        title: 'Scroll Cup', tier: 'great', cupName: 'scroll', cpLimit: '1500',
-        eligibleTypes: ['water', 'fighting', 'dark'],
+        title: 'Fantasy Cup', tier: 'great', cupName: 'fantasy', cpLimit: '1500',
+        eligibleTypes: ['dragon', 'steel', 'fairy'],
       }),
-    ]),
-    window(pt(8, 25), pt(9, 1), [greatLeague, ultraLeague, masterLeague], true),
-    window(pt(9, 1), pt(9, 8), [
+    ], true),
+    window(pt(10, 27), pt(11, 3), [
+      masterLeague,
       feature({
-        title: 'Great League: Mega Edition', tier: 'great', cupName: 'all',
-        cpLimit: '1500', rule: 'megaEdition',
+        title: 'Mega Halloween Cup', tier: 'great', cupName: 'halloween', cpLimit: '1500',
+        eligibleTypes: ['bug', 'poison', 'ghost', 'dark', 'fairy'], rule: 'megaEdition',
       }),
+    ], true),
+    window(pt(11, 3), pt(11, 10), [greatMega, ultraMega, masterMega], true),
+    window(pt(11, 10), pt(11, 17), [greatLeague, ultraMega, laic2026]),
+    // Published as Nov 18 - Nov 25; clipped to Nov 24. See the note above.
+    window(pt(11, 18), pt(11, 24), [ultraLeague, masterMega, laic2026], true),
+    window(pt(11, 24), pt(12, 1), [
+      masterLeague,
       feature({
-        title: 'Ultra League: Mega Edition', tier: 'ultra', cupName: 'all',
-        cpLimit: '2500', rule: 'megaEdition',
-      }),
-      feature({
-        title: 'Master League: Mega Edition', tier: 'master', cupName: 'all',
-        cpLimit: '10000', rule: 'megaEdition',
+        title: 'Mega Catch Cup', tier: 'great', cupName: 'catch', cpLimit: '1500',
+        rule: 'seasonCatch',
       }),
     ], true),
   ],

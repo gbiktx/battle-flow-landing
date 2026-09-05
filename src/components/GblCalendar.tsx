@@ -3,7 +3,7 @@ import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
 import { TYPE_COLORS, hexToRgba } from '../lib/game-data';
 import {
-  foreverForward,
+  twilightTrails,
   focusIndexAt,
   statusAt,
   type GblFeature,
@@ -15,6 +15,19 @@ import {
 
 interface Props {
   lang: string;
+  /**
+   * Rendered inside the app's WebView (`/embed/...`). Drops the season header's
+   * outer margins and turns each cup row into a `battleflow://` link the app
+   * intercepts in `NavigationDelegate.onNavigationRequest`, which is what keeps
+   * the native calendar's one real interaction: tap a cup, the app switches to
+   * it. Plain web visitors never see these links.
+   */
+  embed?: boolean;
+}
+
+/** The app resolves this against `CupInfo.id`, which is `{cpLimit}-{cupName}`. */
+function appCupUrl(f: GblFeature): string {
+  return `battleflow://cup/${f.cpLimit}-${f.cupName}`;
 }
 
 // League accent colors — mirror the brand palette rather than introducing a
@@ -26,12 +39,14 @@ const TIER_COLORS: Record<GblLeagueTier, string> = {
   master: '#a662c7',
 };
 
-const RULE_KEYS: Record<Exclude<GblRule, 'none'>, 'gbl.rule_mega' | 'gbl.rule_premier' | 'gbl.rule_naic' | 'gbl.rule_evolution' | 'gbl.rule_retro'> = {
+const RULE_KEYS: Record<Exclude<GblRule, 'none'>, keyof typeof ui['en']> = {
   megaEdition: 'gbl.rule_mega',
   premierNoMythicalLegendary: 'gbl.rule_premier',
   naicExclusion: 'gbl.rule_naic',
   evolutionOnly: 'gbl.rule_evolution',
   retroExclusion: 'gbl.rule_retro',
+  laicExclusion: 'gbl.rule_laic',
+  seasonCatch: 'gbl.rule_catch',
 };
 
 const LEAGUE_LOGO: Record<GblLeagueTier, string> = {
@@ -46,7 +61,8 @@ const LEAGUE_LOGO: Record<GblLeagueTier, string> = {
 // mirrors the app's _featureIconAsset resolution.
 const CUPS_WITH_LOGO = new Set([
   'sunshine', 'summer', 'fantasy', 'retro', 'premier', 'scroll',
-  'weather', 'evolution', 'naic2026',
+  'weather', 'evolution', 'naic2026', 'willpower', 'color', 'halloween',
+  'catch',
 ]);
 
 function featureIconSrc(f: GblFeature): string {
@@ -98,9 +114,9 @@ function FeatureIcon({ feature }: { feature: GblFeature }) {
   );
 }
 
-export default function GblCalendar({ lang }: Props) {
+export default function GblCalendar({ lang, embed = false }: Props) {
   const t = useTranslations(lang as keyof typeof ui);
-  const season = foreverForward;
+  const season = twilightTrails;
 
   // Compute "now" on the client so live/upcoming/ended stays accurate against
   // the visitor's clock (the page itself is statically built).
@@ -161,6 +177,7 @@ export default function GblCalendar({ lang }: Props) {
               status={now ? status : null}
               dateRange={dateRange(entry)}
               t={t}
+              embed={embed}
             />
           );
         })}
@@ -175,12 +192,14 @@ function WeekCard({
   dateRange,
   t,
   cardRef,
+  embed,
 }: {
   entry: GblScheduleEntry;
   status: GblWindowStatus | null;
   dateRange: string;
   t: (key: keyof typeof ui['en']) => string;
   cardRef?: React.Ref<HTMLDivElement>;
+  embed: boolean;
 }) {
   const isLive = status === 'live';
   const dimmed = status === 'ended';
@@ -206,7 +225,7 @@ function WeekCard({
 
         <div className="flex flex-col divide-y divide-white/5">
           {entry.features.map((f, i) => (
-            <FeatureRow key={`${f.cupName}-${f.cpLimit}-${i}`} feature={f} t={t} />
+            <FeatureRow key={`${f.cupName}-${f.cpLimit}-${i}`} feature={f} t={t} embed={embed} />
           ))}
         </div>
       </div>
@@ -217,14 +236,20 @@ function WeekCard({
 function FeatureRow({
   feature,
   t,
+  embed,
 }: {
   feature: GblFeature;
   t: (key: keyof typeof ui['en']) => string;
+  embed: boolean;
 }) {
   const ruleLabel = feature.rule !== 'none' ? t(RULE_KEYS[feature.rule]) : null;
+  const Row = embed ? 'a' : 'div';
+  const rowProps = embed
+    ? { href: appCupUrl(feature), className: 'flex items-start gap-4 py-3.5 first:pt-0 last:pb-0 active:opacity-60 transition-opacity no-underline' }
+    : { className: 'flex items-start gap-4 py-3.5 first:pt-0 last:pb-0' };
 
   return (
-    <div className="flex items-start gap-4 py-3.5 first:pt-0 last:pb-0">
+    <Row {...rowProps}>
       <FeatureIcon feature={feature} />
       <div className="flex-1 min-w-0">
         <div className="flex items-baseline gap-2 flex-wrap">
@@ -260,7 +285,7 @@ function FeatureRow({
           </div>
         )}
       </div>
-    </div>
+    </Row>
   );
 }
 

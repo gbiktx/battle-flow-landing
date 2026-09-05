@@ -1,0 +1,37 @@
+---
+// Embed target for the BattleFlow app's in-app WebView.
+//
+// The app dropped its native GBL calendar (it was compiled in, so a new season
+// needed an app release). This page is now the single source of the schedule for
+// both web and app — deploying the site updates every installed client.
+//
+// Deliberately NOT built on Layout.astro: no Nav, no Footer, no download CTAs,
+// no Mixpanel (in-app traffic would otherwise land in the site's web analytics),
+// no OG/canonical tags. Just the calendar on the app's own ground.
+//
+// Cup rows render as `battleflow://cup/{cpLimit}-{cupName}` links, which the app
+// intercepts in NavigationDelegate.onNavigationRequest to switch the active cup.
+import '../../styles/global.css';
+import GblCalendar from '../../components/GblCalendar';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('en');
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="robots" content="noindex" />
+		<title>{t('gbl.title')}</title>
+		<style is:global>
+			/* The WebView supplies its own scaffold — the page is only the list. */
+			body { background: transparent; overscroll-behavior-y: none; }
+		</style>
+	</head>
+	<body class="bg-brand-dark text-white">
+		<main class="py-4">
+			<GblCalendar client:load lang="en" embed={true} />
+		</main>
+	</body>
+</html>
