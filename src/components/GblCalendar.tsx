@@ -5,6 +5,7 @@ import { TYPE_COLORS, hexToRgba } from '../lib/game-data';
 import {
   twilightTrails,
   focusIndexAt,
+  isUncappedCp,
   statusAt,
   type GblFeature,
   type GblLeagueTier,
@@ -40,7 +41,6 @@ const TIER_COLORS: Record<GblLeagueTier, string> = {
 };
 
 const RULE_KEYS: Record<Exclude<GblRule, 'none'>, keyof typeof ui['en']> = {
-  megaEdition: 'gbl.rule_mega',
   premierNoMythicalLegendary: 'gbl.rule_premier',
   naicExclusion: 'gbl.rule_naic',
   evolutionOnly: 'gbl.rule_evolution',
@@ -56,16 +56,32 @@ const LEAGUE_LOGO: Record<GblLeagueTier, string> = {
   master: '/assets/images/leagues/master_league.png',
 };
 
-// Cup badges shipped under public/assets/images/cups. The Mega Editions have no
-// dedicated badge and fall back to the league-tier logo (app convention) —
-// mirrors the app's _featureIconAsset resolution.
+// Cup badges shipped under public/assets/images/cups.
+// Every badge is named after its cup, matching the app's own derivation in
+// `cup_badge_paths.dart` — so `megacolor` and `megahalloween` are ordinary
+// entries here. `megacatch` is landing-only: the cup exists on Niantic's
+// schedule but not in the app (no ranking source).
 const CUPS_WITH_LOGO = new Set([
   'sunshine', 'summer', 'fantasy', 'retro', 'premier', 'scroll',
   'weather', 'evolution', 'naic2026', 'willpower', 'color', 'halloween',
-  'catch',
+  'catch', 'laic2026', 'megacolor', 'megahalloween', 'megacatch',
 ]);
 
+// The three open Mega Editions are the one case a cup name can't name a badge:
+// they all share the cup name `mega` and are told apart only by tier. Niantic
+// publishes a distinct file for each — the league pennant carrying the Mega
+// helix — so key off the tier.
+const TIER_MEGA_BADGE: Partial<Record<GblLeagueTier, string>> = {
+  great: 'great_mega',
+  ultra: 'ultra_mega',
+  master: 'master_mega',
+};
+
 function featureIconSrc(f: GblFeature): string {
+  if (f.cupName === 'mega') {
+    const badge = TIER_MEGA_BADGE[f.tier];
+    if (badge) return `/assets/images/cups/${badge}.png`;
+  }
   if (f.cupName !== 'all' && CUPS_WITH_LOGO.has(f.cupName)) {
     return `/assets/images/cups/${f.cupName}.png`;
   }
@@ -85,7 +101,7 @@ function featureNameKey(f: GblFeature): keyof typeof ui['en'] {
     };
     return byTier[f.tier];
   }
-  return `gbl.name_${f.cupName}` as keyof typeof ui['en'];
+  return `gbl.name_${f.nameKey}` as keyof typeof ui['en'];
 }
 
 function FeatureIcon({ feature }: { feature: GblFeature }) {
@@ -243,6 +259,11 @@ function FeatureRow({
   embed: boolean;
 }) {
   const ruleLabel = feature.rule !== 'none' ? t(RULE_KEYS[feature.rule]) : null;
+  // Master League is uncapped — Niantic publishes it as a word, not "CP 10000".
+  const cpLabel = isUncappedCp(feature.cpLimit)
+    ? t('gbl.cp_unlimited')
+    : `${t('gbl.cp')} ${feature.cpLimit}`;
+  const pills = [feature.mega ? t('gbl.rule_mega') : null, ruleLabel].filter(Boolean) as string[];
   const Row = embed ? 'a' : 'div';
   const rowProps = embed
     ? { href: appCupUrl(feature), className: 'flex items-start gap-4 py-3.5 first:pt-0 last:pb-0 active:opacity-60 transition-opacity no-underline' }
@@ -255,11 +276,11 @@ function FeatureRow({
         <div className="flex items-baseline gap-2 flex-wrap">
           <span className="font-bold text-white">{t(featureNameKey(feature)) || feature.title}</span>
           <span className="text-[11px] font-black uppercase tracking-wider text-white/40">
-            {t('gbl.cp')} {feature.cpLimit}
+            {cpLabel}
           </span>
         </div>
 
-        {(feature.eligibleTypes.length > 0 || ruleLabel) && (
+        {(feature.eligibleTypes.length > 0 || pills.length > 0) && (
           <div className="flex flex-wrap items-center gap-1.5 mt-2">
             {feature.eligibleTypes.map((type) => {
               const color = TYPE_COLORS[type] || '#a3a49e';
@@ -277,11 +298,14 @@ function FeatureRow({
                 </span>
               );
             })}
-            {ruleLabel && (
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider border border-white/15 text-white/50">
-                {ruleLabel}
+            {pills.map((label) => (
+              <span
+                key={label}
+                className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider border border-white/15 text-white/50"
+              >
+                {label}
               </span>
-            )}
+            ))}
           </div>
         )}
       </div>
