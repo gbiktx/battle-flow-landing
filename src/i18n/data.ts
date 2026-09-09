@@ -1248,7 +1248,21 @@ BattleFlow Pro는 구매하신 앱 스토어(Apple App Store 또는 Google Play)
 //
 //   - Movedex — browse every fast and charged move with full stats and effects.
 export const whatsNewData: Record<string, string> = {
-  en: `## v4.2.2
+  en: `## v4.3
+
+**Selective Scan.** Set the minimum PvP Stat Product you want to keep, and the app saves only the Pokémon that meet it.
+
+**Every scan keeps its photo.** The screenshot a scan was read from is saved with the Pokémon and shown in the app. It works with backup and restore, and can be turned off in Settings.
+
+**Your Collection, everywhere in the app.** The collection icon imports your own Pokémon straight into the Battle Simulator, Teams and the Team Generator.
+
+**Mega Evolution and the 2026 PvP system.** Mega mechanics are fully supported, and the third Charged Attack is now simulated in battle.
+
+**Manual collection entry.** You can now add Pokémon to your Collection by hand.
+
+**Plus.** A new IV compare table in the IV Calculator with family and evolution chips, a Settings page reorganised into fewer sections, a draggable scrollbar on long lists, searchable cleanup and transfer lists, and translation fixes across all 11 languages.
+
+## v4.2.2
 
 **Import a whole gallery selection.** Pick several appraisal screenshots at once and BattleFlow scans the batch, then collects anything it couldn't read on a single review page — a form to pick, a CP to confirm, an IV spread to choose. Answer the question and it saves, with the screenshot beside it so you can read the answer off the picture.
 
@@ -1327,7 +1341,21 @@ export const whatsNewData: Record<string, string> = {
 **Build Around Mode.** Start team generation from any Pokémon. Pick your favorite from Rankings or your Pokebox, and BattleFlow builds optimized teams around it — finding the best leads, safe swaps, and closers to complement your anchor.
 
 **Shiny Sprites (Pro).** See your shiny Pokémon throughout the app — in rankings, teams, Pokebox, IV checker, and generated teams. Toggle shinies per species with a sparkle animation.`,
-  es: `## v4.2.2
+  es: `## v4.3
+
+**Escaneo selectivo.** Fija el Producto de estadísticas mínimo de PvP que quieres conservar y la app guardará solo los Pokémon que lo alcancen.
+
+**Cada escaneo guarda su foto.** La captura de la que se leyó el escaneo se guarda junto al Pokémon y se muestra en la app. Funciona con la copia de seguridad y la restauración, y se puede desactivar en los Ajustes.
+
+**Tu Colección, en toda la app.** El icono de la colección importa tus propios Pokémon directamente al Simulador de Batalla, a Equipos y al Generador de Equipos.
+
+**Megaevolución y el sistema de PvP de 2026.** Las mecánicas de Megaevolución tienen soporte completo y el tercer ataque cargado ya se simula en combate.
+
+**Alta manual en la colección.** Ahora puedes añadir Pokémon a tu Colección a mano.
+
+**Además.** Una nueva tabla de comparación de IV en la Calculadora de IV con distintivos de familia y evolución, una página de ajustes reorganizada en menos secciones, una barra de desplazamiento arrastrable en las listas largas, búsqueda en las listas de limpieza y de transferencia, y correcciones de traducción en los 11 idiomas.
+
+## v4.2.2
 
 **Importa una selección entera de la galería.** Elige varias capturas de pantalla de evaluación a la vez y BattleFlow escanea el lote; todo lo que no pudo leer queda en una única página de revisión: una forma que elegir, un PC que confirmar, una distribución de IVs que seleccionar. Responde y se guarda, con la captura al lado para que puedas leer la respuesta en la imagen.
 
@@ -1406,7 +1434,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir Alrededor.** Genera equipos a partir de cualquier Pokémon. Elige tu favorito de los Rankings o tu Pokebox, y BattleFlow construye equipos optimizados a su alrededor — encontrando los mejores leads, safe swaps y closers.
 
 **Sprites Shiny (Pro).** Ve tus Pokémon shiny en toda la app — rankings, equipos, Pokebox, verificador de IVs y equipos generados. Activa shinies por especie con animación de brillo.`,
-  fr: `## v4.2.2
+  fr: `## v4.3
+
+**Scan sélectif.** Définissez le Produit des stats PvP minimum que vous voulez garder : l'app n'enregistre que les Pokémon qui l'atteignent.
+
+**Chaque scan garde sa photo.** La capture d'écran dont le scan est issu est enregistrée avec le Pokémon et affichée dans l'app. Elle fonctionne avec la sauvegarde et la restauration, et se désactive dans les Paramètres.
+
+**Votre Collection, partout dans l'app.** L'icône de la collection importe vos propres Pokémon directement dans le Simulateur de combat, les Équipes et le Générateur d'équipe.
+
+**Méga-Évolution et le système PvP 2026.** Les mécaniques de Méga-Évolution sont entièrement prises en charge, et la troisième Attaque Chargée est désormais simulée en combat.
+
+**Ajout manuel à la collection.** Vous pouvez maintenant ajouter des Pokémon à votre Collection à la main.
+
+**En plus.** Un nouveau tableau de comparaison d'IV dans le Calculateur d'IV, avec des étiquettes de famille et d'évolution, une page de paramètres réorganisée en moins de sections, une barre de défilement déplaçable sur les longues listes, la recherche dans les listes de nettoyage et de transfert, et des corrections de traduction dans les 11 langues.
+
+## v4.2.2
 
 **Importez toute une sélection de la galerie.** Choisissez plusieurs captures d'écran d'évaluation à la fois : BattleFlow scanne le lot, puis rassemble sur une seule page tout ce qu'il n'a pas pu lire — une forme à choisir, des PC à confirmer, une répartition d'IV à sélectionner. Répondez et c'est enregistré, avec la capture à côté pour lire la réponse sur l'image.
 
@@ -1485,7 +1527,21 @@ export const whatsNewData: Record<string, string> = {
 **Mode Construire Autour.** Générez des équipes à partir de n'importe quel Pokémon. Choisissez votre favori dans les classements ou votre Pokebox, et BattleFlow construit des équipes optimisées autour de lui — trouvant les meilleurs leads, safe swaps et closers.
 
 **Sprites Shiny (Pro).** Voyez vos Pokémon shiny dans toute l'app — classements, équipes, Pokebox, vérificateur d'IVs et équipes générées. Activez les shinies par espèce avec une animation d'éclat.`,
-  de: `## v4.2.2
+  de: `## v4.3
+
+**Selektiver Scan.** Leg das minimale PvP-Statistikprodukt fest, das du behalten willst — die App speichert nur die Pokémon, die es erreichen.
+
+**Jeder Scan behält sein Foto.** Der Screenshot, aus dem gelesen wurde, wird beim Pokémon gespeichert und in der App angezeigt. Er funktioniert mit Sicherung und Wiederherstellung und lässt sich in den Einstellungen abschalten.
+
+**Deine Sammlung, überall in der App.** Das Sammlungssymbol importiert deine eigenen Pokémon direkt in den Kampfsimulator, in Teams und in den Team-Generator.
+
+**Mega-Entwicklung und das PvP-System 2026.** Die Mega-Entwicklungs-Mechaniken werden vollständig unterstützt, und die dritte Lade-Attacke wird jetzt im Kampf simuliert.
+
+**Manueller Sammlungseintrag.** Du kannst Pokémon jetzt von Hand zu deiner Sammlung hinzufügen.
+
+**Außerdem.** Eine neue IV-Vergleichstabelle im IV-Rechner mit Familien- und Entwicklungs-Chips, eine in weniger Abschnitte aufgeräumte Einstellungsseite, ein ziehbarer Scrollbalken bei langen Listen, Suche in den Aufräum- und Transferlisten und Übersetzungskorrekturen in allen 11 Sprachen.
+
+## v4.2.2
 
 **Eine ganze Galerie-Auswahl importieren.** Wähle mehrere Bewertungs-Screenshots auf einmal aus, und BattleFlow scannt den Stapel — alles, was es nicht lesen konnte, sammelt es auf einer einzigen Prüfseite: eine Form zum Auswählen, ein WP zum Bestätigen, eine IV-Verteilung zum Auswählen. Beantworte die Frage und es wird gespeichert, mit dem Screenshot daneben, damit du die Antwort vom Bild ablesen kannst.
 
@@ -1564,7 +1620,21 @@ export const whatsNewData: Record<string, string> = {
 **Build-Around-Modus.** Starte die Teamgenerierung mit einem beliebigen Pokémon. Wähle deinen Favoriten aus den Rankings oder deiner Pokebox, und BattleFlow erstellt optimierte Teams drumherum — mit den besten Leads, Safe Swaps und Closern.
 
 **Shiny-Sprites (Pro).** Sieh deine Shiny-Pokémon in der gesamten App — Rankings, Teams, Pokebox, IV-Checker und generierte Teams. Aktiviere Shinies pro Spezies mit Glitzeranimation.`,
-  it: `## v4.2.2
+  it: `## v4.3
+
+**Scansione selettiva.** Imposta il Prodotto PvP minimo che vuoi tenere: l'app salva solo i Pokémon che lo raggiungono.
+
+**Ogni scansione conserva la sua foto.** Lo screenshot da cui è stata letta viene salvato insieme al Pokémon e mostrato nell'app. Funziona con backup e ripristino e si può disattivare dalle Impostazioni.
+
+**La tua Collezione, in tutta l'app.** L'icona della collezione importa i tuoi Pokémon direttamente nel Simulatore di Lotta, nei Team e nel Generatore di Team.
+
+**Megaevoluzione e il sistema PvP 2026.** Le meccaniche di Megaevoluzione sono pienamente supportate e il terzo attacco caricato è ora simulato in lotta.
+
+**Inserimento manuale nella collezione.** Ora puoi aggiungere Pokémon alla tua Collezione a mano.
+
+**Inoltre.** Una nuova tabella di confronto IV nel Calcolatore IV con indicatori di famiglia ed evoluzione, una pagina delle impostazioni riorganizzata in meno sezioni, una barra di scorrimento trascinabile nelle liste lunghe, la ricerca nelle liste di pulizia e di trasferimento e correzioni di traduzione in tutte e 11 le lingue.
+
+## v4.2.2
 
 **Importa un'intera selezione dalla galleria.** Scegli più screenshot di valutazione contemporaneamente: BattleFlow scansiona il gruppo e raccoglie in un'unica pagina di revisione tutto ciò che non è riuscito a leggere — una forma da scegliere, un PL da confermare, una combinazione di IV da selezionare. Rispondi e viene salvato, con lo screenshot accanto per leggere la risposta dall'immagine.
 
@@ -1643,7 +1713,21 @@ export const whatsNewData: Record<string, string> = {
 **Modalità Costruisci Attorno.** Genera squadre partendo da qualsiasi Pokémon. Scegli il tuo preferito dai ranking o dalla Pokebox, e BattleFlow costruisce squadre ottimizzate attorno ad esso — trovando i migliori lead, safe swap e closer.
 
 **Sprite Shiny (Pro).** Visualizza i tuoi Pokémon shiny in tutta l'app — classifiche, squadre, Pokebox, verificatore IV e squadre generate. Attiva gli shiny per specie con animazione scintillante.`,
-  pt: `## v4.2.2
+  pt: `## v4.3
+
+**Escaneamento seletivo.** Defina o Produto de PvP mínimo que você quer manter e o app salva só os Pokémon que o alcançam.
+
+**Todo escaneamento guarda sua foto.** A captura de tela de onde a leitura veio fica salva junto do Pokémon e aparece no app. Ela funciona com backup e restauração, e pode ser desativada nas Configurações.
+
+**Sua Coleção, no app inteiro.** O ícone da coleção importa os seus Pokémon direto para o Simulador de Batalha, os Times e o Gerador de Times.
+
+**Megaevolução e o sistema de PvP de 2026.** As mecânicas de Megaevolução têm suporte completo e o terceiro ataque carregado já é simulado nas batalhas.
+
+**Entrada manual na coleção.** Agora você pode adicionar Pokémon à sua Coleção manualmente.
+
+**Além disso.** Uma nova tabela de comparação de IVs na Calculadora de IVs com selos de família e evolução, uma página de configurações reorganizada em menos seções, uma barra de rolagem arrastável nas listas longas, busca nas listas de limpeza e de transferência, e correções de tradução nos 11 idiomas.
+
+## v4.2.2
 
 **Importe uma seleção inteira da galeria.** Escolha vários screenshots de avaliação de uma vez: o BattleFlow escaneia o lote e reúne numa única página de revisão tudo o que não conseguiu ler — uma forma para escolher, um PC para confirmar, uma distribuição de IVs para selecionar. Responda e ele salva, com o screenshot ao lado para você ler a resposta na imagem.
 
@@ -1722,7 +1806,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir ao Redor.** Gere equipes a partir de qualquer Pokémon. Escolha seu favorito dos Rankings ou da Pokebox, e BattleFlow monta equipes otimizadas ao redor dele — encontrando os melhores leads, safe swaps e closers.
 
 **Sprites Shiny (Pro).** Veja seus Pokémon shiny em todo o app — rankings, equipes, Pokebox, verificador de IVs e equipes geradas. Ative shinies por espécie com animação brilhante.`,
-  ja: `## v4.2.2
+  ja: `## v4.3
+
+**選別スキャン。** 残したいPvPのステータス積の下限を決めておくと、それを満たすポケモンだけをアプリが保存します。
+
+**すべてのスキャンが写真を残します。** 読み取り元のスクリーンショットがポケモンと一緒に保存され、アプリ内で確認できます。バックアップと復元にも対応し、設定でオフにできます。
+
+**コレクションが、アプリのどこでも使えます。** コレクションアイコンから、自分のポケモンをバトルシミュレーター、チーム、チームジェネレーターへそのまま読み込めます。
+
+**メガシンカと2026年の新PvPシステム。** メガシンカのしくみに完全対応し、3つ目のスペシャルアタックもバトルでシミュレートされるようになりました。
+
+**コレクションへの手動追加。** ポケモンを手入力でコレクションに追加できるようになりました。
+
+**その他。** 個体値計算機に、同じ系統と進化先を示すチップ付きのIV比較表を追加。設定ページをより少ないセクションに整理。長いリストにドラッグできるスクロールバー。整理リストと交換リストの検索。11言語すべてで翻訳を修正しました。
+
+## v4.2.2
 
 **ギャラリーの複数選択をまとめて取り込み。** 評価画面のスクリーンショットを一度に複数選択すると、BattleFlowがまとめてスキャンし、読み取れなかったものだけを1つの確認ページに集めます。すがたを選ぶ、CPを確認する、個体値の組み合わせを選ぶ——答えるとそのまま保存され、元のスクリーンショットが隣に並ぶので、写真を見ながら答えられます。
 
@@ -1801,7 +1899,21 @@ export const whatsNewData: Record<string, string> = {
 **ビルドアラウンドモード**：任意のポケモンからチーム生成を開始。ランキングやポケボックスからお気に入りを選ぶと、BattleFlowがそのポケモンを軸に最適なリード、セーフスワップ、クローザーを備えたチームを構築します。
 
 **色違いスプライト（Pro）**：色違いポケモンをアプリ全体で表示 — ランキング、チーム、ポケボックス、個体値チェッカー、生成チーム。種族ごとにキラキラアニメーション付きで切り替え可能。`,
-  ko: `## v4.2.2
+  ko: `## v4.3
+
+**선별 스캔.** 남기고 싶은 PvP 능력치 곱의 최솟값을 정해 두면, 그 기준을 넘긴 포켓몬만 앱이 저장합니다.
+
+**모든 스캔이 사진을 남깁니다.** 판독에 쓰인 스크린샷이 포켓몬과 함께 저장되어 앱에서 확인할 수 있습니다. 백업과 복원에도 함께 담기며, 설정에서 끌 수 있습니다.
+
+**컬렉션을 앱 어디에서나.** 컬렉션 아이콘으로 내 포켓몬을 배틀 시뮬레이터, 팀, 팀 생성기에 바로 불러올 수 있습니다.
+
+**메가진화와 2026 PvP 시스템.** 메가진화 메커니즘을 완전히 지원하고, 세 번째 스페셜 어택도 배틀에서 시뮬레이션됩니다.
+
+**컬렉션 직접 추가.** 이제 포켓몬을 직접 입력해 컬렉션에 추가할 수 있습니다.
+
+**그 외.** 개체값 계산기에 계열·진화 칩이 붙은 IV 비교표를 추가했습니다. 설정 페이지를 더 적은 섹션으로 정리했고, 긴 목록에는 끌 수 있는 스크롤바가 생겼습니다. 정리 목록과 전송 목록을 검색할 수 있으며, 11개 언어의 번역을 수정했습니다.
+
+## v4.2.2
 
 **갤러리에서 선택한 여러 장을 한 번에 가져오기.** 평가 스크린샷을 여러 장 한 번에 선택하면 BattleFlow가 한꺼번에 스캔하고, 읽지 못한 것만 하나의 확인 페이지에 모아 줍니다. 모습을 고르고, CP를 확인하고, 개체값 조합을 선택하면 그대로 저장됩니다. 원본 스크린샷이 옆에 함께 표시되어 사진을 보고 답할 수 있습니다.
 
@@ -1880,7 +1992,35 @@ export const whatsNewData: Record<string, string> = {
 **빌드 어라운드 모드**: 원하는 포켓몬으로 팀 생성을 시작하세요. 랭킹이나 포켓박스에서 좋아하는 포켓몬을 선택하면 BattleFlow가 최적의 리드, 세이프 스왑, 클로저를 찾아 팀을 구축합니다.
 
 **색이 다른 스프라이트 (Pro)**: 앱 전체에서 색이 다른 포켓몬을 확인하세요 — 랭킹, 팀, 포켓박스, 개체값 체커, 생성된 팀. 종별로 반짝이는 애니메이션과 함께 전환 가능.`,
-  'zh-hant': `## v4.2
+  'zh-hant': `## v4.3
+
+**選擇性掃描**：設定你想留下的PvP數值乘積下限，應用程式就只會保存達標的寶可夢。
+
+**每次掃描都保留照片**：判讀所依據的截圖會與寶可夢一同保存，並可在應用程式中查看。備份與還原都能一併帶著，也可在設定中關閉。
+
+**收藏可在全應用中使用**：點擊收藏圖示，即可將自己的寶可夢直接匯入對戰模擬器、隊伍與隊伍產生器。
+
+**超級進化與 2026 年的全新 PvP 系統**：完整支援超級進化機制，第三個特殊招式也已納入對戰模擬。
+
+**手動新增至收藏**：現在可以手動輸入，將寶可夢新增至收藏。
+
+**其他**：IV計算器新增 IV 對照表，附有同系列與進化標記；設定頁面整併為更少的區塊；長清單新增可拖曳的捲動條；整理清單與傳送清單皆可搜尋；並修正了 11 種語言的翻譯。
+
+## v4.2.2
+
+**整批匯入相簿選取的截圖**：一次挑選多張評價截圖，BattleFlow 會整批掃描，再把讀不出來的部分集中在同一個確認頁面上——要選的形態、要確認的 CP、要挑的 IV 組合。回答之後就會保存，截圖就在旁邊，你可以直接看著圖片作答。
+
+**三項掃描修正**：暗影寶可夢改以圖示背景判別，不再依賴被 IV 評價遮住的那一行。屬性列即使被裁切，也足以辨識地區形態。選定形態後即告確定，不會再讓寶可夢留著待確認的標記。
+
+**古月鳥**：一口飛彈已完整模擬，並收錄兩種形態的圖示。
+
+**平手是獨立的結果**：對戰記錄將平手記為第三種結果，不再併入敗場。
+
+**用文字表達對位**：對位表以等級文字呈現，而非引擎內部的 0–1000 數值。
+
+**清理從搜尋開始**：你要找的 Pokémon GO 搜尋字串就放在頁面最上方，盃賽也採用遊戲官方的名稱。
+
+## v4.2
 
 **不再輕易放棄的掃描**：現在能讀取 CP 被自身圖片遮擋的寶可夢——翅膀、尾巴與脖子過去常導致掃描失敗；當判斷出兩種可能的 CP 時，會同時提供兩者供你選擇，而非直接放棄。即使寶可夢未滿血也能正確掃描，並可從裁剪的屬性標籤讀取地區形態，中文、日文與韓文的評價畫面也已完整支援。
 
