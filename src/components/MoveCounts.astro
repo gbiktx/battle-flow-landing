@@ -83,7 +83,7 @@ const href = (path: string) => localizedPath(lang, path);
       <h2 class="mb-14 text-center text-3xl md:text-5xl">{t('faq.title')}</h2>
       <div class="space-y-4">
         {faqs.map(({ q, a }) => (
-          <details class="group glass card-shadow rounded-2xl">
+          <details class="group glass card-shadow rounded-2xl border border-white/10">
             <summary class="flex cursor-pointer list-none items-center justify-between p-6 text-lg font-bold md:p-8 md:text-xl">
               {q}
               <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-5 w-5 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">

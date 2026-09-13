@@ -31,8 +31,14 @@
     text-shadow: 0 0 20px rgba(80, 91, 146, 0.5);
   }
   
+  /* Surface only — no border. `.glass` is emitted after every generated border
+     utility in the same layer, so a border here wins on source order against
+     whatever the call site asked for: it was flattening the hero's 8px bezel
+     to a 1px hairline, the nav's `border-b` to a full box, and the live week's
+     accent ring to the same white/10 as every other card. Call sites that want
+     an edge declare it themselves. */
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+    @apply bg-white/5 backdrop-blur-md;
   }
 
   .card-shadow {

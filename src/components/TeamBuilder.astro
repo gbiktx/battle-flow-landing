@@ -59,7 +59,7 @@ const faqs = getTeamBuilderFaqs(t);
       </div>
       <ol class="grid gap-6 lg:grid-cols-3">
         {steps.map((step, index) => (
-          <li class="glass card-shadow rounded-3xl p-8">
+          <li class="glass card-shadow rounded-3xl p-8 border border-white/10">
             <span class="mb-7 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-accent text-lg font-black text-white">{index + 1}</span>
             <h3 class="mb-4 text-2xl">{step.title}</h3>
             <p class="leading-relaxed text-gray-400">{step.description}</p>
@@ -107,7 +107,7 @@ const faqs = getTeamBuilderFaqs(t);
       <h2 class="mb-14 text-center text-4xl md:text-6xl">{t('team.faq_title')}</h2>
       <div class="space-y-4">
         {faqs.map(({ q, a }) => (
-          <details class="group glass card-shadow rounded-2xl">
+          <details class="group glass card-shadow rounded-2xl border border-white/10">
             <summary class="flex cursor-pointer list-none items-center justify-between p-6 text-lg font-bold md:p-8 md:text-xl">
               {q}
               <span class="ml-4 text-brand-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
