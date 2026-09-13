@@ -25,11 +25,16 @@ const t = useTranslations('en');
 		<meta name="robots" content="noindex" />
 		<title>{t('gbl.title')}</title>
 		<style is:global>
-			/* The WebView supplies its own scaffold — the page is only the list. */
-			body { background: transparent; overscroll-behavior-y: none; }
+			/* The calendar ships dark in every host, so the page paints its own
+			   ground rather than letting the app's show through. The WebView is
+			   transparent (gbl_calendar_page.dart) and the app's scaffold follows
+			   the app's theme — on a light one, this list's white-on-dark palette
+			   was white-on-white. Opaque here is what makes it readable, and it
+			   keeps the site's one look: the landing pages are dark-only too. */
+			body { background: #0B0E1A; overscroll-behavior-y: none; }
 		</style>
 	</head>
-	<body class="bg-brand-dark text-white">
+	<body class="text-white">
 		<main class="py-4">
 			<GblCalendar client:load lang="en" embed={true} />
 		</main>
