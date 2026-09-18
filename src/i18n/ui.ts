@@ -393,7 +393,7 @@ export const ui = {
     'gbl.name_color': 'Color Cup',
     'gbl.name_halloween': 'Halloween Cup',
     'gbl.name_catch': 'Catch Cup',
-    'gbl.name_laic2026': '2026 GO LAIC Cup',
+    'gbl.name_laic2027': '2027 GO LAIC Cup',
   },
   es: {
     'whatsnew.title': 'Novedades',
@@ -774,7 +774,7 @@ export const ui = {
     'gbl.name_color': 'Copa Color',
     'gbl.name_halloween': 'Copa de Halloween',
     'gbl.name_catch': 'Copa Captura',
-    'gbl.name_laic2026': 'Copa LAIC de GO 2026',
+    'gbl.name_laic2027': 'Copa LAIC de GO 2027',
   },
   // Latin American Spanish. Same copy as `es` except where LatAm usage or the
   // game's own LatAm localization differs — league/cup names, Insecto/Pelea,
@@ -1159,7 +1159,7 @@ export const ui = {
     'gbl.name_color': 'Copa Color',
     'gbl.name_halloween': 'Copa de Halloween',
     'gbl.name_catch': 'Copa Captura',
-    'gbl.name_laic2026': 'Copa GO LAIC 2026',
+    'gbl.name_laic2027': 'Copa GO LAIC 2027',
   },
   fr: {
     'whatsnew.title': 'Nouveautés',
@@ -1540,7 +1540,7 @@ export const ui = {
     'gbl.name_color': 'Coupe Couleur',
     'gbl.name_halloween': 'Coupe Halloween',
     'gbl.name_catch': 'Coupe Attrape',
-    'gbl.name_laic2026': 'Coupe GO CIAL 2026',
+    'gbl.name_laic2027': 'Coupe GO CIAL 2027',
   },
   de: {
     'whatsnew.title': 'Neuigkeiten',
@@ -1921,7 +1921,7 @@ export const ui = {
     'gbl.name_color': 'Farb-Cup',
     'gbl.name_halloween': 'Halloween-Cup',
     'gbl.name_catch': 'Fang-Cup',
-    'gbl.name_laic2026': 'GO LAIC-Cup 2026',
+    'gbl.name_laic2027': 'GO LAIC-Cup 2027',
   },
   it: {
     'whatsnew.title': 'Novità',
@@ -2302,7 +2302,7 @@ export const ui = {
     'gbl.name_color': 'Coppa Colore',
     'gbl.name_halloween': 'Coppa Halloween',
     'gbl.name_catch': 'Coppa Cattura',
-    'gbl.name_laic2026': 'Coppa GO dei LAIC 2026',
+    'gbl.name_laic2027': 'Coppa GO dei LAIC 2027',
   },
   pt: {
     'whatsnew.title': 'Novidades',
@@ -2683,7 +2683,7 @@ export const ui = {
     'gbl.name_color': 'Copa das Cores',
     'gbl.name_halloween': 'Copa de Dia das Bruxas',
     'gbl.name_catch': 'Copa da Captura',
-    'gbl.name_laic2026': 'Copa LAIC de GO 2026',
+    'gbl.name_laic2027': 'Copa LAIC de GO 2027',
   },
   'zh-hant': {
     'whatsnew.title': '新功能',
@@ -3064,7 +3064,7 @@ export const ui = {
     'gbl.name_color': '四色盃',
     'gbl.name_halloween': '萬聖節盃',
     'gbl.name_catch': '速成盃',
-    'gbl.name_laic2026': '2026 GO Championship拉丁美洲盃',
+    'gbl.name_laic2027': '2027 GO Championship拉丁美洲盃',
   },
   ja: {
     'whatsnew.title': '新着情報',
@@ -3445,7 +3445,7 @@ export const ui = {
     'gbl.name_color': '4色カップ',
     'gbl.name_halloween': 'ハロウィンカップ',
     'gbl.name_catch': '速成カップ',
-    'gbl.name_laic2026': '2026GOチャンピオンシップLAカップ',
+    'gbl.name_laic2027': '2027GOチャンピオンシップLAカップ',
   },
   ko: {
     'whatsnew.title': '새로운 기능',
@@ -3826,6 +3826,6 @@ export const ui = {
     'gbl.name_color': '4색컵',
     'gbl.name_halloween': '핼러윈컵',
     'gbl.name_catch': '캐치컵',
-    'gbl.name_laic2026': '2026 GO 챔피언십LA 컵',
+    'gbl.name_laic2027': '2027 GO 챔피언십LA 컵',
   },
 } as const;

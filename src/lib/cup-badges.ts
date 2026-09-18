@@ -30,7 +30,7 @@ const TIER_MEGA_BADGE: Partial<Record<GblLeagueTier, string>> = {
 const CUPS_WITH_LOGO = new Set([
   'sunshine', 'summer', 'fantasy', 'retro', 'premier', 'scroll',
   'weather', 'evolution', 'naic2026', 'willpower', 'color', 'halloween',
-  'catch', 'laic2026', 'megacolor', 'megahalloween', 'megacatch',
+  'catch', 'laic2027', 'megacolor', 'megahalloween', 'megacatch',
 ]);
 
 /** Badge path for a cup, falling back to the tier's league pennant. */

@@ -32,10 +32,10 @@ const OUT_FILE = 'src/data/drill-decks.json';
 // Halloween and Mega Catch cups are absent for a blunter reason — they have no
 // ranking file at all.
 //
-// The LAIC id is deliberately NOT its filename: Niantic calls the cup 2026 (the
-// season it runs in) and PvPoke files it under the 2027 championship it feeds,
-// so the ranking is laic2027-1500.json while everything a reader sees says
-// 2026 — the year the GBL calendar and the app both use.
+// LAIC is 2027 here, matching PvPoke's ranking file and the app's own cup name,
+// though Niantic's season post calls it the 2026 cup: it is the qualifier for
+// the 2027 championship that opens at the end of this year. The GBL calendar
+// says 2027 for the same reason.
 const LEAGUES = [
   { id: 'great', cp: 1500, file: '1500.json' },
   { id: 'ultra', cp: 2500, file: '2500.json' },
@@ -46,7 +46,7 @@ const LEAGUES = [
   { id: 'megaMaster', cp: 10000, file: 'mega-10000.json' },
   { id: 'willpower', cp: 1500, file: 'willpower-1500.json' },
   { id: 'retro', cp: 1500, file: 'retro-1500.json' },
-  { id: 'laic2026', cp: 1500, file: 'laic2027-1500.json' },
+  { id: 'laic2027', cp: 1500, file: 'laic2027-1500.json' },
 ];
 
 // Species per deck. The app caps a custom deck at 40; 30 keeps the shipped JSON

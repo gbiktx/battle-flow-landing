@@ -166,8 +166,13 @@ const masterMega = feature({
 const littleCup = feature({
   title: 'Little Cup', tier: 'little', cupName: 'all', cpLimit: '500',
 });
-const laic2026 = feature({
-  title: '2026 GO LAIC Cup', tier: 'great', cupName: 'laic2026',
+// Niantic's season post calls this the 2026 cup, but it qualifies for the 2027
+// championship that opens at the end of this year, which is how PvPoke files
+// its ranking (laic2027-1500.json) and how the app names the cup in
+// settings.json. `cupName` has to match that name either way: the embed
+// deep-links `battleflow://cup/{cpLimit}-{cupName}`.
+const laic2027 = feature({
+  title: '2027 GO LAIC Cup', tier: 'great', cupName: 'laic2027',
   cpLimit: '1500', rule: 'laicExclusion',
 });
 
@@ -216,9 +221,9 @@ export const twilightTrails: GblSeason = {
       }),
     ], true),
     window(pt(11, 3), pt(11, 10), [greatMega, ultraMega, masterMega], true),
-    window(pt(11, 10), pt(11, 17), [greatLeague, ultraMega, laic2026]),
+    window(pt(11, 10), pt(11, 17), [greatLeague, ultraMega, laic2027]),
     // Published as Nov 18 00:34 UTC -> Nov 25; clipped to Nov 24. See the note above.
-    window('2026-11-18T00:34:00.000Z', pt(11, 24), [ultraLeague, masterMega, laic2026], true),
+    window('2026-11-18T00:34:00.000Z', pt(11, 24), [ultraLeague, masterMega, laic2027], true),
     window(pt(11, 24), pt(12, 1), [
       masterLeague,
       // BattleFlow does not offer a Mega Catch cup: its pool is whatever the

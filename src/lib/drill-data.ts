@@ -45,7 +45,7 @@ export const CHART_FORMATS = [
   { id: 'megaMaster', cupName: 'mega', tier: 'master' },
   { id: 'willpower', cupName: 'willpower', tier: 'great' },
   { id: 'retro', cupName: 'retro', tier: 'great' },
-  { id: 'laic2026', cupName: 'laic2026', tier: 'great' },
+  { id: 'laic2027', cupName: 'laic2027', tier: 'great' },
 ] as const satisfies readonly { id: string; cupName: string; tier: GblLeagueTier }[];
 
 export const CHART_LEAGUE_IDS = CHART_FORMATS.map((f) => f.id);
