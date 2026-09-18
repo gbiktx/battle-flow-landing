@@ -4,12 +4,12 @@ import Nav from '../components/Nav.astro';
 import TeamBuilder from '../components/TeamBuilder.astro';
 import { useTranslations } from '../i18n/utils';
 import Layout from '../layouts/Layout.astro';
-import { getTeamBuilderFaqs } from '../lib/faqs';
+import { getFaqs } from '../lib/faqs';
 import { buildFAQSchema, buildMobileAppSchemas } from '../lib/seo-schemas';
 
 const lang = 'en';
 const t = useTranslations(lang);
-const questions = getTeamBuilderFaqs(t);
+const questions = getFaqs(t, 'team');
 const jsonLd = [
   ...buildMobileAppSchemas({
     siteUrl: Astro.site!,

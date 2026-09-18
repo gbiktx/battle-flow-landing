@@ -15,6 +15,8 @@ const ROUTES = [
   '/gbl-calendar/',
   '/team-builder/',
   '/move-counts/',
+  '/collection/',
+  '/cleanup/',
 ];
 
 // Derived from the site's own roster, so a new locale is covered the moment it

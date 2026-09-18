@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { DRILL_LEAGUE_IDS, LEAGUE_LABEL_KEYS, drillLeagues } from '../lib/drill-data';
+import { CHART_LEAGUE_IDS, LEAGUE_BADGES, chartLabel, drillLeagues } from '../lib/drill-data';
 import {
   getMoveName,
   getPokemonName,
@@ -46,7 +46,7 @@ interface SpeciesCard {
   charged: ChargedRow[];
 }
 
-const tables = DRILL_LEAGUE_IDS.map((id) => {
+const tables = CHART_LEAGUE_IDS.map((id) => {
   const cards: SpeciesCard[] = [];
   for (const species of drillLeagues[id].species) {
     const [fastId, ...chargedIds] = species.moveset;
@@ -71,7 +71,7 @@ const tables = DRILL_LEAGUE_IDS.map((id) => {
       charged,
     });
   }
-  return { id, label: t(LEAGUE_LABEL_KEYS[id]), cards };
+  return { id, label: chartLabel(t, id), badge: LEAGUE_BADGES[id], cards };
 });
 
 const typeStyle = (move: Move) => {
@@ -93,7 +93,10 @@ const typeStyle = (move: Move) => {
       {tables.map((table, i) => (
         <details class="glass rounded-[2rem] border border-white/10 mb-4 group" open={i === 0} data-testid="counts-league" data-league={table.id}>
           <summary class="flex items-center justify-between cursor-pointer p-6 md:p-8 list-none">
-            <span class="text-lg md:text-xl font-black text-white uppercase tracking-tight">{table.label}</span>
+            <span class="flex items-center gap-3">
+              <img src={table.badge} alt="" width="32" height="32" class="h-8 w-8 shrink-0 object-contain" loading="lazy" decoding="async" />
+              <span class="text-lg md:text-xl font-black text-white uppercase tracking-tight">{table.label}</span>
+            </span>
             <span class="flex items-center gap-4">
               <span class="text-[10px] font-black uppercase tracking-widest text-gray-500">
                 {table.cards.length} {t('drill.chart_pokemon')}

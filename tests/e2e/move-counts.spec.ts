@@ -242,17 +242,21 @@ test.describe('move counts store CTAs', () => {
   // only initializes when PUBLIC_MIXPANEL_TOKEN is set (it is not in a local
   // build). What that listener reads is asserted here instead: every store link
   // must carry `data-placement`, or the click reports `Placement: unknown`.
-  test('hero store buttons are tagged with the hero placement', async ({ page }) => {
+  // The hero carries no store buttons: /move-counts/ leads with the tool, the
+  // same way /movedex/ and /iv-calculator/ do, and the download CTA sits at the
+  // foot of the page. `move-counts-footer` is the above-the-fold placement's
+  // replacement, so it is what gets asserted.
+  test('footer store buttons are tagged with the footer placement', async ({ page }) => {
     await page.goto(PAGE);
-    const hero = page.locator('a[data-placement="move-counts-hero"]');
-    await expect(hero).toHaveCount(2);
-    await expect(hero.filter({ hasText: 'App Store' })).toHaveAttribute(
+    const footer = page.locator('a[data-placement="move-counts-footer"]');
+    await expect(footer).toHaveCount(2);
+    await expect(footer.filter({ hasText: 'App Store' })).toHaveAttribute(
       'href',
-      /apps\.apple\.com.*ct=move-counts-hero/
+      /apps\.apple\.com.*ct=move-counts-footer/
     );
-    await expect(hero.filter({ hasText: 'Google Play' })).toHaveAttribute(
+    await expect(footer.filter({ hasText: 'Google Play' })).toHaveAttribute(
       'href',
-      /play\.google\.com.*utm_campaign%3Dmove-counts-hero/
+      /play\.google\.com.*utm_campaign%3Dmove-counts-footer/
     );
   });
 

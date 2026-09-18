@@ -1,0 +1,30 @@
+---
+import Collection from '../components/Collection.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import { useTranslations } from '../i18n/utils';
+import Layout from '../layouts/Layout.astro';
+import { getFaqs } from '../lib/faqs';
+import { buildFAQSchema, buildMobileAppSchemas } from '../lib/seo-schemas';
+
+const lang = 'en';
+const t = useTranslations(lang);
+const questions = getFaqs(t, 'collection');
+const jsonLd = [
+  ...buildMobileAppSchemas({
+    siteUrl: Astro.site!,
+    lang,
+    pagePath: '/collection/',
+    description: t('collection.meta_description'),
+    navCrumbName: t('nav.collection'),
+    featureList: [t('collection.mode_live_desc'), t('collection.mode_gallery_desc'), t('collection.box_desc')],
+  }),
+  buildFAQSchema({ questions }),
+];
+---
+
+<Layout title={t('collection.meta_title')} description={t('collection.meta_description')} jsonLd={jsonLd} preloadImage="/assets/images/features/en/collection-hero.webp">
+  <Nav />
+  <Collection />
+  <Footer />
+</Layout>

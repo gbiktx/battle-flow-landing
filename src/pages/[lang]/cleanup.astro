@@ -1,0 +1,34 @@
+---
+import Cleanup from '../../components/Cleanup.astro';
+import Footer from '../../components/Footer.astro';
+import Nav from '../../components/Nav.astro';
+import { languages } from '../../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import { buildMobileAppSchemas } from '../../lib/seo-schemas';
+
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter((lang) => lang !== 'en')
+    .map((lang) => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const jsonLd = [
+  ...buildMobileAppSchemas({
+    siteUrl: Astro.site!,
+    lang,
+    pagePath: `/${lang}/cleanup/`,
+    description: t('cleanup.meta_description'),
+    navCrumbName: t('nav.cleanup'),
+    featureList: [t('cleanup.hero_subtitle')],
+  }),
+];
+---
+
+<Layout title={t('cleanup.meta_title')} description={t('cleanup.meta_description')} jsonLd={jsonLd}>
+  <Nav />
+  <Cleanup />
+  <Footer />
+</Layout>

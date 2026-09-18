@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
+import { cupBadgeSrc, leagueLogoSrc } from '../lib/cup-badges';
 import { TYPE_COLORS, hexToRgba } from '../lib/game-data';
 import {
   twilightTrails,
@@ -49,44 +50,6 @@ const RULE_KEYS: Record<Exclude<GblRule, 'none'>, keyof typeof ui['en']> = {
   seasonCatch: 'gbl.rule_catch',
 };
 
-const LEAGUE_LOGO: Record<GblLeagueTier, string> = {
-  little: '/assets/images/leagues/little_league.png',
-  great: '/assets/images/leagues/great_league.png',
-  ultra: '/assets/images/leagues/ultra_league.png',
-  master: '/assets/images/leagues/master_league.png',
-};
-
-// Cup badges shipped under public/assets/images/cups.
-// Every badge is named after its cup, matching the app's own derivation in
-// `cup_badge_paths.dart` — so `megacolor` and `megahalloween` are ordinary
-// entries here. `megacatch` is landing-only: the cup exists on Niantic's
-// schedule but not in the app (no ranking source).
-const CUPS_WITH_LOGO = new Set([
-  'sunshine', 'summer', 'fantasy', 'retro', 'premier', 'scroll',
-  'weather', 'evolution', 'naic2026', 'willpower', 'color', 'halloween',
-  'catch', 'laic2026', 'megacolor', 'megahalloween', 'megacatch',
-]);
-
-// The three open Mega Editions are the one case a cup name can't name a badge:
-// they all share the cup name `mega` and are told apart only by tier. Niantic
-// publishes a distinct file for each — the league pennant carrying the Mega
-// helix — so key off the tier.
-const TIER_MEGA_BADGE: Partial<Record<GblLeagueTier, string>> = {
-  great: 'great_mega',
-  ultra: 'ultra_mega',
-  master: 'master_mega',
-};
-
-function featureIconSrc(f: GblFeature): string {
-  if (f.cupName === 'mega') {
-    const badge = TIER_MEGA_BADGE[f.tier];
-    if (badge) return `/assets/images/cups/${badge}.png`;
-  }
-  if (f.cupName !== 'all' && CUPS_WITH_LOGO.has(f.cupName)) {
-    return `/assets/images/cups/${f.cupName}.png`;
-  }
-  return LEAGUE_LOGO[f.tier];
-}
 
 // i18n key for a feature's base name. Open formats and Mega Editions ('all'/
 // 'mega') resolve to the league name (the "Edition" reads off the rule pill);
@@ -113,7 +76,7 @@ function FeatureIcon({ feature }: { feature: GblFeature }) {
       aria-hidden="true"
     >
       <img
-        src={featureIconSrc(feature)}
+        src={cupBadgeSrc(feature.cupName, feature.tier)}
         alt=""
         width={28}
         height={28}
@@ -122,7 +85,7 @@ function FeatureIcon({ feature }: { feature: GblFeature }) {
         onError={(e) => {
           // Safety net: drop to the league logo if a badge ever fails to load.
           const img = e.currentTarget;
-          const fallback = LEAGUE_LOGO[feature.tier];
+          const fallback = leagueLogoSrc(feature.tier);
           if (!img.src.endsWith(fallback)) img.src = fallback;
         }}
       />

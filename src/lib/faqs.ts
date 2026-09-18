@@ -19,21 +19,27 @@ export function getHomeFaqs(t: (key: Keys) => string) {
 }
 
 /**
- * Team Builder FAQ. Defined once so the rendered accordion and the FAQPage
- * schema can't drift — they previously each hard-coded their own subset.
+ * How many numbered FAQ pairs each page ships. The count lives here, not at the
+ * call sites: every page asks twice — once for the rendered accordion, once for
+ * the FAQPage schema in its `<head>` — and a count passed in by hand let the
+ * two disagree, which is the drift this module exists to prevent.
  */
-export function getTeamBuilderFaqs(t: (key: Keys) => string) {
-  return [1, 2, 3, 4].map((n) => ({
-    q: t(`team.faq${n}_q` as Keys),
-    a: t(`team.faq${n}_a` as Keys),
-  }));
-}
+const FAQ_COUNTS = {
+  team: 4,
+  drill: 4,
+  collection: 5,
+} as const;
 
-/** Move-counts FAQ. Same contract as the team builder's: one source for the
- * rendered accordion and the FAQPage schema. */
-export function getMoveCountsFaqs(t: (key: Keys) => string) {
-  return [1, 2, 3, 4].map((n) => ({
-    q: t(`drill.faq${n}_q` as Keys),
-    a: t(`drill.faq${n}_a` as Keys),
+export type FaqPrefix = keyof typeof FAQ_COUNTS;
+
+/**
+ * One question/answer pair per numbered key, e.g. `team.faq2_q` / `team.faq2_a`.
+ * `prefix` is a union rather than a string, so a typo is a build error instead
+ * of an accordion of empty `<details>` and a schema of undefined answers.
+ */
+export function getFaqs(t: (key: Keys) => string, prefix: FaqPrefix) {
+  return Array.from({ length: FAQ_COUNTS[prefix] }, (_, i) => ({
+    q: t(`${prefix}.faq${i + 1}_q` as Keys),
+    a: t(`${prefix}.faq${i + 1}_a` as Keys),
   }));
 }

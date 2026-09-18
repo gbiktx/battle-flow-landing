@@ -6,7 +6,7 @@ import { languages } from '../../i18n/ui';
 import { contentLang } from '../../i18n/locales';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import Layout from '../../layouts/Layout.astro';
-import { getTeamBuilderFaqs } from '../../lib/faqs';
+import { getFaqs } from '../../lib/faqs';
 import { buildFAQSchema, buildMobileAppSchemas } from '../../lib/seo-schemas';
 
 export function getStaticPaths() {
@@ -17,7 +17,7 @@ export function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const questions = getTeamBuilderFaqs(t);
+const questions = getFaqs(t, 'team');
 const jsonLd = [
   ...buildMobileAppSchemas({
     siteUrl: Astro.site!,

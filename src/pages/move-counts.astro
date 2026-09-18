@@ -4,12 +4,12 @@ import MoveCounts from '../components/MoveCounts.astro';
 import Nav from '../components/Nav.astro';
 import { useTranslations } from '../i18n/utils';
 import Layout from '../layouts/Layout.astro';
-import { getMoveCountsFaqs } from '../lib/faqs';
+import { getFaqs } from '../lib/faqs';
 import { buildFAQSchema, buildFeaturePageSchemas } from '../lib/seo-schemas';
 
 const lang = 'en';
 const t = useTranslations(lang);
-const questions = getMoveCountsFaqs(t);
+const questions = getFaqs(t, 'drill');
 
 const jsonLd = [
   ...buildFeaturePageSchemas({

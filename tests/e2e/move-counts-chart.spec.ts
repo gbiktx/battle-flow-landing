@@ -5,6 +5,12 @@ import { cadenceCounts, formatCadence } from '../../src/lib/move-counts.ts';
 
 const PAGE = '/move-counts/';
 
+// Every format the chart renders. Taken from the decks on disk rather than a
+// literal, so adding a cup to CHART_LEAGUE_IDS does not silently leave this
+// spec asserting last season's roster. tests/move-counts.test.ts is what holds
+// the two in step.
+const CHART_LEAGUES = Object.keys(drillLeagues);
+
 /** Every (species, charged move) pair the chart should render for a league. */
 const expectedRows = (leagueId: string) =>
   drillLeagues[leagueId].species.flatMap((species) => {
@@ -32,11 +38,11 @@ test.describe('fast move counting chart', () => {
   test('ships a table for every league, with Great League open by default', async ({ page }) => {
     await page.goto(PAGE);
 
-    await expect(page.getByTestId('counts-league')).toHaveCount(3);
+    await expect(page.getByTestId('counts-league')).toHaveCount(CHART_LEAGUES.length);
 
     const league = (id: string) => page.locator(`[data-testid="counts-league"][data-league="${id}"]`);
     await expect(league('great')).toHaveAttribute('open', '');
-    for (const id of ['ultra', 'master']) {
+    for (const id of CHART_LEAGUES.filter((id) => id !== 'great')) {
       await expect(league(id)).not.toHaveAttribute('open', '');
     }
   });
@@ -44,7 +50,7 @@ test.describe('fast move counting chart', () => {
   test('every rendered count matches the cadence computed from the shipped data', async ({ page }) => {
     await page.goto(PAGE);
 
-    for (const leagueId of ['great', 'ultra', 'master']) {
+    for (const leagueId of CHART_LEAGUES) {
       const expected = expectedRows(leagueId);
       const rendered = await page
         .locator(`[data-testid="counts-league"][data-league="${leagueId}"] [data-testid="counts-row"]`)

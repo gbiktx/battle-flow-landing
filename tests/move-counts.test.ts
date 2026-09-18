@@ -1,8 +1,18 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 
 import { moves } from '../src/lib/moves-data.ts';
-import { drillLeagues, DRILL_LEAGUE_IDS } from '../src/lib/drill-data.ts';
+import {
+  drillLeagues,
+  CHART_LEAGUE_IDS,
+  DRILL_LEAGUE_IDS,
+  LEAGUE_BADGES,
+  chartLabel,
+} from '../src/lib/drill-data.ts';
+import { ui, languages } from '../src/i18n/ui.ts';
 import { poolMoves, poolSpecies } from '../src/lib/move-pools-data.ts';
 import {
   buildCountChoices,
@@ -57,7 +67,7 @@ test('cadence is empty when the fast move gains no energy', () => {
 });
 
 test('every charge is reachable — no zero or negative counts anywhere in the decks', () => {
-  for (const id of DRILL_LEAGUE_IDS) {
+  for (const id of CHART_LEAGUE_IDS) {
     for (const s of drillLeagues[id].species) {
       const fast = moveById.get(s.moveset[0])!;
       for (const chargedId of s.moveset.slice(1)) {
@@ -175,16 +185,18 @@ test('decks reference only moves that exist in moves.json', () => {
 });
 
 test('decks carry no Shadow or size variants — they duplicate their base form counts', () => {
-  for (const id of DRILL_LEAGUE_IDS) {
+  for (const id of CHART_LEAGUE_IDS) {
     for (const s of drillLeagues[id].species) {
       assert.ok(!/_shadow|_xs|_xl/.test(s.id), `${id} deck contains variant ${s.id}`);
     }
   }
 });
 
-test('Little League is not offered — its roster is pre-evolutions, not what you count against', () => {
+test('the drill still skips Little Cup — its roster is pre-evolutions, not what you quiz against', () => {
   assert.deepEqual([...DRILL_LEAGUE_IDS], ['great', 'ultra', 'master']);
-  assert.equal(drillLeagues.little, undefined);
+  // The chart is a reference table rather than a quiz, so it does carry the cup
+  // while the season runs it. The drill roster is what this guards.
+  assert.ok(drillLeagues.little, 'the chart needs a Little Cup deck while the season runs it');
 });
 
 // --- move pools (the "count any Pokémon" lookup) ------------------------------
@@ -216,6 +228,52 @@ test('the pool covers every species the drill decks use', () => {
   for (const id of DRILL_LEAGUE_IDS) {
     for (const s of drillLeagues[id].species) {
       assert.ok(pooled.has(s.id), `${s.id} is drilled but not searchable in the lookup`);
+    }
+  }
+});
+
+
+// --- The season roster is spelled out in more than one place ----------------
+// scripts/sync-drill-decks.js owns the PvPoke filenames, drill-data.ts owns the
+// ids the page renders, and the badges and names come from the GBL calendar's
+// tables. Nothing stops those from drifting apart except the three guards below
+// — and drift is silent: the page just quietly stops covering a cup, or renders
+// a broken image, or falls back to English.
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+test('the chart lists exactly the decks the sync script produced', () => {
+  assert.deepEqual(
+    [...CHART_LEAGUE_IDS].sort(),
+    Object.keys(drillLeagues).sort(),
+    'CHART_LEAGUE_IDS and src/data/drill-decks.json disagree — re-run pnpm sync:drill-decks, or update CHART_LEAGUE_IDS',
+  );
+});
+
+test('every chart format has badge art that exists on disk', () => {
+  for (const id of CHART_LEAGUE_IDS) {
+    const badge = LEAGUE_BADGES[id];
+    assert.ok(badge, `${id} has no badge`);
+    assert.ok(
+      fs.existsSync(path.join(repoRoot, 'public', badge)),
+      `${id} points at ${badge}, which is not in public/`,
+    );
+  }
+});
+
+test('every chart format is named in every locale, not just English', () => {
+  for (const lang of Object.keys(languages)) {
+    const dict = ui[lang as keyof typeof ui] as Record<string, string>;
+    // Resolve against the locale's own dictionary only — useTranslations falls
+    // back to English, which is exactly the gap this test exists to catch.
+    const t = ((key: string) => dict[key]) as Parameters<typeof chartLabel>[0];
+
+    for (const id of CHART_LEAGUE_IDS) {
+      const label = chartLabel(t, id);
+      assert.ok(
+        label && !label.includes('undefined'),
+        `${lang} has no name for the ${id} format (got ${JSON.stringify(label)})`,
+      );
     }
   }
 });

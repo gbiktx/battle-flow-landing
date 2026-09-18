@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, localizedPath, useTranslations } from '../i18n/utils';
-import { getMoveCountsFaqs } from '../lib/faqs';
+import { getFaqs } from '../lib/faqs';
 import { DRILL_LEAGUE_IDS, drillLeagues } from '../lib/drill-data';
 import { moveKey, pokemonKey } from '../lib/game-data';
 import { poolMoves, poolSpecies } from '../lib/move-pools-data';
@@ -9,11 +9,10 @@ import DownloadButtons from './DownloadButtons.astro';
 import MoveCountDrill from './MoveCountDrill';
 import MoveCountLookup from './MoveCountLookup';
 import MoveCountsChart from './MoveCountsChart.astro';
-import StoreButtons from './StoreButtons.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const faqs = getMoveCountsFaqs(t);
+const faqs = getFaqs(t, 'drill');
 
 // Both islands render localized species *and* move names, but they need
 // different slices of the dictionary — and island props are serialized into the
@@ -37,34 +36,23 @@ const href = (path: string) => localizedPath(lang, path);
 ---
 
 <main class="overflow-hidden">
-  <section class="relative pt-36 pb-16">
+  <section class="relative pt-24 pb-16">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(3,147,218,0.16),transparent_45%)]" aria-hidden="true"></div>
     <div class="container relative mx-auto px-6">
       <div class="max-w-3xl">
         <p class="inline-block mb-6 rounded-full border border-brand-accent/25 bg-brand-accent/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-brand-accent">
           {t('drill.eyebrow')}
         </p>
-        <h1 class="leading-[0.92] text-glow">
-          <span class="block text-4xl sm:text-5xl lg:text-6xl">{t('drill.meta_title')}</span>
-          <span class="block mt-5 text-2xl sm:text-3xl lg:text-4xl gradient-text italic">{t('drill.title')}</span>
+        {/* `drill.meta_title` is the page <title>; the h1 carries the human one,
+            the same split MoveDex and the IV calculator use. */}
+        <h1 class="mb-6 text-5xl md:text-7xl font-black tracking-tighter leading-none text-white">
+          {t('drill.title')}
         </h1>
-        <p class="mt-8 text-lg sm:text-xl leading-relaxed text-gray-300">
+        <p class="text-xl leading-relaxed text-gray-400">
           {t('drill.subtitle')}
         </p>
-        <div class="mt-9">
-          <StoreButtons placement="move-counts-hero" align="lg-start" trackImpression />
-        </div>
       </div>
     </div>
-  </section>
-
-  <section class="pb-16">
-    <MoveCountLookup
-      client:load
-      lang={lang}
-      pokemonTranslations={lookupPokemonTranslations}
-      moveTranslations={lookupMoveTranslations}
-    />
   </section>
 
   <section class="pb-20">
@@ -73,6 +61,15 @@ const href = (path: string) => localizedPath(lang, path);
       lang={lang}
       pokemonTranslations={drillPokemonTranslations}
       moveTranslations={drillMoveTranslations}
+    />
+  </section>
+
+  <section class="pb-16">
+    <MoveCountLookup
+      client:load
+      lang={lang}
+      pokemonTranslations={lookupPokemonTranslations}
+      moveTranslations={lookupMoveTranslations}
     />
   </section>
 

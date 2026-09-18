@@ -11,7 +11,7 @@ const DIST_DIR = 'dist';
 // the real-cased hreflang value.
 const LANGUAGES = Object.keys(languages);
 
-const BASE_ROUTES = ['', 'privacy', 'tac', 'iv-calculator', 'movedex', 'whats-new', 'gbl-calendar', 'team-builder', 'move-counts'];
+const BASE_ROUTES = ['', 'privacy', 'tac', 'iv-calculator', 'movedex', 'whats-new', 'gbl-calendar', 'team-builder', 'move-counts', 'collection', 'cleanup'];
 
 const CASING_RATIONALE = `
   WHY THIS FAILS THE BUILD:

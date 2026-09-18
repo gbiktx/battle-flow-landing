@@ -16,16 +16,37 @@ const MOVES_FILE = 'src/data/moves.json';
 const POKEMON_FILE = 'src/data/pokemon.json';
 const OUT_FILE = 'src/data/drill-decks.json';
 
-// URL/`league` keys are the ids the IV calculator already uses, so a league
-// means the same thing on both pages.
-// Little League is deliberately absent: it is a rotating GBL format, its roster
-// is pre-evolutions nobody counts against in the everyday meta, and PvPoke's
-// 500 rankings are dominated by size variants (four Pumpkaboo) that collapse
-// into one another.
+// The formats Twilight Trails actually runs, per src/lib/gbl-schedule.ts. The
+// `id`s are the keys the IV calculator already uses, so a league means the same
+// thing on both pages; CHART_LEAGUE_IDS in src/lib/drill-data.ts must list
+// exactly these, and tests/move-counts.test.ts fails the build if it does not.
+//
+// Little League is here for the chart only — the drill still skips it, because
+// its roster is pre-evolutions nobody counts against in the everyday meta and
+// PvPoke's 500 rankings are dominated by size variants (four Pumpkaboo) that
+// collapse into one another. See DRILL_LEAGUE_IDS.
+//
+// The Fantasy Cup is deliberately absent: its ranking (fantasy-1500.json) is
+// from 2026-05-20 while every other file here is current, so it would publish
+// counts from a meta four months out of date. The season's Mega Color, Mega
+// Halloween and Mega Catch cups are absent for a blunter reason — they have no
+// ranking file at all.
+//
+// The LAIC id is deliberately NOT its filename: Niantic calls the cup 2026 (the
+// season it runs in) and PvPoke files it under the 2027 championship it feeds,
+// so the ranking is laic2027-1500.json while everything a reader sees says
+// 2026 — the year the GBL calendar and the app both use.
 const LEAGUES = [
   { id: 'great', cp: 1500, file: '1500.json' },
   { id: 'ultra', cp: 2500, file: '2500.json' },
   { id: 'master', cp: 10000, file: '10000.json' },
+  { id: 'little', cp: 500, file: '500.json' },
+  { id: 'megaGreat', cp: 1500, file: 'mega-1500.json' },
+  { id: 'megaUltra', cp: 2500, file: 'mega-2500.json' },
+  { id: 'megaMaster', cp: 10000, file: 'mega-10000.json' },
+  { id: 'willpower', cp: 1500, file: 'willpower-1500.json' },
+  { id: 'retro', cp: 1500, file: 'retro-1500.json' },
+  { id: 'laic2026', cp: 1500, file: 'laic2027-1500.json' },
 ];
 
 // Species per deck. The app caps a custom deck at 40; 30 keeps the shipped JSON

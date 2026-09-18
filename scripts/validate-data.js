@@ -1,5 +1,6 @@
 import { readJson, moveKey, pokemonKey } from './lib.js';
 import { languages } from '../src/i18n/ui.ts';
+import { CHART_LEAGUE_IDS } from '../src/lib/drill-data.ts';
 
 const MOVES_FILE = 'src/data/moves.json';
 const POKEMON_FILE = 'src/data/pokemon.json';
@@ -130,7 +131,9 @@ if (!drillDecks?.leagues || typeof drillDecks.leagues !== 'object') {
 
 // MoveCountsChart.astro and MoveCountDrill.tsx both index drillLeagues[id]
 // directly for each of these, so a missing deck is a build crash, not a blank.
-for (const id of ['great', 'ultra', 'master']) {
+// Read from the chart's own roster: a cup added there without a re-sync used to
+// surface as `Cannot read properties of undefined` mid-build instead of here.
+for (const id of CHART_LEAGUE_IDS) {
   if (!drillLeagues[id]) err(`${DRILL_DECKS_FILE}: missing the "${id}" deck that /move-counts/ renders`);
 }
 

@@ -20,7 +20,11 @@ const mainFeatures = [
     desc: t('features.manage_desc'),
     image: `${featuresDir}/collection.webp`,
     alt: 'BattleFlow Pokémon collection screen showing a grid of the trainer’s stored Pokémon',
-    reversed: true
+    reversed: true,
+    // Descriptive anchor text: this is the homepage's only internal link to the
+    // Collection landing page, so it should carry the query it ranks for.
+    href: localizedPath(lang, '/collection/'),
+    linkLabel: t('features.collection_link')
   },
   {
     title: t('features.team_gen_title'),

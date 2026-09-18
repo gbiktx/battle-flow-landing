@@ -1,7 +1,7 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, localizedPath, useTranslations } from '../i18n/utils';
 import { contentLang } from '../i18n/locales';
-import { getTeamBuilderFaqs } from '../lib/faqs';
+import { getFaqs } from '../lib/faqs';
 import DownloadButtons from './DownloadButtons.astro';
 import StoreButtons from './StoreButtons.astro';
 
@@ -19,7 +19,11 @@ const scores = ['threat', 'coverage', 'recovery', 'consistency'].map((score) => 
   description: t(`team.score_${score}_desc` as Parameters<typeof t>[0]),
 }));
 
-const faqs = getTeamBuilderFaqs(t);
+const faqs = getFaqs(t, 'team');
+
+// The clip captures the English app, so a translated page would show English UI
+// where it currently shows its own language.
+const collectionClip = lang === 'en' ? '/assets/video/collection-teams.mp4' : null;
 ---
 
 <main class="overflow-hidden">
@@ -91,13 +95,20 @@ const faqs = getTeamBuilderFaqs(t);
   <section class="border-y border-white/5 bg-brand-dark/25 py-24">
     <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24">
       <div class="relative mx-auto w-full max-w-[300px] shrink-0">
-        <div class="relative aspect-[9/19.5] overflow-hidden rounded-[3rem] border-8 border-brand-dark/70 glass card-shadow">
-          <img src={`${imageDir}/collection.webp`} alt={t('team.collection_alt')} width="300" height="650" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+        <div class={`relative ${collectionClip ? 'aspect-[540/1168]' : 'aspect-[9/19.5]'} overflow-hidden rounded-[3rem] border-8 border-brand-dark/70 glass card-shadow`}>
+          {collectionClip ? (
+            <video data-lazy-src={collectionClip} poster="/assets/video/collection-teams-poster.webp" width="540" height="1168" class="h-full w-full object-cover" aria-label={t('team.collection_alt')} muted loop playsinline preload="none"></video>
+          ) : (
+            <img src={`${imageDir}/collection.webp`} alt={t('team.collection_alt')} width="300" height="650" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+          )}
         </div>
       </div>
       <div class="max-w-2xl text-center lg:text-left">
         <h2 class="text-4xl md:text-6xl">{t('team.collection_title')}</h2>
         <p class="mt-6 text-lg leading-relaxed text-gray-300">{t('team.collection_desc')}</p>
+        <a href={localizedPath(lang, '/collection/')} class="mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-brand-accent hover:text-white transition-colors">
+          {t('team.collection_link')} <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -121,3 +132,8 @@ const faqs = getTeamBuilderFaqs(t);
 </main>
 
 <DownloadButtons placement="team-builder-footer" trackImpression />
+
+<script>
+  import { initLazyClips } from '../lib/lazy-clips';
+  initLazyClips();
+</script>

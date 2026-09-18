@@ -1,0 +1,176 @@
+---
+import { getLangFromUrl, localizedPath, useTranslations } from '../i18n/utils';
+import { contentLang } from '../i18n/locales';
+import { getFaqs } from '../lib/faqs';
+import DownloadButtons from './DownloadButtons.astro';
+import StoreButtons from './StoreButtons.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const imageDir = `/assets/images/features/${contentLang(lang)}`;
+
+const modes = ['live', 'tap', 'gallery'].map((mode, index) => ({
+  number: `0${index + 1}`,
+  title: t(`collection.mode_${mode}_title` as Parameters<typeof t>[0]),
+  description: t(`collection.mode_${mode}_desc` as Parameters<typeof t>[0]),
+  platform: t(`collection.mode_${mode}_platform` as Parameters<typeof t>[0]),
+}));
+
+const steps = [1, 2, 3].map((step) => ({
+  number: step,
+  title: t(`collection.step${step}_title` as Parameters<typeof t>[0]),
+  description: t(`collection.step${step}_desc` as Parameters<typeof t>[0]),
+}));
+
+const marks = ['shadow', 'purified', 'lucky', 'shiny', 'buddy', 'favorite', 'max', 'mega', 'costume', 'background'].map((mark) => ({
+  icon: `/assets/images/marks/${mark}.webp`,
+  label: t(`collection.mark_${mark}` as Parameters<typeof t>[0]),
+}));
+
+const faqs = getFaqs(t, 'collection');
+
+// The clips capture the English app, so a translated page would show English UI
+// where it currently shows its own language — the same rule TeamBuilder and the
+// IV calculator apply. Each falls back to a localized still, or to no media at
+// all where no still fits the section.
+const scanClip = lang === 'en' ? '/assets/video/collection-scan.mp4' : null;
+const trackClip = lang === 'en' ? '/assets/video/collection-track.mp4' : null;
+---
+
+<main class="overflow-hidden">
+  <section class="relative pt-36 pb-24">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(3,147,218,0.16),transparent_45%)]" aria-hidden="true"></div>
+    <div class="container relative mx-auto px-6 grid lg:grid-cols-[1.15fr_0.85fr] items-center gap-16">
+      <div class="max-w-3xl text-center lg:text-left">
+        <p class="inline-block mb-6 rounded-full border border-brand-accent/25 bg-brand-accent/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-brand-accent">
+          {t('collection.eyebrow')}
+        </p>
+        <h1 class="leading-[0.92] text-glow">
+          <span class="block text-5xl sm:text-6xl lg:text-7xl">{t('collection.meta_title')}</span>
+          <span class="block mt-5 text-2xl sm:text-3xl lg:text-4xl gradient-text italic">{t('collection.hero_title')}</span>
+        </h1>
+        <p class="mt-8 text-lg sm:text-xl leading-relaxed text-gray-300">
+          {t('collection.hero_subtitle')}
+        </p>
+        <div class="mt-9">
+          <StoreButtons placement="collection-hero" align="lg-start" trackImpression />
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-[330px]">
+        <div class="absolute -inset-8 rounded-full bg-brand-blue/20 blur-3xl" aria-hidden="true"></div>
+        <div class="relative aspect-[9/19.5] overflow-hidden rounded-[3rem] border-8 border-brand-dark/70 glass card-shadow">
+          <img src={`${imageDir}/collection-hero.webp`} alt={t('collection.box_alt')} width="330" height="715" class="h-full w-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/5 bg-brand-dark/25 py-24">
+    <div class="container mx-auto px-6">
+      <h2 class="mx-auto mb-14 max-w-3xl text-center text-4xl md:text-6xl">{t('collection.modes_title')}</h2>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {modes.map((mode) => (
+          <article class="flex flex-col rounded-3xl border border-white/10 bg-linear-to-b from-white/8 to-white/3 p-7 card-shadow">
+            <div class="mb-6 h-1.5 w-14 rounded-full bg-linear-to-r from-brand-blue to-brand-accent" aria-hidden="true"></div>
+            <p class="mb-3 text-xs font-black uppercase tracking-[0.18em] text-brand-accent">{mode.number}</p>
+            <h3 class="mb-4 text-xl">{mode.title}</h3>
+            <p class="mb-6 text-sm leading-relaxed text-gray-400">{mode.description}</p>
+            <p class="mt-auto pt-5 border-t border-white/10 text-xs font-bold uppercase tracking-[0.12em] text-gray-500">{mode.platform}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="container mx-auto px-6">
+      <div class="mx-auto mb-14 max-w-3xl text-center">
+        <h2 class="text-4xl md:text-6xl">{t('collection.workflow_title')}</h2>
+        <p class="mt-5 text-lg leading-relaxed text-gray-400">{t('collection.workflow_intro')}</p>
+      </div>
+      <ol class="grid gap-6 lg:grid-cols-3">
+        {steps.map((step) => (
+          <li class="glass card-shadow rounded-3xl p-8 border border-white/10">
+            <span class="mb-7 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-accent text-lg font-black text-white">{step.number}</span>
+            <h3 class="mb-4 text-2xl">{step.title}</h3>
+            <p class="leading-relaxed text-gray-400">{step.description}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="mt-16 mx-auto w-full max-w-[300px]">
+        <div class={`relative ${scanClip ? 'aspect-[540/1034]' : 'aspect-[9/19.5]'} overflow-hidden rounded-[3rem] border-8 border-brand-dark/70 glass card-shadow`}>
+          {scanClip ? (
+            <video data-lazy-src={scanClip} poster="/assets/video/collection-scan-poster.webp" width="540" height="1034" class="h-full w-full object-cover" aria-label={t('collection.screenshot_alt')} muted loop playsinline preload="none"></video>
+          ) : (
+            <img src={`${imageDir}/scan.webp`} alt={t('collection.screenshot_alt')} width="300" height="650" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/5 bg-brand-dark/25 py-24">
+    <div class="container mx-auto px-6">
+      <div class={`grid items-center gap-16 lg:gap-24 ${trackClip ? 'lg:grid-cols-[1fr_auto]' : ''}`}>
+        <div class="text-center lg:text-left">
+          <h2 class="text-4xl md:text-6xl">{t('collection.track_title')}</h2>
+          <ul class="mt-10 grid gap-x-10 gap-y-4 text-left sm:grid-cols-2">
+            {marks.map((mark) => (
+              <li class="flex items-center gap-3 border-b border-white/5 pb-4">
+                <img src={mark.icon} alt="" width="28" height="28" class="h-7 w-7 shrink-0 object-contain" loading="lazy" decoding="async" />
+                <span class="text-base text-gray-300">{mark.label}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-10 border-t border-white/10 pt-8">
+            <h3 class="text-2xl md:text-3xl">{t('collection.score_title')}</h3>
+            <p class="mt-4 leading-relaxed text-gray-400">{t('collection.score_desc')}</p>
+          </div>
+        </div>
+        {trackClip && (
+          <div class="relative mx-auto w-full max-w-[280px] shrink-0">
+            <div class="relative aspect-[540/1034] overflow-hidden rounded-[3rem] border-8 border-brand-dark/70 glass card-shadow">
+              <video data-lazy-src={trackClip} poster="/assets/video/collection-track-poster.webp" width="540" height="1034" class="h-full w-full object-cover" aria-label={t('collection.track_alt')} muted loop playsinline preload="none"></video>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/5 bg-brand-dark/25 py-24">
+    <div class="container mx-auto max-w-3xl px-6 text-center">
+      <h2 class="text-4xl md:text-6xl">{t('collection.box_title')}</h2>
+      <p class="mt-6 text-lg leading-relaxed text-gray-300">{t('collection.box_desc')}</p>
+      <a href={localizedPath(lang, '/team-builder/')} class="mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-brand-accent hover:text-white transition-colors">
+        {t('collection.teams_link')} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="container mx-auto max-w-4xl px-6">
+      <h2 class="mb-14 text-center text-4xl md:text-6xl">{t('collection.faq_title')}</h2>
+      <div class="space-y-4">
+        {faqs.map(({ q, a }) => (
+          <details class="group glass card-shadow rounded-2xl border border-white/10">
+            <summary class="flex cursor-pointer list-none items-center justify-between p-6 text-lg font-bold md:p-8 md:text-xl">
+              {q}
+              <span class="ml-4 text-brand-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="px-6 pb-6 leading-relaxed text-gray-400 md:px-8 md:pb-8">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
+
+<DownloadButtons placement="collection-footer" trackImpression />
+
+<script>
+  import { initLazyClips } from '../lib/lazy-clips';
+  initLazyClips();
+</script>

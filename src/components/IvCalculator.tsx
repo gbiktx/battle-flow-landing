@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { initLazyClips } from '../lib/lazy-clips';
 import { PvPCalculator, MEGA_CAPS, type RankEntry } from '../lib/pvp-calculator';
 import { useTranslations } from '../i18n/utils';
 import { ui } from '../i18n/ui';
@@ -37,15 +38,17 @@ const STICKY_HEADER_OFFSET = 80;
 const SCAN_SHOWCASE_PLACEMENT = 'iv-result-cta';
 const POST_RESULT_PLACEMENT = 'iv-post-result-cta';
 
-// Scan-demo media for the contextual CTA. The poster is always the localized
-// `scan.png` still, so first paint is correct per language; where a scan clip
-// exists it plays as a muted, inline, looping loop over the poster. English is
-// shared across all locales for now — drop a localized capture at
-// `public/assets/images/features/<lang>/scan.mp4` and map it in SCAN_VIDEO_BY_LANG
-// to override per locale. Key it by the *content* locale (contentLang): regional
-// variants like es-419 have no screenshot directory of their own. Set to null to fall back to the still image only.
-const SCAN_VIDEO_SHARED: string | null = null; // no clip yet — CTA shows the localized still
-const SCAN_VIDEO_BY_LANG: Record<string, string> = {};
+// Scan-demo media for the contextual CTA. A locale with no clip falls back to
+// its localized `scan.webp` still. Only en has a clip: it captures the English
+// app, so a translated page would otherwise show English UI where it currently
+// shows its own language. Poster travels with the clip for the same reason — a
+// shared clip must never leave an English poster under translated copy. Key by
+// the *content* locale (contentLang): regional variants like es-419 have no
+// screenshot directory of their own.
+const SCAN_CLIP_SHARED: { video: string; poster: string } | null = null;
+const SCAN_CLIP_BY_LANG: Record<string, { video: string; poster: string }> = {
+  en: { video: '/assets/video/iv-scan.mp4', poster: '/assets/video/iv-scan-poster.webp' },
+};
 
 // Stable across renders — pokemonData is imported, never mutated.
 const NON_SHADOW_POKEMON = pokemonData.filter(
@@ -201,7 +204,14 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
 
   // Scan-CTA media: localized still as poster, optional scan clip over it.
   const scanPoster = `/assets/images/features/${contentLang(lang)}/scan.webp`;
-  const scanVideo = SCAN_VIDEO_BY_LANG[contentLang(lang)] ?? SCAN_VIDEO_SHARED;
+  const scanClip = SCAN_CLIP_BY_LANG[contentLang(lang)] ?? SCAN_CLIP_SHARED;
+
+  // `preload="none"` does not hold back a clip that also carries `autoplay`, so
+  // the source is attached on approach instead. Mirrors src/lib/lazy-clips.ts.
+  useEffect(() => {
+    if (!scanClip) return;
+    return initLazyClips();
+  }, [scanClip]);
 
   // One-time impression when the scan CTA scrolls into view. Pairs with the
   // `iv-result-cta` Store Click to separate "never seen" from "seen, not clicked".
@@ -221,7 +231,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
           // BCP 47 tag with the lowercase URL key and split the dimension.
           trackEvent('CTA Shown', {
             Placement: SCAN_SHOWCASE_PLACEMENT,
-            'Has Video': Boolean(scanVideo),
+            'Has Video': Boolean(scanClip),
           });
           observer.disconnect();
         }
@@ -230,7 +240,7 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [scanVideo]);
+  }, [scanClip]);
 
   // Jump straight into typing (and raise the mobile keyboard) when the IV fields reveal.
   useEffect(() => {
@@ -1043,16 +1053,16 @@ export default function IvCalculator({ lang, translations: langTranslations }: P
 
       {/* Contextual CTA — fires at peak intent, right after the user sees their rank.
           Reframed around the scanner: the visitor just appraised IVs by hand, so we
-          pitch the same job automated. Scan clip plays over the localized still. */}
+          pitch the same job automated. en plays the scan clip; other locales keep
+          their localized still until the capture is redone in each language. */}
       <div ref={ctaRef} className="bg-gradient-to-br from-brand-accent/15 via-brand-dark/40 to-brand-blue/10 rounded-[2.5rem] border border-white/10 shadow-2xl glass px-6 py-10 md:px-12 md:py-12 text-center">
         <div className="mx-auto mb-8 w-full max-w-[190px]">
-          <div className="relative aspect-[9/19.5] rounded-[2rem] overflow-hidden glass card-shadow border-8 border-brand-dark/50">
-            {scanVideo ? (
+          <div className={`relative ${scanClip ? 'aspect-[540/1034]' : 'aspect-[9/19.5]'} rounded-[2rem] overflow-hidden glass card-shadow border-8 border-brand-dark/50`}>
+            {scanClip ? (
               <video
                 className="w-full h-full object-cover"
-                poster={scanPoster}
-                src={scanVideo}
-                autoPlay
+                poster={scanClip.poster}
+                data-lazy-src={scanClip.video}
                 muted
                 loop
                 playsInline
