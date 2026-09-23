@@ -1248,7 +1248,21 @@ BattleFlow Pro는 구매하신 앱 스토어(Apple App Store 또는 Google Play)
 //
 //   - Movedex — browse every fast and charged move with full stats and effects.
 export const whatsNewData: Record<string, string> = {
-  en: `## v4.3
+  en: `## v4.4
+
+**Move Stats.** A new Foundations deck with the turns, energy and damage of every move in the game. In the MoveDex, filter the list and tap Drill to practice just those moves.
+
+**Move scanning.** An optional scan step that reads each Pokémon's moveset straight from the game.
+
+**Fast Scan.** Scanning with vibration only: no result card, no notification. The new Scan options sheet opens from the gear where you start a scan, and from the capture banner.
+
+**More in your Collection.** Mark Pokémon as Protected so Cleanup never suggests transferring them, and record Costume, Max form, Mega Level, XXS/XXL size and special background.
+
+**Open in PvPoke.** Send any team or simulated battle to PvPoke.
+
+**Plus.** More scanner improvements.
+
+## v4.3
 
 **Selective Scan.** Set the minimum PvP Stat Product you want to keep, and the app saves only the Pokémon that meet it.
 
@@ -1341,7 +1355,21 @@ export const whatsNewData: Record<string, string> = {
 **Build Around Mode.** Start team generation from any Pokémon. Pick your favorite from Rankings or your Pokebox, and BattleFlow builds optimized teams around it — finding the best leads, safe swaps, and closers to complement your anchor.
 
 **Shiny Sprites (Pro).** See your shiny Pokémon throughout the app — in rankings, teams, Pokebox, IV checker, and generated teams. Toggle shinies per species with a sparkle animation.`,
-  es: `## v4.3
+  es: `## v4.4
+
+**Datos de ataques.** Nuevo en Fundamentos: los turnos, la energía y el daño de cada ataque del juego. En el MoveDex, filtra la lista y toca Practicar para practicar solo esos ataques.
+
+**Escaneo de ataques.** Un paso opcional del escaneo que lee directamente del juego el conjunto de ataques de cada Pokémon.
+
+**Escaneo rápido.** Escanea solo con vibración: sin tarjeta de resultado ni notificación. Las nuevas opciones de escaneo se abren desde el engranaje donde inicias un escaneo y desde el banner de captura.
+
+**Más en tu Colección.** Marca Pokémon como Protegido para que la limpieza nunca sugiera transferirlos, y registra Disfraz, Forma Max, Meganivel, tamaño XXS/XXL y Fondo de la ubicación.
+
+**Abrir en PvPoke.** Envía cualquier equipo o batalla simulada a PvPoke.
+
+**Además.** Más mejoras del escáner.
+
+## v4.3
 
 **Escaneo selectivo.** Fija el Producto de estadísticas mínimo de PvP que quieres conservar y la app guardará solo los Pokémon que lo alcancen.
 
@@ -1434,7 +1462,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir Alrededor.** Genera equipos a partir de cualquier Pokémon. Elige tu favorito de los Rankings o tu Pokebox, y BattleFlow construye equipos optimizados a su alrededor — encontrando los mejores leads, safe swaps y closers.
 
 **Sprites Shiny (Pro).** Ve tus Pokémon shiny en toda la app — rankings, equipos, Pokebox, verificador de IVs y equipos generados. Activa shinies por especie con animación de brillo.`,
-  fr: `## v4.3
+  fr: `## v4.4
+
+**Stats des capacités.** Nouveau dans Fondations : les tours, l'énergie et les dégâts de chaque capacité du jeu. Dans le MoveDex, filtrez la liste et touchez « Réviser » pour vous entraîner uniquement sur celles-ci.
+
+**Scan des attaques.** Une étape de scan facultative qui lit directement dans le jeu les capacités de chaque Pokémon.
+
+**Scan rapide.** Scanner avec la vibration seule : ni carte de résultat, ni notification. Les nouvelles options de scan s'ouvrent depuis la roue dentée là où vous lancez un scan, et depuis la bannière de capture.
+
+**Plus de détails dans votre Collection.** Marquez des Pokémon comme Protégé pour que le nettoyage ne propose jamais de les transférer, et enregistrez Costume, Forme Max, Méga-Niveau, taille XXS/XXL et Fond de lieu.
+
+**Ouvrir dans PvPoke.** Envoyez n'importe quelle équipe ou combat simulé vers PvPoke.
+
+**En plus.** Encore plus d'améliorations du scanner.
+
+## v4.3
 
 **Scan sélectif.** Définissez le Produit des stats PvP minimum que vous voulez garder : l'app n'enregistre que les Pokémon qui l'atteignent.
 
@@ -1527,7 +1569,21 @@ export const whatsNewData: Record<string, string> = {
 **Mode Construire Autour.** Générez des équipes à partir de n'importe quel Pokémon. Choisissez votre favori dans les classements ou votre Pokebox, et BattleFlow construit des équipes optimisées autour de lui — trouvant les meilleurs leads, safe swaps et closers.
 
 **Sprites Shiny (Pro).** Voyez vos Pokémon shiny dans toute l'app — classements, équipes, Pokebox, vérificateur d'IVs et équipes générées. Activez les shinies par espèce avec une animation d'éclat.`,
-  de: `## v4.3
+  de: `## v4.4
+
+**Attacken-Werte.** Neu in Grundlagen: Züge, Energie und Schaden jeder Attacke im Spiel. Filtere im MoveDex die Liste und tippe auf „Üben“, um genau diese Attacken zu üben.
+
+**Attacken-Scan.** Ein optionaler Scan-Schritt, der das Attacken-Set jedes Pokémon direkt aus dem Spiel liest.
+
+**Schnell-Scan.** Scannen nur mit Vibration: ohne Ergebniskarte, ohne Benachrichtigung. Die neuen Scan-Optionen öffnest du über das Zahnrad, wo du einen Scan startest, und über das Aufnahme-Banner.
+
+**Mehr in deiner Sammlung.** Markiere Pokémon als Geschützt, damit die Bereinigung nie vorschlägt, sie zu verschicken, und erfasse Kostüm, Dyna-Form, Mega-Level, XXS/XXL-Größe und Ortshintergrund.
+
+**In PvPoke öffnen.** Schicke jedes Team und jeden simulierten Kampf an PvPoke.
+
+**Außerdem.** Weitere Scanner-Verbesserungen.
+
+## v4.3
 
 **Selektiver Scan.** Leg das minimale PvP-Statistikprodukt fest, das du behalten willst — die App speichert nur die Pokémon, die es erreichen.
 
@@ -1620,7 +1676,21 @@ export const whatsNewData: Record<string, string> = {
 **Build-Around-Modus.** Starte die Teamgenerierung mit einem beliebigen Pokémon. Wähle deinen Favoriten aus den Rankings oder deiner Pokebox, und BattleFlow erstellt optimierte Teams drumherum — mit den besten Leads, Safe Swaps und Closern.
 
 **Shiny-Sprites (Pro).** Sieh deine Shiny-Pokémon in der gesamten App — Rankings, Teams, Pokebox, IV-Checker und generierte Teams. Aktiviere Shinies pro Spezies mit Glitzeranimation.`,
-  it: `## v4.3
+  it: `## v4.4
+
+**Statistiche delle mosse.** Novità in Fondazioni: turni, energia e danno di ogni mossa del gioco. Nel MoveDex, filtra l'elenco e tocca Allena per esercitarti solo su quelle mosse.
+
+**Scansione attacchi.** Un passaggio di scansione facoltativo che legge direttamente dal gioco il set di mosse di ogni Pokémon.
+
+**Scansione rapida.** Scansione con la sola vibrazione: niente scheda del risultato, niente notifica. Le nuove opzioni di scansione si aprono dall'ingranaggio dove avvii una scansione e dal banner di acquisizione.
+
+**Di più nella tua Collezione.** Segna i Pokémon come Protetto così l'ottimizzazione non ti suggerirà mai di trasferirli, e registra Costume, Forma Max, Megalivello, dimensioni XXS/XXL e Sfondo di posizione.
+
+**Apri in PvPoke.** Invia a PvPoke qualsiasi team o lotta simulata.
+
+**Inoltre.** Altri miglioramenti dello scanner.
+
+## v4.3
 
 **Scansione selettiva.** Imposta il Prodotto PvP minimo che vuoi tenere: l'app salva solo i Pokémon che lo raggiungono.
 
@@ -1713,7 +1783,21 @@ export const whatsNewData: Record<string, string> = {
 **Modalità Costruisci Attorno.** Genera squadre partendo da qualsiasi Pokémon. Scegli il tuo preferito dai ranking o dalla Pokebox, e BattleFlow costruisce squadre ottimizzate attorno ad esso — trovando i migliori lead, safe swap e closer.
 
 **Sprite Shiny (Pro).** Visualizza i tuoi Pokémon shiny in tutta l'app — classifiche, squadre, Pokebox, verificatore IV e squadre generate. Attiva gli shiny per specie con animazione scintillante.`,
-  pt: `## v4.3
+  pt: `## v4.4
+
+**Dados dos ataques.** Novidade em Fundações: os turnos, a energia e o dano de cada ataque do jogo. No MoveDex, filtre a lista e toque em Treinar para praticar só esses ataques.
+
+**Escaneamento de ataques.** Uma etapa opcional do escaneamento que lê direto do jogo o conjunto de ataques de cada Pokémon.
+
+**Escaneamento rápido.** Escaneie só com vibração: sem cartão de resultado e sem notificação. As novas opções de escaneamento abrem na engrenagem onde você inicia um escaneamento e no banner de captura.
+
+**Mais na sua Coleção.** Marque Pokémon como Protegido para que a limpeza nunca sugira transferi-los, e registre Fantasia, Forma Max, Meganível, tamanho XXS/XXL e Fundo de Localidade.
+
+**Abrir no PvPoke.** Envie qualquer time ou batalha simulada para o PvPoke.
+
+**Além disso.** Mais melhorias no scanner.
+
+## v4.3
 
 **Escaneamento seletivo.** Defina o Produto de PvP mínimo que você quer manter e o app salva só os Pokémon que o alcançam.
 
@@ -1806,7 +1890,21 @@ export const whatsNewData: Record<string, string> = {
 **Modo Construir ao Redor.** Gere equipes a partir de qualquer Pokémon. Escolha seu favorito dos Rankings ou da Pokebox, e BattleFlow monta equipes otimizadas ao redor dele — encontrando os melhores leads, safe swaps e closers.
 
 **Sprites Shiny (Pro).** Veja seus Pokémon shiny em todo o app — rankings, equipes, Pokebox, verificador de IVs e equipes geradas. Ative shinies por espécie com animação brilhante.`,
-  ja: `## v4.3
+  ja: `## v4.4
+
+**わざのデータ。** 「基礎」に新しいデッキが登場。ゲーム内のすべてのわざのターン数、エネルギー、威力を覚えられます。MoveDexでリストを絞り込み「練習」をタップすると、そのわざだけを練習できます。
+
+**わざスキャン。** 各ポケモンのわざ構成をゲームから直接読み取る、任意のスキャンステップです。
+
+**高速スキャン。** バイブレーションだけでスキャン。結果カードも通知も表示されません。新しいスキャンオプションは、スキャンを始める場所の歯車アイコンとキャプチャーバナーから開けます。
+
+**コレクションがさらに充実。** ポケモンを「保護中」にすると、整理で博士に送る候補に表示されなくなります。コスチューム、マックスのすがた、メガレベル、XXS/XXLサイズ、ロケーション背景も記録できます。
+
+**PvPokeで開く。** チームやシミュレーションしたバトルをPvPokeに送れます。
+
+**その他。** スキャナーをさらに改善しました。
+
+## v4.3
 
 **選別スキャン。** 残したいPvPのステータス積の下限を決めておくと、それを満たすポケモンだけをアプリが保存します。
 
@@ -1899,7 +1997,21 @@ export const whatsNewData: Record<string, string> = {
 **ビルドアラウンドモード**：任意のポケモンからチーム生成を開始。ランキングやポケボックスからお気に入りを選ぶと、BattleFlowがそのポケモンを軸に最適なリード、セーフスワップ、クローザーを備えたチームを構築します。
 
 **色違いスプライト（Pro）**：色違いポケモンをアプリ全体で表示 — ランキング、チーム、ポケボックス、個体値チェッカー、生成チーム。種族ごとにキラキラアニメーション付きで切り替え可能。`,
-  ko: `## v4.3
+  ko: `## v4.4
+
+**기술 데이터.** 기초에 새 덱이 추가되었습니다. 게임의 모든 기술의 턴, 에너지, 위력을 익혀 보세요. MoveDex에서 목록을 필터링하고 '연습'을 탭하면 그 기술만 연습할 수 있습니다.
+
+**기술 스캔.** 게임에서 각 포켓몬의 기술 구성을 바로 읽어 오는 선택 스캔 단계입니다.
+
+**빠른 스캔.** 진동만으로 스캔합니다. 결과 카드도 알림도 없습니다. 새 스캔 옵션은 스캔을 시작하는 곳의 톱니바퀴 아이콘과 캡처 배너에서 열 수 있습니다.
+
+**더 풍성해진 컬렉션.** 포켓몬을 '보호됨'으로 표시하면 정리에서 박사에게 보내기를 제안하지 않습니다. 코스튬, 맥스 모습, 메가레벨, XXS/XXL 사이즈, 로케이션 배경도 기록할 수 있습니다.
+
+**PvPoke에서 열기.** 어떤 팀이든 시뮬레이션한 배틀이든 PvPoke로 보낼 수 있습니다.
+
+**그 외.** 스캐너가 더욱 개선되었습니다.
+
+## v4.3
 
 **선별 스캔.** 남기고 싶은 PvP 능력치 곱의 최솟값을 정해 두면, 그 기준을 넘긴 포켓몬만 앱이 저장합니다.
 
@@ -1992,7 +2104,21 @@ export const whatsNewData: Record<string, string> = {
 **빌드 어라운드 모드**: 원하는 포켓몬으로 팀 생성을 시작하세요. 랭킹이나 포켓박스에서 좋아하는 포켓몬을 선택하면 BattleFlow가 최적의 리드, 세이프 스왑, 클로저를 찾아 팀을 구축합니다.
 
 **색이 다른 스프라이트 (Pro)**: 앱 전체에서 색이 다른 포켓몬을 확인하세요 — 랭킹, 팀, 포켓박스, 개체값 체커, 생성된 팀. 종별로 반짝이는 애니메이션과 함께 전환 가능.`,
-  'zh-hant': `## v4.3
+  'zh-hant': `## v4.4
+
+**招式數據**：「基礎」新增卡組，掌握遊戲中每個招式的回合、能量與威力。在 MoveDex 中篩選清單並點按「訓練」，即可只練習這些招式。
+
+**招式掃描**：可選的掃描步驟，直接從遊戲中讀取每隻寶可夢的招式組合。
+
+**快速掃描**：只以震動提示掃描，不顯示結果卡片，也不發出通知。新的掃描選項可從開始掃描處的齒輪圖示以及擷取橫幅開啟。
+
+**收藏更完整**：將寶可夢標記為「受保護」，清理就不會建議將牠們送給博士；還能記錄換裝、極巨形態、超級等級、XXS/XXL 尺寸和紀念背卡。
+
+**在 PvPoke 中開啟**：可將任何隊伍或模擬對戰送到 PvPoke。
+
+**其他**：掃描器進一步改進。
+
+## v4.3
 
 **選擇性掃描**：設定你想留下的PvP數值乘積下限，應用程式就只會保存達標的寶可夢。
 
